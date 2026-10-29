@@ -12,3 +12,4 @@
 - 复制两个上游的 MIT 许可证和归属说明。
 - 新增 gstack/office-hours 译文。来源 gstack 8d95013。原因：产品追问主题的试点篇。
 - 新增规则：gstack 译文从第一个 H1 开始，通用运行时前言保留在英文快照中，不进入书稿。
+- 新增 mattpocock/grilling 译文。来源 mattpocock 5beb35b。原因：补齐产品追问对照。

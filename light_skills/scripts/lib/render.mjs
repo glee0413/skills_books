@@ -185,13 +185,11 @@ function renderHome({ book, sources }) {
 <body><main class="content home"><h1>${escapeHtml(book.title)}</h1><p class="subtitle">${escapeHtml(book.subtitle ?? "")}</p><p><a class="button" href="${escapeHtml(href)}">开始阅读</a> <a class="button secondary" href="${escapeHtml(relativeHref("index.html", "catalog/index.html"))}">技能全库</a></p><p>${sources.skills.length} 个技能，${sources.documents.length} 篇附属文档。</p></main></body></html>`;
 }
 
-function pagerFor(list, index) {
+function pagerFor(list, index, outputPath) {
   const prev = index > 0 ? list[index - 1] : null;
   const next = index < list.length - 1 ? list[index + 1] : null;
-  return {
-    prev: prev ? { title: prev.title, href: prev.href } : null,
-    next: next ? { title: next.title, href: next.href } : null,
-  };
+  const link = (item) => (item ? { title: item.title, href: relativeHref(outputPath, item.href) } : null);
+  return { prev: link(prev), next: link(next) };
 }
 
 export async function buildSite({ root, outDir }) {
@@ -218,6 +216,7 @@ export async function buildSite({ root, outDir }) {
         href: posix(item.path).replace(/\.md$/, ".html"),
       })),
       index,
+      outputPath,
     );
     const html = renderPage({
       page: { ...chapter, outputPath },
@@ -247,7 +246,7 @@ export async function buildSite({ root, outDir }) {
     const outputPath = posix(record.translationPath).replace(/\.md$/, ".html");
     const isDocument = Boolean(record.parentSkill);
     const documents = sources.documents.filter((document) => document.parentSkill === record.id);
-    const pager = pagerFor(catalogList, index);
+    const pager = pagerFor(catalogList, index, outputPath);
     const html = renderPage({
       page: {
         id: record.id,
