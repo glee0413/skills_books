@@ -1,0 +1,22 @@
+{
+  "name": "skills-book",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node --test scripts/__tests__/*.test.mjs && node scripts/check.mjs",
+    "check:release": "node --test scripts/__tests__/*.test.mjs && node scripts/check.mjs --release",
+    "check:sources": "node scripts/check.mjs --sources",
+    "stats": "node scripts/check.mjs --stats",
+    "serve": "node scripts/serve.mjs"
+  },
+  "dependencies": {
+    "github-slugger": "^2.0.0",
+    "marked": "^15.0.0",
+    "yaml": "^2.6.0"
+  }
+}
