@@ -27,10 +27,14 @@ function rewriteLinks(html) {
   });
 }
 
+function stripFrontmatter(markdown) {
+  return markdown.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, "");
+}
+
 export function renderMarkdown(markdown) {
   const slugger = new GithubSlugger();
   const headings = [];
-  let html = marked.parse(markdown, { gfm: true });
+  let html = marked.parse(stripFrontmatter(markdown), { gfm: true });
 
   html = html.replace(/<h([1-6])>([\s\S]*?)<\/h\1>/g, (match, depth, inner) => {
     const text = inner.replace(/<[^>]*>/g, "").trim();
@@ -38,6 +42,11 @@ export function renderMarkdown(markdown) {
     headings.push({ depth: Number(depth), text, id });
     return `<h${depth} id="${id}">${inner}</h${depth}>`;
   });
+
+  html = html
+    .replace(/<script[\s\S]*?<\/script>/gi, "")
+    .replace(/<iframe[\s\S]*?<\/iframe>/gi, "")
+    .replace(/\son\w+="[^"]*"/gi, "");
 
   return { html: rewriteLinks(html), headings };
 }
@@ -47,7 +56,8 @@ function sourceBox({ source, outputPath }) {
   const snapshotHref = relativeHref(outputPath, source.snapshotPath);
   return `<section class="source-box">
   <strong>来源</strong>：${escapeHtml(source.project)} · <code>${escapeHtml(source.sourcePath)}</code> · ${escapeHtml(source.ref)} · commit <code>${escapeHtml(source.commit.slice(0, 7))}</code><br>
-  <strong>许可证</strong>：${escapeHtml(source.license)} · <a href="${escapeHtml(source.sourceUrl)}">查看原仓库</a> · <a href="${escapeHtml(snapshotHref)}">查看英文快照</a>
+  <strong>许可证</strong>：${escapeHtml(source.license)} · <a href="${escapeHtml(source.sourceUrl)}">查看原仓库</a> · <a href="${escapeHtml(snapshotHref)}">查看英文快照</a> · 快照：<code>${escapeHtml(source.snapshotPath)}</code><br>
+  <strong>翻译</strong>：${escapeHtml(source.translatedAt ?? "未记录")} · 译者注以 <code>&gt; 译者注：</code> 标出
 </section>`;
 }
 
@@ -105,6 +115,7 @@ export function renderPage({ page, source, html, headings, nav, prev, next, docu
   <main class="content">
     ${sourceBox({ source, outputPath })}
     ${skillOverview(page)}
+    ${pageToc(headings)}
     <article class="markdown-body">${html}</article>
     ${companionDocs({ documents, outputPath })}
     ${pager({ prev, next })}
@@ -114,7 +125,8 @@ export function renderPage({ page, source, html, headings, nav, prev, next, docu
 }
 
 function displayName(id) {
-  return id.split("/").pop();
+  const parts = id.split("/");
+  return parts.length > 2 ? parts.slice(1).join("/") : parts[parts.length - 1];
 }
 
 function sidebar({ book, sources, currentId, outputPath = "index.html" }) {
@@ -172,7 +184,7 @@ function renderCatalogIndex({ book, sources }) {
 
   return `<!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>技能全库 · Skills Book</title><link rel="stylesheet" href="${escapeHtml(relativeHref("catalog/index.html", "assets/book.css"))}"></head>
-<body><aside class="sidebar"><div class="brand"><a href="${escapeHtml(relativeHref("catalog/index.html", "index.html"))}">Skills Book</a></div></aside><main class="content"><h1>技能全库</h1><p>全部 101 个技能和 22 篇附属文档。未翻译的条目会显示为“待翻译”。</p>${sections}</main></body></html>`;
+<body><aside class="sidebar"><div class="brand"><a href="${escapeHtml(relativeHref("catalog/index.html", "index.html"))}">Skills Book</a></div></aside><main class="content"><h1>技能全库</h1><p>共 ${sources.skills.length} 个技能；另有 ${sources.documents.length} 篇附属文档，从对应父技能页进入。未翻译的条目会显示为“待翻译”。</p>${sections}</main></body></html>`;
 }
 
 function renderHome({ book, sources }) {
@@ -250,7 +262,7 @@ export async function buildSite({ root, outDir }) {
     const html = renderPage({
       page: {
         id: record.id,
-        title: displayName(record.id),
+        title: inferTitle(markdown) ?? displayName(record.id),
         description: inferDescription(markdown),
         invocation: isDocument ? undefined : inferInvocation(markdown),
         project: record.project,
@@ -273,7 +285,12 @@ export async function buildSite({ root, outDir }) {
   await writeFile(join(outDir, "catalog", "index.html"), renderCatalogIndex({ book, sources }), "utf8");
   await writeFile(join(outDir, "index.html"), renderHome({ book, sources }), "utf8");
 
-  return { pages: pages + 2, warnings: complete.length === 0 ? ["还没有已完成的译文"] : [] };
+  const total = sources.skills.length + sources.documents.length;
+  return {
+    pages: pages + 2,
+    skipped: total - complete.length,
+    warnings: complete.length === 0 ? ["还没有已完成的译文"] : [],
+  };
 }
 
 function inferDescription(markdown) {
@@ -281,6 +298,13 @@ function inferDescription(markdown) {
   if (!match) return "";
   const description = match[1].match(/^description:\s*(.+)$/m);
   return description ? description[1].trim().replace(/^["']|["']$/g, "") : "";
+}
+
+function inferTitle(markdown) {
+  const match = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!match) return null;
+  const title = match[1].match(/^title:\s*(.+)$/m);
+  return title ? title[1].trim().replace(/^["']|["']$/g, "") : null;
 }
 
 function inferInvocation(markdown) {

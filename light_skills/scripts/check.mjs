@@ -1,4 +1,4 @@
-import { loadProject, validateProject, checkSources } from "./lib/validate.mjs";
+import { loadProject, validateProject, checkSources, getStats } from "./lib/validate.mjs";
 
 const args = new Set(process.argv.slice(2));
 const root = process.cwd();
@@ -16,24 +16,18 @@ function printIssues(issues) {
 
 if (args.has("--stats")) {
   const { sources } = await loadProject(root);
-  const all = [...sources.skills, ...sources.documents];
-  const byStatus = all.reduce((acc, record) => {
-    acc[record.translationStatus] = (acc[record.translationStatus] ?? 0) + 1;
-    return acc;
-  }, {});
-  const byProject = all.reduce((acc, record) => {
-    acc[record.project] = (acc[record.project] ?? 0) + 1;
-    return acc;
-  }, {});
-  console.log(`skills: ${sources.skills.length}, documents: ${sources.documents.length}`);
-  console.log(`projects: ${JSON.stringify(byProject)}`);
-  console.log(`status: ${JSON.stringify(byStatus)}`);
+  const stats = getStats(sources);
+  console.log(`skills: ${stats.skills}, documents: ${stats.documents}`);
+  console.log(`projects: ${JSON.stringify(stats.byProject)}`);
+  console.log(`status: ${JSON.stringify(stats.byStatus)}`);
   process.exit(0);
 }
 
 if (args.has("--sources")) {
+  const { sources } = await loadProject(root);
   const issues = await checkSources({ root, upstream: args.has("--upstream") });
   const errors = printIssues(issues);
+  console.log(`checked ${sources.skills.length + sources.documents.length} snapshot(s)`);
   process.exit(errors > 0 ? 1 : 0);
 }
 

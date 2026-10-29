@@ -1,7 +1,9 @@
 import { createHash } from "node:crypto";
-import { readdir, readFile, stat } from "node:fs/promises";
+import { mkdtemp, readdir, readFile, rm, stat } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import YAML from "yaml";
+import { buildSite } from "./render.mjs";
 
 const STATUSES = new Set(["todo", "draft", "complete", "needs-resync"]);
 const INVOCATIONS = new Set(["user", "model", "unknown"]);
@@ -225,6 +227,16 @@ export function validateTranslationPage({ page, sourceRecord, source }) {
   return issues;
 }
 
+export function validateReleaseContent({ page, id }) {
+  const issues = [];
+  const body = splitFrontmatter(page).body.trim();
+  if (!body) issues.push(issue("error", "empty-body", `${id} 的译文正文为空`, id));
+  if (/\bTODO\b|\[待翻译\]/.test(body)) {
+    issues.push(issue("error", "placeholder", `${id} 仍含占位文本`, id));
+  }
+  return issues;
+}
+
 export async function validateSnapshots({ root, sources }) {
   const issues = [];
   for (const record of [...sources.skills, ...sources.documents]) {
@@ -252,6 +264,45 @@ async function walkHtml(dir) {
     else if (entry.isFile() && entry.name.endsWith(".html")) output.push(full);
   }
   return output;
+}
+
+async function walkFiles(dir) {
+  const output = [];
+  for (const entry of await readdir(dir, { withFileTypes: true })) {
+    const full = join(dir, entry.name);
+    if (entry.isDirectory()) output.push(...(await walkFiles(full)));
+    else if (entry.isFile()) output.push(full);
+  }
+  return output;
+}
+
+export async function compareDirectories(leftDir, rightDir) {
+  const left = new Map(
+    (await walkFiles(leftDir)).map((file) => [file.slice(leftDir.length + 1), file]),
+  );
+  const right = new Map(
+    (await walkFiles(rightDir)).map((file) => [file.slice(rightDir.length + 1), file]),
+  );
+  for (const relativePath of left.keys()) {
+    if (!right.has(relativePath)) return `committed site is missing ${relativePath}`;
+    const [a, b] = await Promise.all([readFile(left.get(relativePath)), readFile(right.get(relativePath))]);
+    if (!a.equals(b)) return `committed site is stale at ${relativePath}`;
+  }
+  for (const relativePath of right.keys()) {
+    if (!left.has(relativePath)) return `committed site has an extra file ${relativePath}`;
+  }
+  return null;
+}
+
+export async function validateHtmlFreshness({ root, siteDir }) {
+  const temp = await mkdtemp(join(tmpdir(), "skills-book-fresh-"));
+  try {
+    await buildSite({ root, outDir: temp });
+    const difference = await compareDirectories(siteDir, temp);
+    return difference ? [issue("error", "site-out-of-date", difference, "site/")] : [];
+  } finally {
+    await rm(temp, { recursive: true, force: true });
+  }
 }
 
 export async function validateLinks({ siteDir }) {
@@ -306,6 +357,22 @@ export async function loadProject(root) {
   return { sources, book };
 }
 
+export function getStats(sources) {
+  const all = [...sources.skills, ...sources.documents];
+  return {
+    skills: sources.skills.length,
+    documents: sources.documents.length,
+    byProject: all.reduce((acc, record) => {
+      acc[record.project] = (acc[record.project] ?? 0) + 1;
+      return acc;
+    }, {}),
+    byStatus: all.reduce((acc, record) => {
+      acc[record.translationStatus] = (acc[record.translationStatus] ?? 0) + 1;
+      return acc;
+    }, {}),
+  };
+}
+
 export async function validateProject({ root, mode = "draft" }) {
   const { sources, book } = await loadProject(root);
   const issues = [...validateSources(sources), ...validateBook(book, sources), ...(await validateSnapshots({ root, sources }))];
@@ -326,17 +393,27 @@ export async function validateProject({ root, mode = "draft" }) {
       continue;
     }
 
-    const snapshot = await readFile(join(root, record.snapshotPath), "utf8");
+    let snapshot;
+    try {
+      snapshot = await readFile(join(root, record.snapshotPath), "utf8");
+    } catch {
+      issues.push(issue("error", "snapshot-missing", `快照不存在: ${record.snapshotPath}`, record.id));
+      continue;
+    }
     issues.push(...validateTranslationPage({ page, sourceRecord: record, source: snapshot }));
 
-    if (mode === "release" && record.translationStatus !== "complete") {
-      issues.push(issue("error", "not-complete", `${record.id} 状态是 ${record.translationStatus}`, record.id));
+    if (mode === "release") {
+      issues.push(...validateReleaseContent({ page, id: record.id }));
+      if (record.translationStatus !== "complete") {
+        issues.push(issue("error", "not-complete", `${record.id} 状态是 ${record.translationStatus}`, record.id));
+      }
     }
   }
 
   const hasSite = await stat(join(root, "site", "index.html")).then(() => true).catch(() => false);
   if (hasSite) {
     issues.push(...(await validateLinks({ siteDir: join(root, "site") })));
+    issues.push(...(await validateHtmlFreshness({ root, siteDir: join(root, "site") })));
   } else if (mode === "release") {
     issues.push(issue("error", "site-missing", "发布模式需要已构建的 site/index.html"));
   } else {
@@ -346,12 +423,12 @@ export async function validateProject({ root, mode = "draft" }) {
   return issues;
 }
 
-export async function checkSources({ root, upstream = false }) {
+export async function checkSources({ root, upstream = false, upstreamRoots = null }) {
   const sources = JSON.parse(await readFile(join(root, "sources.json"), "utf8"));
   const issues = [...(await validateSnapshots({ root, sources }))];
   if (!upstream) return issues;
 
-  const roots = {
+  const roots = upstreamRoots ?? {
     gstack: resolve(root, "..", "gstack"),
     mattpocock: resolve(root, "..", "mattpocock_skills"),
   };

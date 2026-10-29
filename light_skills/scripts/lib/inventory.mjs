@@ -120,7 +120,7 @@ export async function scanInventory({ gstackRoot, mattRoot, documents } = {}) {
   const docList = documents ?? (await loadCompanionDocuments());
   const skills = [];
 
-  for (const sourcePath of await walkFiles(gstackRoot, { skipSegments: ["test"] })) {
+  for (const sourcePath of await walkFiles(gstackRoot, { skipSegments: ["test", "tests"] })) {
     const bytes = await readFile(join(gstackRoot, sourcePath));
     const id = gstackId(sourcePath);
     skills.push(
@@ -190,9 +190,32 @@ export async function scanInventory({ gstackRoot, mattRoot, documents } = {}) {
   return { skills, documents: documentRecords };
 }
 
+export function mergeTranslationState(records, existingRecords) {
+  const previous = new Map((existingRecords ?? []).map((record) => [record.id, record]));
+  return records.map((record) => {
+    const old = previous.get(record.id);
+    if (!old) return record;
+    return {
+      ...record,
+      translationStatus: old.translationStatus ?? record.translationStatus,
+      translatedAt: old.translatedAt ?? record.translatedAt,
+    };
+  });
+}
+
 export async function writeInventory({ root, gstackRoot, mattRoot, skills, documents }) {
+  let existing = null;
+  try {
+    existing = JSON.parse(await readFile(join(root, "sources.json"), "utf8"));
+  } catch {
+    existing = null;
+  }
+
+  const mergedSkills = mergeTranslationState(skills, existing?.skills);
+  const mergedDocuments = mergeTranslationState(documents, existing?.documents);
+
   const roots = { gstack: gstackRoot, mattpocock: mattRoot };
-  for (const record of [...skills, ...documents]) {
+  for (const record of [...mergedSkills, ...mergedDocuments]) {
     const sourceRoot = roots[record.project];
     const source = join(sourceRoot, record.sourcePath);
     const target = join(root, record.snapshotPath);
@@ -202,7 +225,7 @@ export async function writeInventory({ root, gstackRoot, mattRoot, skills, docum
 
   await writeFile(
     join(root, "sources.json"),
-    `${JSON.stringify({ schemaVersion: 1, skills, documents }, null, 2)}\n`,
+    `${JSON.stringify({ schemaVersion: 1, skills: mergedSkills, documents: mergedDocuments }, null, 2)}\n`,
     "utf8",
   );
 }

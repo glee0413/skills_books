@@ -1,6 +1,12 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { mkdtemp, mkdir, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import {
+  compareDirectories,
+  getStats,
+  validateReleaseContent,
   validateSources,
   validateBook,
   validateTranslationStructure,
@@ -83,4 +89,35 @@ test("frontmatter 与来源不一致会失败", () => {
     source: "# A\n",
   });
   assert.ok(issues.some((i) => i.code === "frontmatter-mismatch"));
+});
+
+test("发布模式拒绝空正文和占位文本", () => {
+  assert.ok(validateReleaseContent({ page: "---\nid: a/b\n---\n", id: "a/b" }).some((i) => i.code === "empty-body"));
+  assert.ok(
+    validateReleaseContent({ page: "---\nid: a/b\n---\n\n[待翻译]\n", id: "a/b" }).some(
+      (i) => i.code === "placeholder",
+    ),
+  );
+});
+
+test("目录比较能发现过期和多余文件", async () => {
+  const left = await mkdtemp(join(tmpdir(), "skills-book-left-"));
+  const right = await mkdtemp(join(tmpdir(), "skills-book-right-"));
+  await writeFile(join(left, "a.html"), "one");
+  await writeFile(join(right, "a.html"), "two");
+  assert.match(await compareDirectories(left, right), /stale/);
+  await writeFile(join(right, "a.html"), "one");
+  assert.equal(await compareDirectories(left, right), null);
+  await writeFile(join(right, "b.html"), "extra");
+  assert.match(await compareDirectories(left, right), /extra/);
+});
+
+test("stats 统计技能、文档和状态", () => {
+  const stats = getStats({
+    skills: [{ project: "a", translationStatus: "complete" }],
+    documents: [{ project: "a", translationStatus: "todo" }],
+  });
+  assert.equal(stats.skills, 1);
+  assert.equal(stats.documents, 1);
+  assert.deepEqual(stats.byStatus, { complete: 1, todo: 1 });
 });

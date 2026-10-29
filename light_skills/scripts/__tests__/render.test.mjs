@@ -13,7 +13,18 @@ test("中文标题生成稳定锚点，并重写站内 Markdown 链接", () => {
   assert.equal(result.headings.length, 1);
 });
 
-test("页面包含来源框、技能速览、上一篇和下一篇", () => {
+test("渲染前剥离 frontmatter，不把 YAML 放进正文", () => {
+  const result = renderMarkdown("---\nid: a/b\ntitle: demo\n---\n\n# 正文\n\n```sh\necho hi\n```\n");
+  assert.doesNotMatch(result.html, /id:\s*a\/b/);
+  assert.match(result.html, /<h1 id="[^"]+">正文<\/h1>/);
+});
+
+test("渲染时移除 script/iframe 和事件属性", () => {
+  const result = renderMarkdown("<script>alert(1)</script>\n\n<iframe src=\"x\"></iframe>\n\n<button onclick=\"x()\">go</button>\n");
+  assert.doesNotMatch(result.html, /<script|<iframe|onclick=/i);
+});
+
+test("页面包含来源框、技能速览、页内目录、上一篇和下一篇", () => {
   const html = renderPage({
     page: {
       id: "gstack/office-hours",
@@ -31,8 +42,8 @@ test("页面包含来源框、技能速览、上一篇和下一篇", () => {
       sourceUrl: "https://github.com/garrytan/gstack/blob/8d9501373b5589742/office-hours/SKILL.md",
       snapshotPath: "source-snapshots/gstack/office-hours/SKILL.md",
     },
-    html: "<h1 id=\"a\">A</h1>",
-    headings: [{ depth: 1, text: "A", id: "a" }],
+    html: "<h1 id=\"a\">A</h1><h2 id=\"b\">B</h2>",
+    headings: [{ depth: 1, text: "A", id: "a" }, { depth: 2, text: "B", id: "b" }],
     nav: "<nav>目录</nav>",
     prev: { title: "上一篇", href: "prev.html" },
     next: { title: "下一篇", href: "next.html" },
@@ -40,6 +51,7 @@ test("页面包含来源框、技能速览、上一篇和下一篇", () => {
   });
   assert.match(html, /class="source-box"/);
   assert.match(html, /class="skill-overview"/);
+  assert.match(html, /class="page-toc"/);
   assert.match(html, /上一篇/);
   assert.match(html, /下一篇/);
   assert.match(html, /\.\.\/\.\.\/assets\/book\.css/);
@@ -58,4 +70,6 @@ test("目录把未翻译技能渲染成不可点击的 span", async () => {
   assert.match(catalog, /待翻译/);
   assert.match(catalog, /<span[^>]*>autoplan<\/span>/);
   assert.doesNotMatch(catalog, /<a[^>]*href="[^"]*autoplan\.html"[^>]*>autoplan<\/a>/);
+  assert.match(catalog, /<span[^>]*>openclaw\/office-hours<\/span>/);
+  assert.match(catalog, /<span[^>]*>capy\/gstack<\/span>/);
 });

@@ -223,7 +223,7 @@ mattpocock 的 `package.json` 版本是 `1.3.1`，但当前 commit 在 `v1.3.1` 
         {
           "id": "product-questioning",
           "title": "产品追问：office-hours 与 grilling",
-          "path": "book/part-02-think/05-product-questioning.md",
+          "path": "book/02-think/05-product-questioning.md",
           "skills": ["gstack/office-hours", "mattpocock/grilling"]
         }
       ]

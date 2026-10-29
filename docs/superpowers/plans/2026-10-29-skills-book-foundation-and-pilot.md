@@ -646,7 +646,7 @@ git commit -m "feat(check): 校验来源、目录、结构与占位状态" \
 **Files:**
 - Create: `light_skills/scripts/lib/render.mjs`
 - Create: `light_skills/scripts/build.mjs`
-- Create: `light_skills/site/assets/book.css`
+- Create: `light_skills/assets/book.css`（构建时复制到 `site/assets/book.css`）
 - Create: `light_skills/scripts/__tests__/render.test.mjs`
 
 **Interfaces:**

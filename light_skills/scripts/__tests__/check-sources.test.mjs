@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { mkdtemp, mkdir, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -54,4 +55,51 @@ test("快照哈希不匹配会被报告", async () => {
 
   const issues = await checkSources({ root });
   assert.ok(issues.some((issue) => issue.code === "snapshot-hash-mismatch"));
+});
+
+test("上游文件变化会报告 needs-resync，上游缺失只警告", async () => {
+  const root = await mkdtemp(join(tmpdir(), "skills-book-upstream-"));
+  const upstream = await mkdtemp(join(tmpdir(), "skills-book-upstream-src-"));
+  await mkdir(join(root, "source-snapshots"), { recursive: true });
+  await writeFile(join(root, "source-snapshots", "a.md"), "hello");
+  await writeFile(join(upstream, "a.md"), "changed");
+  const hash = createHash("sha256").update("hello").digest("hex");
+  await writeFile(
+    join(root, "sources.json"),
+    JSON.stringify({
+      schemaVersion: 1,
+      skills: [
+        {
+          id: "gstack/a",
+          project: "gstack",
+          repo: "https://example.com/a",
+          commit: "abc",
+          ref: "v1",
+          sourcePath: "a.md",
+          snapshotPath: "source-snapshots/a.md",
+          sourceSha256: hash,
+          sourceUrl: "https://example.com/a/blob/abc/a.md",
+          license: "MIT",
+          translationPath: "catalog/gstack/a.md",
+          translationStatus: "todo",
+          translatedAt: null,
+        },
+      ],
+      documents: [],
+    }),
+  );
+
+  const changed = await checkSources({
+    root,
+    upstream: true,
+    upstreamRoots: { gstack: upstream, mattpocock: upstream },
+  });
+  assert.ok(changed.some((issue) => issue.code === "needs-resync"));
+
+  const missing = await checkSources({
+    root,
+    upstream: true,
+    upstreamRoots: { gstack: join(root, "missing"), mattpocock: join(root, "missing") },
+  });
+  assert.ok(missing.some((issue) => issue.code === "upstream-missing"));
 });
