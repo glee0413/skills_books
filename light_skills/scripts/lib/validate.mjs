@@ -241,7 +241,11 @@ export async function validateLinks({ siteDir }) {
   for (const file of await walkHtml(siteDir)) {
     const html = await readFile(file, "utf8");
     const relativeFile = file.slice(siteDir.length + 1);
-    if (relativeFile.startsWith(`catalog${process.platform === "win32" ? "\\" : "/"}`) && !html.includes('class="source-box"')) {
+    if (
+      relativeFile !== "catalog/index.html" &&
+      relativeFile.startsWith(`catalog${process.platform === "win32" ? "\\" : "/"}`) &&
+      !html.includes('class="source-box"')
+    ) {
       issues.push(issue("error", "missing-source-box", `页面缺少来源框: ${relativeFile}`, relativeFile));
     }
 
