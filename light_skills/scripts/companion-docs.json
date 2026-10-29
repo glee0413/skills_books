@@ -1,0 +1,114 @@
+{
+  "documents": [
+    {
+      "skill": "mattpocock/ask-matt",
+      "path": "skills/engineering/ask-matt/PHASE-BOUNDARIES.md",
+      "name": "phase-boundaries"
+    },
+    {
+      "skill": "mattpocock/codebase-design",
+      "path": "skills/engineering/codebase-design/DEEPENING.md",
+      "name": "deepening"
+    },
+    {
+      "skill": "mattpocock/codebase-design",
+      "path": "skills/engineering/codebase-design/DESIGN-IT-TWICE.md",
+      "name": "design-it-twice"
+    },
+    {
+      "skill": "mattpocock/domain-modeling",
+      "path": "skills/engineering/domain-modeling/ADR-FORMAT.md",
+      "name": "adr-format"
+    },
+    {
+      "skill": "mattpocock/domain-modeling",
+      "path": "skills/engineering/domain-modeling/GLOSSARY-FORMAT.md",
+      "name": "glossary-format"
+    },
+    {
+      "skill": "mattpocock/improve-codebase-architecture",
+      "path": "skills/engineering/improve-codebase-architecture/HTML-REPORT.md",
+      "name": "html-report"
+    },
+    {
+      "skill": "mattpocock/prototype",
+      "path": "skills/engineering/prototype/LOGIC.md",
+      "name": "logic"
+    },
+    {
+      "skill": "mattpocock/prototype",
+      "path": "skills/engineering/prototype/UI.md",
+      "name": "ui"
+    },
+    {
+      "skill": "mattpocock/setup-matt-pocock-skills",
+      "path": "skills/engineering/setup-matt-pocock-skills/domain.md",
+      "name": "domain"
+    },
+    {
+      "skill": "mattpocock/setup-matt-pocock-skills",
+      "path": "skills/engineering/setup-matt-pocock-skills/issue-tracker-github.md",
+      "name": "issue-tracker-github"
+    },
+    {
+      "skill": "mattpocock/setup-matt-pocock-skills",
+      "path": "skills/engineering/setup-matt-pocock-skills/issue-tracker-gitlab.md",
+      "name": "issue-tracker-gitlab"
+    },
+    {
+      "skill": "mattpocock/setup-matt-pocock-skills",
+      "path": "skills/engineering/setup-matt-pocock-skills/issue-tracker-local.md",
+      "name": "issue-tracker-local"
+    },
+    {
+      "skill": "mattpocock/setup-matt-pocock-skills",
+      "path": "skills/engineering/setup-matt-pocock-skills/triage-labels.md",
+      "name": "triage-labels"
+    },
+    {
+      "skill": "mattpocock/tdd",
+      "path": "skills/engineering/tdd/tests.md",
+      "name": "tests"
+    },
+    {
+      "skill": "mattpocock/tdd",
+      "path": "skills/engineering/tdd/mocking.md",
+      "name": "mocking"
+    },
+    {
+      "skill": "mattpocock/triage",
+      "path": "skills/engineering/triage/AGENT-BRIEF.md",
+      "name": "agent-brief"
+    },
+    {
+      "skill": "mattpocock/triage",
+      "path": "skills/engineering/triage/OUT-OF-SCOPE.md",
+      "name": "out-of-scope"
+    },
+    {
+      "skill": "mattpocock/teach",
+      "path": "skills/productivity/teach/GLOSSARY-FORMAT.md",
+      "name": "glossary-format"
+    },
+    {
+      "skill": "mattpocock/teach",
+      "path": "skills/productivity/teach/LEARNING-RECORD-FORMAT.md",
+      "name": "learning-record-format"
+    },
+    {
+      "skill": "mattpocock/teach",
+      "path": "skills/productivity/teach/MISSION-FORMAT.md",
+      "name": "mission-format"
+    },
+    {
+      "skill": "mattpocock/teach",
+      "path": "skills/productivity/teach/RESOURCES-FORMAT.md",
+      "name": "resources-format"
+    },
+    {
+      "skill": "mattpocock/writing-for-agents",
+      "path": "skills/productivity/writing-for-agents/SKILL-MECHANICS.md",
+      "name": "skill-mechanics"
+    }
+  ]
+}
