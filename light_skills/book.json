@@ -15,7 +15,17 @@
     {
       "id": "02-think",
       "title": "第二部 想清楚",
-      "chapters": []
+      "chapters": [
+        {
+          "id": "product-questioning",
+          "title": "产品追问：office-hours 与 grilling",
+          "path": "book/02-think/05-product-questioning.md",
+          "skills": [
+            "gstack/office-hours",
+            "mattpocock/grilling"
+          ]
+        }
+      ]
     },
     {
       "id": "03-plan",

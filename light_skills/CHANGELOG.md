@@ -14,3 +14,4 @@
 - 新增规则：gstack 译文从第一个 H1 开始，通用运行时前言保留在英文快照中，不进入书稿。
 - 新增 mattpocock/grilling 译文。来源 mattpocock 5beb35b。原因：补齐产品追问对照。
 - 新增 mattpocock/tdd、tdd/tests、tdd/mocking 译文。原因：试点覆盖技能加附属文档的形态。
+- 新增“产品追问”对照章，比较 office-hours 与 grilling 的分工。
