@@ -15,3 +15,9 @@
 - 新增 mattpocock/grilling 译文。来源 mattpocock 5beb35b。原因：补齐产品追问对照。
 - 新增 mattpocock/tdd、tdd/tests、tdd/mocking 译文。原因：试点覆盖技能加附属文档的形态。
 - 新增“产品追问”对照章，比较 office-hours 与 grilling 的分工。
+
+### 试点
+
+- 完成 office-hours、grilling、tdd 及 tdd 的两篇附属文档。
+- 完成“产品追问”对照章，验证主题主书结构。
+- 试点确认后进入剩余 98 个技能和 20 篇附属文档的全量翻译。
