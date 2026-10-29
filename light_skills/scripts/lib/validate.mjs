@@ -183,6 +183,7 @@ export function validateTranslationPage({ page, sourceRecord, source }) {
     snapshotPath: sourceRecord.snapshotPath,
     license: sourceRecord.license,
   };
+  if (sourceRecord.parentSkill) expected.parentSkill = sourceRecord.parentSkill;
   for (const [key, value] of Object.entries(expected)) {
     if (frontmatter[key] !== value) {
       issues.push(
@@ -196,11 +197,16 @@ export function validateTranslationPage({ page, sourceRecord, source }) {
     }
   }
 
-  if (typeof frontmatter.description !== "string" || !frontmatter.description.trim()) {
-    issues.push(issue("error", "missing-description", "译文缺少 description", sourceRecord.id));
+  if (!frontmatter.title) {
+    issues.push(issue("error", "missing-title", "译文缺少 title", sourceRecord.id));
   }
-  if (!INVOCATIONS.has(frontmatter.invocation)) {
-    issues.push(issue("error", "invalid-invocation", `invocation 必须是 user/model/unknown`, sourceRecord.id));
+  if (!sourceRecord.parentSkill) {
+    if (typeof frontmatter.description !== "string" || !frontmatter.description.trim()) {
+      issues.push(issue("error", "missing-description", "译文缺少 description", sourceRecord.id));
+    }
+    if (!INVOCATIONS.has(frontmatter.invocation)) {
+      issues.push(issue("error", "invalid-invocation", `invocation 必须是 user/model/unknown`, sourceRecord.id));
+    }
   }
   if (!frontmatter.translatedAt) {
     issues.push(issue("error", "missing-translated-at", "译文缺少 translatedAt", sourceRecord.id));

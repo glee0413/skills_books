@@ -21,6 +21,7 @@
 - 提交说明和 `CHANGELOG.md` 使用中文，写清“改了什么、来源、原因、验证命令”。
 - 译者注只允许 `> 译者注：` 引用块，且不得包含标题或代码围栏；结构校验忽略这些块。
 - 原文 frontmatter 保存在英文快照里；译文页只显示翻译后的 `description`、`invocation`、来源和许可证。
+- gstack 译文从第一个 H1 开始，H1 之前的通用运行时前言不翻译，保留在英文快照中。
 - 技能 ID 一经生成不再改名；改标题不改 ID。
 
 ## Review Focus
@@ -365,7 +366,7 @@ Expected: FAIL，原因是 `../lib/inventory.mjs` 不存在。
 - matt 扫描 `skills/<bucket>/<name>/SKILL.md`，ID 为 `mattpocock/<name>`。四个 bucket 都包含：engineering、productivity、in-progress、misc。
 - 技能快照路径：`source-snapshots/<project>/<id 去掉 project 前缀>/SKILL.md`。
 - 附属文档快照路径：`source-snapshots/<project>/<id 去掉 project 前缀>.md`。
-- 译文路径：技能页统一为 `catalog/<project>/<id 去掉 project 前缀>.md`，例如 `catalog/mattpocock/tdd.md`、`catalog/gstack/openclaw/office-hours.md`。附属文档页统一为 `catalog/<project>/<父技能 slug>/<文档名>.md`，例如 `catalog/mattpocock/tdd/tests.md`。技能页文件和同名附属文档目录可以并存。
+- 译文路径：没有附属文档的技能页用 `catalog/<project>/<id 去掉 project 前缀>.md`，例如 `catalog/gstack/office-hours.md`。有附属文档的技能页用 `catalog/<project>/<id 去掉 project 前缀>/SKILL.md`，例如 `catalog/mattpocock/tdd/SKILL.md`，保证原文里的同目录链接成立。附属文档页用 `catalog/<project>/<父技能 slug>/<文档名>.md`，例如 `catalog/mattpocock/tdd/tests.md`。
 - `sourceSha256` 用 `node:crypto` 对文件字节计算。
 - `translationStatus` 初始为 `todo`，`translatedAt` 为 `null`。
 - `notes`：gstack 生成文件写“上游 SKILL.md 由模板生成。”；附属文档写“父技能明确要求阅读的配套文档。”
@@ -899,7 +900,7 @@ git commit -m "feat(catalog/mattpocock): 翻译 grilling" \
 ### Task 10: 翻译 `mattpocock/tdd` 及两篇附属文档
 
 **Files:**
-- Create: `light_skills/catalog/mattpocock/tdd.md`
+- Create: `light_skills/catalog/mattpocock/tdd/SKILL.md`
 - Create: `light_skills/catalog/mattpocock/tdd/tests.md`
 - Create: `light_skills/catalog/mattpocock/tdd/mocking.md`
 - Modify: `light_skills/sources.json`
@@ -911,7 +912,7 @@ git commit -m "feat(catalog/mattpocock): 翻译 grilling" \
 
 - [ ] **Step 1: 翻译 `mattpocock/tdd` 的技能页**
 
-保留 `red → green`、`seam`、`vertical slice`、`tracer bullet` 等术语；`seam` 译为“接缝”，`tracer bullet` 译为“曳光弹”。译文页路径是 `catalog/mattpocock/tdd.md`，frontmatter 的 `invocation` 写 `model`。
+保留 `red → green`、`seam`、`vertical slice`、`tracer bullet` 等术语；`seam` 译为“接缝”，`tracer bullet` 译为“曳光弹”。译文页路径是 `catalog/mattpocock/tdd/SKILL.md`，frontmatter 的 `invocation` 写 `model`。
 
 - [ ] **Step 2: 翻译 `tests.md` 和 `mocking.md`**
 
@@ -938,7 +939,7 @@ Expected: 0 error；三个 HTML 页存在；父技能页的附属文档链接可
 - [ ] **Step 6: 提交**
 
 ```bash
-git add light_skills/catalog/mattpocock/tdd.md light_skills/catalog/mattpocock/tdd light_skills/sources.json light_skills/site light_skills/CHANGELOG.md
+git add light_skills/catalog/mattpocock/tdd light_skills/sources.json light_skills/site light_skills/CHANGELOG.md
 git commit -m "feat(catalog/mattpocock): 翻译 tdd 及其附属文档" \
   -m "来源：mattpocock 5beb35b / v1.3.1-47-g5beb35b。" \
   -m "原因：试点需要覆盖技能加同目录必读文档的形态。" \

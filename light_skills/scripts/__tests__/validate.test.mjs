@@ -48,6 +48,25 @@ test("源文有 H1 时，只比较 H1 之后的技能正文", () => {
   assert.equal(issues.filter((i) => i.code === "structure-mismatch").length, 0);
 });
 
+test("附属文档不需要 description 和 invocation", () => {
+  const page = `---\nid: a/b/doc\ntitle: doc\nproject: a\nsourceCommit: abc\nsourceRef: v1\nsourcePath: doc.md\nsnapshotPath: doc.md\nlicense: MIT\ntranslatedAt: 2026-10-29\nparentSkill: a/b\n---\n\n# A\n`;
+  const issues = validateTranslationPage({
+    page,
+    sourceRecord: {
+      id: "a/b/doc",
+      parentSkill: "a/b",
+      project: "a",
+      commit: "abc",
+      ref: "v1",
+      sourcePath: "doc.md",
+      snapshotPath: "doc.md",
+      license: "MIT",
+    },
+    source: "# A\n",
+  });
+  assert.equal(issues.filter((i) => i.level === "error").length, 0);
+});
+
 test("frontmatter 与来源不一致会失败", () => {
   const page = `---\nid: a/b\nproject: a\nsourceCommit: old\nsourceRef: v1\nsourcePath: x\nsnapshotPath: y\nlicense: MIT\ntranslatedAt: 2026-10-29\ndescription: 说明\ninvocation: model\n---\n\n# A\n`;
   const issues = validateTranslationPage({
