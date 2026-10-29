@@ -39,6 +39,12 @@ function stripTranslatorNotes(text) {
   return output.join("\n");
 }
 
+function fromFirstH1(text) {
+  const lines = text.split("\n");
+  const start = lines.findIndex((line) => /^#\s+/.test(line));
+  return start >= 0 ? lines.slice(start).join("\n") : text;
+}
+
 function metrics(text) {
   let headings = 0;
   let fences = 0;
@@ -55,8 +61,8 @@ function metrics(text) {
 }
 
 export function validateTranslationStructure(source, translation) {
-  const sourceBody = splitFrontmatter(source).body;
-  const translationBody = stripTranslatorNotes(splitFrontmatter(translation).body);
+  const sourceBody = fromFirstH1(splitFrontmatter(source).body);
+  const translationBody = fromFirstH1(stripTranslatorNotes(splitFrontmatter(translation).body));
   const expected = metrics(sourceBody);
   const actual = metrics(translationBody);
   if (expected.headings !== actual.headings || expected.fences !== actual.fences) {
@@ -201,6 +207,12 @@ export function validateTranslationPage({ page, sourceRecord, source }) {
   }
 
   if (typeof source === "string") {
+    const sourceBody = splitFrontmatter(source).body;
+    const translationBody = splitFrontmatter(page).body;
+    const firstLine = translationBody.split("\n").find((line) => line.trim() !== "") ?? "";
+    if (/^#\s+/m.test(sourceBody) && !/^#\s+/.test(firstLine)) {
+      issues.push(issue("error", "missing-h1-start", "源文有 H1，译文必须从 H1 开始，不能包含通用前言", sourceRecord.id));
+    }
     issues.push(...validateTranslationStructure(source, page));
   }
 

@@ -131,7 +131,7 @@ export async function scanInventory({ gstackRoot, mattRoot, documents } = {}) {
         snapshotPath: skillSnapshotPath(id),
         sourceSha256: sha256(bytes),
         translationPath: skillTranslationPath(id),
-        notes: "上游 SKILL.md 由模板生成。",
+        notes: "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。",
       }),
     );
   }

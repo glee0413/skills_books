@@ -15,7 +15,7 @@
       "translationPath": "catalog/gstack/autoplan.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/benchmark",
@@ -31,7 +31,7 @@
       "translationPath": "catalog/gstack/benchmark.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/benchmark-models",
@@ -47,7 +47,7 @@
       "translationPath": "catalog/gstack/benchmark-models.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/browse",
@@ -63,7 +63,7 @@
       "translationPath": "catalog/gstack/browse.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/canary",
@@ -79,7 +79,7 @@
       "translationPath": "catalog/gstack/canary.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/capy/gstack",
@@ -95,7 +95,7 @@
       "translationPath": "catalog/gstack/capy/gstack.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/careful",
@@ -111,7 +111,7 @@
       "translationPath": "catalog/gstack/careful.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/codex",
@@ -127,7 +127,7 @@
       "translationPath": "catalog/gstack/codex.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/context-restore",
@@ -143,7 +143,7 @@
       "translationPath": "catalog/gstack/context-restore.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/context-save",
@@ -159,7 +159,7 @@
       "translationPath": "catalog/gstack/context-save.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/cso",
@@ -175,7 +175,7 @@
       "translationPath": "catalog/gstack/cso.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/design-consultation",
@@ -191,7 +191,7 @@
       "translationPath": "catalog/gstack/design-consultation.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/design-html",
@@ -207,7 +207,7 @@
       "translationPath": "catalog/gstack/design-html.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/design-review",
@@ -223,7 +223,7 @@
       "translationPath": "catalog/gstack/design-review.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/design-shotgun",
@@ -239,7 +239,7 @@
       "translationPath": "catalog/gstack/design-shotgun.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/deslop-shared-libs",
@@ -255,7 +255,7 @@
       "translationPath": "catalog/gstack/deslop-shared-libs.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/devex-review",
@@ -271,7 +271,7 @@
       "translationPath": "catalog/gstack/devex-review.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/diagram",
@@ -287,7 +287,7 @@
       "translationPath": "catalog/gstack/diagram.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/document-generate",
@@ -303,7 +303,7 @@
       "translationPath": "catalog/gstack/document-generate.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/document-release",
@@ -319,7 +319,7 @@
       "translationPath": "catalog/gstack/document-release.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/eval-plan",
@@ -335,7 +335,7 @@
       "translationPath": "catalog/gstack/eval-plan.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/freeze",
@@ -351,7 +351,7 @@
       "translationPath": "catalog/gstack/freeze.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/gstack",
@@ -367,7 +367,7 @@
       "translationPath": "catalog/gstack/gstack.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/gstack-upgrade",
@@ -383,7 +383,7 @@
       "translationPath": "catalog/gstack/gstack-upgrade.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/guard",
@@ -399,7 +399,7 @@
       "translationPath": "catalog/gstack/guard.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/hackernews-frontpage",
@@ -415,7 +415,7 @@
       "translationPath": "catalog/gstack/hackernews-frontpage.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/health",
@@ -431,7 +431,7 @@
       "translationPath": "catalog/gstack/health.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/investigate",
@@ -447,7 +447,7 @@
       "translationPath": "catalog/gstack/investigate.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/ios-clean",
@@ -463,7 +463,7 @@
       "translationPath": "catalog/gstack/ios-clean.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/ios-design-review",
@@ -479,7 +479,7 @@
       "translationPath": "catalog/gstack/ios-design-review.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/ios-fix",
@@ -495,7 +495,7 @@
       "translationPath": "catalog/gstack/ios-fix.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/ios-qa",
@@ -511,7 +511,7 @@
       "translationPath": "catalog/gstack/ios-qa.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/ios-sync",
@@ -527,7 +527,7 @@
       "translationPath": "catalog/gstack/ios-sync.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/land-and-deploy",
@@ -543,7 +543,7 @@
       "translationPath": "catalog/gstack/land-and-deploy.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/landing-report",
@@ -559,7 +559,7 @@
       "translationPath": "catalog/gstack/landing-report.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/learn",
@@ -575,7 +575,7 @@
       "translationPath": "catalog/gstack/learn.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/make-pdf",
@@ -591,7 +591,7 @@
       "translationPath": "catalog/gstack/make-pdf.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/office-hours",
@@ -605,9 +605,9 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/office-hours/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/office-hours.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-29",
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/open-gstack-browser",
@@ -623,7 +623,7 @@
       "translationPath": "catalog/gstack/open-gstack-browser.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/openclaw/ceo-review",
@@ -639,7 +639,7 @@
       "translationPath": "catalog/gstack/openclaw/ceo-review.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/openclaw/investigate",
@@ -655,7 +655,7 @@
       "translationPath": "catalog/gstack/openclaw/investigate.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/openclaw/office-hours",
@@ -671,7 +671,7 @@
       "translationPath": "catalog/gstack/openclaw/office-hours.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/openclaw/retro",
@@ -687,7 +687,7 @@
       "translationPath": "catalog/gstack/openclaw/retro.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/pair-agent",
@@ -703,7 +703,7 @@
       "translationPath": "catalog/gstack/pair-agent.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/plan-ceo-review",
@@ -719,7 +719,7 @@
       "translationPath": "catalog/gstack/plan-ceo-review.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/plan-design-review",
@@ -735,7 +735,7 @@
       "translationPath": "catalog/gstack/plan-design-review.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/plan-devex-review",
@@ -751,7 +751,7 @@
       "translationPath": "catalog/gstack/plan-devex-review.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/plan-eng-review",
@@ -767,7 +767,7 @@
       "translationPath": "catalog/gstack/plan-eng-review.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/plan-tune",
@@ -783,7 +783,7 @@
       "translationPath": "catalog/gstack/plan-tune.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/qa",
@@ -799,7 +799,7 @@
       "translationPath": "catalog/gstack/qa.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/qa-only",
@@ -815,7 +815,7 @@
       "translationPath": "catalog/gstack/qa-only.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/retro",
@@ -831,7 +831,7 @@
       "translationPath": "catalog/gstack/retro.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/review",
@@ -847,7 +847,7 @@
       "translationPath": "catalog/gstack/review.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/scrape",
@@ -863,7 +863,7 @@
       "translationPath": "catalog/gstack/scrape.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/setup-browser-cookies",
@@ -879,7 +879,7 @@
       "translationPath": "catalog/gstack/setup-browser-cookies.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/setup-deploy",
@@ -895,7 +895,7 @@
       "translationPath": "catalog/gstack/setup-deploy.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/setup-gbrain",
@@ -911,7 +911,7 @@
       "translationPath": "catalog/gstack/setup-gbrain.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/ship",
@@ -927,7 +927,7 @@
       "translationPath": "catalog/gstack/ship.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/skillify",
@@ -943,7 +943,7 @@
       "translationPath": "catalog/gstack/skillify.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/spec",
@@ -959,7 +959,7 @@
       "translationPath": "catalog/gstack/spec.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/sync-gbrain",
@@ -975,7 +975,7 @@
       "translationPath": "catalog/gstack/sync-gbrain.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/test-audit",
@@ -991,7 +991,7 @@
       "translationPath": "catalog/gstack/test-audit.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "gstack/unfreeze",
@@ -1007,7 +1007,7 @@
       "translationPath": "catalog/gstack/unfreeze.md",
       "translationStatus": "todo",
       "translatedAt": null,
-      "notes": "上游 SKILL.md 由模板生成。"
+      "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
       "id": "mattpocock/ask-matt",

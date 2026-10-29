@@ -5,6 +5,7 @@
 - 两个项目的全部 101 个非测试 `SKILL.md`。
 - mattpocock 技能目录内、被 `SKILL.md` 明确要求阅读的 22 篇同目录 Markdown。
 - gstack 只翻译提交后的 `SKILL.md`；`sections/`、`.tmpl` 和脚本已经折叠进生成文件，不重复翻译。
+- gstack 的译文从第一个 H1 开始。H1 之前的通用运行时前言（Preamble、AskUserQuestion 格式、遥测等）保留在英文快照中，不翻译。没有 H1 的技能从正文开头翻译。
 - 不翻译脚本、测试、模板、图片、完整 docs 站点、bucket README、`pr/CREDITS.md`、CHANGELOG 和生成配置。
 
 ## 文体

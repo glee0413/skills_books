@@ -41,6 +41,13 @@ test("译者注不参与结构计数", () => {
   assert.equal(issues.filter((i) => i.code === "structure-mismatch").length, 0);
 });
 
+test("源文有 H1 时，只比较 H1 之后的技能正文", () => {
+  const source = "## Generic preamble\n\n```sh\npreamble\n```\n\n# Skill\n\n## Body\n\n```sh\necho hi\n```\n";
+  const translation = "# Skill\n\n## 正文\n\n```sh\necho 你好\n```\n";
+  const issues = validateTranslationStructure(source, translation);
+  assert.equal(issues.filter((i) => i.code === "structure-mismatch").length, 0);
+});
+
 test("frontmatter 与来源不一致会失败", () => {
   const page = `---\nid: a/b\nproject: a\nsourceCommit: old\nsourceRef: v1\nsourcePath: x\nsnapshotPath: y\nlicense: MIT\ntranslatedAt: 2026-10-29\ndescription: 说明\ninvocation: model\n---\n\n# A\n`;
   const issues = validateTranslationPage({

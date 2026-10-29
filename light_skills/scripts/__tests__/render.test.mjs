@@ -56,6 +56,6 @@ test("目录把未翻译技能渲染成不可点击的 span", async () => {
 
   const catalog = await readFile(join(out, "catalog", "index.html"), "utf8");
   assert.match(catalog, /待翻译/);
-  assert.match(catalog, /<span[^>]*>office-hours<\/span>/);
-  assert.doesNotMatch(catalog, /<a[^>]*href="[^"]*office-hours\.html"[^>]*>office-hours<\/a>/);
+  assert.match(catalog, /<span[^>]*>autoplan<\/span>/);
+  assert.doesNotMatch(catalog, /<a[^>]*href="[^"]*autoplan\.html"[^>]*>autoplan<\/a>/);
 });
