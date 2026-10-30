@@ -30,3 +30,4 @@
 - `scan-sources` 改为合并已有状态，避免同步上游时把 `complete` 重置成 `todo`。
 - 发布模式增加空正文和占位文本检查。
 - 测试改为在上游 checkout 缺失时跳过集成用例，并补上 `--upstream` 和统计测试。
+- `npm run serve` 支持 `--port` 和 `--host`，端口占用时给出可操作的提示。

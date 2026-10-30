@@ -27,6 +27,7 @@ npm run check:sources
 npm run build
 npm run stats
 npm run serve
+npm run serve -- --port 8001
 ```
 
 ## 阅读

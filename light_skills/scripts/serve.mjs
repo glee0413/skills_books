@@ -60,10 +60,45 @@ export async function startServer({ root, port = 4173, host = "127.0.0.1" }) {
   };
 }
 
+export function parseServeArgs(argv = [], env = process.env) {
+  let rawPort = env.PORT ?? "4173";
+  let host = "127.0.0.1";
+
+  for (let index = 0; index < argv.length; index += 1) {
+    const arg = argv[index];
+    if (arg === "--port") {
+      rawPort = argv[index + 1];
+      index += 1;
+    } else if (arg.startsWith("--port=")) {
+      rawPort = arg.slice("--port=".length);
+    } else if (arg === "--host") {
+      host = argv[index + 1];
+      index += 1;
+    } else if (arg.startsWith("--host=")) {
+      host = arg.slice("--host=".length);
+    }
+  }
+
+  const port = Number(rawPort);
+  if (!Number.isInteger(port) || port < 1 || port > 65535) {
+    throw new Error(`端口无效: ${rawPort}。用法: npm run serve -- --port 8001`);
+  }
+  if (!host) throw new Error("host 不能为空。用法: npm run serve -- --host 127.0.0.1");
+  return { port, host };
+}
+
 const isMain = process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href;
 if (isMain) {
   const root = resolve(process.cwd(), "site");
-  const port = Number(process.env.PORT ?? 4173);
-  const { url } = await startServer({ root, port });
-  console.log(`Skills Book: ${url}`);
+  const { port, host } = parseServeArgs(process.argv.slice(2));
+  try {
+    const { url } = await startServer({ root, port, host });
+    console.log(`Skills Book: ${url}`);
+  } catch (error) {
+    if (error.code === "EADDRINUSE") {
+      console.error(`端口 ${port} 已被占用。换一个端口，例如: npm run serve -- --port 8001`);
+      process.exit(1);
+    }
+    throw error;
+  }
 }

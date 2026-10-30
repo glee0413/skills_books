@@ -4,8 +4,18 @@ import { createHash } from "node:crypto";
 import { mkdtemp, mkdir, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { startServer } from "../serve.mjs";
+import { parseServeArgs, startServer } from "../serve.mjs";
 import { checkSources } from "../lib/validate.mjs";
+
+test("serve 参数支持 --port 和 --host", () => {
+  assert.deepEqual(parseServeArgs(["--port", "8001"]), { port: 8001, host: "127.0.0.1" });
+  assert.deepEqual(parseServeArgs(["--port=8002", "--host", "0.0.0.0"]), {
+    port: 8002,
+    host: "0.0.0.0",
+  });
+  assert.deepEqual(parseServeArgs([]), { port: 4173, host: "127.0.0.1" });
+  assert.throws(() => parseServeArgs(["--port", "abc"]), /端口/);
+});
 
 test("静态服务器能返回页面并阻止路径穿越", async () => {
   const root = await mkdtemp(join(tmpdir(), "skills-book-serve-"));
