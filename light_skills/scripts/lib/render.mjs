@@ -110,7 +110,7 @@ export function renderPage({ page, source, html, headings, nav, prev, next, docu
   <title>${escapeHtml(title)} · Skills Book</title>
   <link rel="stylesheet" href="${escapeHtml(assetHref)}">
 </head>
-<body>
+<body class="with-sidebar">
   <aside class="sidebar">${nav}</aside>
   <main class="content">
     ${sourceBox({ source, outputPath })}
@@ -184,7 +184,7 @@ function renderCatalogIndex({ book, sources }) {
 
   return `<!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>技能全库 · Skills Book</title><link rel="stylesheet" href="${escapeHtml(relativeHref("catalog/index.html", "assets/book.css"))}"></head>
-<body><aside class="sidebar"><div class="brand"><a href="${escapeHtml(relativeHref("catalog/index.html", "index.html"))}">Skills Book</a></div></aside><main class="content"><h1>技能全库</h1><p>共 ${sources.skills.length} 个技能；另有 ${sources.documents.length} 篇附属文档，从对应父技能页进入。未翻译的条目会显示为“待翻译”。</p>${sections}</main></body></html>`;
+<body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="${escapeHtml(relativeHref("catalog/index.html", "index.html"))}">Skills Book</a></div></aside><main class="content"><h1>技能全库</h1><p>共 ${sources.skills.length} 个技能；另有 ${sources.documents.length} 篇附属文档，从对应父技能页进入。未翻译的条目会显示为“待翻译”。</p>${sections}</main></body></html>`;
 }
 
 function renderHome({ book, sources }) {

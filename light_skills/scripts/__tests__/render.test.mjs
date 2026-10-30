@@ -49,6 +49,7 @@ test("页面包含来源框、技能速览、页内目录、上一篇和下一�
     next: { title: "下一篇", href: "next.html" },
     documents: [],
   });
+  assert.match(html, /<body class="with-sidebar">/);
   assert.match(html, /class="source-box"/);
   assert.match(html, /class="skill-overview"/);
   assert.match(html, /class="page-toc"/);
