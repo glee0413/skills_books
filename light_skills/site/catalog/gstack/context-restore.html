@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>context-restore · Skills Book</title>
+  <link rel="stylesheet" href="../../assets/book.css">
+</head>
+<body class="with-sidebar">
+  <aside class="sidebar"><div class="brand"><a href="../../index.html">Skills Book</a></div><section><h2>第一部 两种范式</h2><ul><li><a href="../../book/01-two-paradigms/01-same-and-different.html">gstack 与 mattpocock_skills：相同与差异</a></li></ul></section><section><h2>第二部 想清楚</h2><ul><li><a href="../../book/02-think/05-product-questioning.html">产品追问：office-hours 与 grilling</a></li></ul></section><section><h2>gstack</h2><ul><li><a href="./autoplan.html">autoplan</a></li><li><a href="./benchmark.html">benchmark</a></li><li><a href="./benchmark-models.html">benchmark-models</a></li><li><a href="./browse.html">browse</a></li><li><a href="./canary.html">canary</a></li><li><a href="./capy/gstack.html">capy/gstack</a></li><li><a href="./careful.html">careful</a></li><li><a href="./codex.html">codex</a></li><li><a href="./context-restore.html">context-restore</a></li><li><a href="./context-save.html">context-save</a></li><li><a href="./cso.html">cso</a></li><li><a href="./design-consultation.html">design-consultation</a></li><li><a href="./design-html.html">design-html</a></li><li><a href="./design-review.html">design-review</a></li><li><a href="./design-shotgun.html">design-shotgun</a></li><li><a href="./deslop-shared-libs.html">deslop-shared-libs</a></li><li><a href="./devex-review.html">devex-review</a></li><li><a href="./diagram.html">diagram</a></li><li><a href="./document-generate.html">document-generate</a></li><li><a href="./document-release.html">document-release</a></li><li><a href="./eval-plan.html">eval-plan</a></li><li><a href="./freeze.html">freeze</a></li><li><a href="./gstack.html">gstack</a></li><li><a href="./gstack-upgrade.html">gstack-upgrade</a></li><li><a href="./guard.html">guard</a></li><li><a href="./hackernews-frontpage.html">hackernews-frontpage</a></li><li><a href="./health.html">health</a></li><li><a href="./investigate.html">investigate</a></li><li><a href="./ios-clean.html">ios-clean</a></li><li><a href="./ios-design-review.html">ios-design-review</a></li><li><a href="./ios-fix.html">ios-fix</a></li><li><a href="./ios-qa.html">ios-qa</a></li><li><a href="./ios-sync.html">ios-sync</a></li><li><a href="./land-and-deploy.html">land-and-deploy</a></li><li><a href="./landing-report.html">landing-report</a></li><li><a href="./learn.html">learn</a></li><li><a href="./make-pdf.html">make-pdf</a></li><li><a href="./office-hours.html">office-hours</a></li><li><a href="./open-gstack-browser.html">open-gstack-browser</a></li><li><a href="./openclaw/ceo-review.html">openclaw/ceo-review</a></li><li><a href="./openclaw/investigate.html">openclaw/investigate</a></li><li><a href="./openclaw/office-hours.html">openclaw/office-hours</a></li><li><a href="./openclaw/retro.html">openclaw/retro</a></li><li><a href="./pair-agent.html">pair-agent</a></li><li><a href="./plan-ceo-review.html">plan-ceo-review</a></li><li><a href="./plan-design-review.html">plan-design-review</a></li><li><a href="./plan-devex-review.html">plan-devex-review</a></li><li><a href="./plan-eng-review.html">plan-eng-review</a></li><li><a href="./plan-tune.html">plan-tune</a></li><li><a href="./qa.html">qa</a></li><li><a href="./qa-only.html">qa-only</a></li><li><a href="./retro.html">retro</a></li><li><a href="./review.html">review</a></li><li><a href="./scrape.html">scrape</a></li><li><a href="./setup-browser-cookies.html">setup-browser-cookies</a></li><li><a href="./setup-deploy.html">setup-deploy</a></li><li><a href="./setup-gbrain.html">setup-gbrain</a></li><li><a href="./ship.html">ship</a></li><li><a href="./skillify.html">skillify</a></li><li><a href="./spec.html">spec</a></li><li><a href="./sync-gbrain.html">sync-gbrain</a></li><li><a href="./test-audit.html">test-audit</a></li><li><a href="./unfreeze.html">unfreeze</a></li></ul></section><section><h2>mattpocock</h2><ul><li><a href="../mattpocock/ask-matt/SKILL.html">ask-matt</a></li><li><a href="../mattpocock/chief-of-staff.html">chief-of-staff</a></li><li><a href="../mattpocock/claude-handoff.html">claude-handoff</a></li><li><a href="../mattpocock/code-review.html">code-review</a></li><li><a href="../mattpocock/codebase-design/SKILL.html">codebase-design</a></li><li><a href="../mattpocock/diagnosing-bugs.html">diagnosing-bugs</a></li><li><a href="../mattpocock/domain-modeling/SKILL.html">domain-modeling</a></li><li><a href="../mattpocock/git-guardrails-claude-code.html">git-guardrails-claude-code</a></li><li><a href="../mattpocock/grill-me.html">grill-me</a></li><li><a href="../mattpocock/grill-with-docs.html">grill-with-docs</a></li><li><a href="../mattpocock/grilling.html">grilling</a></li><li><a href="../mattpocock/handoff.html">handoff</a></li><li><a href="../mattpocock/implement.html">implement</a></li><li><a href="../mattpocock/implement-spec.html">implement-spec</a></li><li><a href="../mattpocock/improve-codebase-architecture/SKILL.html">improve-codebase-architecture</a></li><li><a href="../mattpocock/loop-me.html">loop-me</a></li><li><a href="../mattpocock/migrate-to-shoehorn.html">migrate-to-shoehorn</a></li><li><a href="../mattpocock/pr.html">pr</a></li><li><a href="../mattpocock/prototype/SKILL.html">prototype</a></li><li><a href="../mattpocock/research.html">research</a></li><li><a href="../mattpocock/retro.html">retro</a></li><li><a href="../mattpocock/scaffold-exercises.html">scaffold-exercises</a></li><li><a href="../mattpocock/setup-matt-pocock-skills/SKILL.html">setup-matt-pocock-skills</a></li><li><a href="../mattpocock/setup-pre-commit.html">setup-pre-commit</a></li><li><a href="../mattpocock/setup-ts-deep-modules.html">setup-ts-deep-modules</a></li><li><a href="../mattpocock/tdd/SKILL.html">tdd</a></li><li><a href="../mattpocock/teach/SKILL.html">teach</a></li><li><a href="../mattpocock/to-questionnaire.html">to-questionnaire</a></li><li><a href="../mattpocock/to-spec.html">to-spec</a></li><li><a href="../mattpocock/to-tickets.html">to-tickets</a></li><li><a href="../mattpocock/triage/SKILL.html">triage</a></li><li><a href="../mattpocock/wait-what.html">wait-what</a></li><li><a href="../mattpocock/wayfinder.html">wayfinder</a></li><li><a href="../mattpocock/wizard.html">wizard</a></li><li><a href="../mattpocock/writing-beats.html">writing-beats</a></li><li><a href="../mattpocock/writing-for-agents/SKILL.html">writing-for-agents</a></li><li><a href="../mattpocock/writing-fragments.html">writing-fragments</a></li><li><a href="../mattpocock/writing-shape.html">writing-shape</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">技能全库</a></p></aside>
+  <main class="content">
+    <section class="source-box">
+  <strong>来源</strong>：gstack · <code>context-restore/SKILL.md</code> · v1.91.226.0 · commit <code>8d95013</code><br>
+  <strong>许可证</strong>：MIT · <a href="https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/context-restore/SKILL.md">查看原仓库</a> · <a href="../../source-snapshots/gstack/context-restore/SKILL.md">查看英文快照</a> · 快照：<code>source-snapshots/gstack/context-restore/SKILL.md</code><br>
+  <strong>翻译</strong>：2026-10-30 · 译者注以 <code>&gt; 译者注：</code> 标出
+</section>
+    <section class="skill-overview">
+  <strong>context-restore</strong>
+  <span>gstack</span>
+  <span>用户调用</span>
+  <p>载入此前由 /context-save 保存的工作上下文，默认优先当前分支的最新检查点。</p>
+</section>
+    <nav class="page-toc" aria-label="页内目录"><strong>本页目录</strong><ul><li class="toc-depth-1"><a href="#context-restore--恢复已保存的工作上下文">/context-restore — 恢复已保存的工作上下文</a></li><li class="toc-depth-2"><a href="#识别命令">识别命令</a></li><li class="toc-depth-2"><a href="#恢复流程">恢复流程</a></li><li class="toc-depth-3"><a href="#步骤-1查找已保存的上下文">步骤 1：查找已保存的上下文</a></li><li class="toc-depth-3"><a href="#步骤-2载入正确的文件">步骤 2：载入正确的文件</a></li><li class="toc-depth-3"><a href="#步骤-3给出下一步选项">步骤 3：给出下一步选项</a></li><li class="toc-depth-2"><a href="#如果没有已保存的上下文">如果没有已保存的上下文</a></li><li class="toc-depth-2"><a href="#重要规则">重要规则</a></li></ul></nav>
+    <article class="markdown-body"><h1 id="context-restore--恢复已保存的工作上下文">/context-restore — 恢复已保存的工作上下文</h1>
+<p>你是一名 <strong>Staff Engineer，正在读同事留下的详尽会话笔记</strong>，要准确无误地从对方停下的地方接着做。你的工作是载入最近保存的上下文，并把它清楚地呈现出来，让用户能不失节奏地继续工作。</p>
+<p><strong>硬门禁：</strong> 不要实现任何代码改动。这个技能只读取已保存的上下文文件并呈现摘要。</p>
+<p><strong>默认行为：优先使用当前分支上最近保存的检查点；如果当前分支没有，就回退到所有分支中最近的那个。</strong> 这个回退是为 Conductor 工作区交接准备的——在一个分支上保存的上下文可以从另一个分支恢复。之所以要有“当前分支优先”，是因为一个仓库的每个 worktree 共用一个 checkpoints 目录（slug 由 origin 推导，因而相同），没有这条偏好时，某个 worktree 里的 <code>/context-restore</code> 可能悄悄载入同级 worktree 更新的检查点。</p>
+<p><strong>不要把候选集硬过滤成只剩当前分支</strong>——其他分支的检查点仍留在集合里作为回退。它们只是排在当前分支自己的检查点<em>之后</em>，这样当前分支的保存永远不会被同级 worktree 更新的保存盖掉。（<code>/context-save list</code> 才是硬性限定到单个分支的流程。）</p>
+<hr>
+<h2 id="识别命令">识别命令</h2>
+<p>解析用户的输入：</p>
+<ul>
+<li><code>/context-restore</code> → 载入最近保存的上下文（当前分支优先，其次是任意分支）</li>
+<li><code>/context-restore &lt;标题片段或编号&gt;</code> → 载入某个指定的已保存上下文</li>
+<li><code>/context-restore list</code> → 告诉用户“请用 <code>/context-save list</code>——列表功能在保存那一侧”，然后退出。这里不做模式识别。</li>
+</ul>
+<hr>
+<h2 id="恢复流程">恢复流程</h2>
+<h3 id="步骤-1查找已保存的上下文">步骤 1：查找已保存的上下文</h3>
+<pre><code class="language-bash">GSTACK_STATE_ROOT=$(~/.claude/skills/gstack/bin/gstack-paths --get GSTACK_STATE_ROOT); : &quot;${GSTACK_STATE_ROOT:?gstack-paths failed; reinstall with ./setup or /gstack-upgrade}&quot;
+SLUG=$(~/.claude/skills/gstack/bin/gstack-slug --get SLUG 2&gt;/dev/null) &amp;&amp; mkdir -p &quot;$GSTACK_STATE_ROOT/projects/$SLUG&quot; &amp;&amp; echo &quot;PROJECT_DIR: $GSTACK_STATE_ROOT/projects/$SLUG&quot;
+GSTACK_STATE_ROOT=$(~/.claude/skills/gstack/bin/gstack-paths --get GSTACK_STATE_ROOT); : &quot;${GSTACK_STATE_ROOT:?gstack-paths failed; reinstall with ./setup or /gstack-upgrade}&quot;
+CHECKPOINT_DIR=&quot;$GSTACK_STATE_ROOT/projects/$SLUG/checkpoints&quot;
+# Project identity: canonical remote (root only when there is no remote).
+PROJECT_REMOTE=$(~/.claude/skills/gstack/bin/gstack-slug --get PROJECT_REMOTE 2&gt;/dev/null) || true
+PROJECT_ROOT=$(~/.claude/skills/gstack/bin/gstack-slug --get PROJECT_ROOT 2&gt;/dev/null) || true
+LEGACY_SLUG=$(~/.claude/skills/gstack/bin/gstack-slug --get LEGACY_SLUG 2&gt;/dev/null) || true
+echo &quot;PROJECT_IDENTITY: ${PROJECT_REMOTE:-${PROJECT_ROOT:-unknown}}&quot;
+echo &quot;PROJECT_ROOT: ${PROJECT_ROOT:-unknown}&quot;
+if [ -n &quot;${LEGACY_SLUG:-}&quot; ] &amp;&amp; [ -d &quot;$GSTACK_STATE_ROOT/projects/$LEGACY_SLUG/checkpoints&quot; ]; then
+  LEGACY_N=$(find &quot;$GSTACK_STATE_ROOT/projects/$LEGACY_SLUG/checkpoints&quot; -maxdepth 1 -name &quot;*.md&quot; -type f 2&gt;/dev/null | wc -l | tr -d &#39; &#39;)
+  if [ &quot;$LEGACY_N&quot; -gt 0 ]; then
+    echo &quot;LEGACY_BUCKET: projects/$LEGACY_SLUG holds $LEGACY_N earlier checkpoint(s) from the bucket this project shared with other nested-group repos; review and copy with: ~/.claude/skills/gstack/bin/gstack-slug --adopt-legacy&quot;
+  fi
+fi
+if [ ! -d &quot;$CHECKPOINT_DIR&quot; ]; then
+  echo &quot;NO_CHECKPOINTS&quot;
+else
+  # Use find + sort instead of ls -1t. Two reasons:
+  # 1. Canonical order is the filename YYYYMMDD-HHMMSS prefix (stable across
+  #    copies/rsync). Filesystem mtime drifts and is not authoritative.
+  # 2. On macOS, `find ... | xargs ls -1t` with zero results falls back to
+  #    listing cwd. `sort -r` on empty input cleanly returns nothing.
+  # Scan the 200 newest so a current-branch checkpoint sitting below a burst of
+  # sibling-worktree saves can still be found; the result is capped at 20 below.
+  ALL=$(find &quot;$CHECKPOINT_DIR&quot; -maxdepth 1 -name &quot;*.md&quot; -type f 2&gt;/dev/null | sort -r | head -200)
+  if [ -z &quot;$ALL&quot; ]; then
+    echo &quot;NO_CHECKPOINTS&quot;
+  else
+    # Order current-branch checkpoints first, other branches after. A git branch
+    # is checked out in at most one worktree, and all worktrees of a repo share
+    # one checkpoints dir (same origin-derived slug), so without this preference
+    # `/context-restore` in worktree A could load worktree B&#39;s newer checkpoint.
+    # Cross-branch resume (Conductor handoff) is preserved as the fallback: when
+    # the current branch has no checkpoint, the full newest-first set is used.
+    # CURRENT_BRANCH may be pre-set (tests); otherwise resolve it from git.
+    : &quot;${CURRENT_BRANCH:=$(git rev-parse --abbrev-ref HEAD 2&gt;/dev/null)}&quot;
+    SAME=&quot;&quot;; OTHER=&quot;&quot;
+    while IFS= read -r f; do
+      [ -n &quot;$f&quot; ] || continue
+      b=$(grep -m1 &#39;^branch:&#39; &quot;$f&quot; 2&gt;/dev/null | sed &#39;s/^branch:[[:space:]]*//&#39;)
+      if [ -n &quot;$CURRENT_BRANCH&quot; ] &amp;&amp; [ &quot;$b&quot; = &quot;$CURRENT_BRANCH&quot; ]; then
+        SAME=&quot;${SAME}${f}
+&quot;
+      else
+        OTHER=&quot;${OTHER}${f}
+&quot;
+      fi
+    done &lt;&lt;EOF
+$ALL
+EOF
+    # Identity check: only checkpoints stamped with THIS project&#39;s
+    # identity are candidates for &quot;latest&quot;. Unstamped (older) checkpoints are
+    # trusted unless the directory demonstrably holds another project&#39;s files.
+    CLASSIFIED=$(printf &#39;%s%s&#39; &quot;$SAME&quot; &quot;$OTHER&quot; | grep -v &#39;^[[:space:]]*$&#39; \
+      | ~/.claude/skills/gstack/bin/gstack-slug --classify-checkpoints 2&gt;/dev/null)
+    if [ -z &quot;$CLASSIFIED&quot; ]; then
+      echo &quot;IDENTITY_CHECK_FAILED&quot;
+      printf &#39;%s%s&#39; &quot;$SAME&quot; &quot;$OTHER&quot; | grep -v &#39;^[[:space:]]*$&#39; | head -20 | sed &#39;s/^/UNVERIFIED /&#39;
+    else
+      FOREIGN_N=$(printf &#39;%s\n&#39; &quot;$CLASSIFIED&quot; | grep -c &#39;^foreign&#39; || true)
+      VERIFIED=$(printf &#39;%s\n&#39; &quot;$CLASSIFIED&quot; | awk -F &#39;\t&#39; -v f=&quot;$FOREIGN_N&quot; \
+        &#39;$(1) == &quot;match&quot; || $(1) == &quot;match-root&quot; || ($(1) == &quot;unstamped&quot; &amp;&amp; f == 0) { print $(2) }&#39;)
+      # Cap at 20: a user with 10k saved files shouldn&#39;t blow the context window.
+      FILES=$(printf &#39;%s\n&#39; &quot;$VERIFIED&quot; | head -20)
+      if [ -n &quot;$FILES&quot; ]; then echo &quot;$FILES&quot;; else echo &quot;NO_VERIFIED_CHECKPOINTS&quot;; fi
+      # A newer checkpoint of another branch that names the same task.
+      printf &#39;%s\n&#39; &quot;$VERIFIED&quot; | ~/.claude/skills/gstack/bin/gstack-slug --newer-task &quot;$CURRENT_BRANCH&quot; 2&gt;/dev/null || true
+      printf &#39;%s\n&#39; &quot;$CLASSIFIED&quot; | awk -F &#39;\t&#39; -v f=&quot;$FOREIGN_N&quot; \
+        &#39;$(1) == &quot;match-root&quot; { print &quot;ROOT_DIFFERS &quot; $(2) }
+         $(1) == &quot;foreign&quot; { print &quot;FOREIGN &quot; $(2) }
+         $(1) == &quot;unstamped&quot; &amp;&amp; f &gt; 0 { print &quot;UNVERIFIED &quot; $(2) }&#39; | head -40
+      if [ &quot;$FOREIGN_N&quot; -gt 0 ]; then
+        echo &quot;SHARED_BUCKET: $FOREIGN_N checkpoint(s) here were saved by another project&quot;
+      fi
+    fi
+  fi
+fi
+# Checkpoints saved in a repository below this directory (BELOW_CWD, POINTER).
+~/.claude/skills/gstack/bin/gstack-slug --checkpoints-below 2&gt;/dev/null || true
+</code></pre>
+<p><strong>候选包含目录里的每个 <code>.md</code> 文件</strong>，但排序是<strong>当前分支优先</strong>（分支从每个文件的 <code>branch:</code> frontmatter 读出）。其他分支的文件仍留在集合中作为回退，这样当前分支自己没有检查点时，Conductor 工作区交接依然可用。</p>
+<p><strong>项目身份。</strong> 纯路径行是本项目的检查点（由 <code>remote:</code>/<code>project_root:</code> 标记验证，或者在没有任何其他项目写过的目录里未被标记）。带前缀的行永远不会成为“最新”的候选：</p>
+<ul>
+<li><code>FOREIGN &lt;path&gt;</code>：由共用这个目录的另一个项目保存。</li>
+<li><code>UNVERIFIED &lt;path&gt;</code>：在身份标记出现之前保存，且所在目录也被另一个项目使用，因此可能属于任一方。</li>
+<li><code>ROOT_DIFFERS &lt;path&gt;</code>：同一个仓库，但 checkout 不同（Conductor 工作区交接或移动过的克隆）。这是信息，不是不匹配；该文件同时也会以纯路径行的形式列出。</li>
+<li><code>NEWER_TASK &lt;path&gt;</code>：本仓库的另一个分支为同一个任务保存了更新的检查点（它的 worktree 在这棵主树之下，或标题/工单匹配）。该文件同时也会以纯路径行的形式列出，位置在当前分支自己的之后。</li>
+<li><code>BELOW_CWD &lt;path&gt;</code> / <code>POINTER &lt;path&gt;</code>：由这个目录下方某个仓库中的会话保存（<code>POINTER</code>：在这里启动的 /context-save 记录了它）。这些是候选，不是不匹配。</li>
+</ul>
+<h3 id="步骤-2载入正确的文件">步骤 2：载入正确的文件</h3>
+<ul>
+<li>如果用户指定了标题片段或编号：在候选中找到匹配的文件，包括 <code>FOREIGN</code> 和 <code>UNVERIFIED</code> 行（用户可能是有意恢复另一个项目的检查点）。</li>
+<li>否则：载入<strong>上面步骤 1 返回的第一条纯路径行</strong>，即本项目在当前分支上最新的 <code>YYYYMMDD-HHMMSS</code> 检查点；如果当前分支没有，则是所有分支中最新的那个。</li>
+<li><strong>没有可用的分支判别依据。</strong> 当 <code>CURRENT_BRANCH</code> 为空、是 <code>HEAD</code>，或以其他方式无法判别（cwd 不是 git 仓库，或分支未知）时，如果最近的候选（例如最近 24 小时，或最新的三个）带有<strong>不同标题</strong>，不要静默载入最新的那个。通过 AskUserQuestion 列出这些标题和时间戳，把最新的标为推荐选项，然后等待。只有当所有最近候选共享同一个标题（同一主题）时才自动载入最新的。</li>
+<li><strong>不要静默选择一个更旧的检查点。</strong> 如果步骤 1 打印了 <code>NEWER_TASK</code>，或者某个 <code>BELOW_CWD</code>/<code>POINTER</code> 文件比第一条纯路径行更新（或根本不存在纯路径行），把两者都展示出来（标题、分支、保存时间，若文件在本目录之下还要给 <code>project_root</code>），建议把更新的那个作为续接点，并通过 AskUserQuestion 询问载入哪一个。<code>BELOW_CWD</code>/<code>POINTER</code> 文件不算 PROJECT MISMATCH：说“保存在 <code>{project_root}</code>，在本目录之下”。</li>
+<li>如果步骤 1 打印了 <code>NO_VERIFIED_CHECKPOINTS</code> 或 <code>IDENTITY_CHECK_FAILED</code>，不要把任何检查点当作最新呈现。说“此目录中没有经验证属于本项目的检查点”，列出 <code>FOREIGN</code>/<code>UNVERIFIED</code> 的标题及其标明的 <code>remote:</code>/<code>project_root:</code>（或“未知”），并询问要打开哪一个（如果有的话）。</li>
+</ul>
+<p><strong>在任何摘要之前先报告身份问题。</strong> 如果选中的文件是 <code>FOREIGN</code> 或 <code>UNVERIFIED</code>，先以这句开头：
+“PROJECT MISMATCH: 这个检查点是由 <code>{来自其 frontmatter 的 remote 或 project_root，或“一个未知项目”}</code> 保存的，不是本项目（<code>{PROJECT_IDENTITY}</code>）。”
+如果步骤 1 打印了 <code>SHARED_BUCKET</code>，说“这个 checkpoints 目录还存有来自另一个项目的 N 个检查点；此处只列出本项目的。”如果打印了 <code>LEGACY_BUCKET</code>，把那一行转述出来。如果选中的文件是 <code>ROOT_DIFFERS</code>，作为信息补充：“保存自本仓库在 <code>{project_root}</code> 的另一个 checkout。”</p>
+<p><strong>检查保存之后分支是否移动过。</strong> 标记里用 <code>head:</code> 记录了保存时所在的 commit。呈现之前，把它与当前 checkout 比较。FILE 是步骤 2 选中的检查点路径，即步骤 1 打印的路径之一：</p>
+<pre><code class="language-bash">FILE=&quot;&lt;the FILE path printed above&gt;&quot;
+SAVED_HEAD=$(tr -d &#39;\r&#39; &lt; &quot;$FILE&quot; 2&gt;/dev/null | sed -n &#39;1{/^---$/!q;d;}; /^---$/q; /^head:/{s/^head:[[:space:]]*//p;q;}&#39;)
+REPO_DIR=.
+git rev-parse --git-dir &gt;/dev/null 2&gt;&amp;1 || REPO_DIR=$(tr -d &#39;\r&#39; &lt; &quot;$FILE&quot; 2&gt;/dev/null | sed -n &#39;1{/^---$/!q;d;}; /^---$/q; /^worktree:/{s/^worktree:[[:space:]]*//p;q;}&#39;)
+[ -n &quot;$REPO_DIR&quot; ] || REPO_DIR=$(tr -d &#39;\r&#39; &lt; &quot;$FILE&quot; 2&gt;/dev/null | sed -n &#39;1{/^---$/!q;d;}; /^---$/q; /^project_root:/{s/^project_root:[[:space:]]*//p;q;}&#39;)
+CURRENT_HEAD=$(git -C &quot;${REPO_DIR:-.}&quot; rev-parse --verify -q HEAD 2&gt;/dev/null)
+if [ -z &quot;$SAVED_HEAD&quot; ]; then
+  echo &quot;HEAD_UNTRACKED&quot;
+elif [ -z &quot;$CURRENT_HEAD&quot; ]; then
+  echo &quot;HEAD_NOT_CHECKED&quot;
+elif [ &quot;$SAVED_HEAD&quot; = &quot;$CURRENT_HEAD&quot; ]; then
+  echo &quot;HEAD_UNCHANGED&quot;
+elif ! printf &#39;%s\n&#39; &quot;$SAVED_HEAD&quot; | grep -Eqx &#39;[0-9a-f]{40}([0-9a-f]{24})?&#39; \
+  || ! git -C &quot;$REPO_DIR&quot; cat-file -e &quot;$SAVED_HEAD^{commit}&quot; 2&gt;/dev/null; then
+  echo &quot;HEAD_UNKNOWN $SAVED_HEAD&quot;
+elif git -C &quot;$REPO_DIR&quot; merge-base --is-ancestor &quot;$SAVED_HEAD&quot; &quot;$CURRENT_HEAD&quot;; then
+  echo &quot;HEAD_MOVED $(git -C &quot;$REPO_DIR&quot; rev-list --count &quot;$SAVED_HEAD..$CURRENT_HEAD&quot;)&quot;
+  git -C &quot;$REPO_DIR&quot; log --oneline -10 &quot;$SAVED_HEAD..$CURRENT_HEAD&quot;
+else
+  echo &quot;HEAD_DIVERGED $SAVED_HEAD&quot;
+fi
+</code></pre>
+<ul>
+<li><code>HEAD_UNCHANGED</code> 或 <code>HEAD_NOT_CHECKED</code>：不需要补充什么。</li>
+<li><code>HEAD_MOVED &lt;n&gt;</code>：在 Remaining Work 各分组之上打印 <code>&lt;n&gt; commit(s) landed since this save:</code> 以及上面的 commit 行，并把<strong>每一个</strong> Remaining Work 条目列到 <strong>Verify first</strong> 之下：保存的那个会话不可能知道这些 commit，所以任何步骤都可能已经做完了。</li>
+<li><code>HEAD_DIVERGED</code> 或 <code>HEAD_UNKNOWN</code>：打印 <code>This checkpoint was saved at {head 的前 7 个字符}, which is not in this checkout&#39;s history (saved on another branch, rebased, reset, or not fetched).</code>，并把每个条目列到 Verify first 之下。</li>
+<li><code>HEAD_UNTRACKED</code>：打印 <code>This checkpoint predates commit tracking; restore cannot tell whether work landed after it.</code>，然后照常排序。</li>
+</ul>
+<p><strong>按来源依据给 Remaining Work 排序。</strong> 保留每个条目的原文和保存顺序，一个都不删。当 head 检查打印了 <code>HEAD_MOVED</code>、<code>HEAD_DIVERGED</code> 或 <code>HEAD_UNKNOWN</code> 时，跳过下面的规则：无论标记是什么，每个条目都放到 Verify first 之下。以下条目放到 <strong>Verify first</strong> 之下：</p>
+<ul>
+<li>以 <code>(path assumed)</code> 或 <code>(code read)</code> 结尾的；</li>
+<li>以 <code>(path run)</code> 结尾，但正文报告了失败的；</li>
+<li>以括号包围的尾随标记结尾，而该标记<strong>不是</strong>这五个英文字面量之一：<code>(path run)</code>、<code>(path read)</code>、<code>(path assumed)</code>、<code>(target state checked)</code>、<code>(code read)</code>——把翻译过或未知的标记当作 <code>(path assumed)</code>（→ Verify first），绝不能当作未标记的 Next steps；</li>
+<li>没有标记，且是写入类步骤（迁移、同步、插入、导入、会写入的对话框），或点明了一个具体路径（可执行的命令、CLI 参数或开关、配置键或值、文件或目录路径）。</li>
+</ul>
+<p>其他每一条都放到 <strong>Next steps</strong> 之下：结果为成功的 <code>(path run)</code>、<code>(path read)</code>、<code>(target state checked)</code>，以及既不写入也不点明具体路径的未标记条目。核实意味着只读检查：读文件或读目标，或运行一个不改变任何东西的命令。在来源标记出现之前保存的检查点没有标记，因此它们的“具体路径”条目会落到 Verify first 之下。当文件完全没有来源标记时，在各分组之上打印这一行：
+<code>This checkpoint predates provenance markers; items naming commands, paths or writes are listed under Verify first.</code></p>
+<p>读取选中的文件并呈现摘要：</p>
+<pre><code>RESUMING CONTEXT
+════════════════════════════════════════
+Title:       {title}
+Branch:      {branch from frontmatter}
+Saved:       {timestamp, human-readable}
+Duration:    Last session was {formatted duration} (if available)
+Status:      {status}
+════════════════════════════════════════
+
+### Summary
+{summary from saved file}
+
+### Remaining Work
+{commit-tracking lines, if any}
+{legacy banner line, if it applies}
+
+Next steps
+{Next steps items, in saved order, original text}
+
+Verify first (inspect read-only before executing anything)
+{Verify first items, in saved order, original text}
+
+### Notes
+{notes}
+</code></pre>
+<p>如果当前分支与保存上下文的分支不同，注明：“这个上下文是在分支 <code>{branch}</code> 上保存的。你当前在 <code>{current branch}</code>。继续之前你可能需要先切换分支。”</p>
+<h3 id="步骤-3给出下一步选项">步骤 3：给出下一步选项</h3>
+<p>呈现之后，通过 AskUserQuestion 询问：</p>
+<ul>
+<li>A) 继续处理剩余的条目</li>
+<li>B) 展示完整的已保存文件</li>
+<li>C) 只是需要上下文，谢谢</li>
+</ul>
+<p>如果选 A，按保存顺序取第一个 Remaining Work 条目。如果它在 Next steps 之下，建议从那里开始。如果它在 Verify first 之下，建议先（只读地）核实它，再做它或任何更靠后的条目，这样后面某个可执行的步骤永远不会越过前面尚未核实的步骤。</p>
+<hr>
+<h2 id="如果没有已保存的上下文">如果没有已保存的上下文</h2>
+<p>如果步骤 1 打印了 <code>NO_CHECKPOINTS</code> 且没有 <code>BELOW_CWD</code> 或 <code>POINTER</code> 行，告诉用户：</p>
+<p>“还没有保存的上下文。先运行 <code>/context-save</code> 保存当前工作状态，之后 <code>/context-restore</code> 就能找到它。”</p>
+<p>如果还打印了 <code>LEGACY_BUCKET</code>，转述那一行：更早的检查点保留在旧的 bucket 里，直到用户用 <code>gstack-slug --adopt-legacy</code> 把它们复制过来。</p>
+<hr>
+<h2 id="重要规则">重要规则</h2>
+<ul>
+<li><strong>永远不要修改代码。</strong> 这个技能只读取已保存的文件并呈现它们。</li>
+<li><strong>优先使用当前分支自己的检查点，但把所有分支都留在回退集合里。</strong> 当前分支没有检查点时，跨分支恢复（Conductor 交接）依然可用，而同级 worktree 更新的保存也不会盖住本分支自己的。</li>
+<li><strong>永远不要把另一个项目的检查点当作“最新”呈现。</strong> 身份依据是规范化的 remote（没有 remote 时才用根路径）；不匹配要在任何摘要之前报告。</li>
+<li><strong>检查点描述的是它保存时所处的那个 commit。</strong> 当保存之后有 commit 落地时，每个 Remaining Work 条目在执行前都要先核实。</li>
+<li><strong>“最近”指的是文件名 <code>YYYYMMDD-HHMMSS</code> 前缀</strong>，而不是 <code>ls -1t</code>（文件系统 mtime）。文件名在文件系统操作之间是稳定的；mtime 不是。</li>
+<li><strong>这是 gstack 技能，不是 Claude Code 内置命令。</strong> 当用户输入 <code>/context-restore</code> 时，通过 Skill 工具调用这个技能。</li>
+</ul>
+</article>
+    
+    <nav class="pager" aria-label="上一篇和下一篇">
+  <a class="prev" href="./codex.html">← codex</a>
+  <a class="next" href="./context-save.html">context-save →</a>
+</nav>
+  </main>
+</body>
+</html>

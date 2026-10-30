@@ -1,6 +1,6 @@
 {
   "name": "skills-book",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -11,6 +11,8 @@
     "check": "node --test scripts/__tests__/*.test.mjs && node scripts/check.mjs",
     "check:release": "node --test scripts/__tests__/*.test.mjs && node scripts/check.mjs --release",
     "check:sources": "node scripts/check.mjs --sources",
+    "check:page": "node scripts/check-page.mjs",
+    "mark-complete": "node scripts/mark-complete.mjs",
     "stats": "node scripts/check.mjs --stats",
     "serve": "node scripts/serve.mjs"
   },

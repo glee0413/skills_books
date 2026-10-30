@@ -13,8 +13,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/autoplan/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/autoplan.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -29,8 +29,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/benchmark/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/benchmark.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -45,8 +45,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/benchmark-models/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/benchmark-models.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -61,8 +61,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/browse/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/browse.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -77,8 +77,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/canary/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/canary.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -93,8 +93,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/capy/skill/gstack/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/capy/gstack.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -109,8 +109,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/careful/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/careful.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -125,8 +125,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/codex/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/codex.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -141,8 +141,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/context-restore/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/context-restore.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -157,8 +157,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/context-save/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/context-save.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -173,8 +173,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/cso/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/cso.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -189,8 +189,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/design-consultation/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/design-consultation.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -205,8 +205,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/design-html/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/design-html.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -221,8 +221,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/design-review/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/design-review.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -237,8 +237,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/design-shotgun/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/design-shotgun.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -253,8 +253,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/deslop-shared-libs/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/deslop-shared-libs.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -269,8 +269,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/devex-review/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/devex-review.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -285,8 +285,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/diagram/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/diagram.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -301,8 +301,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/document-generate/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/document-generate.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -317,8 +317,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/document-release/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/document-release.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -333,8 +333,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/eval-plan/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/eval-plan.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -349,8 +349,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/freeze/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/freeze.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -365,8 +365,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/gstack.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -381,8 +381,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/gstack-upgrade/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/gstack-upgrade.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -397,8 +397,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/guard/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/guard.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -413,8 +413,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/browser-skills/hackernews-frontpage/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/hackernews-frontpage.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -429,8 +429,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/health/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/health.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -445,8 +445,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/investigate/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/investigate.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -461,8 +461,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/ios-clean/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/ios-clean.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -477,8 +477,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/ios-design-review/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/ios-design-review.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -493,8 +493,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/ios-fix/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/ios-fix.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -509,8 +509,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/ios-qa/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/ios-qa.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -525,8 +525,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/ios-sync/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/ios-sync.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -541,8 +541,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/land-and-deploy/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/land-and-deploy.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -557,8 +557,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/landing-report/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/landing-report.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -573,8 +573,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/learn/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/learn.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -589,8 +589,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/make-pdf/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/make-pdf.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -621,8 +621,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/open-gstack-browser/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/open-gstack-browser.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -637,8 +637,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/openclaw/skills/gstack-openclaw-ceo-review/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/openclaw/ceo-review.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -653,8 +653,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/openclaw/skills/gstack-openclaw-investigate/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/openclaw/investigate.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -669,8 +669,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/openclaw/skills/gstack-openclaw-office-hours/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/openclaw/office-hours.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -685,8 +685,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/openclaw/skills/gstack-openclaw-retro/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/openclaw/retro.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -701,8 +701,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/pair-agent/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/pair-agent.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -717,8 +717,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/plan-ceo-review/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/plan-ceo-review.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -733,8 +733,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/plan-design-review/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/plan-design-review.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -749,8 +749,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/plan-devex-review/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/plan-devex-review.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -765,8 +765,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/plan-eng-review/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/plan-eng-review.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -781,8 +781,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/plan-tune/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/plan-tune.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -797,8 +797,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/qa/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/qa.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -813,8 +813,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/qa-only/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/qa-only.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -829,8 +829,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/retro/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/retro.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -845,8 +845,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/review/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/review.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -861,8 +861,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/scrape/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/scrape.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -877,8 +877,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/setup-browser-cookies/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/setup-browser-cookies.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -893,8 +893,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/setup-deploy/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/setup-deploy.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -909,8 +909,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/setup-gbrain/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/setup-gbrain.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -925,8 +925,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/ship/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/ship.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -941,8 +941,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/skillify/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/skillify.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -957,8 +957,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/spec/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/spec.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -973,8 +973,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/sync-gbrain/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/sync-gbrain.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -989,8 +989,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/test-audit/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/test-audit.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -1005,8 +1005,8 @@
       "sourceUrl": "https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/unfreeze/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/gstack/unfreeze.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "上游 SKILL.md 由模板生成；译文从第一个 H1 开始，通用运行时前言保留在英文快照中。"
     },
     {
@@ -1020,9 +1020,9 @@
       "sourceSha256": "1371f5ce005de0992a44b137748bfb960a56948aa9871b405fe9d90b24332e3c",
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/ask-matt/SKILL.md",
       "license": "MIT",
-      "translationPath": "catalog/mattpocock/ask-matt.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationPath": "catalog/mattpocock/ask-matt/SKILL.md",
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1037,8 +1037,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/in-progress/chief-of-staff/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/chief-of-staff.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1053,8 +1053,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/in-progress/claude-handoff/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/claude-handoff.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1069,8 +1069,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/code-review/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/code-review.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1084,9 +1084,9 @@
       "sourceSha256": "2c20617f87ec8af6a434859f381b2f061a69b530444e74eb39e78bb016a6d1e2",
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/codebase-design/SKILL.md",
       "license": "MIT",
-      "translationPath": "catalog/mattpocock/codebase-design.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationPath": "catalog/mattpocock/codebase-design/SKILL.md",
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1101,8 +1101,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/diagnosing-bugs/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/diagnosing-bugs.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1116,9 +1116,9 @@
       "sourceSha256": "7b925d7b1e341a2eeae33ad68a8a8c0ab889a38ddd22a7598e4c240e5a7556a3",
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/domain-modeling/SKILL.md",
       "license": "MIT",
-      "translationPath": "catalog/mattpocock/domain-modeling.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationPath": "catalog/mattpocock/domain-modeling/SKILL.md",
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1133,8 +1133,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/misc/git-guardrails-claude-code/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/git-guardrails-claude-code.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1149,8 +1149,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/grill-me/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/grill-me.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1165,8 +1165,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/grill-with-docs/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/grill-with-docs.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1197,8 +1197,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/handoff/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/handoff.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1213,8 +1213,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/implement/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/implement.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1229,8 +1229,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/implement-spec/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/implement-spec.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1244,9 +1244,9 @@
       "sourceSha256": "552240a5ab5cec6b67c15dd1ad6e9f6962b1bca6ce870059a8c2713760c20392",
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/improve-codebase-architecture/SKILL.md",
       "license": "MIT",
-      "translationPath": "catalog/mattpocock/improve-codebase-architecture.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationPath": "catalog/mattpocock/improve-codebase-architecture/SKILL.md",
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1261,8 +1261,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/in-progress/loop-me/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/loop-me.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1277,8 +1277,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/misc/migrate-to-shoehorn/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/migrate-to-shoehorn.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1293,8 +1293,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/pr/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/pr.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1308,9 +1308,9 @@
       "sourceSha256": "714de632d116bb73f65cdb5a882db15b9369a6713b9a47c0fad827848f0bfbe3",
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/prototype/SKILL.md",
       "license": "MIT",
-      "translationPath": "catalog/mattpocock/prototype.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationPath": "catalog/mattpocock/prototype/SKILL.md",
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1325,8 +1325,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/research/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/research.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1341,8 +1341,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/retro/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/retro.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1357,8 +1357,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/misc/scaffold-exercises/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/scaffold-exercises.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1372,9 +1372,9 @@
       "sourceSha256": "f148858ffb7f63c03c06fca06e6fdb1d91a35c6b293244b8fdfacd5f4cc028c4",
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/setup-matt-pocock-skills/SKILL.md",
       "license": "MIT",
-      "translationPath": "catalog/mattpocock/setup-matt-pocock-skills.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationPath": "catalog/mattpocock/setup-matt-pocock-skills/SKILL.md",
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1389,8 +1389,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/misc/setup-pre-commit/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/setup-pre-commit.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1405,8 +1405,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/in-progress/setup-ts-deep-modules/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/setup-ts-deep-modules.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1436,9 +1436,9 @@
       "sourceSha256": "550482c2d674b085c9043b87bfdc14a8f2ec453c736119e7fcbb1e9332bffeba",
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/teach/SKILL.md",
       "license": "MIT",
-      "translationPath": "catalog/mattpocock/teach.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationPath": "catalog/mattpocock/teach/SKILL.md",
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1453,8 +1453,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/to-questionnaire/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/to-questionnaire.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1469,8 +1469,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/to-spec/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/to-spec.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1485,8 +1485,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/to-tickets/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/to-tickets.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1500,9 +1500,9 @@
       "sourceSha256": "917b0baf74be583e74f110857ed45df2766617f75c00baf61fd136d7af515edf",
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/triage/SKILL.md",
       "license": "MIT",
-      "translationPath": "catalog/mattpocock/triage.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationPath": "catalog/mattpocock/triage/SKILL.md",
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1517,8 +1517,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/wait-what/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/wait-what.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1533,8 +1533,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/wayfinder/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/wayfinder.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1549,8 +1549,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/wizard/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/wizard.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1565,8 +1565,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/in-progress/writing-beats/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/writing-beats.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1580,9 +1580,9 @@
       "sourceSha256": "551adca942227b44192edba88acd4e8db911f0121ce58ad16944ccf6a896a74a",
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/writing-for-agents/SKILL.md",
       "license": "MIT",
-      "translationPath": "catalog/mattpocock/writing-for-agents.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationPath": "catalog/mattpocock/writing-for-agents/SKILL.md",
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1597,8 +1597,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/in-progress/writing-fragments/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/writing-fragments.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     },
     {
@@ -1613,8 +1613,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/in-progress/writing-shape/SKILL.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/writing-shape.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": null
     }
   ],
@@ -1631,8 +1631,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/ask-matt/PHASE-BOUNDARIES.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/ask-matt/phase-boundaries.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/ask-matt"
     },
@@ -1648,8 +1648,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/codebase-design/DEEPENING.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/codebase-design/deepening.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/codebase-design"
     },
@@ -1665,8 +1665,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/codebase-design/DESIGN-IT-TWICE.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/codebase-design/design-it-twice.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/codebase-design"
     },
@@ -1682,8 +1682,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/domain-modeling/ADR-FORMAT.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/domain-modeling/adr-format.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/domain-modeling"
     },
@@ -1699,8 +1699,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/domain-modeling/GLOSSARY-FORMAT.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/domain-modeling/glossary-format.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/domain-modeling"
     },
@@ -1716,8 +1716,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/improve-codebase-architecture/HTML-REPORT.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/improve-codebase-architecture/html-report.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/improve-codebase-architecture"
     },
@@ -1733,8 +1733,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/prototype/LOGIC.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/prototype/logic.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/prototype"
     },
@@ -1750,8 +1750,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/prototype/UI.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/prototype/ui.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/prototype"
     },
@@ -1767,8 +1767,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/setup-matt-pocock-skills/domain.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/setup-matt-pocock-skills/domain.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/setup-matt-pocock-skills"
     },
@@ -1784,8 +1784,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/setup-matt-pocock-skills/issue-tracker-github.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/setup-matt-pocock-skills/issue-tracker-github.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/setup-matt-pocock-skills"
     },
@@ -1801,8 +1801,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/setup-matt-pocock-skills/issue-tracker-gitlab.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/setup-matt-pocock-skills/issue-tracker-gitlab.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/setup-matt-pocock-skills"
     },
@@ -1818,8 +1818,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/setup-matt-pocock-skills/issue-tracker-local.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/setup-matt-pocock-skills/issue-tracker-local.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/setup-matt-pocock-skills"
     },
@@ -1835,8 +1835,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/setup-matt-pocock-skills/triage-labels.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/setup-matt-pocock-skills/triage-labels.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/setup-matt-pocock-skills"
     },
@@ -1886,8 +1886,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/teach/GLOSSARY-FORMAT.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/teach/glossary-format.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/teach"
     },
@@ -1903,8 +1903,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/teach/LEARNING-RECORD-FORMAT.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/teach/learning-record-format.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/teach"
     },
@@ -1920,8 +1920,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/teach/MISSION-FORMAT.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/teach/mission-format.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/teach"
     },
@@ -1937,8 +1937,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/teach/RESOURCES-FORMAT.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/teach/resources-format.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/teach"
     },
@@ -1954,8 +1954,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/triage/AGENT-BRIEF.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/triage/agent-brief.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/triage"
     },
@@ -1971,8 +1971,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/triage/OUT-OF-SCOPE.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/triage/out-of-scope.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/triage"
     },
@@ -1988,8 +1988,8 @@
       "sourceUrl": "https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/writing-for-agents/SKILL-MECHANICS.md",
       "license": "MIT",
       "translationPath": "catalog/mattpocock/writing-for-agents/skill-mechanics.md",
-      "translationStatus": "todo",
-      "translatedAt": null,
+      "translationStatus": "complete",
+      "translatedAt": "2026-10-30",
       "notes": "父技能明确要求阅读的配套文档。",
       "parentSkill": "mattpocock/writing-for-agents"
     }

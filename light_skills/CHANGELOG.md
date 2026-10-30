@@ -32,3 +32,11 @@
 - 测试改为在上游 checkout 缺失时跳过集成用例，并补上 `--upstream` 和统计测试。
 - `npm run serve` 支持 `--port` 和 `--host`，端口占用时给出可操作的提示。
 - 修正正文布局：侧边栏改为网格布局，去掉重复的左侧 padding，正文从约 400px 恢复到约 848px 的可读宽度。
+
+### 全量翻译
+
+- 完成剩余 118 篇翻译：gstack 62 篇、mattpocock 36 篇技能、mattpocock 20 篇附属文档。
+- 全库达到 123/123 完成，`npm run check:release` 通过，0 error。
+- 新增独立章节《gstack 与 mattpocock_skills：相同与差异》，并加入第一部。
+- 统一附属文档链接大小写，修复 `captain.md`、`template.sh`、`block-dangerous-git.sh` 等上游非译文文件的链接。
+- 发布校验的占位文本检查改为忽略代码块和 `TODOS.md` 等领域术语，只拦截真正的 `[待翻译]` 与 `TODO:`。

@@ -36,6 +36,10 @@ test("mattpocock 技能和 tdd 附属文档映射正确", integration, async () 
   const ids = new Set(result.skills.map((s) => s.id));
   assert.ok(ids.has("mattpocock/tdd"));
   assert.ok(ids.has("mattpocock/grilling"));
+  assert.equal(
+    result.skills.find((s) => s.id === "mattpocock/tdd").translationPath,
+    "catalog/mattpocock/tdd/SKILL.md",
+  );
   assert.ok(result.documents.some((d) => d.id === "mattpocock/tdd/tests"));
   assert.ok(result.documents.some((d) => d.id === "mattpocock/tdd/mocking"));
 });

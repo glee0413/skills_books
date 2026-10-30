@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtemp, readFile, stat } from "node:fs/promises";
+import { cp, mkdir, mkdtemp, readFile, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { renderMarkdown, renderPage, buildSite } from "../lib/render.mjs";
@@ -60,17 +60,50 @@ test("页面包含来源框、技能速览、页内目录、上一篇和下一�
 });
 
 test("目录把未翻译技能渲染成不可点击的 span", async () => {
-  const out = await mkdtemp(join(tmpdir(), "skills-book-test-"));
-  await buildSite({ root: process.cwd(), outDir: out });
+  const root = await mkdtemp(join(tmpdir(), "skills-book-test-"));
+  await mkdir(join(root, "assets"), { recursive: true });
+  await mkdir(join(root, "source-snapshots", "demo", "a"), { recursive: true });
+  await mkdir(join(root, "catalog", "demo"), { recursive: true });
+  await cp(join(process.cwd(), "assets", "book.css"), join(root, "assets", "book.css"));
+  await writeFile(join(root, "source-snapshots", "demo", "a", "SKILL.md"), "# A\n");
+  await writeFile(
+    join(root, "catalog", "demo", "a.md"),
+    "---\nid: demo/a\ntitle: a\ndescription: 说明\ninvocation: model\nproject: demo\nsourceCommit: abc\nsourceRef: v1\nsourcePath: a.md\nsnapshotPath: source-snapshots/demo/a/SKILL.md\nlicense: MIT\ntranslatedAt: 2026-10-30\n---\n\n# A\n",
+  );
+  const base = {
+    project: "demo",
+    repo: "https://example.com/demo",
+    commit: "abc",
+    ref: "v1",
+    license: "MIT",
+    sourceSha256: "x",
+    sourceUrl: "https://example.com/demo/blob/abc/a.md",
+    translatedAt: "2026-10-30",
+  };
+  await writeFile(
+    join(root, "sources.json"),
+    JSON.stringify({
+      schemaVersion: 1,
+      skills: [
+        { ...base, id: "demo/a", sourcePath: "a.md", snapshotPath: "source-snapshots/demo/a/SKILL.md", translationPath: "catalog/demo/a.md", translationStatus: "complete" },
+        { ...base, id: "demo/b", sourcePath: "b.md", snapshotPath: "source-snapshots/demo/b/SKILL.md", translationPath: "catalog/demo/b.md", translationStatus: "todo" },
+      ],
+      documents: [],
+    }),
+  );
+  await writeFile(
+    join(root, "book.json"),
+    JSON.stringify({ title: "Demo", subtitle: "", parts: [], catalog: { demo: ["demo/a", "demo/b"] } }),
+  );
 
+  const out = join(root, "site");
+  await buildSite({ root, outDir: out });
   assert.ok((await stat(join(out, "index.html"))).isFile());
   assert.ok((await stat(join(out, "catalog", "index.html"))).isFile());
-  assert.ok((await stat(join(out, "source-snapshots", "gstack", "office-hours", "SKILL.md"))).isFile());
+  assert.ok((await stat(join(out, "source-snapshots", "demo", "a", "SKILL.md"))).isFile());
 
   const catalog = await readFile(join(out, "catalog", "index.html"), "utf8");
   assert.match(catalog, /待翻译/);
-  assert.match(catalog, /<span[^>]*>autoplan<\/span>/);
-  assert.doesNotMatch(catalog, /<a[^>]*href="[^"]*autoplan\.html"[^>]*>autoplan<\/a>/);
-  assert.match(catalog, /<span[^>]*>openclaw\/office-hours<\/span>/);
-  assert.match(catalog, /<span[^>]*>capy\/gstack<\/span>/);
+  assert.match(catalog, /<span[^>]*>b<\/span>/);
+  assert.match(catalog, /<a href="\.\/demo\/a\.html">a<\/a>/);
 });

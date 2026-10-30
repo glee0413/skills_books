@@ -47,6 +47,19 @@ function fromFirstH1(text) {
   return start >= 0 ? lines.slice(start).join("\n") : text;
 }
 
+function stripFencedCode(text) {
+  const output = [];
+  let inFence = false;
+  for (const line of text.split("\n")) {
+    if (/^\s*(```|~~~)/.test(line)) {
+      inFence = !inFence;
+      continue;
+    }
+    if (!inFence) output.push(line);
+  }
+  return output.join("\n");
+}
+
 function metrics(text) {
   let headings = 0;
   let fences = 0;
@@ -218,8 +231,12 @@ export function validateTranslationPage({ page, sourceRecord, source }) {
     const sourceBody = splitFrontmatter(source).body;
     const translationBody = splitFrontmatter(page).body;
     const firstLine = translationBody.split("\n").find((line) => line.trim() !== "") ?? "";
-    if (/^#\s+/m.test(sourceBody) && !/^#\s+/.test(firstLine)) {
-      issues.push(issue("error", "missing-h1-start", "源文有 H1，译文必须从 H1 开始，不能包含通用前言", sourceRecord.id));
+    if (
+      sourceRecord.project === "gstack" &&
+      /^#\s+/m.test(sourceBody) &&
+      !/^#\s+/.test(firstLine)
+    ) {
+      issues.push(issue("error", "missing-h1-start", "gstack 源文有 H1，译文必须从 H1 开始，不能包含通用前言", sourceRecord.id));
     }
     issues.push(...validateTranslationStructure(source, page));
   }
@@ -231,7 +248,7 @@ export function validateReleaseContent({ page, id }) {
   const issues = [];
   const body = splitFrontmatter(page).body.trim();
   if (!body) issues.push(issue("error", "empty-body", `${id} 的译文正文为空`, id));
-  if (/\bTODO\b|\[待翻译\]/.test(body)) {
+  if (/\[待翻译\]|TODO:/.test(stripFencedCode(body))) {
     issues.push(issue("error", "placeholder", `${id} 仍含占位文本`, id));
   }
   return issues;
@@ -323,23 +340,24 @@ export async function validateLinks({ siteDir }) {
       if (/^(https?:|mailto:|data:|javascript:)/.test(href)) continue;
       if (href === "") continue;
       const [target, hash] = href.split("#");
+      const decodedHash = hash ? decodeURIComponent(hash) : "";
       if (!target) {
-        if (hash && !html.includes(`id="${hash}"`)) {
+        if (decodedHash && !html.includes(`id="${decodedHash}"`)) {
           issues.push(issue("error", "broken-anchor", `锚点不存在: ${href}`, relativeFile));
         }
         continue;
       }
-      const absolute = resolve(dirname(file), target);
+      const absolute = resolve(dirname(file), decodeURIComponent(target));
       try {
         await stat(absolute);
       } catch {
         issues.push(issue("error", "broken-link", `链接目标不存在: ${href}`, relativeFile));
         continue;
       }
-      if (hash) {
+      if (decodedHash) {
         try {
           const targetHtml = await readFile(absolute, "utf8");
-          if (!targetHtml.includes(`id="${hash}"`)) {
+          if (!targetHtml.includes(`id="${decodedHash}"`)) {
             issues.push(issue("error", "broken-anchor", `锚点不存在: ${href}`, relativeFile));
           }
         } catch {

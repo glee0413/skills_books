@@ -67,6 +67,11 @@ function skillTranslationPath(id) {
   return `catalog/${project}/${rest.join("/")}.md`;
 }
 
+function nestedSkillTranslationPath(id) {
+  const [project, ...rest] = id.split("/");
+  return `catalog/${project}/${rest.join("/")}/SKILL.md`;
+}
+
 function skillSnapshotPath(id) {
   const [project, ...rest] = id.split("/");
   return `source-snapshots/${project}/${rest.join("/")}/SKILL.md`;
@@ -175,6 +180,11 @@ export async function scanInventory({ gstackRoot, mattRoot, documents } = {}) {
       }),
       parentSkill,
     });
+  }
+
+  for (const document of documentRecords) {
+    const parent = skills.find((skill) => skill.id === document.parentSkill);
+    if (parent) parent.translationPath = nestedSkillTranslationPath(parent.id);
   }
 
   skills.sort((a, b) => a.id.localeCompare(b.id));

@@ -10,7 +10,14 @@
     {
       "id": "01-two-paradigms",
       "title": "第一部 两种范式",
-      "chapters": []
+      "chapters": [
+        {
+          "id": "same-and-different",
+          "title": "gstack 与 mattpocock_skills：相同与差异",
+          "path": "book/01-two-paradigms/01-same-and-different.md",
+          "skills": []
+        }
+      ]
     },
     {
       "id": "02-think",

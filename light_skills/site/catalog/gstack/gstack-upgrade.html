@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>gstack-upgrade · Skills Book</title>
+  <link rel="stylesheet" href="../../assets/book.css">
+</head>
+<body class="with-sidebar">
+  <aside class="sidebar"><div class="brand"><a href="../../index.html">Skills Book</a></div><section><h2>第一部 两种范式</h2><ul><li><a href="../../book/01-two-paradigms/01-same-and-different.html">gstack 与 mattpocock_skills：相同与差异</a></li></ul></section><section><h2>第二部 想清楚</h2><ul><li><a href="../../book/02-think/05-product-questioning.html">产品追问：office-hours 与 grilling</a></li></ul></section><section><h2>gstack</h2><ul><li><a href="./autoplan.html">autoplan</a></li><li><a href="./benchmark.html">benchmark</a></li><li><a href="./benchmark-models.html">benchmark-models</a></li><li><a href="./browse.html">browse</a></li><li><a href="./canary.html">canary</a></li><li><a href="./capy/gstack.html">capy/gstack</a></li><li><a href="./careful.html">careful</a></li><li><a href="./codex.html">codex</a></li><li><a href="./context-restore.html">context-restore</a></li><li><a href="./context-save.html">context-save</a></li><li><a href="./cso.html">cso</a></li><li><a href="./design-consultation.html">design-consultation</a></li><li><a href="./design-html.html">design-html</a></li><li><a href="./design-review.html">design-review</a></li><li><a href="./design-shotgun.html">design-shotgun</a></li><li><a href="./deslop-shared-libs.html">deslop-shared-libs</a></li><li><a href="./devex-review.html">devex-review</a></li><li><a href="./diagram.html">diagram</a></li><li><a href="./document-generate.html">document-generate</a></li><li><a href="./document-release.html">document-release</a></li><li><a href="./eval-plan.html">eval-plan</a></li><li><a href="./freeze.html">freeze</a></li><li><a href="./gstack.html">gstack</a></li><li><a href="./gstack-upgrade.html">gstack-upgrade</a></li><li><a href="./guard.html">guard</a></li><li><a href="./hackernews-frontpage.html">hackernews-frontpage</a></li><li><a href="./health.html">health</a></li><li><a href="./investigate.html">investigate</a></li><li><a href="./ios-clean.html">ios-clean</a></li><li><a href="./ios-design-review.html">ios-design-review</a></li><li><a href="./ios-fix.html">ios-fix</a></li><li><a href="./ios-qa.html">ios-qa</a></li><li><a href="./ios-sync.html">ios-sync</a></li><li><a href="./land-and-deploy.html">land-and-deploy</a></li><li><a href="./landing-report.html">landing-report</a></li><li><a href="./learn.html">learn</a></li><li><a href="./make-pdf.html">make-pdf</a></li><li><a href="./office-hours.html">office-hours</a></li><li><a href="./open-gstack-browser.html">open-gstack-browser</a></li><li><a href="./openclaw/ceo-review.html">openclaw/ceo-review</a></li><li><a href="./openclaw/investigate.html">openclaw/investigate</a></li><li><a href="./openclaw/office-hours.html">openclaw/office-hours</a></li><li><a href="./openclaw/retro.html">openclaw/retro</a></li><li><a href="./pair-agent.html">pair-agent</a></li><li><a href="./plan-ceo-review.html">plan-ceo-review</a></li><li><a href="./plan-design-review.html">plan-design-review</a></li><li><a href="./plan-devex-review.html">plan-devex-review</a></li><li><a href="./plan-eng-review.html">plan-eng-review</a></li><li><a href="./plan-tune.html">plan-tune</a></li><li><a href="./qa.html">qa</a></li><li><a href="./qa-only.html">qa-only</a></li><li><a href="./retro.html">retro</a></li><li><a href="./review.html">review</a></li><li><a href="./scrape.html">scrape</a></li><li><a href="./setup-browser-cookies.html">setup-browser-cookies</a></li><li><a href="./setup-deploy.html">setup-deploy</a></li><li><a href="./setup-gbrain.html">setup-gbrain</a></li><li><a href="./ship.html">ship</a></li><li><a href="./skillify.html">skillify</a></li><li><a href="./spec.html">spec</a></li><li><a href="./sync-gbrain.html">sync-gbrain</a></li><li><a href="./test-audit.html">test-audit</a></li><li><a href="./unfreeze.html">unfreeze</a></li></ul></section><section><h2>mattpocock</h2><ul><li><a href="../mattpocock/ask-matt/SKILL.html">ask-matt</a></li><li><a href="../mattpocock/chief-of-staff.html">chief-of-staff</a></li><li><a href="../mattpocock/claude-handoff.html">claude-handoff</a></li><li><a href="../mattpocock/code-review.html">code-review</a></li><li><a href="../mattpocock/codebase-design/SKILL.html">codebase-design</a></li><li><a href="../mattpocock/diagnosing-bugs.html">diagnosing-bugs</a></li><li><a href="../mattpocock/domain-modeling/SKILL.html">domain-modeling</a></li><li><a href="../mattpocock/git-guardrails-claude-code.html">git-guardrails-claude-code</a></li><li><a href="../mattpocock/grill-me.html">grill-me</a></li><li><a href="../mattpocock/grill-with-docs.html">grill-with-docs</a></li><li><a href="../mattpocock/grilling.html">grilling</a></li><li><a href="../mattpocock/handoff.html">handoff</a></li><li><a href="../mattpocock/implement.html">implement</a></li><li><a href="../mattpocock/implement-spec.html">implement-spec</a></li><li><a href="../mattpocock/improve-codebase-architecture/SKILL.html">improve-codebase-architecture</a></li><li><a href="../mattpocock/loop-me.html">loop-me</a></li><li><a href="../mattpocock/migrate-to-shoehorn.html">migrate-to-shoehorn</a></li><li><a href="../mattpocock/pr.html">pr</a></li><li><a href="../mattpocock/prototype/SKILL.html">prototype</a></li><li><a href="../mattpocock/research.html">research</a></li><li><a href="../mattpocock/retro.html">retro</a></li><li><a href="../mattpocock/scaffold-exercises.html">scaffold-exercises</a></li><li><a href="../mattpocock/setup-matt-pocock-skills/SKILL.html">setup-matt-pocock-skills</a></li><li><a href="../mattpocock/setup-pre-commit.html">setup-pre-commit</a></li><li><a href="../mattpocock/setup-ts-deep-modules.html">setup-ts-deep-modules</a></li><li><a href="../mattpocock/tdd/SKILL.html">tdd</a></li><li><a href="../mattpocock/teach/SKILL.html">teach</a></li><li><a href="../mattpocock/to-questionnaire.html">to-questionnaire</a></li><li><a href="../mattpocock/to-spec.html">to-spec</a></li><li><a href="../mattpocock/to-tickets.html">to-tickets</a></li><li><a href="../mattpocock/triage/SKILL.html">triage</a></li><li><a href="../mattpocock/wait-what.html">wait-what</a></li><li><a href="../mattpocock/wayfinder.html">wayfinder</a></li><li><a href="../mattpocock/wizard.html">wizard</a></li><li><a href="../mattpocock/writing-beats.html">writing-beats</a></li><li><a href="../mattpocock/writing-for-agents/SKILL.html">writing-for-agents</a></li><li><a href="../mattpocock/writing-fragments.html">writing-fragments</a></li><li><a href="../mattpocock/writing-shape.html">writing-shape</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">技能全库</a></p></aside>
+  <main class="content">
+    <section class="source-box">
+  <strong>来源</strong>：gstack · <code>gstack-upgrade/SKILL.md</code> · v1.91.226.0 · commit <code>8d95013</code><br>
+  <strong>许可证</strong>：MIT · <a href="https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/gstack-upgrade/SKILL.md">查看原仓库</a> · <a href="../../source-snapshots/gstack/gstack-upgrade/SKILL.md">查看英文快照</a> · 快照：<code>source-snapshots/gstack/gstack-upgrade/SKILL.md</code><br>
+  <strong>翻译</strong>：2026-10-30 · 译者注以 <code>&gt; 译者注：</code> 标出
+</section>
+    <section class="skill-overview">
+  <strong>gstack-upgrade</strong>
+  <span>gstack</span>
+  <span>用户调用</span>
+  <p>把 gstack 升级到最新版本，并展示这次更新带来了什么。</p>
+</section>
+    <nav class="page-toc" aria-label="页内目录"><strong>本页目录</strong><ul><li class="toc-depth-1"><a href="#gstack-upgrade">/gstack-upgrade</a></li><li class="toc-depth-2"><a href="#内联升级流程">内联升级流程</a></li><li class="toc-depth-3"><a href="#步骤-1询问用户或自动升级">步骤 1：询问用户（或自动升级）</a></li><li class="toc-depth-3"><a href="#步骤-2判断安装类型">步骤 2：判断安装类型</a></li><li class="toc-depth-3"><a href="#步骤-3保存旧版本">步骤 3：保存旧版本</a></li><li class="toc-depth-3"><a href="#步骤-4升级">步骤 4：升级</a></li><li class="toc-depth-3"><a href="#步骤-45处理本地-vendored-副本">步骤 4.5：处理本地 vendored 副本</a></li><li class="toc-depth-3"><a href="#步骤-475运行版本迁移">步骤 4.75：运行版本迁移</a></li><li class="toc-depth-3"><a href="#步骤-48停掉任何陈旧的-daemon无条件">步骤 4.8：停掉任何陈旧的 daemon（无条件）</a></li><li class="toc-depth-3"><a href="#步骤-5写入标记--清理缓存">步骤 5：写入标记 + 清理缓存</a></li><li class="toc-depth-3"><a href="#步骤-6展示新变化">步骤 6：展示新变化</a></li><li class="toc-depth-3"><a href="#步骤-7继续">步骤 7：继续</a></li><li class="toc-depth-2"><a href="#独立使用">独立使用</a></li></ul></nav>
+    <article class="markdown-body"><h1 id="gstack-upgrade">/gstack-upgrade</h1>
+<p>把 gstack 升级到最新版本，并展示有哪些新变化。</p>
+<h2 id="内联升级流程">内联升级流程</h2>
+<p>所有技能前言在检测到 <code>UPGRADE_AVAILABLE</code> 时都会引用这一节。</p>
+<h3 id="步骤-1询问用户或自动升级">步骤 1：询问用户（或自动升级）</h3>
+<p>首先检查是否启用了自动升级：</p>
+<pre><code class="language-bash">_AUTO=&quot;&quot;
+[ &quot;${GSTACK_AUTO_UPGRADE:-}&quot; = &quot;1&quot; ] &amp;&amp; _AUTO=&quot;true&quot;
+[ -z &quot;$_AUTO&quot; ] &amp;&amp; _AUTO=$(~/.claude/skills/gstack/bin/gstack-config get auto_upgrade 2&gt;/dev/null || true)
+echo &quot;AUTO_UPGRADE=$_AUTO&quot;
+</code></pre>
+<p><strong>如果 <code>AUTO_UPGRADE=true</code> 或 <code>AUTO_UPGRADE=1</code>：</strong> 跳过 AskUserQuestion。记录“Auto-upgrading gstack v{old} → v{new}...”，直接进入步骤 2。安装失败时，按步骤 4 里针对安装类型的恢复办法处理：vendored 安装恢复它们的备份；git 安装则停下并记录升级前的 commit，不做破坏性 reset。除非恢复真的成功，否则绝不要声称已恢复。</p>
+<p><strong>否则</strong>，使用 AskUserQuestion：</p>
+<ul>
+<li>问题：“gstack <strong>v{new}</strong> 已可用（你当前在 v{old}）。现在升级吗？”
+四个字段（<code>UPGRADE_AVAILABLE &lt;old&gt; &lt;old&gt;+&lt;n&gt; &lt;sha&gt;</code>，main 已前进）：问“gstack main 已经比 v{old} 前进 <strong>{n} 个 commit</strong>（在 {sha}）。现在升级吗？”</li>
+<li>选项：[&quot;是，现在升级&quot;, &quot;总是让我保持最新&quot;, &quot;暂时不要&quot;, &quot;不要再问&quot;]</li>
+</ul>
+<p><strong>如果选“是，现在升级”：</strong> 进入步骤 2。</p>
+<p><strong>如果选“总是让我保持最新”：</strong></p>
+<pre><code class="language-bash">~/.claude/skills/gstack/bin/gstack-config set auto_upgrade true
+</code></pre>
+<p>告诉用户：“已启用自动升级。以后的更新会自动安装。”然后进入步骤 2。</p>
+<p><strong>如果选“暂时不要”：</strong> 写入延后状态，并逐级加大退避（第一次延后 = 24 小时，第二次 = 48 小时，第三次及以后 = 1 周），然后继续当前的技能。不要再提升级。</p>
+<pre><code class="language-bash">GSTACK_STATE_ROOT=$(~/.claude/skills/gstack/bin/gstack-paths --get GSTACK_STATE_ROOT); : &quot;${GSTACK_STATE_ROOT:?gstack-paths failed; reinstall with ./setup or /gstack-upgrade}&quot;
+_SNOOZE_FILE=&quot;$GSTACK_STATE_ROOT/update-snoozed&quot;
+_REMOTE_VER=&quot;{new}&quot;
+_CUR_LEVEL=0
+if [ -f &quot;$_SNOOZE_FILE&quot; ]; then
+  _SNOOZED_VER=$(awk &#39;{print $(1)}&#39; &quot;$_SNOOZE_FILE&quot;)
+  if [ &quot;$_SNOOZED_VER&quot; = &quot;$_REMOTE_VER&quot; ]; then
+    _CUR_LEVEL=$(awk &#39;{print $(2)}&#39; &quot;$_SNOOZE_FILE&quot;)
+    case &quot;$_CUR_LEVEL&quot; in *[!0-9]*) _CUR_LEVEL=0 ;; esac
+  fi
+fi
+_NEW_LEVEL=$((_CUR_LEVEL + 1))
+[ &quot;$_NEW_LEVEL&quot; -gt 3 ] &amp;&amp; _NEW_LEVEL=3
+echo &quot;$_REMOTE_VER $_NEW_LEVEL $(date +%s)&quot; &gt; &quot;$_SNOOZE_FILE&quot;
+</code></pre>
+<p>注意：<code>{new}</code> 是 <code>UPGRADE_AVAILABLE</code> 输出里的远端版本——从更新检查结果里替换。若那行有四个字段，用 SHA（第四个字段）作为 <code>{new}</code>，这样当 main 再次前进时延后就结束了。</p>
+<p>告诉用户延后时长：“下次提醒在 24 小时后”（或 48 小时、1 周，取决于级别）。提示：“在 <code>~/.gstack/config.yaml</code> 里设置 <code>auto_upgrade: true</code> 可启用自动升级。”</p>
+<p><strong>如果选“不要再问”：</strong></p>
+<pre><code class="language-bash">~/.claude/skills/gstack/bin/gstack-config set update_check false
+</code></pre>
+<p>告诉用户：“更新检查已禁用。运行 <code>~/.claude/skills/gstack/bin/gstack-config set update_check true</code> 可重新启用。”
+继续当前的技能。</p>
+<h3 id="步骤-2判断安装类型">步骤 2：判断安装类型</h3>
+<pre><code class="language-bash">if [ -d &quot;$HOME/.claude/skills/gstack/.git&quot; ]; then
+  INSTALL_TYPE=&quot;global-git&quot;
+  INSTALL_DIR=&quot;$HOME/.claude/skills/gstack&quot;
+elif [ -d &quot;$HOME/.gstack/repos/gstack/.git&quot; ]; then
+  INSTALL_TYPE=&quot;global-git&quot;
+  INSTALL_DIR=&quot;$HOME/.gstack/repos/gstack&quot;
+elif [ -d &quot;.claude/skills/gstack/.git&quot; ]; then
+  INSTALL_TYPE=&quot;local-git&quot;
+  INSTALL_DIR=&quot;.claude/skills/gstack&quot;
+elif [ -d &quot;.agents/skills/gstack/.git&quot; ]; then
+  INSTALL_TYPE=&quot;local-git&quot;
+  INSTALL_DIR=&quot;.agents/skills/gstack&quot;
+elif [ -d &quot;.claude/skills/gstack&quot; ]; then
+  INSTALL_TYPE=&quot;vendored&quot;
+  INSTALL_DIR=&quot;.claude/skills/gstack&quot;
+elif [ -d &quot;$HOME/.claude/skills/gstack&quot; ]; then
+  INSTALL_TYPE=&quot;vendored-global&quot;
+  INSTALL_DIR=&quot;$HOME/.claude/skills/gstack&quot;
+elif _SRC=$(~/.claude/skills/gstack/bin/gstack-paths --get GSTACK_STATE_ROOT 2&gt;/dev/null) &amp;&amp; _SRC=$(awk -F &#39;\t&#39; &#39;$(1) == &quot;claude&quot; &amp;&amp; $(6) != &quot;-&quot; { print $(6); exit }&#39; &quot;$_SRC/installs.tsv&quot; 2&gt;/dev/null) &amp;&amp; [ -d &quot;$_SRC/.git&quot; ]; then
+  # 安装登记表记录了 setup 为此宿主激活的 checkout（例如 ~/gstack 的克隆）。
+  INSTALL_TYPE=&quot;global-git&quot;
+  INSTALL_DIR=&quot;$_SRC&quot;
+else
+  echo &quot;ERROR: gstack not found&quot;
+  exit 1
+fi
+INSTALL_DIR=$(cd -- &quot;$INSTALL_DIR&quot; &amp;&amp; pwd -P) || { echo &quot;ERROR: cannot enter the gstack install directory&quot; &gt;&amp;2; exit 1; }
+echo &quot;Install type: $INSTALL_TYPE at $INSTALL_DIR&quot;
+</code></pre>
+<p>上面打印出的安装类型和绝对目录会在后续所有步骤中使用。
+把 <code>INSTALL_TYPE</code>、<code>INSTALL_DIR</code>、<code>OLD_VERSION</code>，以及稍后的 <code>NEW_VERSION</code> 显式地一路传下去：工具调用可能跑在全新的 shell 里，所以后面每个代码块都要先把它们从捕获的输出里赋值（例如 <code>INSTALL_DIR=/abs/path/printed/above</code>）。不要依赖上一次调用的工作目录或 shell 变量。每个会改动文件的代码块都先检查 <code>INSTALL_DIR</code>，当它未设置、为空、不存在、不可读，或不是 gstack 自己的 checkout 时，在任何 git 命令之前就停下。</p>
+<h3 id="步骤-3保存旧版本">步骤 3：保存旧版本</h3>
+<p>用步骤 2 输出里的安装目录：</p>
+<pre><code class="language-bash">OLD_VERSION=$(cat &quot;${INSTALL_DIR:?INSTALL_DIR is not set: re-run Step 2 and substitute the printed path}/VERSION&quot; 2&gt;/dev/null || echo &quot;unknown&quot;)
+echo &quot;OLD_VERSION=$OLD_VERSION&quot;
+</code></pre>
+<h3 id="步骤-4升级">步骤 4：升级</h3>
+<p>使用步骤 2 检测出的安装类型和目录：</p>
+<p><strong>对于 git 安装</strong>（global-git、local-git）：</p>
+<p>先通过 <code>bin/gstack-ff-update</code> 做快进，这与会话更新的自动升级用的是同一份代码：能干净合并的本地改动能随更新一起带过去，而冲突的改动（或已暂存的改动、未合并的文件）会被存进一个 rescue ref，而不是留成冲突标记：</p>
+<pre><code class="language-bash">cd -- &quot;${INSTALL_DIR:?INSTALL_DIR is not set: re-run Step 2 and substitute the printed path}&quot; || exit 1
+{ [ -f VERSION ] &amp;&amp; [ -f setup ] &amp;&amp; [ -f bin/gstack-config ] &amp;&amp; _p=$(git rev-parse --show-prefix 2&gt;/dev/null) &amp;&amp; [ -z &quot;$_p&quot; ] &amp;&amp; [ &quot;$(git rev-parse --is-inside-work-tree 2&gt;/dev/null)&quot; = true ]; } || { echo &quot;ERROR: $INSTALL_DIR is not a gstack checkout; nothing was changed. Re-run Step 2.&quot; &gt;&amp;2; exit 1; }
+git fetch origin
+# 与自动更新器相同的前置检查：按 bash 判断即将发布的版本要求的 Bun 下限，
+# 无论这个工具 shell 是什么（zsh 不做单词拆分）。
+HOLD=$(bash -c &#39;. bin/gstack-bun-version.sh &amp;&amp; gstack_bun_incoming_hold . origin/main&#39; 2&gt;/dev/null) &amp;&amp; { case &quot;$HOLD&quot; in bun-version-unreadable*) echo &quot;BUN_VERSION_UNREADABLE: $HOLD; nothing was changed&quot; &gt;&amp;2 ;; *) echo &quot;BUN_TOO_OLD: $HOLD; nothing was changed&quot; &gt;&amp;2 ;; esac; exit 1; }
+PRE_UPGRADE_COMMIT=$(git rev-parse HEAD)
+echo &quot;PRE_UPGRADE_COMMIT=$PRE_UPGRADE_COMMIT&quot;
+FF=$(bash bin/gstack-ff-update . origin/main); FF_RC=$?
+echo &quot;$FF&quot;
+case &quot;$FF_RC&quot; in
+  0) if ./setup --refresh-registered; then echo &quot;FF_OK&quot;; else echo &quot;SETUP_FAILED: git update succeeded; stop and inspect setup output (previous commit: $PRE_UPGRADE_COMMIT)&quot; &gt;&amp;2; exit 1; fi ;;
+  4) echo &quot;FF_REFUSED&quot; ;;
+  *) echo &quot;FF_STOPPED: $FF&quot; &gt;&amp;2; exit 1 ;;
+esac
+</code></pre>
+<p>setup 的 <code>--refresh-registered</code> 会刷新这个 checkout 登记过的每个安装（各宿主、全局的以及本项目的），先打印来源，末尾给出 <code>Upgrade summary</code>，每个安装一行。按打印出来的样子转述这些行。某行是 <code>failed</code>，表示那个宿主保留了之前的安装；给出它的重试命令，绝不要说所有宿主都已刷新。某行是 <code>skipped</code>，说明它属于另一个 checkout 或项目；把它的命令转告用户，不要自己运行。</p>
+<p>如果输出以 <code>FF_OK</code> 结尾，升级就完成了——完全跳过下面的回退流程。当它前面那行是 <code>rescued &lt;old&gt; &lt;new&gt; refs/gstack/rescue/&lt;oid&gt; unmerged=&lt;0|1&gt;</code> 时，告诉用户他们冲突的本地改动已保存在那里，并转述脚本打印的 <code>Inspect</code>、<code>Export</code> 和 <code>Delete</code> 命令（导出到临时的 checkout 里用 <code>git apply -3</code>，绝不要在安装目录里 <code>stash apply</code>；<code>unmerged=1</code> 表示这份 rescue 需要人工解决）。
+遇到 <code>FF_STOPPED</code>，停下并转述原因：什么都没有改动。
+<code>ff-busy</code> 表示另一个 gstack 更新正在运行（过一分钟重试）；
+<code>autostash-unrecoverable</code> 会指明挡路的是什么（本次发布新增的一个未跟踪文件，或另一个 git 命令）；<code>index-unreadable</code> 表示这个 checkout 的索引已损坏。
+遇到 <code>BUN_TOO_OLD</code>，停下：让用户运行 <code>bun upgrade</code>，然后重新运行 /gstack-upgrade。
+遇到 <code>BUN_VERSION_UNREADABLE</code>，停下：<code>bun --version</code> 没有打印出 gstack 能读到的版本，所以 <code>bun upgrade</code> 可能也跑不起来；让用户从 <a href="https://bun.sh">https://bun.sh</a> 重新安装 Bun（在 Git Bash 或 macOS/Linux 终端里执行 <code>curl -fsSL https://bun.sh/install | bash</code>），确认 <code>bun --version</code> 打印出类似 1.4.2 的版本，然后重新运行 /gstack-upgrade（docs/troubleshooting.md#bun-version-unreadable）。
+遇到 <code>SETUP_FAILED</code>，停下；保留用户的改动并报告恢复用的 commit。git 路径上没有 <code>.bak</code>。不要仅因为 setup 失败就进入分叉回退。只有遇到 <code>FF_REFUSED</code>（有本地 commit 或历史已分叉）时才进入它；网络/鉴权失败是停下修复，不是 reset。</p>
+<p><strong>回退（仅快进被拒绝——有本地 commit 或历史分叉）。</strong> <code>git reset --hard</code> 会<strong>毁掉</strong>东西：即使工作区干净，只要有未推送的本地 commit，那些 commit 也会丢。所以要给它加门禁：</p>
+<ol>
+<li>在 <code>$INSTALL_DIR</code> 里运行 <code>git status --porcelain</code> 和 <code>git rev-list origin/main..HEAD --oneline</code>。</li>
+<li>如果两者都为空，reset 可证明是安全的——不用问，直接运行下面的回退代码块。</li>
+<li>否则通过 AskUserQuestion 询问（单向门——破坏性），逐条列出将被丢弃的东西：每个脏文件、每个未推送的 commit 的哈希和标题。选项：<strong>A)</strong> 丢弃它们并升级（reset）——必须给出明确的字母；<strong>B)</strong> 中止升级，让用户先抢救自己的工作（有本地 commit 时推荐）。绝不要在含糊的回复上继续。</li>
+</ol>
+<pre><code class="language-bash">cd -- &quot;${INSTALL_DIR:?INSTALL_DIR is not set: re-run Step 2 and substitute the printed path}&quot; || exit 1
+{ [ -f VERSION ] &amp;&amp; [ -f setup ] &amp;&amp; [ -f bin/gstack-config ] &amp;&amp; _p=$(git rev-parse --show-prefix 2&gt;/dev/null) &amp;&amp; [ -z &quot;$_p&quot; ] &amp;&amp; [ &quot;$(git rev-parse --is-inside-work-tree 2&gt;/dev/null)&quot; = true ]; } || { echo &quot;ERROR: $INSTALL_DIR is not a gstack checkout; nothing was changed. Re-run Step 2.&quot; &gt;&amp;2; exit 1; }
+# 可重新生成的渲染产物（setup 会重渲）永远不进 stash。
+git checkout -- &#39;SKILL.md&#39; &#39;*/SKILL.md&#39; &#39;*/sections/*.md&#39; 2&gt;/dev/null || true
+STASH_OUTPUT=$(git stash 2&gt;&amp;1)
+git reset --hard origin/main
+./setup --refresh-registered
+</code></pre>
+<p>如果 <code>$STASH_OUTPUT</code> 里包含“Saved working directory”，警告用户：“注意：本地改动已被 stash（修改过的生成文件 SKILL.md/sections 已先被丢弃——它们会在 setup 时重新生成）。在技能目录里运行 <code>git stash pop</code> 可以恢复你自己的改动。”</p>
+<p><strong>对于 vendored 安装</strong>（vendored、vendored-global）：</p>
+<pre><code class="language-bash">(cd -- &quot;${INSTALL_DIR:?INSTALL_DIR is not set: re-run Step 2 and substitute the printed path}&quot; &amp;&amp; [ -f VERSION ] &amp;&amp; [ -f setup ] &amp;&amp; [ -f bin/gstack-config ]) || { echo &quot;ERROR: INSTALL_DIR=${INSTALL_DIR:-} is not a gstack install; nothing was changed. Re-run Step 2.&quot; &gt;&amp;2; exit 1; }
+# 上一次崩溃的升级留下的陈旧 .bak 会让下面的 mv 把现装目录嵌进去，
+# 失败恢复分支就会把那份陈旧备份“恢复”回来。它也可能是那次崩溃中
+# 唯一完好的副本——中止并让人工检查，绝不悄悄删除。
+[ -e &quot;$INSTALL_DIR.bak&quot; ] &amp;&amp; { echo &quot;ERROR: stale backup exists at $INSTALL_DIR.bak (from a previous failed upgrade?) — inspect it, salvage/remove it, then re-run.&quot; &gt;&amp;2; exit 1; }
+TMP_DIR=$(mktemp -d &quot;${TMPDIR:-/tmp}/gstack-upgrade.XXXXXX&quot;) || { echo &quot;ERROR: mktemp failed — aborting upgrade (install untouched).&quot; &gt;&amp;2; exit 1; }
+git clone --depth 1 https://github.com/garrytan/gstack.git &quot;$TMP_DIR/gstack&quot; || { echo &quot;ERROR: clone failed — aborting upgrade (install untouched).&quot; &gt;&amp;2; rm -rf &quot;$TMP_DIR&quot;; exit 1; }
+mv &quot;$INSTALL_DIR&quot; &quot;$INSTALL_DIR.bak&quot; || { rm -rf &quot;$TMP_DIR&quot;; exit 1; }
+if mv &quot;$TMP_DIR/gstack&quot; &quot;$INSTALL_DIR&quot;; then
+  if (cd &quot;$INSTALL_DIR&quot; &amp;&amp; ./setup --refresh-registered); then
+    rm -rf &quot;$INSTALL_DIR.bak&quot; &quot;$TMP_DIR&quot;
+  else
+    rm -rf &quot;$INSTALL_DIR&quot;
+    mv &quot;$INSTALL_DIR.bak&quot; &quot;$INSTALL_DIR&quot; || { echo &quot;ERROR: restore failed; backup retained.&quot; &gt;&amp;2; exit 1; }
+    rm -rf &quot;$TMP_DIR&quot;
+    echo &quot;ERROR: setup failed; previous install restored.&quot; &gt;&amp;2
+    exit 1
+  fi
+else
+  mv &quot;$INSTALL_DIR.bak&quot; &quot;$INSTALL_DIR&quot;
+  echo &quot;ERROR: swap failed — previous install restored; upgrade aborted.&quot; &gt;&amp;2
+  rm -rf &quot;$TMP_DIR&quot;
+  exit 1
+fi
+</code></pre>
+<h3 id="步骤-45处理本地-vendored-副本">步骤 4.5：处理本地 vendored 副本</h3>
+<p>使用步骤 2 得到的安装目录。检查是否还存在一份本地 vendored 副本，以及团队模式是否开启：</p>
+<pre><code class="language-bash">_RESOLVED_PRIMARY=$(cd -- &quot;${INSTALL_DIR:?INSTALL_DIR is not set: re-run Step 2 and substitute the printed path}&quot; &amp;&amp; pwd -P) || exit 1
+_ROOT=$(git rev-parse --show-toplevel 2&gt;/dev/null)
+LOCAL_GSTACK=&quot;&quot;
+if [ -n &quot;$_ROOT&quot; ] &amp;&amp; [ -d &quot;$_ROOT/.claude/skills/gstack&quot; ]; then
+  _RESOLVED_LOCAL=$(cd &quot;$_ROOT/.claude/skills/gstack&quot; &amp;&amp; pwd -P)
+  if [ &quot;$_RESOLVED_LOCAL&quot; != &quot;$_RESOLVED_PRIMARY&quot; ]; then
+    LOCAL_GSTACK=&quot;$_ROOT/.claude/skills/gstack&quot;
+  fi
+fi
+_TEAM_MODE=$(~/.claude/skills/gstack/bin/gstack-config get team_mode 2&gt;/dev/null || echo &quot;false&quot;)
+echo &quot;LOCAL_GSTACK=$LOCAL_GSTACK&quot;
+echo &quot;TEAM_MODE=$_TEAM_MODE&quot;
+</code></pre>
+<p><strong>如果 <code>LOCAL_GSTACK</code> 非空且 <code>TEAM_MODE</code> 是 <code>true</code>：</strong> 移除 vendored 副本。团队模式把全局安装当作唯一事实源。</p>
+<pre><code class="language-bash">(cd -- &quot;${LOCAL_GSTACK:?LOCAL_GSTACK is not set: re-run the detection block above and substitute the printed path}&quot; &amp;&amp; [ -f VERSION ] &amp;&amp; [ -f setup ] &amp;&amp; [ -f bin/gstack-config ]) || { echo &quot;ERROR: LOCAL_GSTACK=${LOCAL_GSTACK:-} is not a gstack copy; nothing was changed.&quot; &gt;&amp;2; exit 1; }
+_ROOT=${LOCAL_GSTACK%/.claude/skills/gstack}
+{ [ &quot;$_ROOT&quot; != &quot;$LOCAL_GSTACK&quot; ] &amp;&amp; cd -- &quot;${_ROOT:?}&quot; &amp;&amp; _p=$(git rev-parse --show-prefix 2&gt;/dev/null) &amp;&amp; [ -z &quot;$_p&quot; ] &amp;&amp; [ &quot;$(git rev-parse --is-inside-work-tree 2&gt;/dev/null)&quot; = true ]; } || { echo &quot;ERROR: $LOCAL_GSTACK is not the vendored copy at the root of a git repository; nothing was changed.&quot; &gt;&amp;2; exit 1; }
+git rm -r --cached .claude/skills/gstack/ 2&gt;/dev/null || true
+if ! grep -qF &#39;.claude/skills/gstack/&#39; .gitignore 2&gt;/dev/null; then
+  echo &#39;.claude/skills/gstack/&#39; &gt;&gt; .gitignore
+fi
+rm -rf &quot;$LOCAL_GSTACK&quot;
+</code></pre>
+<p>告诉用户：“已移除 <code>$LOCAL_GSTACK</code> 处的 vendored 副本（团队模式已启用——全局安装是事实源）。准备好后提交 <code>.gitignore</code> 的改动。”</p>
+<p><strong>如果 <code>LOCAL_GSTACK</code> 非空且 <code>TEAM_MODE</code> 不是 <code>true</code>：</strong> 从刚升级的主安装复制过来更新它（与 README 的 vendored 安装方式相同）：</p>
+<pre><code class="language-bash">(cd -- &quot;${INSTALL_DIR:?INSTALL_DIR is not set: re-run Step 2 and substitute the printed path}&quot; &amp;&amp; [ -f VERSION ] &amp;&amp; [ -f setup ] &amp;&amp; [ -f bin/gstack-config ]) || { echo &quot;ERROR: INSTALL_DIR=${INSTALL_DIR:-} is not a gstack install; nothing was changed.&quot; &gt;&amp;2; exit 1; }
+(cd -- &quot;${LOCAL_GSTACK:?LOCAL_GSTACK is not set: re-run the detection block above and substitute the printed path}&quot; &amp;&amp; [ -f VERSION ] &amp;&amp; [ -f setup ] &amp;&amp; [ -f bin/gstack-config ]) || { echo &quot;ERROR: LOCAL_GSTACK=${LOCAL_GSTACK:-} is not a gstack copy; nothing was changed.&quot; &gt;&amp;2; exit 1; }
+[ -e &quot;$LOCAL_GSTACK.bak&quot; ] &amp;&amp; { echo &quot;ERROR: stale vendored backup; inspect it before retrying.&quot; &gt;&amp;2; exit 1; }
+mv &quot;$LOCAL_GSTACK&quot; &quot;$LOCAL_GSTACK.bak&quot; || exit 1
+if cp -Rf &quot;$INSTALL_DIR&quot; &quot;$LOCAL_GSTACK&quot; &amp;&amp; rm -rf &quot;$LOCAL_GSTACK/.git&quot; &amp;&amp; (cd &quot;$LOCAL_GSTACK&quot; &amp;&amp; ./setup --refresh-registered); then
+  rm -rf &quot;$LOCAL_GSTACK.bak&quot;
+  echo &quot;LOCAL_SYNC_OK&quot;
+else
+  rm -rf &quot;$LOCAL_GSTACK&quot;
+  mv &quot;$LOCAL_GSTACK.bak&quot; &quot;$LOCAL_GSTACK&quot; || { echo &quot;ERROR: restore failed; backup retained.&quot; &gt;&amp;2; exit 1; }
+  echo &quot;ERROR: sync failed; previous vendored copy restored.&quot; &gt;&amp;2
+  exit 1
+fi
+</code></pre>
+<p>只在出现 <code>LOCAL_SYNC_OK</code> 时告诉用户：“也更新了 <code>$LOCAL_GSTACK</code> 处的 vendored 副本——准备好后提交 <code>.claude/skills/gstack/</code>。”否则停下并报告恢复结果；不要继续跑迁移，也不要宣布成功。</p>
+<h3 id="步骤-475运行版本迁移">步骤 4.75：运行版本迁移</h3>
+<p><code>./setup</code> 完成后，运行旧版本到新版本之间各版本的迁移脚本。迁移处理 <code>./setup</code> 单独覆盖不到的状态修复（过期配置、孤立文件、目录结构变化）。</p>
+<pre><code class="language-bash">MIGRATIONS_DIR=&quot;${INSTALL_DIR:?INSTALL_DIR is not set: re-run Step 2 and substitute the printed path}/gstack-upgrade/migrations&quot;
+: &quot;${OLD_VERSION:?OLD_VERSION is not set: substitute the value Step 3 printed}&quot;
+if [ -d &quot;$MIGRATIONS_DIR&quot; ]; then
+  for migration in $(find &quot;$MIGRATIONS_DIR&quot; -maxdepth 1 -name &#39;v*.sh&#39; -type f 2&gt;/dev/null | sort -V); do
+    # 从文件名提取版本：v0.15.2.0.sh → 0.15.2.0
+    m_ver=&quot;$(basename &quot;$migration&quot; .sh | sed &#39;s/^v//&#39;)&quot;
+    # 当迁移版本比旧版本更新时运行
+    # （对段数相同的点分版本，简单字符串比较即可）
+    if [ &quot;$OLD_VERSION&quot; != &quot;unknown&quot; ] &amp;&amp; [ &quot;$(printf &#39;%s\n%s&#39; &quot;$OLD_VERSION&quot; &quot;$m_ver&quot; | sort -V | head -1)&quot; = &quot;$OLD_VERSION&quot; ] &amp;&amp; [ &quot;$OLD_VERSION&quot; != &quot;$m_ver&quot; ]; then
+      echo &quot;Running migration $m_ver...&quot;
+      # GSTACK_INSTALL_DIR：会清理安装目录（不只是 ~/.gstack 状态）的迁移
+      # 在未设置时默认用 ~/.claude/skills/gstack——没有它，
+      # 仓库内安装会静默地什么都不做。
+      GSTACK_INSTALL_DIR=&quot;$INSTALL_DIR&quot; bash &quot;$migration&quot; || echo &quot;  Warning: migration $m_ver had errors (non-fatal)&quot;
+    fi
+  done
+fi
+</code></pre>
+<p>迁移是 <code>gstack-upgrade/migrations/</code> 里幂等的 bash 脚本。每个命名为 <code>v{VERSION}.sh</code>，只在从更旧版本升级时运行。新增迁移的方法见 CONTRIBUTING.md。</p>
+<h3 id="步骤-48停掉任何陈旧的-daemon无条件">步骤 4.8：停掉任何陈旧的 daemon（无条件）</h3>
+<p>升级前启动的 browse daemon 会一直用旧二进制的代码提供服务，直到被停掉——它能挺过 <code>git reset --hard</code> 和 <code>./setup</code>，因为运行中的进程握着旧的可执行文件。始终运行这一步，使用步骤 2 检测到的安装目录。</p>
+<pre><code class="language-bash">INSTALL_DIR_PLACEHOLDER=&quot;&lt;install dir from Step 2&gt;&quot;
+NEW_HASH=$(cat &quot;$INSTALL_DIR_PLACEHOLDER/browse/dist/.version&quot; 2&gt;/dev/null || echo &quot;&quot;)
+_STATE_FILE=&quot;${BROWSE_STATE_FILE:-$(git rev-parse --show-toplevel 2&gt;/dev/null || pwd)/.gstack/browse.json}&quot;
+if [ -z &quot;$NEW_HASH&quot; ] || [ ! -f &quot;$_STATE_FILE&quot; ]; then
+  echo &quot;DAEMON_CHECK=none (no state file or no fresh build hash)&quot;
+else
+  DAEMON_PID=$(sed -n &#39;s/.*&quot;pid&quot;[[:space:]]*:[[:space:]]*\([0-9][0-9]*\).*/\1/p&#39; &quot;$_STATE_FILE&quot; | head -1)
+  DAEMON_PORT=$(sed -n &#39;s/.*&quot;port&quot;[[:space:]]*:[[:space:]]*\([0-9][0-9]*\).*/\1/p&#39; &quot;$_STATE_FILE&quot; | head -1)
+  OLD_HASH=$(sed -n &#39;s/.*&quot;binaryVersion&quot;[[:space:]]*:[[:space:]]*&quot;\([^&quot;]*\)&quot;.*/\1/p&#39; &quot;$_STATE_FILE&quot; | head -1)
+  if [ -z &quot;$DAEMON_PID&quot; ] || ! kill -0 &quot;$DAEMON_PID&quot; 2&gt;/dev/null; then
+    echo &quot;DAEMON_CHECK=dead (no live daemon to stop)&quot;
+  elif [ &quot;$OLD_HASH&quot; = &quot;$NEW_HASH&quot; ]; then
+    echo &quot;DAEMON_CHECK=current (daemon already runs the new binary)&quot;
+  elif curl -fsS --max-time 2 &quot;http://127.0.0.1:$DAEMON_PORT/health&quot; 2&gt;/dev/null | grep -q &#39;&quot;status&quot;:&quot;healthy&quot;&#39;; then
+    echo &quot;DAEMON_CHECK=stale-responsive pid=$DAEMON_PID hash=${OLD_HASH:-unknown} -&gt; $NEW_HASH&quot;
+    &quot;$INSTALL_DIR_PLACEHOLDER/browse/dist/browse&quot; stop &amp;&amp; echo &quot;DAEMON_STOPPED=yes&quot;
+  else
+    echo &quot;DAEMON_CHECK=stale-busy pid=$DAEMON_PID hash=${OLD_HASH:-unknown} -&gt; $NEW_HASH&quot;
+  fi
+fi
+</code></pre>
+<p>运行前把 <code>&lt;install dir from Step 2&gt;</code> 换成实际的安装目录。按下面的方式解读 <code>DAEMON_CHECK</code> 结果：</p>
+<ol>
+<li><strong><code>stale-responsive</code> + <code>DAEMON_STOPPED=yes</code>：</strong> 告诉用户“已停掉旧的 browse daemon（二进制 {OLD_HASH} → {NEW_HASH}）。下一次 browse 命令会用新二进制启动一个全新的 daemon。”</li>
+<li><strong><code>stale-busy</code>：</strong> daemon 跑的是旧二进制，但正在干活——让着它，升级期间绝不杀掉忙碌的 daemon。告诉用户：“有个 browse daemon 仍在跑升级前的二进制（{OLD_HASH} → {NEW_HASH}），但此刻正忙。等它结束后用 <code>browse stop</code> 停掉它——或者立刻用 <code>browse --force-restart stop</code> 强制停掉（会丢失那个会话的标签页/cookie/登录状态）。”</li>
+<li><strong><code>none</code> / <code>dead</code> / <code>current</code>：</strong> 无需处理——什么都别说。</li>
+</ol>
+<h3 id="步骤-5写入标记--清理缓存">步骤 5：写入标记 + 清理缓存</h3>
+<pre><code class="language-bash">GSTACK_STATE_ROOT=$(~/.claude/skills/gstack/bin/gstack-paths --get GSTACK_STATE_ROOT); : &quot;${GSTACK_STATE_ROOT:?gstack-paths failed; reinstall with ./setup or /gstack-upgrade}&quot;
+mkdir -p &quot;$GSTACK_STATE_ROOT&quot;
+echo &quot;$OLD_VERSION&quot; &gt; &quot;$GSTACK_STATE_ROOT&quot;/just-upgraded-from
+rm -f &quot;$GSTACK_STATE_ROOT&quot;/last-update-check
+rm -f &quot;$GSTACK_STATE_ROOT&quot;/update-snoozed
+</code></pre>
+<h3 id="步骤-6展示新变化">步骤 6：展示新变化</h3>
+<p>读取 <code>$INSTALL_DIR/CHANGELOG.md</code>。找出旧版本到新版本之间的所有版本条目。按主题分组，总结成 5-7 条要点。不要堆砌——聚焦用户能感知的变化。内部重构除非很重要，否则跳过。</p>
+<p>四个字段的情况：把 <code>git -C &quot;$INSTALL_DIR&quot; log --oneline &lt;PRE_UPGRADE_COMMIT&gt;..HEAD</code> 总结成（≤7 条要点）&quot;gstack v{old}, main at {sha}&quot;。</p>
+<p>格式：</p>
+<pre><code>gstack v{new} — upgraded from v{old}!
+
+What&#39;s new:
+- [bullet 1]
+- [bullet 2]
+- ...
+
+Happy shipping!
+</code></pre>
+<h3 id="步骤-7继续">步骤 7：继续</h3>
+<p>展示完新变化之后，继续执行用户原本调用的那个技能。升级已完成——不需要再做别的。</p>
+<hr>
+<h2 id="独立使用">独立使用</h2>
+<p>当直接以 <code>/gstack-upgrade</code> 调用时（不是从前言触发）：</p>
+<ol>
+<li>强制做一次新的更新检查（绕过缓存）：</li>
+</ol>
+<pre><code class="language-bash">~/.claude/skills/gstack/bin/gstack-update-check --force 2&gt;/dev/null || \
+.claude/skills/gstack/bin/gstack-update-check --force 2&gt;/dev/null || true
+</code></pre>
+<p>用输出判断是否有可用升级。</p>
+<ol start="2">
+<li><p>如果是 <code>UPGRADE_AVAILABLE</code>（三个或四个字段）：执行上面的步骤 2-6。</p>
+<p>如果是 <code>CHECK_FAILED ...</code>：读不到远端版本，因此更新状态未知。展示那一行（它会指出失败的 URL），并告诉用户检查失败了；绝不要报告“已经在最新版本”。停下。</p>
+</li>
+<li><p>如果没有输出（主安装已是最新）：检查是否存在陈旧的本地 vendored 副本。</p>
+</li>
+</ol>
+<p>运行上面的步骤 2 bash 块，检测主安装的类型和目录（<code>INSTALL_TYPE</code> 和 <code>INSTALL_DIR</code>）。然后运行上面的步骤 4.5 检测 bash 块，检查本地 vendored 副本（<code>LOCAL_GSTACK</code>）和团队模式状态（<code>TEAM_MODE</code>）。</p>
+<p><strong>如果 <code>LOCAL_GSTACK</code> 为空</strong>（没有本地 vendored 副本）：告诉用户“你已经在最新版本（v{version}）。”</p>
+<p><strong>如果 <code>LOCAL_GSTACK</code> 非空且 <code>TEAM_MODE</code> 是 <code>true</code>：</strong> 用上面步骤 4.5 的团队模式移除 bash 块移除 vendored 副本。告诉用户：“全局 v{version} 已是最新。已移除陈旧的 vendored 副本（团队模式已启用）。准备好后提交 <code>.gitignore</code> 的改动。”</p>
+<p><strong>如果 <code>LOCAL_GSTACK</code> 非空且 <code>TEAM_MODE</code> 不是 <code>true</code></strong>，比较版本：</p>
+<pre><code class="language-bash">PRIMARY_VER=$(cat &quot;${INSTALL_DIR:?INSTALL_DIR is not set: re-run Step 2 and substitute the printed path}/VERSION&quot; 2&gt;/dev/null || echo &quot;unknown&quot;)
+LOCAL_VER=$(cat &quot;${LOCAL_GSTACK:?LOCAL_GSTACK is not set: re-run the Step 4.5 detection block}/VERSION&quot; 2&gt;/dev/null || echo &quot;unknown&quot;)
+echo &quot;PRIMARY=$PRIMARY_VER LOCAL=$LOCAL_VER&quot;
+</code></pre>
+</article>
+    
+    <nav class="pager" aria-label="上一篇和下一篇">
+  <a class="prev" href="./gstack.html">← gstack</a>
+  <a class="next" href="./guard.html">guard →</a>
+</nav>
+  </main>
+</body>
+</html>

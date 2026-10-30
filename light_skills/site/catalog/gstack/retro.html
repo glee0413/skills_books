@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>retro · Skills Book</title>
+  <link rel="stylesheet" href="../../assets/book.css">
+</head>
+<body class="with-sidebar">
+  <aside class="sidebar"><div class="brand"><a href="../../index.html">Skills Book</a></div><section><h2>第一部 两种范式</h2><ul><li><a href="../../book/01-two-paradigms/01-same-and-different.html">gstack 与 mattpocock_skills：相同与差异</a></li></ul></section><section><h2>第二部 想清楚</h2><ul><li><a href="../../book/02-think/05-product-questioning.html">产品追问：office-hours 与 grilling</a></li></ul></section><section><h2>gstack</h2><ul><li><a href="./autoplan.html">autoplan</a></li><li><a href="./benchmark.html">benchmark</a></li><li><a href="./benchmark-models.html">benchmark-models</a></li><li><a href="./browse.html">browse</a></li><li><a href="./canary.html">canary</a></li><li><a href="./capy/gstack.html">capy/gstack</a></li><li><a href="./careful.html">careful</a></li><li><a href="./codex.html">codex</a></li><li><a href="./context-restore.html">context-restore</a></li><li><a href="./context-save.html">context-save</a></li><li><a href="./cso.html">cso</a></li><li><a href="./design-consultation.html">design-consultation</a></li><li><a href="./design-html.html">design-html</a></li><li><a href="./design-review.html">design-review</a></li><li><a href="./design-shotgun.html">design-shotgun</a></li><li><a href="./deslop-shared-libs.html">deslop-shared-libs</a></li><li><a href="./devex-review.html">devex-review</a></li><li><a href="./diagram.html">diagram</a></li><li><a href="./document-generate.html">document-generate</a></li><li><a href="./document-release.html">document-release</a></li><li><a href="./eval-plan.html">eval-plan</a></li><li><a href="./freeze.html">freeze</a></li><li><a href="./gstack.html">gstack</a></li><li><a href="./gstack-upgrade.html">gstack-upgrade</a></li><li><a href="./guard.html">guard</a></li><li><a href="./hackernews-frontpage.html">hackernews-frontpage</a></li><li><a href="./health.html">health</a></li><li><a href="./investigate.html">investigate</a></li><li><a href="./ios-clean.html">ios-clean</a></li><li><a href="./ios-design-review.html">ios-design-review</a></li><li><a href="./ios-fix.html">ios-fix</a></li><li><a href="./ios-qa.html">ios-qa</a></li><li><a href="./ios-sync.html">ios-sync</a></li><li><a href="./land-and-deploy.html">land-and-deploy</a></li><li><a href="./landing-report.html">landing-report</a></li><li><a href="./learn.html">learn</a></li><li><a href="./make-pdf.html">make-pdf</a></li><li><a href="./office-hours.html">office-hours</a></li><li><a href="./open-gstack-browser.html">open-gstack-browser</a></li><li><a href="./openclaw/ceo-review.html">openclaw/ceo-review</a></li><li><a href="./openclaw/investigate.html">openclaw/investigate</a></li><li><a href="./openclaw/office-hours.html">openclaw/office-hours</a></li><li><a href="./openclaw/retro.html">openclaw/retro</a></li><li><a href="./pair-agent.html">pair-agent</a></li><li><a href="./plan-ceo-review.html">plan-ceo-review</a></li><li><a href="./plan-design-review.html">plan-design-review</a></li><li><a href="./plan-devex-review.html">plan-devex-review</a></li><li><a href="./plan-eng-review.html">plan-eng-review</a></li><li><a href="./plan-tune.html">plan-tune</a></li><li><a href="./qa.html">qa</a></li><li><a href="./qa-only.html">qa-only</a></li><li><a href="./retro.html">retro</a></li><li><a href="./review.html">review</a></li><li><a href="./scrape.html">scrape</a></li><li><a href="./setup-browser-cookies.html">setup-browser-cookies</a></li><li><a href="./setup-deploy.html">setup-deploy</a></li><li><a href="./setup-gbrain.html">setup-gbrain</a></li><li><a href="./ship.html">ship</a></li><li><a href="./skillify.html">skillify</a></li><li><a href="./spec.html">spec</a></li><li><a href="./sync-gbrain.html">sync-gbrain</a></li><li><a href="./test-audit.html">test-audit</a></li><li><a href="./unfreeze.html">unfreeze</a></li></ul></section><section><h2>mattpocock</h2><ul><li><a href="../mattpocock/ask-matt/SKILL.html">ask-matt</a></li><li><a href="../mattpocock/chief-of-staff.html">chief-of-staff</a></li><li><a href="../mattpocock/claude-handoff.html">claude-handoff</a></li><li><a href="../mattpocock/code-review.html">code-review</a></li><li><a href="../mattpocock/codebase-design/SKILL.html">codebase-design</a></li><li><a href="../mattpocock/diagnosing-bugs.html">diagnosing-bugs</a></li><li><a href="../mattpocock/domain-modeling/SKILL.html">domain-modeling</a></li><li><a href="../mattpocock/git-guardrails-claude-code.html">git-guardrails-claude-code</a></li><li><a href="../mattpocock/grill-me.html">grill-me</a></li><li><a href="../mattpocock/grill-with-docs.html">grill-with-docs</a></li><li><a href="../mattpocock/grilling.html">grilling</a></li><li><a href="../mattpocock/handoff.html">handoff</a></li><li><a href="../mattpocock/implement.html">implement</a></li><li><a href="../mattpocock/implement-spec.html">implement-spec</a></li><li><a href="../mattpocock/improve-codebase-architecture/SKILL.html">improve-codebase-architecture</a></li><li><a href="../mattpocock/loop-me.html">loop-me</a></li><li><a href="../mattpocock/migrate-to-shoehorn.html">migrate-to-shoehorn</a></li><li><a href="../mattpocock/pr.html">pr</a></li><li><a href="../mattpocock/prototype/SKILL.html">prototype</a></li><li><a href="../mattpocock/research.html">research</a></li><li><a href="../mattpocock/retro.html">retro</a></li><li><a href="../mattpocock/scaffold-exercises.html">scaffold-exercises</a></li><li><a href="../mattpocock/setup-matt-pocock-skills/SKILL.html">setup-matt-pocock-skills</a></li><li><a href="../mattpocock/setup-pre-commit.html">setup-pre-commit</a></li><li><a href="../mattpocock/setup-ts-deep-modules.html">setup-ts-deep-modules</a></li><li><a href="../mattpocock/tdd/SKILL.html">tdd</a></li><li><a href="../mattpocock/teach/SKILL.html">teach</a></li><li><a href="../mattpocock/to-questionnaire.html">to-questionnaire</a></li><li><a href="../mattpocock/to-spec.html">to-spec</a></li><li><a href="../mattpocock/to-tickets.html">to-tickets</a></li><li><a href="../mattpocock/triage/SKILL.html">triage</a></li><li><a href="../mattpocock/wait-what.html">wait-what</a></li><li><a href="../mattpocock/wayfinder.html">wayfinder</a></li><li><a href="../mattpocock/wizard.html">wizard</a></li><li><a href="../mattpocock/writing-beats.html">writing-beats</a></li><li><a href="../mattpocock/writing-for-agents/SKILL.html">writing-for-agents</a></li><li><a href="../mattpocock/writing-fragments.html">writing-fragments</a></li><li><a href="../mattpocock/writing-shape.html">writing-shape</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">技能全库</a></p></aside>
+  <main class="content">
+    <section class="source-box">
+  <strong>来源</strong>：gstack · <code>retro/SKILL.md</code> · v1.91.226.0 · commit <code>8d95013</code><br>
+  <strong>许可证</strong>：MIT · <a href="https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/retro/SKILL.md">查看原仓库</a> · <a href="../../source-snapshots/gstack/retro/SKILL.md">查看英文快照</a> · 快照：<code>source-snapshots/gstack/retro/SKILL.md</code><br>
+  <strong>翻译</strong>：2026-10-30 · 译者注以 <code>&gt; 译者注：</code> 标出
+</section>
+    <section class="skill-overview">
+  <strong>retro</strong>
+  <span>gstack</span>
+  <span>用户调用</span>
+  <p>对当前用户和每位贡献者的提交历史、工作模式与代码质量做周期复盘，输出有证据支撑的赞扬、成长建议和可累积的历史快照。</p>
+</section>
+    <nav class="page-toc" aria-label="页内目录"><strong>本页目录</strong><ul><li class="toc-depth-1"><a href="#retro--每周工程复盘">/retro — 每周工程复盘</a></li><li class="toc-depth-2"><a href="#用户调用">用户调用</a></li><li class="toc-depth-2"><a href="#参数">参数</a></li><li class="toc-depth-2"><a href="#章节索引--遇到对应情形时再读相应章节">章节索引 — 遇到对应情形时再读相应章节</a></li><li class="toc-depth-2"><a href="#执行说明">执行说明</a></li><li class="toc-depth-2"><a href="#既往经验">既往经验</a></li><li class="toc-depth-3"><a href="#step-05新鲜度预检fetch">Step 0.5：新鲜度预检（fetch）</a></li><li class="toc-depth-3"><a href="#step-1采集指标一条命令">Step 1：采集指标（一条命令）</a></li><li class="toc-depth-3"><a href="#step-2计算指标">Step 2：计算指标</a></li><li class="toc-depth-3"><a href="#step-3提交时间分布">Step 3：提交时间分布</a></li><li class="toc-depth-3"><a href="#step-4工作会话识别">Step 4：工作会话识别</a></li><li class="toc-depth-3"><a href="#step-5提交类型构成">Step 5：提交类型构成</a></li><li class="toc-depth-3"><a href="#step-6热点分析">Step 6：热点分析</a></li><li class="toc-depth-3"><a href="#step-7pr-规模分布">Step 7：PR 规模分布</a></li><li class="toc-depth-3"><a href="#step-8专注度评分--本周之船">Step 8：专注度评分 + 本周之船</a></li><li class="toc-depth-3"><a href="#step-9团队成员分析">Step 9：团队成员分析</a></li><li class="toc-depth-3"><a href="#step-10周环比趋势窗口-gt-14d-时">Step 10：周环比趋势（窗口 &amp;gt;= 14d 时）</a></li><li class="toc-depth-3"><a href="#step-11连续天数追踪">Step 11：连续天数追踪</a></li><li class="toc-depth-3"><a href="#step-115捷径欠账账本">Step 11.5：捷径欠账账本</a></li><li class="toc-depth-3"><a href="#step-12加载历史并对比">Step 12：加载历史并对比</a></li><li class="toc-depth-3"><a href="#step-13保存复盘历史">Step 13：保存复盘历史</a></li><li class="toc-depth-3"><a href="#step-14撰写叙述">Step 14：撰写叙述</a></li><li class="toc-depth-2"><a href="#捕获经验">捕获经验</a></li><li class="toc-depth-2"><a href="#全局复盘模式global-retrospective-mode">全局复盘模式（Global Retrospective Mode）</a></li><li class="toc-depth-3"><a href="#global-step-1计算时间窗">Global Step 1：计算时间窗</a></li><li class="toc-depth-3"><a href="#global-step-2运行发现脚本">Global Step 2：运行发现脚本</a></li><li class="toc-depth-3"><a href="#global-step-3对每个发现的仓库运行-git-log">Global Step 3：对每个发现的仓库运行 git log</a></li><li class="toc-depth-3"><a href="#global-step-4计算全局交付连续天数">Global Step 4：计算全局交付连续天数</a></li><li class="toc-depth-3"><a href="#global-step-5计算上下文切换指标">Global Step 5：计算上下文切换指标</a></li><li class="toc-depth-3"><a href="#global-step-6各工具的生产力模式">Global Step 6：各工具的生产力模式</a></li><li class="toc-depth-3"><a href="#global-step-7聚合并起草叙述">Global Step 7：聚合并起草叙述</a></li><li class="toc-depth-2"><a href="#-你的一周user-name--date-range">🚀 你的一周：[user name] — [date range]</a></li><li class="toc-depth-2"><a href="#全局工程复盘date-range">全局工程复盘：[date range]</a></li><li class="toc-depth-3"><a href="#全部项目概览">全部项目概览</a></li><li class="toc-depth-3"><a href="#逐项目拆解">逐项目拆解</a></li><li class="toc-depth-3"><a href="#跨项目模式">跨项目模式</a></li><li class="toc-depth-3"><a href="#工具使用分析">工具使用分析</a></li><li class="toc-depth-3"><a href="#本周之船全局">本周之船（全局）</a></li><li class="toc-depth-3"><a href="#3-条跨项目洞见">3 条跨项目洞见</a></li><li class="toc-depth-3"><a href="#下周的-3-个习惯">下周的 3 个习惯</a></li><li class="toc-depth-3"><a href="#global-step-8加载历史并对比">Global Step 8：加载历史并对比</a></li><li class="toc-depth-3"><a href="#global-step-9保存快照">Global Step 9：保存快照</a></li><li class="toc-depth-2"><a href="#对比模式compare-mode">对比模式（Compare Mode）</a></li><li class="toc-depth-2"><a href="#语气">语气</a></li><li class="toc-depth-2"><a href="#重要规则">重要规则</a></li></ul></nav>
+    <article class="markdown-body"><h1 id="retro--每周工程复盘">/retro — 每周工程复盘</h1>
+<p>分析当前用户和每位贡献者的提交历史、工作模式与代码质量，给出有证据支撑的赞扬和成长机会。</p>
+<h2 id="用户调用">用户调用</h2>
+<p>当用户输入 <code>/retro</code> 时，运行本技能。</p>
+<h2 id="参数">参数</h2>
+<ul>
+<li><code>/retro</code> — 默认：最近 7 天</li>
+<li><code>/retro 24h</code> — 最近 24 小时</li>
+<li><code>/retro 14d</code> — 最近 14 天</li>
+<li><code>/retro 30d</code> — 最近 30 天</li>
+<li><code>/retro compare</code> — 当前窗口对比上一个等长窗口</li>
+<li><code>/retro compare 14d</code> — 用显式窗口对比</li>
+<li><code>/retro global</code> — 跨所有 AI 编码工具的跨项目复盘（默认 7d）</li>
+<li><code>/retro global 14d</code> — 用显式窗口做跨项目复盘</li>
+</ul>
+<h2 id="章节索引--遇到对应情形时再读相应章节">章节索引 — 遇到对应情形时再读相应章节</h2>
+<p>本技能是一副决策树骨架。下面的步骤指向按需加载的章节。做某一步之前要把该章节完整读完，不要凭记忆执行。</p>
+<table>
+<thead>
+<tr>
+<th>何时</th>
+<th>读哪一节</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>撰写复盘叙述（Step 14，在所有指标算完并对比之后）</td>
+<td><code>sections/report-format.md</code></td>
+</tr>
+</tbody></table>
+<h2 id="执行说明">执行说明</h2>
+<p>解析参数以确定时间窗。没有参数时默认 7 天。所有时间都按用户的<strong>本地时区</strong>报告（用系统默认值——不要设置 <code>TZ</code>）。</p>
+<p><strong>对齐午夜的时间窗：</strong> 对天（<code>d</code>）和周（<code>w</code>）单位，要算出本地午夜对应的绝对起始日期，而不是相对字符串。例如今天是 2026-03-18、窗口为 7 天：起始日期是 2026-03-11。使用 <code>--since &quot;2026-03-11T00:00:00&quot;</code>——显式的 <code>T00:00:00</code> 后缀确保 git 从午夜起算。没有它，git 会用当前挂钟时间（例如晚上 11 点执行 <code>--since &quot;2026-03-11&quot;</code> 指的是 11 点，而不是午夜）。周单位乘以 7 换算成天（例如 <code>2w</code> = 向前 14 天）。小时（<code>h</code>）单位用 <code>--since &quot;N hours ago&quot;</code>，因为不足一天的时间窗不适用午夜对齐。从会话提醒中用户可见的 <code>## currentDate</code> 标签计算“今天”——绝不从 <code>date</code> 取（在容器化的运行框架里，系统时钟可能差好几个小时）。如果无法可靠算出“今天”，停下来用 AskUserQuestion 问用户，不要硬着头皮继续。</p>
+<p><strong>参数校验：</strong> 如果参数不匹配“数字加 <code>d</code>、<code>h</code> 或 <code>w</code>”、单词 <code>compare</code>（可选跟一个窗口）、或单词 <code>global</code>（可选跟一个窗口），显示下面的用法并停止：</p>
+<pre><code>用法：/retro [window | compare | global]
+  /retro              — 最近 7 天（默认）
+  /retro 24h          — 最近 24 小时
+  /retro 14d          — 最近 14 天
+  /retro 30d          — 最近 30 天
+  /retro compare      — 本周期对比上一周期
+  /retro compare 14d  — 用显式窗口对比
+  /retro global       — 跨所有 AI 工具的跨项目复盘（默认 7d）
+  /retro global 14d   — 用显式窗口做跨项目复盘
+</code></pre>
+<p><strong>路由：</strong> <code>global</code> 跳过所有仓库范围的步骤，包括 Prior Learnings、Step 0.5 和报告后的捕获；按 <strong>全局复盘模式（Global Retrospective Mode）</strong> 执行（不需要 git 仓库）。<code>compare</code> 按 <strong>对比模式（Compare Mode）</strong> 执行。两者都接受可选的窗口（默认 7d）。否则执行下面的仓库范围流程。</p>
+<p><code>&lt;default&gt;</code> 是前面 <strong>Step 0: Detect platform and base branch</strong> 得出的基线分支。<code>&lt;today&gt;</code> 是会话提醒中的日期；在所有快照文件名里复用它，绝不要再去读时钟。</p>
+<blockquote>
+<p>译者注：<code>Step 0: Detect platform and base branch</code> 位于本技能文件正文之前的通用运行时前言里，按本书的翻译范围未收录；它的作用是根据远程 URL 和 CLI 可用性识别托管平台，并确定 <code>&lt;default&gt;</code> 基线分支名。</p>
+</blockquote>
+<h2 id="既往经验">既往经验</h2>
+<p>检索以往会话中的相关经验：</p>
+<pre><code class="language-bash">_CROSS_PROJ=$(~/.claude/skills/gstack/bin/gstack-config get cross_project_learnings 2&gt;/dev/null || echo &quot;unset&quot;)
+echo &quot;CROSS_PROJECT: $_CROSS_PROJ&quot;
+if [ &quot;$_CROSS_PROJ&quot; = &quot;true&quot; ]; then
+  { _LE=$(~/.claude/skills/gstack/bin/gstack-learnings-search --limit 10 --cross-project 2&gt;&amp;1 &gt;&amp;3 3&gt;&amp;-); _LR=$?; } 3&gt;&amp;1
+else
+  { _LE=$(~/.claude/skills/gstack/bin/gstack-learnings-search --limit 10 2&gt;&amp;1 &gt;&amp;3 3&gt;&amp;-); _LR=$?; } 3&gt;&amp;1
+fi
+[ &quot;$_LR&quot; = 0 ] || { _LE=${_LE%%$&#39;\n&#39;*}; echo &quot;LEARNINGS: unavailable (${_LE:-exit $_LR})&quot;; }
+</code></pre>
+<p>如果 <code>CROSS_PROJECT</code> 是 <code>unset</code>（首次运行）：使用 AskUserQuestion：</p>
+<blockquote>
+<p>gstack 可以检索这台机器上你其他项目的经验，找出可能适用于当前项目的模式。
+数据完全留在本地（不会有任何数据离开你的机器）。
+对独立开发者推荐开启。如果你同时在多个客户代码库上工作、担心交叉污染，可以跳过。</p>
+</blockquote>
+<p>选项：</p>
+<ul>
+<li>A) 启用跨项目经验（推荐）</li>
+<li>B) 经验只限当前项目</li>
+</ul>
+<p>选 A：运行 <code>~/.claude/skills/gstack/bin/gstack-config set cross_project_learnings true</code>
+选 B：运行 <code>~/.claude/skills/gstack/bin/gstack-config set cross_project_learnings false</code></p>
+<p>然后用相应的标志重新执行检索。</p>
+<p>如果检索到经验，把它们纳入分析。当某条审查发现与过去的经验吻合时，显示：</p>
+<p><strong>“Prior learning applied: [key] (confidence N/10, from [date])”</strong></p>
+<p>这让复利效应可见。用户应该看到 gstack 在他们的代码库上随着时间变得更聪明。</p>
+<h3 id="step-05新鲜度预检fetch">Step 0.5：新鲜度预检（fetch）</h3>
+<p>刷新 <code>origin/&lt;default&gt;</code>，免得复盘对着过期的本地引用误报。如果仓库没有 <code>origin</code> 远程，这一步会无害地失败——指标脚本（Step 1）会退回本地分支，并由它的守卫行披露这一点：</p>
+<pre><code class="language-bash">git fetch origin &lt;default&gt; --quiet 2&gt;/dev/null \
+  || echo &quot;RETRO_FETCH: failed (offline or no remote) — proceeding against last-known refs&quot;
+</code></pre>
+<p>记住 fetch 是否成功——Step 1 的过期基线守卫只在成功时才 BLOCK。</p>
+<h3 id="step-1采集指标一条命令">Step 1：采集指标（一条命令）</h3>
+<p>用检测出的基线分支和算好的起点运行 <code>gstack-retro-metrics</code>：</p>
+<pre><code class="language-bash">_RM=&quot;$HOME/.claude/skills/gstack/bin/gstack-retro-metrics&quot;
+[ -x &quot;$_RM&quot; ] || _RM=&quot;.claude/skills/gstack/bin/gstack-retro-metrics&quot;
+&quot;$_RM&quot; --base &quot;&lt;default&gt;&quot; --since &quot;&lt;since&gt;&quot; \
+  || echo &quot;RETRO_METRICS: unavailable — stale install (read the helper source for manual computation)&quot;
+</code></pre>
+<p>读取 <code>METRIC_NAME: value</code> 行。<strong>降级模式：</strong> 没有 <code>RETRO_METRICS_PROTO: 1</code> 时，按已安装的 <code>bin/gstack-retro-metrics</code> 源码复现计算过程，而不是照下面的展示步骤。如果源码或指标不可用，就直说；绝不编造数值。建议用 <code>/gstack-upgrade</code> 恢复辅助脚本。</p>
+<p><strong>身份：</strong> <code>USER_NAME</code> 就是**“你”**——读这份复盘的人。其他作者都是队友。叙述围绕这一点组织：“你的”提交 vs 队友的贡献。</p>
+<p><strong>过期基线 + 错误“今天”锚点守卫。</strong> <code>GUARD_LATEST_COMMIT: &lt;DATE&gt;</code> 是所分析引用上最新的提交。错误的“今天”或过期的引用可能产出一个空窗口。按顺序判断：</p>
+<ol>
+<li>如果 <code>GUARD_REMOTE: none</code> 或 <code>GUARD_HEAD: detached</code>，或 Step 0.5 的 fetch 失败：继续，但把披露带进叙述（“离线运行，窗口未经新鲜度验证”），而不是悄悄误报。</li>
+<li>如果 Step 0.5 的 fetch 成功 <strong>且</strong> <code>GUARD_LATEST_COMMIT</code> 的日期<strong>早于（今天 − 窗口天数）</strong>：以这句话 BLOCK：“Retro window is stale. Latest commit on <code>origin/&lt;default&gt;</code> was <code>&lt;DATE&gt;</code>, but the window covers <code>&lt;since&gt;</code> to <code>&lt;today&gt;</code>. This usually means either (a) today&#39;s date is wrong in this session or (b) <code>origin/&lt;default&gt;</code> is materially behind the remote. Confirm today&#39;s date via the session reminder; if today is correct, run <code>git fetch origin &lt;default&gt;</code> manually and re-run /retro.” 在用户解决之前停止技能。</li>
+<li>否则写：“RETRO_GUARD: latest commit <code>&lt;DATE&gt;</code> within window — proceeding.”</li>
+</ol>
+<p>同时检查 <code>RETRO_REF</code>：如果它不是 <code>origin/&lt;default&gt;</code>（纯本地仓库、远程分支缺失），披露复盘实际分析的是哪个引用。</p>
+<p><strong>指标行参考</strong>（脚本会输出的内容）：</p>
+<table>
+<thead>
+<tr>
+<th>行</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>COMMIT: hash|author|datetime|+ins/-del|subject</code></td>
+<td>每个提交一行，最新的在前（上限 300）——叙述锚定的原材料</td>
+</tr>
+<tr>
+<td><code>COMMITS</code> / <code>MERGE_COMMITS</code> / <code>CONTRIBUTORS</code></td>
+<td>所分析引用上的窗口总计</td>
+</tr>
+<tr>
+<td><code>INSERTIONS</code> / <code>DELETIONS</code> / <code>NET_LOC</code></td>
+<td>原始行数</td>
+</tr>
+<tr>
+<td><code>LOGICAL_SLOC_ADDED</code></td>
+<td>非空、非注释的新增行——主要的代码量指标</td>
+</tr>
+<tr>
+<td><code>TEST_INSERTIONS</code> / <code>TEST_RATIO</code></td>
+<td>测试行数（test/spec 路径加 .test./.spec. 后缀）及其在新增中的占比</td>
+</tr>
+<tr>
+<td><code>WEIGHTED_COMMITS</code></td>
+<td>提交数 × 触及文件数，每个提交上限 20</td>
+</tr>
+<tr>
+<td><code>ACTIVE_DAYS</code></td>
+<td>有提交的不同本地日期数</td>
+</tr>
+<tr>
+<td><code>SESSIONS</code> / <code>DEEP_SESSIONS</code> / <code>MEDIUM_SESSIONS</code> / <code>MICRO_SESSIONS</code></td>
+<td>按 45 分钟间隔识别的会话：deep 50+ 分钟，medium 20-50，micro &lt;20</td>
+</tr>
+<tr>
+<td><code>TOTAL_ACTIVE_MINUTES</code> / <code>AVG_SESSION_MINUTES</code> / <code>LOC_PER_SESSION_HOUR</code></td>
+<td>会话时间聚合（LOC/小时已预取整到 50）</td>
+</tr>
+<tr>
+<td><code>COMMIT_TYPES</code> / <code>FIX_RATIO</code></td>
+<td>约定式提交前缀的构成</td>
+</tr>
+<tr>
+<td><code>COMMIT_SIZE_BUCKETS</code></td>
+<td>每个提交 small &lt;100 / medium 100-500 / large 500-1500 / xl 1500+ 行</td>
+</tr>
+<tr>
+<td><code>HOURS</code> / <code>PEAK_HOUR</code></td>
+<td>按小时（本地时间）的提交直方图，只列非零小时</td>
+</tr>
+<tr>
+<td><code>FOCUS_SCORE</code></td>
+<td>落在单个最繁忙顶层目录里的文件改动占比</td>
+</tr>
+<tr>
+<td><code>BIGGEST_COMMIT</code></td>
+<td>窗口内行数最多的提交（本周之船的候选）</td>
+</tr>
+<tr>
+<td><code>HOTSPOT: count file</code></td>
+<td>改动最多的 10 个文件</td>
+</tr>
+<tr>
+<td><code>AUTHOR: name|commits|ins|del|test_ratio|top_areas|types|peak_hour</code></td>
+<td>每位贡献者的汇总，按提交数降序</td>
+</tr>
+<tr>
+<td><code>AUTHOR_BIGGEST: name|hash|loc|subject</code></td>
+<td>每位贡献者最大的一次交付</td>
+</tr>
+<tr>
+<td><code>COAUTHOR: hash|name</code> / <code>AI_ASSISTED_COMMITS</code></td>
+<td>人类共同作者署名行；带 AI trailer 的提交数</td>
+</tr>
+<tr>
+<td><code>WEEK: wN|commits|ins|del|test_ratio</code></td>
+<td>按周分桶，w0 = 最新（供 Step 10 趋势使用）</td>
+</tr>
+<tr>
+<td><code>PR_REFS</code> / <code>PRS_REFERENCED</code></td>
+<td>从提交标题中提取的 PR/MR 编号（GitHub #NNN，GitLab !NNN）</td>
+</tr>
+<tr>
+<td><code>TEST_FILES_TOTAL</code> / <code>TEST_FILES_CHANGED</code> / <code>REGRESSION_TEST_COMMITS</code> / <code>REGRESSION_COMMIT</code></td>
+<td>测试健康度：仓库级测试文件数、窗口内改动的测试文件、<code>test(qa):</code> / <code>test(design):</code> / <code>test: coverage</code> 提交</td>
+</tr>
+<tr>
+<td><code>VERSION_RANGE</code></td>
+<td>窗口内 VERSION 文件的第一个 → 最后一个值（受跟踪时）</td>
+</tr>
+<tr>
+<td><code>TEAM_STREAK</code> / <code>USER_STREAK</code></td>
+<td>带锚定日期的连续提交天数（Step 11）</td>
+</tr>
+<tr>
+<td><code>RETRO_CONTEXT</code> / <code>GREPTILE_HISTORY</code> / <code>TODOS_FILE</code> / <code>SKILL_USAGE_LOG</code> / <code>EUREKA_LOG</code></td>
+<td>可选输入是否存在——Read 那些标记为 present 的</td>
+</tr>
+</tbody></table>
+<p><strong>可选输入</strong>（Read 脚本标记为 <code>present</code> 的每个文件）：</p>
+<ul>
+<li><code>RETRO_CONTEXT: present</code> → Read 那一行打印的 <code>retro-context.md</code> 路径。它由用户撰写，可能包含会议记录、日历事件、决策以及其他不出现在 git 历史里的上下文。在相关处把它融入复盘叙述。</li>
+<li><code>GREPTILE_HISTORY: present</code> → Read 那一行打印的 <code>greptile-history.md</code> 路径。按日期把条目过滤到复盘窗口。按类型计数：<code>fix</code>、<code>fp</code>、<code>already-fixed</code>。信号比 = <code>(fix + already-fixed) / (fix + already-fixed + fp)</code>。无法解析的行静默跳过；如果窗口内没有任何条目，跳过 Greptile 指标行。</li>
+<li><code>TODOS_FILE: present</code> → Read <code>TODOS.md</code>。计算：未关闭 TODO 总数（排除 <code>## Completed</code> 一节）、P0/P1 数量、P2 数量、本周期完成的条目（Completed 中日期落在窗口内的条目）、本周期新增的条目（交叉引用触及 TODOS.md 的 <code>COMMIT:</code> 行）。</li>
+<li><code>SKILL_USAGE_LOG: present</code> → Read 它打印的路径（<code>$GSTACK_STATE_ROOT/analytics/skill-usage.jsonl</code>）。按 <code>ts</code> 过滤到窗口。把技能激活（没有 <code>event</code> 字段）与钩子触发（<code>event: &quot;hook_fire&quot;</code>）分开。按技能名聚合。</li>
+<li><code>EUREKA_LOG: present</code> → Read 它打印的路径（<code>$GSTACK_STATE_ROOT/analytics/eureka.jsonl</code>）。按 <code>ts</code> 过滤到窗口。每个 eureka 时刻记下标记它的技能、分支和一行洞见摘要。</li>
+</ul>
+<h3 id="step-2计算指标">Step 2：计算指标</h3>
+<p>大多数行直接来自指标行。在搭表之前，先单独收集两项交付结果：</p>
+<ul>
+<li><strong>已合并的 PR：</strong> 在 GitHub 上运行 <code>gh pr list --state merged --base &quot;&lt;default&gt;&quot; --search &quot;merged:&gt;=&lt;start-date&gt;&quot; --limit 1000 --json number,title,mergedAt</code>。把 <code>mergedAt</code> 过滤到请求的确切窗口，在对比模式下包含其上界。如果结果触到数量上限，就用托管平台 API 分页，或标注该计数为“部分”。在 GitLab 上用等价的已合并 MR 列表。如果托管数据不可用，改为显示<strong>被引用的 PR</strong> = <code>PRS_REFERENCED</code>；这些不是已验证的合并。这种情况下保存 <code>prs_merged: null</code>。</li>
+<li><strong>已交付的功能：</strong> 在同一窗口内 Read <code>RETRO_REF</code> 上的 CHANGELOG 变更（<code>git log &lt;ref&gt; --since &quot;&lt;since&gt;&quot; -p -- CHANGELOG.md</code>，对比上一窗口时再加 <code>--until</code>）。把新增的用户可见能力与已验证的合并 PR 标题合并。指向同一能力的条目去重，排除修复、杂务和回退的工作。在计数旁保留一份简短的功能名清单及其来源提交/PR。两个来源都没有时显示“不可用”，而不是 0。这是有证据支撑的分类，不是指标脚本的一行。</li>
+</ul>
+<p>在提交数的标签里使用所分析的引用（不一定是 <code>main</code>）。测试健康度统计的是<strong>改动的文件</strong>，不是新增的测试或测试用例；分别使用 <code>TEST_FILES_TOTAL</code>、<code>TEST_FILES_CHANGED</code> 和 <code>REGRESSION_TEST_COMMITS</code>。</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>已交付功能</strong>（来自 CHANGELOG + 合并 PR 标题）</td>
+<td>N</td>
+</tr>
+<tr>
+<td>提交到所分析的引用</td>
+<td>N</td>
+</tr>
+<tr>
+<td>加权提交（<code>WEIGHTED_COMMITS</code>）</td>
+<td>N</td>
+</tr>
+<tr>
+<td>贡献者</td>
+<td>N</td>
+</tr>
+<tr>
+<td>已合并 PR</td>
+<td>N</td>
+</tr>
+<tr>
+<td><strong>新增逻辑 SLOC</strong>（<code>LOGICAL_SLOC_ADDED</code>——主要代码量指标）</td>
+<td>N</td>
+</tr>
+<tr>
+<td>原始行数：新增</td>
+<td>N</td>
+</tr>
+<tr>
+<td>原始行数：删除</td>
+<td>N</td>
+</tr>
+<tr>
+<td>原始行数：净增</td>
+<td>N</td>
+</tr>
+<tr>
+<td>测试行数（新增）</td>
+<td>N</td>
+</tr>
+<tr>
+<td>测试行数占比</td>
+<td>N%</td>
+</tr>
+<tr>
+<td>版本区间</td>
+<td>vX.Y.Z.W → vX.Y.Z.W</td>
+</tr>
+<tr>
+<td>活跃天数</td>
+<td>N</td>
+</tr>
+<tr>
+<td>检测到的会话数</td>
+<td>N</td>
+</tr>
+<tr>
+<td>每会话小时的平均原始行数</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Greptile 信号</td>
+<td>N%（Y 次命中，Z 次误报）</td>
+</tr>
+<tr>
+<td>测试健康度</td>
+<td>N 个测试文件 · 本周期改动 M 个 · K 个回归测试提交</td>
+</tr>
+</tbody></table>
+<p>先讲用户可见的功能，再讲提交数和逻辑 SLOC 指标；原始行数只是背景，不是影响力。</p>
+<p>接着在正下方显示<strong>按作者的排行榜</strong>，数据来自 <code>AUTHOR:</code> 行：</p>
+<pre><code>贡献者              提交数   +/-          主要区域
+You (garry)              32   +2400/-300   browse/
+alice                    12   +800/-150    app/services/
+bob                       3   +120/-40     tests/
+</code></pre>
+<p>按提交数降序排序。当前用户（<code>USER_NAME</code>）始终排第一，标注为“You (name)”。</p>
+<p>条件行（输入缺失或窗口内为空时跳过对应项）：</p>
+<pre><code>| 待办健康度 | N 个未关闭（X 个 P0/P1，Y 个 P2）· 本周期完成 Z 个 |
+| 技能使用 | /ship(12) /qa(8) /review(5) · 3 次安全钩子触发 |
+| Eureka 时刻 | 本周期 2 次 |
+</code></pre>
+<p>如果存在 eureka 时刻，列出来：</p>
+<pre><code>  EUREKA /office-hours（分支：garrytan/auth-rethink）：&quot;会话 token 不需要服务端存储——浏览器 crypto API 让客户端 JWT 验证变得可行&quot;
+  EUREKA /plan-eng-review（分支：garrytan/cache-layer）：&quot;这里不需要 Redis——Bun 内置的 LRU 缓存足以应付这个负载&quot;
+</code></pre>
+<h3 id="step-3提交时间分布">Step 3：提交时间分布</h3>
+<p>把 <code>HOURS</code> 行按本地时间渲染成小时直方图：</p>
+<pre><code>小时  提交数  ████████████████
+ 00:    4      ████
+ 07:    5      █████
+ ...
+</code></pre>
+<p>识别并指出：</p>
+<ul>
+<li>高峰时段</li>
+<li>沉寂时段</li>
+<li>模式是双峰（早晚）还是连续</li>
+<li>深夜编码聚集（晚上 10 点之后）</li>
+</ul>
+<h3 id="step-4工作会话识别">Step 4：工作会话识别</h3>
+<p>会话是预先算好的，相邻提交之间以 <strong>45 分钟间隔</strong>为阈值（<code>SESSIONS</code>、<code>DEEP_SESSIONS</code> 50+ 分钟、<code>MEDIUM_SESSIONS</code> 20-50 分钟、<code>MICRO_SESSIONS</code> &lt;20 分钟——通常是一次提交即走的瞬时会话）。报告：</p>
+<ul>
+<li>会话数及 deep/medium/micro 的分布</li>
+<li>总活跃编码时间（<code>TOTAL_ACTIVE_MINUTES</code>）和平均会话长度</li>
+<li>每小时活跃时间的行数（<code>LOC_PER_SESSION_HOUR</code>）</li>
+</ul>
+<h3 id="step-5提交类型构成">Step 5：提交类型构成</h3>
+<p>把 <code>COMMIT_TYPES</code>（feat/fix/refactor/test/chore/docs）渲染成百分比条：</p>
+<pre><code>feat:     20  (40%)  ████████████████████
+fix:      27  (54%)  ███████████████████████████
+refactor:  2  ( 4%)  ██
+</code></pre>
+<p>如果 <code>FIX_RATIO</code> 超过 50% 就标出来——这暗示“快速发布、快速修复”的模式，可能意味着审查有缺口。</p>
+<h3 id="step-6热点分析">Step 6：热点分析</h3>
+<p>显示 <code>HOTSPOT</code> 行（改动最多的 10 个文件）。标出：</p>
+<ul>
+<li>改动 5 次以上的文件（频繁变动热点）</li>
+<li>热点清单里的测试文件 vs 生产文件</li>
+<li>VERSION/CHANGELOG 的出现频率（版本纪律的指标）</li>
+</ul>
+<h3 id="step-7pr-规模分布">Step 7：PR 规模分布</h3>
+<p>报告 <code>COMMIT_SIZE_BUCKETS</code>：</p>
+<ul>
+<li><strong>Small</strong>（&lt;100 行）</li>
+<li><strong>Medium</strong>（100-500 行）</li>
+<li><strong>Large</strong>（500-1500 行）</li>
+<li><strong>XL</strong>（1500+ 行）</li>
+</ul>
+<h3 id="step-8专注度评分--本周之船">Step 8：专注度评分 + 本周之船</h3>
+<p><strong>专注度评分：</strong> <code>FOCUS_SCORE</code> 是落在单个改动最多的顶层目录（例如 <code>app/services/</code>）里的文件改动占比。分数越高 = 深度专注的工作越多。分数越低 = 上下文切换越碎。报告为：“Focus score: 62% (app/services/)”</p>
+<p><strong>本周之船：</strong> <code>BIGGEST_COMMIT</code> 是窗口内行数最多的一次改动。突出它：</p>
+<ul>
+<li>PR 编号（与 <code>PR_REFS</code> / 标题比对）和标题</li>
+<li>改动的行数</li>
+<li>为什么重要（从提交信息和触及的文件推断）</li>
+</ul>
+<h3 id="step-9团队成员分析">Step 9：团队成员分析</h3>
+<p>对每位贡献者（包括当前用户），<code>AUTHOR:</code> 行带有提交数、新增、删除、测试占比、主要区域、提交类型构成和高峰小时；<code>AUTHOR_BIGGEST:</code> 带有其单次影响最大的提交。用 <code>COMMIT:</code> 行把一切锚定在真实工作上。</p>
+<p><strong>对当前用户（“你”）：</strong> 包含会话分析、时间模式和专注度评分：“你的高峰时段……”“你最大的一次交付……”</p>
+<p><strong>对每位队友：</strong> 写 2-3 句话，覆盖他们做了什么以及他们的模式。然后：</p>
+<ul>
+<li><strong>赞扬</strong>（1-2 个具体点）：引用提交和好在哪，不要泛泛而谈。</li>
+<li><strong>成长机会</strong>（1 个具体点）：把可执行的建议与数据挂钩，而不是批评。Step 14 提供示例。</li>
+</ul>
+<p><strong>如果只有一位贡献者（单人仓库）：</strong> 跳过团队拆解——这份复盘是私人的。</p>
+<p><strong>共同作者署名：</strong> <code>COAUTHOR:</code> 行带有人类 <code>Co-Authored-By:</code> trailer——把这些作者与主作者一起记在这次提交的名下。AI 共同作者（例如 <code>noreply@anthropic.com</code>）则计入 <code>AI_ASSISTED_COMMITS</code>——把“AI 辅助提交”当作一个单独指标跟踪，绝不算作团队成员。</p>
+<h3 id="step-10周环比趋势窗口-gt-14d-时">Step 10：周环比趋势（窗口 &gt;= 14d 时）</h3>
+<p>如果时间窗是 14 天或更长，用 <code>WEEK:</code> 行（w0 = 包含最新提交的那一周）展示趋势：</p>
+<ul>
+<li>每周提交数（总计；按作者从 <code>COMMIT:</code> 行统计）</li>
+<li>每周行数</li>
+<li>每周测试占比</li>
+<li>每周修复占比</li>
+</ul>
+<h3 id="step-11连续天数追踪">Step 11：连续天数追踪</h3>
+<p><code>TEAM_STREAK</code> 和 <code>USER_STREAK</code> 统计至少有 1 次提交的连续天数（完整历史，不截断），锚定在<strong>最新提交日期</strong>——不是今天，因为脚本从不信任系统时钟。对照会话提醒里的今天来解读：</p>
+<ul>
+<li>如果锚定日期是今天或昨天，连续记录仍然有效：“团队交付连续 47 天”/“你的交付连续 32 天”</li>
+<li>如果锚定日期更早，连续记录已中断：报告 0 天，并记下最后交付日。</li>
+</ul>
+<h3 id="step-115捷径欠账账本">Step 11.5：捷径欠账账本</h3>
+<p>收集刻意留下的 <code>gstack-shortcut(...)</code> 标记——这是用户接受 Completeness ≤ 7 选项时留下的痕迹（见 AskUserQuestion 格式一节）。零命中是健康状态，不是失败：</p>
+<pre><code class="language-bash">grep -rn &quot;gstack-shortcut(&quot; . \
+  --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=vendor \
+  --exclude-dir=.claude --exclude-dir=dist \
+  --exclude=&quot;SKILL.md&quot; --exclude=&quot;*.md.tmpl&quot; 2&gt;/dev/null \
+  | grep -vE &quot;gstack-shortcut\(dec-(&lt;|\*)&quot; || true
+</code></pre>
+<p>丢弃余下那些只是在记录或测试这套约定的命中（检查清单、解析器示例、测试）。只统计本仓库代码里真实的捷径。</p>
+<p>每个命中一行账：<code>&lt;file&gt;:&lt;line&gt;, &lt;简化了什么&gt;。ceiling: &lt;X&gt;。upgrade: &lt;Y&gt;。</code></p>
+<ul>
+<li>标记带决策 id（<code>dec-&lt;id&gt;</code>）：与 <code>gstack-decision-search</code> 的输出做关联——账本条目是事实源；绝不把同一个标记和它重新浮现的决策重复计数。</li>
+<li>没有 id 的标记：打上 <code>unlinked</code> 标签。</li>
+<li>没有写升级触发条件的标记：打上 <code>no-trigger</code> 标签——这些正是会悄悄腐烂的。</li>
+</ul>
+<p>用这句话结束本节：<code>N markers, M with no trigger.</code> 如果一条都没有：<code>No shortcut debt. Clean ledger.</code></p>
+<h3 id="step-12加载历史并对比">Step 12：加载历史并对比</h3>
+<p>在保存新快照之前，先检查既往的复盘历史：</p>
+<pre><code class="language-bash">setopt +o nomatch 2&gt;/dev/null || true  # zsh 兼容
+ls -t .context/retros/*.json 2&gt;/dev/null
+</code></pre>
+<p><strong>如果存在既往复盘：</strong> 用 Read 工具加载 <code>window</code> 相同且最近的一份；如果没有匹配的，披露这一点并跳过历史增量。为可用的关键指标计算增量，并包含 <strong>Trends vs Last Retro</strong> 一节（在 <code>compare</code> 模式下改用刚算出的上一周期）：</p>
+<pre><code>                    上次        现在         增量
+测试占比：          22%    →    41%         ↑19pp
+会话数：            10     →    14          ↑4
+LOC/小时：          200    →    350         ↑75%
+修复占比：          54%    →    30%         ↓24pp（在改善）
+提交数：            32     →    47          ↑47%
+深度会话：          3      →    5           ↑2
+</code></pre>
+<p><strong>建议的落实情况：</strong> 如果那份同窗口快照有 <code>recommendations</code> 键，就对照本窗口的提交、改动文件和指标，把每条既往建议评为 <code>addressed</code>、<code>partial</code> 或 <code>open</code>，并引用证据。在报告里渲染一行 <strong>Recommendation follow-through</strong>（例如“2 of 3 prior recommendations addressed”），然后每条一行给出结论。如果快照没有 <code>recommendations</code> 键，静默跳过。</p>
+<p><strong>如果没有任何既往复盘：</strong> 跳过对比一节，并追加：“First retro recorded — run again next week to see trends.”</p>
+<h3 id="step-13保存复盘历史">Step 13：保存复盘历史</h3>
+<p>在算完所有指标（包括连续天数）并加载任何既往历史用于对比之后，用 Step 14 的格式起草可发推的摘要和“3 Things to Improve”条目，然后保存 JSON 快照。Step 14 的叙述必须复用这份摘要和这些条目，一字不改。<code>streak_days</code> 是 Step 11 得出的有效<strong>团队</strong>连续天数（中断时为 0）；个人连续天数放进 <code>user_streak_days</code>。</p>
+<pre><code class="language-bash">mkdir -p .context/retros
+</code></pre>
+<p>确定今天下一个未用的序号（把会话提醒的日期代入 <code>&lt;today&gt;</code>）：</p>
+<pre><code class="language-bash">setopt +o nomatch 2&gt;/dev/null || true  # zsh 兼容
+today=&quot;&lt;today&gt;&quot;
+next=1
+while [ -e &quot;.context/retros/${today}-${next}.json&quot; ]; do next=$((next + 1)); done
+# Save as .context/retros/${today}-${next}.json
+</code></pre>
+<p>用 Write 工具按这个 schema 保存 JSON 文件：</p>
+<pre><code class="language-json">{
+  &quot;date&quot;: &quot;2026-03-08&quot;,
+  &quot;window&quot;: &quot;7d&quot;,
+  &quot;metrics&quot;: {
+    &quot;commits&quot;: 47,
+    &quot;contributors&quot;: 3,
+    &quot;prs_merged&quot;: 12,
+    &quot;insertions&quot;: 3200,
+    &quot;deletions&quot;: 800,
+    &quot;net_loc&quot;: 2400,
+    &quot;test_loc&quot;: 1300,
+    &quot;test_ratio&quot;: 0.41,
+    &quot;active_days&quot;: 6,
+    &quot;sessions&quot;: 14,
+    &quot;deep_sessions&quot;: 5,
+    &quot;avg_session_minutes&quot;: 42,
+    &quot;loc_per_session_hour&quot;: 350,
+    &quot;feat_pct&quot;: 0.40,
+    &quot;fix_pct&quot;: 0.30,
+    &quot;peak_hour&quot;: 22,
+    &quot;ai_assisted_commits&quot;: 32
+  },
+  &quot;authors&quot;: {
+    &quot;Garry Tan&quot;: { &quot;commits&quot;: 32, &quot;insertions&quot;: 2400, &quot;deletions&quot;: 300, &quot;test_ratio&quot;: 0.41, &quot;top_area&quot;: &quot;browse/&quot; },
+    &quot;Alice&quot;: { &quot;commits&quot;: 12, &quot;insertions&quot;: 800, &quot;deletions&quot;: 150, &quot;test_ratio&quot;: 0.35, &quot;top_area&quot;: &quot;app/services/&quot; }
+  },
+  &quot;version_range&quot;: [&quot;1.16.0.0&quot;, &quot;1.16.1.0&quot;],
+  &quot;streak_days&quot;: 47,
+  &quot;user_streak_days&quot;: 32,
+  &quot;tweetable&quot;: &quot;Week of Mar 1: 47 commits (3 contributors), 3.2k LOC, 38% tests, 12 PRs, peak: 10pm&quot;,
+  &quot;recommendations&quot;: [
+    { &quot;category&quot;: &quot;testing&quot;, &quot;text&quot;: &quot;稳定 test/fixtures/ 里那个大约每 4 次跑挂 1 次的 auth 夹具&quot; }
+  ],
+  &quot;greptile&quot;: {
+    &quot;fixes&quot;: 3,
+    &quot;fps&quot;: 1,
+    &quot;already_fixed&quot;: 2,
+    &quot;signal_pct&quot;: 83
+  }
+}
+</code></pre>
+<p><strong>始终包含 <code>recommendations</code>：</strong> 每个“3 Things to Improve”条目一个对象，<code>category</code> 是一个小写单词，文本与条目原文一致。没有条目时写 <code>[]</code>；绝不用占位内容凑数。</p>
+<p><strong>注意：</strong> 只有当 <code>greptile-history.md</code>（<code>GREPTILE_HISTORY</code> 打印的路径）存在、且时间窗内有条目时才包含 <code>greptile</code> 字段。只有当 <code>TODOS.md</code> 存在时才包含 <code>backlog</code> 字段。只有当找到测试文件（<code>TEST_FILES_TOTAL</code> &gt; 0）时才包含 <code>test_health</code> 字段。任何一项没有数据，就整个省略该字段。</p>
+<p>测试文件存在时，把测试健康度数据写进 JSON：</p>
+<pre><code class="language-json">  &quot;test_health&quot;: {
+    &quot;total_test_files&quot;: 47,
+    &quot;regression_test_commits&quot;: 3,
+    &quot;test_files_changed&quot;: 8
+  }
+</code></pre>
+<p>TODOS.md 存在时，把待办数据写进 JSON：</p>
+<pre><code class="language-json">  &quot;backlog&quot;: {
+    &quot;total_open&quot;: 28,
+    &quot;p0_p1&quot;: 2,
+    &quot;p2&quot;: 8,
+    &quot;completed_this_period&quot;: 3,
+    &quot;added_this_period&quot;: 1
+  }
+</code></pre>
+<h3 id="step-14撰写叙述">Step 14：撰写叙述</h3>
+<blockquote>
+<p><strong>STOP。</strong> 在撰写复盘叙述之前（Step 14，在所有指标算完并对比之后），Read <code>~/.claude/skills/gstack/retro/sections/report-format.md</code> 并完整执行。
+不要凭记忆——那一节才是本步骤的事实源。</p>
+</blockquote>
+<p>交付仓库范围的报告之后，执行下面的经验捕获和结果保存步骤，然后停下。不要顺势滑进全局复盘模式。</p>
+<h2 id="捕获经验">捕获经验</h2>
+<p>如果你在本次会话中发现了不明显的模式、坑或架构洞见，为以后的会话记录下来：</p>
+<pre><code class="language-bash">~/.claude/skills/gstack/bin/gstack-learnings-log &#39;{&quot;skill&quot;:&quot;retro&quot;,&quot;type&quot;:&quot;TYPE&quot;,&quot;key&quot;:&quot;SHORT_KEY&quot;,&quot;insight&quot;:&quot;DESCRIPTION&quot;,&quot;confidence&quot;:N,&quot;source&quot;:&quot;SOURCE&quot;,&quot;files&quot;:[&quot;path/to/relevant/file&quot;]}&#39;
+</code></pre>
+<p><strong>类型：</strong> <code>pattern</code>（可复用的做法）、<code>pitfall</code>（不要做什么）、<code>preference</code>
+（用户表述的偏好）、<code>architecture</code>（结构性决策）、<code>tool</code>（库/框架洞见）、
+<code>operational</code>（项目环境/CLI/工作流知识）。</p>
+<p><strong>来源：</strong> <code>observed</code>（你在代码里发现的）、<code>user-stated</code>（用户告诉你的）、
+<code>inferred</code>（AI 推断）、<code>cross-model</code>（Claude 和 Codex 都同意）。</p>
+<p><strong>置信度：</strong> 1-10。要诚实。你在代码里验证过的观察到的模式是 8-9。
+你没把握的推断是 4-5。用户明确表述的偏好是 10。</p>
+<p><strong>files：</strong> 包含这条经验引用的具体文件路径。这能支持过期检测：如果这些文件后来被删除，这条经验可以被标记出来。</p>
+<p><strong>只记录真正的发现。</strong> 不要记录显而易见的事。不要记录用户已经知道的事。一个好测试：这条洞见能让以后的会话省时间吗？能，就记。</p>
+<hr>
+<h2 id="全局复盘模式global-retrospective-mode">全局复盘模式（Global Retrospective Mode）</h2>
+<p><code>/retro global [window]</code> 只走这个流程，并且可以在 git 仓库之外工作。</p>
+<h3 id="global-step-1计算时间窗">Global Step 1：计算时间窗</h3>
+<p>与普通复盘相同的午夜对齐逻辑。默认 7d。<code>global</code> 之后的第二个参数就是窗口（例如 <code>14d</code>、<code>30d</code>、<code>24h</code>）。</p>
+<h3 id="global-step-2运行发现脚本">Global Step 2：运行发现脚本</h3>
+<p>按这条回退链定位并运行发现脚本：</p>
+<pre><code class="language-bash">DISCOVER_BIN=&quot;&quot;
+[ -x ~/.claude/skills/gstack/bin/gstack-global-discover ] &amp;&amp; DISCOVER_BIN=~/.claude/skills/gstack/bin/gstack-global-discover
+[ -z &quot;$DISCOVER_BIN&quot; ] &amp;&amp; [ -x .claude/skills/gstack/bin/gstack-global-discover ] &amp;&amp; DISCOVER_BIN=.claude/skills/gstack/bin/gstack-global-discover
+[ -z &quot;$DISCOVER_BIN&quot; ] &amp;&amp; which gstack-global-discover &gt;/dev/null 2&gt;&amp;1 &amp;&amp; DISCOVER_BIN=$(which gstack-global-discover)
+[ -z &quot;$DISCOVER_BIN&quot; ] &amp;&amp; [ -f bin/gstack-global-discover.ts ] &amp;&amp; DISCOVER_BIN=&quot;bun --no-env-file --config=/dev/null run bin/gstack-global-discover.ts&quot;
+echo &quot;DISCOVER_BIN: $DISCOVER_BIN&quot;
+</code></pre>
+<p>如果找不到可执行文件，告诉用户：“Discovery script not found. Run <code>bun run build</code> in the gstack directory to compile it.”并停止。</p>
+<p>运行发现脚本：</p>
+<pre><code class="language-bash">$DISCOVER_BIN --since &quot;&lt;window&gt;&quot; --format json 2&gt;/tmp/gstack-discover-stderr
+</code></pre>
+<p>从 <code>/tmp/gstack-discover-stderr</code> 读取 stderr 作为诊断信息。从 stdout 解析 JSON 输出。</p>
+<p>如果 <code>total_sessions</code> 是 0，说：“No AI coding sessions found in the last <window>. Try a longer window: <code>/retro global 30d</code>”并停止。</p>
+<h3 id="global-step-3对每个发现的仓库运行-git-log">Global Step 3：对每个发现的仓库运行 git log</h3>
+<p>对发现 JSON 的 <code>repos</code> 数组里的每个仓库，在 <code>paths[]</code> 中找第一个有效路径（目录存在且含 <code>.git/</code>）。没有有效路径就跳过该仓库并记下来。</p>
+<p><strong>对纯本地仓库</strong>（<code>remote</code> 以 <code>local:</code> 开头）：跳过 <code>git fetch</code>，使用本地默认分支。用 <code>git log HEAD</code> 代替 <code>git log origin/$DEFAULT</code>。</p>
+<p><strong>对有远程的仓库：</strong></p>
+<pre><code class="language-bash">git -C &lt;path&gt; fetch origin --quiet 2&gt;/dev/null
+</code></pre>
+<p>检测每个仓库的默认分支：先试 <code>git symbolic-ref refs/remotes/origin/HEAD</code>，再检查常见分支名（<code>main</code>、<code>master</code>），最后回退到 <code>git rev-parse --abbrev-ref HEAD</code>。把检测出的分支作为下面命令里的 <code>&lt;default&gt;</code>。</p>
+<pre><code class="language-bash"># 带统计的提交
+git -C &lt;path&gt; log origin/$DEFAULT --since=&quot;&lt;start_date&gt;T00:00:00&quot; --format=&quot;%H|%aN|%ai|%s&quot; --shortstat
+
+# 供会话识别、连续天数和上下文切换使用的提交时间戳
+git -C &lt;path&gt; log origin/$DEFAULT --since=&quot;&lt;start_date&gt;T00:00:00&quot; --format=&quot;%at|%aN|%ai|%s&quot; | sort -n
+
+# 每位作者的提交数
+git -C &lt;path&gt; shortlog origin/$DEFAULT --since=&quot;&lt;start_date&gt;T00:00:00&quot; -sn --no-merges
+
+# 从提交信息中提取 PR/MR 编号（GitHub #NNN，GitLab !NNN）
+git -C &lt;path&gt; log origin/$DEFAULT --since=&quot;&lt;start_date&gt;T00:00:00&quot; --format=&quot;%s&quot; | grep -oE &#39;[#!][0-9]+&#39; | sort -t&#39;#&#39; -k1 | uniq
+</code></pre>
+<p>对失败的仓库（路径已删除、网络错误）：跳过并记下“N repos could not be reached.”。</p>
+<h3 id="global-step-4计算全局交付连续天数">Global Step 4：计算全局交付连续天数</h3>
+<p>对每个仓库取提交日期（上限 365 天）：</p>
+<pre><code class="language-bash">git -C &lt;path&gt; log origin/$DEFAULT --since=&quot;365 days ago&quot; --format=&quot;%ad&quot; --date=format:&quot;%Y-%m-%d&quot; | sort -u
+</code></pre>
+<p>把所有仓库的所有日期取并集。从今天往回数——有多少连续的天数里，<strong>任意</strong>仓库至少有一次提交？如果连续天数到达 365 天，显示为“365+ days”。</p>
+<h3 id="global-step-5计算上下文切换指标">Global Step 5：计算上下文切换指标</h3>
+<p>用 Step 3 收集到的提交时间戳，按日期分组。对每个日期，统计当天有提交的不同仓库数。报告：</p>
+<ul>
+<li>平均每天仓库数</li>
+<li>每天最大仓库数</li>
+<li>哪些天是专注的（1 个仓库）、哪些是碎片化的（3+ 个仓库）</li>
+</ul>
+<h3 id="global-step-6各工具的生产力模式">Global Step 6：各工具的生产力模式</h3>
+<p>从发现 JSON 分析工具使用模式：</p>
+<ul>
+<li>哪个 AI 工具用于哪些仓库（独占 vs 共享）</li>
+<li>每个工具的会话数</li>
+<li>行为模式（例如“Codex 专用于 myapp，其他都用 Claude Code”）</li>
+</ul>
+<h3 id="global-step-7聚合并起草叙述">Global Step 7：聚合并起草叙述</h3>
+<p>先起草下面的报告，但暂不发布。在 Global Step 8 加载历史，把它的趋势表插到 <strong>All Projects Overview</strong> 之后，然后在 Global Step 9 保存完成的快照并交付报告。快照里复用起草好的可发推摘要。</p>
+<p>先输出适合截图的<strong>个人卡片</strong>，再输出团队/项目拆解。</p>
+<hr>
+<p><strong>可发推摘要</strong>（第一行，放在一切之前）：</p>
+<pre><code>Week of Mar 14: 5 projects, 138 commits, 250k LOC across 5 repos | 48 AI sessions | Streak: 52d 🔥
+</code></pre>
+<h2 id="-你的一周user-name--date-range">🚀 你的一周：[user name] — [date range]</h2>
+<p>按 <code>git config user.name</code> 过滤各仓库数据并聚合个人总计。
+卡片只包含该用户的统计，不含团队总计。只用左边框；
+把名字填充到最长名字的宽度，绝不截断。</p>
+<pre><code>╔═══════════════════════════════════════════════════════════════
+║  [USER NAME] — Week of [date]
+╠═══════════════════════════════════════════════════════════════
+║
+║  [N] commits across [M] projects
+║  +[X]k LOC added · [Y]k LOC deleted · [Z]k net
+║  [N] AI coding sessions (CC: X, Codex: Y, Gemini: Z)
+║  [N]-day shipping streak 🔥
+║
+║  PROJECTS
+║  ─────────────────────────────────────────────────────────
+║  [repo_name_full]        [N] commits    +[X]k LOC    [solo/team]
+║  [repo_name_full]        [N] commits    +[X]k LOC    [solo/team]
+║  [repo_name_full]        [N] commits    +[X]k LOC    [solo/team]
+║
+║  SHIP OF THE WEEK
+║  [PR title] — [LOC] lines across [N] files
+║
+║  TOP WORK
+║  • [1-line description of biggest theme]
+║  • [1-line description of second theme]
+║  • [1-line description of third theme]
+║
+║  Powered by gstack
+╚═══════════════════════════════════════════════════════════════
+</code></pre>
+<p><strong>个人卡片的规则：</strong></p>
+<ul>
+<li>只显示用户有提交的仓库。跳过 0 提交的仓库。</li>
+<li>按用户的提交数降序排列仓库。</li>
+<li>加宽卡片以容纳完整仓库名；对齐各列。</li>
+<li>行数用“k”表示千（例如“+64.0k”而不是“+64010”）。</li>
+<li>角色：用户是唯一贡献者时为“solo”，有他人贡献时为“team”。</li>
+<li>本周之船：该用户在<strong>所有</strong>仓库中行数最多的单个 PR。</li>
+<li>重点工作：从提交信息综合出的 3 个主题，不是提交清单。</li>
+<li>卡片必须不依赖上下文就能说明这个用户的一周。</li>
+<li>这里<strong>不要</strong>包含团队成员、项目总计或上下文切换数据。</li>
+</ul>
+<p><strong>个人连续天数：</strong> 用该用户在<strong>所有</strong>仓库中的提交（按
+<code>--author</code> 过滤）单独算出个人连续天数，与团队连续天数区分开。</p>
+<hr>
+<h2 id="全局工程复盘date-range">全局工程复盘：[date range]</h2>
+<p>个人卡片之后是完整的团队/项目分析。</p>
+<h3 id="全部项目概览">全部项目概览</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>活跃项目</td>
+<td>N</td>
+</tr>
+<tr>
+<td>总提交数（所有仓库、所有贡献者）</td>
+<td>N</td>
+</tr>
+<tr>
+<td>总行数</td>
+<td>+N / -N</td>
+</tr>
+<tr>
+<td>AI 编码会话</td>
+<td>N（CC: X，Codex: Y，Gemini: Z）</td>
+</tr>
+<tr>
+<td>活跃天数</td>
+<td>N</td>
+</tr>
+<tr>
+<td>全局交付连续天数（任意贡献者、任意仓库）</td>
+<td>连续 N 天</td>
+</tr>
+<tr>
+<td>每天上下文切换</td>
+<td>平均 N（最大：M）</td>
+</tr>
+</tbody></table>
+<h3 id="逐项目拆解">逐项目拆解</h3>
+<p>对每个仓库（按提交数降序）：</p>
+<ul>
+<li>仓库名（含占总提交的百分比）</li>
+<li>提交数、行数、已合并 PR、头号贡献者</li>
+<li>关键工作（从提交信息推断）</li>
+<li>按工具的 AI 会话</li>
+</ul>
+<p><strong>你的贡献</strong>（每个项目内的小节）：
+对每个项目，按 <code>git config user.name</code> 过滤，包含：</p>
+<ul>
+<li>你的提交 / 总提交（含百分比）</li>
+<li>你的行数（+新增 / -删除）</li>
+<li>你的关键工作（只从<strong>你的</strong>提交信息推断）</li>
+<li>你的提交类型构成（feat/fix/refactor/chore/docs 拆解）</li>
+<li>你在该仓库最大的一次交付（行数最多的提交或 PR）</li>
+</ul>
+<p>如果用户是唯一贡献者，说“Solo project — all commits are yours.”
+如果用户在某仓库 0 提交（本周期没碰过的团队项目），
+说“No commits this period — [N] AI sessions only.”并跳过拆解。</p>
+<p>格式：</p>
+<pre><code>**Your contributions:** 47/244 commits (19%), +4.2k/-0.3k LOC
+  Key work: Writer Chat, email blocking, security hardening
+  Biggest ship: PR #605 — Writer Chat eats the admin bar (2,457 ins, 46 files)
+  Mix: feat(3) fix(2) chore(1)
+</code></pre>
+<h3 id="跨项目模式">跨项目模式</h3>
+<ul>
+<li>跨项目的时间分配（百分比拆解，用<strong>你的</strong>提交而非总数）</li>
+<li>聚合所有仓库的高峰生产力时段</li>
+<li>专注日 vs 碎片日</li>
+<li>上下文切换趋势</li>
+</ul>
+<h3 id="工具使用分析">工具使用分析</h3>
+<p>按工具拆解并给出行为模式：</p>
+<ul>
+<li>Claude Code：N 次会话，跨 M 个仓库——观察到的模式</li>
+<li>Codex：N 次会话，跨 M 个仓库——观察到的模式</li>
+<li>Gemini：N 次会话，跨 M 个仓库——观察到的模式</li>
+</ul>
+<h3 id="本周之船全局">本周之船（全局）</h3>
+<p><strong>所有</strong>项目中影响最大的一次 PR。按行数和提交信息识别。</p>
+<h3 id="3-条跨项目洞见">3 条跨项目洞见</h3>
+<p>全局视角能揭示、而任何单仓库复盘都看不到的东西。</p>
+<h3 id="下周的-3-个习惯">下周的 3 个习惯</h3>
+<p>把完整的跨项目图景考虑进去。</p>
+<hr>
+<h3 id="global-step-8加载历史并对比">Global Step 8：加载历史并对比</h3>
+<pre><code class="language-bash">GSTACK_STATE_ROOT=$(~/.claude/skills/gstack/bin/gstack-paths --get GSTACK_STATE_ROOT); : &quot;${GSTACK_STATE_ROOT:?gstack-paths failed; reinstall with ./setup or /gstack-upgrade}&quot;
+setopt +o nomatch 2&gt;/dev/null || true  # zsh 兼容
+ls -t &quot;$GSTACK_STATE_ROOT&quot;/retros/global-*.json 2&gt;/dev/null | head -5
+</code></pre>
+<p><strong>只与 <code>window</code> 值相同的既往复盘对比</strong>（例如 7d 对 7d）。如果最近一份既往复盘的窗口不同，跳过对比并注明：“Prior global retro used a different window — skipping comparison.”</p>
+<p>如果存在匹配的既往复盘，用 Read 工具加载。显示 <strong>Trends vs Last Global Retro</strong> 表，给出关键指标的增量：总提交数、行数、会话数、连续天数、每天上下文切换。</p>
+<p>如果没有任何既往全局复盘，追加：“First global retro recorded — run again next week to see trends.”</p>
+<h3 id="global-step-9保存快照">Global Step 9：保存快照</h3>
+<pre><code class="language-bash">GSTACK_STATE_ROOT=$(~/.claude/skills/gstack/bin/gstack-paths --get GSTACK_STATE_ROOT); : &quot;${GSTACK_STATE_ROOT:?gstack-paths failed; reinstall with ./setup or /gstack-upgrade}&quot;
+mkdir -p &quot;$GSTACK_STATE_ROOT&quot;/retros
+</code></pre>
+<p>确定今天下一个未用的序号，使用与 Global Step 1 相同的会话提醒日期：</p>
+<pre><code class="language-bash">GSTACK_STATE_ROOT=$(~/.claude/skills/gstack/bin/gstack-paths --get GSTACK_STATE_ROOT); : &quot;${GSTACK_STATE_ROOT:?gstack-paths failed; reinstall with ./setup or /gstack-upgrade}&quot;
+setopt +o nomatch 2&gt;/dev/null || true  # zsh 兼容
+today=&quot;&lt;today&gt;&quot;
+next=1
+while [ -e &quot;$GSTACK_STATE_ROOT/retros/global-${today}-${next}.json&quot; ]; do next=$((next + 1)); done
+echo &quot;RETRO_FILE: $GSTACK_STATE_ROOT/retros/global-${today}-${next}.json&quot;
+</code></pre>
+<p>用 Write 工具把 JSON 保存到打印出的 <code>RETRO_FILE</code>：</p>
+<pre><code class="language-json">{
+  &quot;type&quot;: &quot;global&quot;,
+  &quot;date&quot;: &quot;2026-03-21&quot;,
+  &quot;window&quot;: &quot;7d&quot;,
+  &quot;projects&quot;: [
+    {
+      &quot;name&quot;: &quot;gstack&quot;,
+      &quot;remote&quot;: &quot;&lt;detected from git remote get-url origin, normalized to HTTPS&gt;&quot;,
+      &quot;commits&quot;: 47,
+      &quot;insertions&quot;: 3200,
+      &quot;deletions&quot;: 800,
+      &quot;sessions&quot;: { &quot;claude_code&quot;: 15, &quot;codex&quot;: 3, &quot;gemini&quot;: 0 }
+    }
+  ],
+  &quot;totals&quot;: {
+    &quot;commits&quot;: 182,
+    &quot;insertions&quot;: 15300,
+    &quot;deletions&quot;: 4200,
+    &quot;projects&quot;: 5,
+    &quot;active_days&quot;: 6,
+    &quot;sessions&quot;: { &quot;claude_code&quot;: 48, &quot;codex&quot;: 8, &quot;gemini&quot;: 3 },
+    &quot;global_streak_days&quot;: 52,
+    &quot;avg_context_switches_per_day&quot;: 2.1
+  },
+  &quot;tweetable&quot;: &quot;Week of Mar 14: 5 projects, 182 commits, 15.3k LOC | CC: 48, Codex: 8, Gemini: 3 | Focus: gstack (58%) | Streak: 52d&quot;
+}
+</code></pre>
+<hr>
+<h2 id="对比模式compare-mode">对比模式（Compare Mode）</h2>
+<p>当用户运行 <code>/retro compare</code>（或 <code>/retro compare 14d</code>）：</p>
+<ol>
+<li>对当前窗口（默认 7d）执行 Step 0.5-1，使用午夜对齐的起始日期（与主复盘相同的逻辑——例如今天是 2026-03-18、窗口 7d，则 <code>--since &quot;2026-03-11T00:00:00&quot;</code>）</li>
+<li>对紧邻的等长窗口再运行一次 <code>gstack-retro-metrics</code>，同时使用 <code>--since</code> 和 <code>--until</code>（例如从 2026-03-11 起的 7d 窗口：<code>--since &quot;2026-03-04T00:00:00&quot; --until &quot;2026-03-10T23:59:59&quot;</code>）</li>
+<li>对每份数据集执行 Step 2-10 计算各窗口指标，把当前值和上一期值分开保存。Step 11-11.5 只对当前报告执行：连续天数使用完整历史，捷径账本扫描当前工作树，所以两者都不是上一窗口的指标。新鲜度守卫只作用于当前窗口；一个不活跃的上一窗口仍是有效的对比数据。对小时窗口，先取一个明确的结束时间戳，再为两个起点各减一次请求的小时数。git 包含 <code>--until</code>，所以上一窗口的结束用当前起点减 1 秒，避免边界提交被重复计数。</li>
+<li>用 <strong>Current vs Prior Period</strong> 表替代 Step 12 的已保存历史对比，覆盖提交数、逻辑 SLOC、测试占比、会话数和修复占比。显示绝对增量和百分比变化（占比类变化用百分点）；如果上一期值为零，绝对变化照报，百分比变化记为 N/A。在 Step 14 的叙述里突出最大的改善和退步。</li>
+<li>只对当前窗口执行 Step 13-14 和报告后的捕获；<strong>不要</strong>持久化上一窗口的指标。这种对比在首次运行时就可用，不依赖已保存的历史。</li>
+</ol>
+<h2 id="语气">语气</h2>
+<ul>
+<li>鼓励但坦率，不哄人</li>
+<li>具体、有据——始终锚定在真实的提交/代码上</li>
+<li>跳过泛泛的赞扬（“干得好！”）——说清楚好在哪、为什么</li>
+<li>把改进框定为升级，而不是批评</li>
+<li><strong>赞扬应该像你真会在 1:1 里说的话</strong>——具体、配得上、真诚</li>
+<li><strong>成长建议应该像投资建议</strong>——“这件事值得你花时间，因为……”而不是“你在这方面失败了……”</li>
+<li>绝不在队友之间做负面比较。每个人的小节自成一体。</li>
+<li>报告篇幅要匹配窗口和团队：每一节都带具体证据，无话可说的节就删掉，不要灌水</li>
+<li>数据用 markdown 表格和代码块，叙述用散文</li>
+<li>叙述直接输出到对话；唯一的报告文件是 JSON 快照（仓库复盘放在 <code>.context/retros/</code>，全局复盘放在 <code>$GSTACK_STATE_ROOT/retros/</code>）</li>
+</ul>
+<h2 id="重要规则">重要规则</h2>
+<ul>
+<li>所有叙述输出都直接在对话里给用户。除了 JSON 快照，只有经验捕获和 gbrain 捕获步骤会写东西。</li>
+<li>指标脚本分析的是 <code>origin/&lt;default&gt;</code>（不是可能过期的本地 main）；当 <code>RETRO_REF</code> 显示并非如此时，要披露</li>
+<li>所有时间戳按用户本地时区显示（不要覆盖 <code>TZ</code>）</li>
+<li>如果 <code>COMMITS: 0</code>，说出来并建议换一个窗口</li>
+<li>LOC/小时取整到最近的 50（脚本已预取整 <code>LOC_PER_SESSION_HOUR</code>）</li>
+<li>把 merge commit 当作 PR 边界</li>
+<li>不要读 CLAUDE.md 或无关文档——本技能是自包含的；CHANGELOG 和上面明确点名的可选输入是例外</li>
+<li>首次运行（没有既往复盘）时优雅地跳过已保存历史对比；显式的 <code>compare</code> 模式仍会计算它的上一窗口</li>
+<li><strong>全局模式：</strong> 不要求在 git 仓库内。快照保存到 <code>~/.gstack/retros/</code>（不是 <code>.context/retros/</code>）。优雅地跳过未安装的 AI 工具。只与窗口值相同的既往全局复盘对比。如果连续天数触到 365 天上限，显示为“365+ days”。</li>
+</ul>
+</article>
+    
+    <nav class="pager" aria-label="上一篇和下一篇">
+  <a class="prev" href="./qa-only.html">← qa-only</a>
+  <a class="next" href="./review.html">review →</a>
+</nav>
+  </main>
+</body>
+</html>

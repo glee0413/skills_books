@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ship · Skills Book</title>
+  <link rel="stylesheet" href="../../assets/book.css">
+</head>
+<body class="with-sidebar">
+  <aside class="sidebar"><div class="brand"><a href="../../index.html">Skills Book</a></div><section><h2>第一部 两种范式</h2><ul><li><a href="../../book/01-two-paradigms/01-same-and-different.html">gstack 与 mattpocock_skills：相同与差异</a></li></ul></section><section><h2>第二部 想清楚</h2><ul><li><a href="../../book/02-think/05-product-questioning.html">产品追问：office-hours 与 grilling</a></li></ul></section><section><h2>gstack</h2><ul><li><a href="./autoplan.html">autoplan</a></li><li><a href="./benchmark.html">benchmark</a></li><li><a href="./benchmark-models.html">benchmark-models</a></li><li><a href="./browse.html">browse</a></li><li><a href="./canary.html">canary</a></li><li><a href="./capy/gstack.html">capy/gstack</a></li><li><a href="./careful.html">careful</a></li><li><a href="./codex.html">codex</a></li><li><a href="./context-restore.html">context-restore</a></li><li><a href="./context-save.html">context-save</a></li><li><a href="./cso.html">cso</a></li><li><a href="./design-consultation.html">design-consultation</a></li><li><a href="./design-html.html">design-html</a></li><li><a href="./design-review.html">design-review</a></li><li><a href="./design-shotgun.html">design-shotgun</a></li><li><a href="./deslop-shared-libs.html">deslop-shared-libs</a></li><li><a href="./devex-review.html">devex-review</a></li><li><a href="./diagram.html">diagram</a></li><li><a href="./document-generate.html">document-generate</a></li><li><a href="./document-release.html">document-release</a></li><li><a href="./eval-plan.html">eval-plan</a></li><li><a href="./freeze.html">freeze</a></li><li><a href="./gstack.html">gstack</a></li><li><a href="./gstack-upgrade.html">gstack-upgrade</a></li><li><a href="./guard.html">guard</a></li><li><a href="./hackernews-frontpage.html">hackernews-frontpage</a></li><li><a href="./health.html">health</a></li><li><a href="./investigate.html">investigate</a></li><li><a href="./ios-clean.html">ios-clean</a></li><li><a href="./ios-design-review.html">ios-design-review</a></li><li><a href="./ios-fix.html">ios-fix</a></li><li><a href="./ios-qa.html">ios-qa</a></li><li><a href="./ios-sync.html">ios-sync</a></li><li><a href="./land-and-deploy.html">land-and-deploy</a></li><li><a href="./landing-report.html">landing-report</a></li><li><a href="./learn.html">learn</a></li><li><a href="./make-pdf.html">make-pdf</a></li><li><a href="./office-hours.html">office-hours</a></li><li><a href="./open-gstack-browser.html">open-gstack-browser</a></li><li><a href="./openclaw/ceo-review.html">openclaw/ceo-review</a></li><li><a href="./openclaw/investigate.html">openclaw/investigate</a></li><li><a href="./openclaw/office-hours.html">openclaw/office-hours</a></li><li><a href="./openclaw/retro.html">openclaw/retro</a></li><li><a href="./pair-agent.html">pair-agent</a></li><li><a href="./plan-ceo-review.html">plan-ceo-review</a></li><li><a href="./plan-design-review.html">plan-design-review</a></li><li><a href="./plan-devex-review.html">plan-devex-review</a></li><li><a href="./plan-eng-review.html">plan-eng-review</a></li><li><a href="./plan-tune.html">plan-tune</a></li><li><a href="./qa.html">qa</a></li><li><a href="./qa-only.html">qa-only</a></li><li><a href="./retro.html">retro</a></li><li><a href="./review.html">review</a></li><li><a href="./scrape.html">scrape</a></li><li><a href="./setup-browser-cookies.html">setup-browser-cookies</a></li><li><a href="./setup-deploy.html">setup-deploy</a></li><li><a href="./setup-gbrain.html">setup-gbrain</a></li><li><a href="./ship.html">ship</a></li><li><a href="./skillify.html">skillify</a></li><li><a href="./spec.html">spec</a></li><li><a href="./sync-gbrain.html">sync-gbrain</a></li><li><a href="./test-audit.html">test-audit</a></li><li><a href="./unfreeze.html">unfreeze</a></li></ul></section><section><h2>mattpocock</h2><ul><li><a href="../mattpocock/ask-matt/SKILL.html">ask-matt</a></li><li><a href="../mattpocock/chief-of-staff.html">chief-of-staff</a></li><li><a href="../mattpocock/claude-handoff.html">claude-handoff</a></li><li><a href="../mattpocock/code-review.html">code-review</a></li><li><a href="../mattpocock/codebase-design/SKILL.html">codebase-design</a></li><li><a href="../mattpocock/diagnosing-bugs.html">diagnosing-bugs</a></li><li><a href="../mattpocock/domain-modeling/SKILL.html">domain-modeling</a></li><li><a href="../mattpocock/git-guardrails-claude-code.html">git-guardrails-claude-code</a></li><li><a href="../mattpocock/grill-me.html">grill-me</a></li><li><a href="../mattpocock/grill-with-docs.html">grill-with-docs</a></li><li><a href="../mattpocock/grilling.html">grilling</a></li><li><a href="../mattpocock/handoff.html">handoff</a></li><li><a href="../mattpocock/implement.html">implement</a></li><li><a href="../mattpocock/implement-spec.html">implement-spec</a></li><li><a href="../mattpocock/improve-codebase-architecture/SKILL.html">improve-codebase-architecture</a></li><li><a href="../mattpocock/loop-me.html">loop-me</a></li><li><a href="../mattpocock/migrate-to-shoehorn.html">migrate-to-shoehorn</a></li><li><a href="../mattpocock/pr.html">pr</a></li><li><a href="../mattpocock/prototype/SKILL.html">prototype</a></li><li><a href="../mattpocock/research.html">research</a></li><li><a href="../mattpocock/retro.html">retro</a></li><li><a href="../mattpocock/scaffold-exercises.html">scaffold-exercises</a></li><li><a href="../mattpocock/setup-matt-pocock-skills/SKILL.html">setup-matt-pocock-skills</a></li><li><a href="../mattpocock/setup-pre-commit.html">setup-pre-commit</a></li><li><a href="../mattpocock/setup-ts-deep-modules.html">setup-ts-deep-modules</a></li><li><a href="../mattpocock/tdd/SKILL.html">tdd</a></li><li><a href="../mattpocock/teach/SKILL.html">teach</a></li><li><a href="../mattpocock/to-questionnaire.html">to-questionnaire</a></li><li><a href="../mattpocock/to-spec.html">to-spec</a></li><li><a href="../mattpocock/to-tickets.html">to-tickets</a></li><li><a href="../mattpocock/triage/SKILL.html">triage</a></li><li><a href="../mattpocock/wait-what.html">wait-what</a></li><li><a href="../mattpocock/wayfinder.html">wayfinder</a></li><li><a href="../mattpocock/wizard.html">wizard</a></li><li><a href="../mattpocock/writing-beats.html">writing-beats</a></li><li><a href="../mattpocock/writing-for-agents/SKILL.html">writing-for-agents</a></li><li><a href="../mattpocock/writing-fragments.html">writing-fragments</a></li><li><a href="../mattpocock/writing-shape.html">writing-shape</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">技能全库</a></p></aside>
+  <main class="content">
+    <section class="source-box">
+  <strong>来源</strong>：gstack · <code>ship/SKILL.md</code> · v1.91.226.0 · commit <code>8d95013</code><br>
+  <strong>许可证</strong>：MIT · <a href="https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/ship/SKILL.md">查看原仓库</a> · <a href="../../source-snapshots/gstack/ship/SKILL.md">查看英文快照</a> · 快照：<code>source-snapshots/gstack/ship/SKILL.md</code><br>
+  <strong>翻译</strong>：2026-10-30 · 译者注以 <code>&gt; 译者注：</code> 标出
+</section>
+    <section class="skill-overview">
+  <strong>ship</strong>
+  <span>gstack</span>
+  <span>用户调用</span>
+  <p>全自动发布工作流：合并基础分支、跑测试、审查 diff、递增版本号、更新 CHANGELOG、提交、推送并创建 PR。</p>
+</section>
+    <nav class="page-toc" aria-label="页内目录"><strong>本页目录</strong><ul><li class="toc-depth-1"><a href="#ship全自动发布工作流">Ship：全自动发布工作流</a></li><li class="toc-depth-3"><a href="#在步骤之间保留状态">在步骤之间保留状态</a></li><li class="toc-depth-3"><a href="#ship-控制流">Ship 控制流</a></li><li class="toc-depth-2"><a href="#章节索引--在对应情形出现时阅读每一节">章节索引 — 在对应情形出现时阅读每一节</a></li><li class="toc-depth-2"><a href="#step-0识别平台与基础分支">Step 0：识别平台与基础分支</a></li><li class="toc-depth-2"><a href="#step-09识别-apple-目标">Step 0.9：识别 Apple 目标</a></li><li class="toc-depth-2"><a href="#step-1起飞前检查">Step 1：起飞前检查</a></li><li class="toc-depth-2"><a href="#审查就绪看板">审查就绪看板</a></li><li class="toc-depth-2"><a href="#step-2分发流水线检查">Step 2：分发流水线检查</a></li><li class="toc-depth-2"><a href="#step-3合并基础分支在测试之前">Step 3：合并基础分支（在测试之前）</a></li><li class="toc-depth-2"><a href="#step-115绑定审查">Step 11.5：绑定审查</a></li><li class="toc-depth-2"><a href="#step-12版本号递增自动决策">Step 12：版本号递增（自动决策）</a></li><li class="toc-depth-2"><a href="#step-14todosmd自动更新">Step 14：TODOS.md（自动更新）</a></li><li class="toc-depth-2"><a href="#step-145文档审计每次-ship-都做">Step 14.5：文档审计（每次 ship 都做）</a></li><li class="toc-depth-2"><a href="#step-15提交可二分的小块">Step 15：提交（可二分的小块）</a></li><li class="toc-depth-2"><a href="#step-16验证门禁">Step 16：验证门禁</a></li><li class="toc-depth-3"><a href="#1-结束写入者并准备产物">1. 结束写入者并准备产物</a></li><li class="toc-depth-3"><a href="#2-选择变更路径">2. 选择变更路径</a></li><li class="toc-depth-3"><a href="#3-判定文档的新鲜度">3. 判定文档的新鲜度</a></li><li class="toc-depth-3"><a href="#4-验证冻结的候选版本">4. 验证冻结的候选版本</a></li><li class="toc-depth-3"><a href="#5-先报告再推送">5. 先报告，再推送</a></li><li class="toc-depth-2"><a href="#step-17推送">Step 17：推送</a></li><li class="toc-depth-2"><a href="#step-18准备发布元数据">Step 18：准备发布元数据</a></li><li class="toc-depth-2"><a href="#step-20持久化-ship-指标">Step 20：持久化 ship 指标</a></li><li class="toc-depth-2"><a href="#step-21plan-tune-可发现性提示仅首次成功-ship">Step 21：plan-tune 可发现性提示（仅首次成功 ship）</a></li><li class="toc-depth-2"><a href="#章节自检完成之前">章节自检（完成之前）</a></li><li class="toc-depth-2"><a href="#重要规则">重要规则</a></li></ul></nav>
+    <article class="markdown-body"><h1 id="ship全自动发布工作流">Ship：全自动发布工作流</h1>
+<p>STOP 会阻止推进，直到所述的修复/恢复路径被清除；没有这样的路径时，结束本次尝试。
+在继续之前，逐个回答每个 AskUserQuestion。
+常规授权从不会豁免这些门禁，也不会豁免它们所需的用户决策。</p>
+<p>**常规工作不需要确认：**包括未提交的改动、在 Step 12 下选择 MICRO/PATCH、起草 CHANGELOG 和提交、标记已完成的 TODO 以及自动修复发现的问题。
+当 Step 7 的覆盖率达标时，报告剩余缺口并验证生成的测试，无需再次询问。Step 15 会提交这些测试。</p>
+<p>**路线：**整合（1–3）→ 测试与审查（4–11.5）→ 准备发布（12–15）→ 验证冻结的内容（16）→ 推送并发布（17–21）。
+每次新的调用都会重复 Step 1–16，包括两次审查和文档审计。
+Step 12、17 和 19 用于防止重复递增版本、重复推送和重复创建 PR，而不是防止验证。</p>
+<h3 id="在步骤之间保留状态">在步骤之间保留状态</h3>
+<p>在产品目录树之外保留一份私有的 Markdown <strong>调用记录</strong>，并保存它的绝对路径；记录使用下列标题，以便暂停的运行可以恢复：</p>
+<ul>
+<li>**Release：**版本号、<code>BUMP_LEVEL</code>、已审查的目录树和尝试次数。</li>
+<li>**Decisions：**每次批准的发现、涉及文件和被授权的动作。只在同一范围内复用它；修复从不重置或扩大批准范围。</li>
+<li>**Reviews：**句柄、原始 start token、终态、输出和排队的修复。</li>
+<li>**Checks：**命令/标签、结果/计数、时间戳、日志和消耗的输入。</li>
+<li>**Documentation：**候选/id、已用尝试次数、已接受的哈希或具名的阻塞例外。</li>
+<li>**Next steps：**一份有序的工作清单，并标记当前步骤。</li>
+</ul>
+<p>**回执（receipt）**是一次检查的命令、结果和所消耗内容的已保存证据。
+一次审查的 <strong>start token</strong> 是 <code>gstack-review-log --start</code> 在读取 diff 之前返回的不透明值。为 Step 9 保留 <code>REVIEW_START</code>，为 Step 11 的每次尝试保留单独的 <code>PASS_START</code>，为设计保留 <code>DESIGN_START</code>。每次检查都用它自己的原始 token 收尾；<code>--finish</code> 会自动盖住绑定字段。绝不借用或替换 token。
+<code>gstack-wtree</code> 打印的是覆盖已跟踪文件和未被忽略的未跟踪文件的 Git 树哈希，不是 commit ID。用 <code>git diff &lt;old-tree&gt; &lt;new-tree&gt;</code> 比较这些快照。</p>
+<h3 id="ship-控制流">Ship 控制流</h3>
+<p>运行 /ship 的你（<strong>父级</strong>）掌握推进权；子任务返回的是证据，不是继续推进的许可。遵循已保存的工作清单：</p>
+<ol>
+<li>按顺序从 Step 1–21 开始，包括 6.5、11.5 和 14.5。只有当前项的各个门禁都清除后才推进。</li>
+<li>把一次修复展开成单独的步骤，插入到仍未完成的工作之前。这替换了当前项，其结果的记录仍然保留。
+只有当目标步骤还不是下一个待办步骤时才追加它。</li>
+<li>遇到另一次修复时，重复规则 2，同时不丢弃待办工作。
+已保存的清单优先于修复内部的常规“下一步”语句。
+一个范围绝不追加未列出的步骤。</li>
+</ol>
+<p>**示例：**Step 11 的修复把 <code>9 → 10 → 11</code> 插入到 11.5 之前。如果之后 Step 9 的修复又影响到 6–8，清单就变成 <code>5 → 6 → 7 → 8 → 9 → 10 → 11 → 11.5</code>。
+未受影响的发布步骤随后继续。修复期间 STOP 和 AskUserQuestion 门禁依然生效。</p>
+<p>在整个调用过程中保持同样的尝试计数。以 Step 14 结束的范围不会进入 Step 14.5。包含 Step 14.5 的范围进入它已有的审计决策，而不是无条件发起新的审计；它的“初始加一”上限永不重置。
+被允许的修复在本次调用中继续，不重启 /ship。</p>
+<hr>
+<h2 id="章节索引--在对应情形出现时阅读每一节">章节索引 — 在对应情形出现时阅读每一节</h2>
+<p>这个技能是一具决策树骨架。下面的步骤指向按需阅读的章节。执行某一步之前，先完整阅读对应章节；不要凭记忆工作。</p>
+<table>
+<thead>
+<tr>
+<th>何时</th>
+<th>阅读这一节</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>对 Apple 应用请求 App Store/TestFlight 分发（<code>.xcodeproj</code>、<code>.xcworkspace</code> 或 app 类 Swift 包）——在分支门禁之前、于 Step 0.9 阅读；Apple 仓库落地请求走常规流水线</td>
+<td><code>sections/apple-release.md</code></td>
+</tr>
+<tr>
+<td>运行测试套件，以及（若提示词文件有变更）评测套件（Step 4-6）</td>
+<td><code>sections/tests.md</code></td>
+</tr>
+<tr>
+<td>在免费测试通过后提前开 PR，以便并行进行 Greptile 审查（Step 6.5）</td>
+<td><code>sections/greptile-early.md</code></td>
+</tr>
+<tr>
+<td>付费评测用例失败，或免费套件的某个分片失败（Step 5-6）——从测试章节开始读；先做诊断性重跑，再走一次门禁</td>
+<td><code>sections/measure.md</code></td>
+</tr>
+<tr>
+<td>审计 diff 的测试覆盖率（Step 7）</td>
+<td><code>sections/test-coverage.md</code></td>
+</tr>
+<tr>
+<td>审计计划完成度、验证情况和范围漂移（Step 8）</td>
+<td><code>sections/plan-completion.md</code></td>
+</tr>
+<tr>
+<td>落地前审查与专家分派（Step 9）</td>
+<td><code>sections/review-army.md</code></td>
+</tr>
+<tr>
+<td>在 Fix-First 之前做探索性 QA（Step 9.2.1）</td>
+<td>使用 <code>sections/review-army.md</code> 中的 QA Read 指令</td>
+</tr>
+<tr>
+<td>复用被明确跳过的共享代码建议（Step 9.3）</td>
+<td><code>sections/shared-code-reuse.md</code></td>
+</tr>
+<tr>
+<td>在已有 PR 时处理 Greptile 审查意见（Step 10）</td>
+<td><code>sections/greptile.md</code></td>
+</tr>
+<tr>
+<td>对抗性审查与经验捕获（Step 11）</td>
+<td><code>sections/adversarial.md</code></td>
+</tr>
+<tr>
+<td>撰写 CHANGELOG 条目（Step 13）</td>
+<td><code>sections/changelog.md</code></td>
+</tr>
+<tr>
+<td>在最终提交/验证之前审计文档（Step 14.5），每次 ship 都要做</td>
+<td><code>sections/documentation.md</code></td>
+</tr>
+<tr>
+<td>准备标题，并用已验证的文档结果创建或更新 PR/MR（Step 18-19）</td>
+<td><code>sections/pr-body.md</code></td>
+</tr>
+<tr>
+<td>Step 19 打印了 CAPY_PR: on（Capy 会话，GSTACK_CAPY=1）——组装 PR 正文之前阅读</td>
+<td><code>sections/capy-pr.md</code></td>
+</tr>
+<tr>
+<td>把分支交给协调者而不是开 PR（--no-pr 或自动化通道；Step 18）</td>
+<td><code>sections/handoff.md</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="step-0识别平台与基础分支">Step 0：识别平台与基础分支</h2>
+<p>首先，从远端 URL 识别 git 托管平台：</p>
+<pre><code class="language-bash">git remote get-url origin 2&gt;/dev/null
+</code></pre>
+<ul>
+<li>如果 URL 包含 &quot;github.com&quot; → 平台为 <strong>GitHub</strong></li>
+<li>如果 URL 包含 &quot;gitlab&quot; → 平台为 <strong>GitLab</strong></li>
+<li>否则，检查 CLI 是否可用：<ul>
+<li><code>gh auth status 2&gt;/dev/null</code> 成功 → 平台为 <strong>GitHub</strong>（涵盖 GitHub Enterprise）</li>
+<li><code>glab auth status 2&gt;/dev/null</code> 成功 → 平台为 <strong>GitLab</strong>（涵盖自托管）</li>
+<li>两者都不成功 → <strong>unknown</strong>（只用 git 原生命令）</li>
+</ul>
+</li>
+</ul>
+<p>确定这个 PR/MR 的目标分支；如果还没有 PR/MR，则用仓库的默认分支。在后续所有步骤中把结果当作“基础分支”。</p>
+<p><strong>如果是 GitHub：</strong></p>
+<ol>
+<li><code>gh pr view --json baseRefName -q .baseRefName</code>——成功就用它</li>
+<li><code>gh repo view --json defaultBranchRef -q .defaultBranchRef.name</code>——成功就用它</li>
+</ol>
+<p><strong>如果是 GitLab：</strong></p>
+<ol>
+<li><code>glab mr view -F json 2&gt;/dev/null</code> 并提取 <code>target_branch</code> 字段——成功就用它</li>
+<li><code>glab repo view -F json 2&gt;/dev/null</code> 并提取 <code>default_branch</code> 字段——成功就用它</li>
+</ol>
+<p><strong>git 原生回退（平台未知，或 CLI 命令失败）：</strong></p>
+<ol>
+<li><code>git symbolic-ref refs/remotes/origin/HEAD 2&gt;/dev/null | sed &#39;s|refs/remotes/origin/||&#39;</code></li>
+<li>如果失败：<code>git rev-parse --verify origin/main 2&gt;/dev/null</code> → 使用 <code>main</code></li>
+<li>如果失败：<code>git rev-parse --verify origin/master 2&gt;/dev/null</code> → 使用 <code>master</code></li>
+</ol>
+<p>如果全部失败，回退到 <code>main</code>。</p>
+<p>打印识别出的基础分支名。在后续每一个 <code>git diff</code>、<code>git log</code>、<code>git fetch</code>、<code>git merge</code> 和 PR/MR 创建命令里，凡是说明中提到“基础分支”或 <code>&lt;default&gt;</code> 的地方，都替换成识别出的分支名。</p>
+<hr>
+<p><code>&lt;base&gt;</code> 表示识别出的分支名，用于 fetch/辅助脚本参数；<code>origin/&lt;base&gt;</code> 是它用于比较的远端跟踪引用。Step 1 会 fetch 它。</p>
+<h2 id="step-09识别-apple-目标">Step 0.9：识别 Apple 目标</h2>
+<p>如果请求的是 App Store/TestFlight 分发，寻找 <code>.xcodeproj</code>、<code>.xcworkspace</code> 或 Swift app 产物。阅读 <code>Package.swift</code> 及其入口，以区分 app 与库/CLI。如果仍不清楚，用 AskUserQuestion 确认目标，并等待答案后再选择发布路径。
+对确认是 app 的情况，<strong>STOP，并先阅读
+<code>~/.claude/skills/gstack/ship/sections/apple-release.md</code></strong>。商店分发通过该适配器从当前分支继续，包括干净的基础分支。
+下面的分支门禁和仓库落地流水线仅适用于仓库落地请求，包括发生在 Apple 仓库上的请求。</p>
+<h2 id="step-1起飞前检查">Step 1：起飞前检查</h2>
+<ol>
+<li><p>把当前分支保存为 <code>&lt;branch-name&gt;</code>。如果位于基础分支或仓库默认分支，<strong>中止</strong>：“你正在基础分支上。请从特性分支发布。”</p>
+</li>
+<li><p>运行 <code>git status</code>（绝不用 <code>-uall</code>）。未提交的改动总是包含在内；不要询问。</p>
+</li>
+<li><p>在查看 diff 之前运行 <code>git fetch origin &lt;base&gt;</code>。如果 fetch 失败，STOP：
+报告错误，先恢复访问权限。然后查看
+<code>git diff origin/&lt;base&gt; --stat</code>、status 中的未跟踪文件，以及
+<code>git log origin/&lt;base&gt;..HEAD --oneline</code>。</p>
+</li>
+<li><p>用下面的看板展示历史就绪情况，然后结束 Step 1。
+以往的 CLEAR 审查或看板跳过，永不替代 Step 9 的门禁。</p>
+</li>
+</ol>
+<h2 id="审查就绪看板">审查就绪看板</h2>
+<p>在起飞前检查中，读取审查日志和配置以展示就绪情况；Step 9 会运行新的落地前审查。</p>
+<pre><code class="language-bash">~/.claude/skills/gstack/bin/gstack-review-read
+</code></pre>
+<p>**1. 选择要展示的记录。**下面每一行都用最新的一条记录。
+不要用超过 7 天的记录来清除某一行，也绝不用更早的成功替代更新的失败。ship 指标不是审查记录。</p>
+<table>
+<thead>
+<tr>
+<th>行</th>
+<th>取以下最新者</th>
+<th>状态后缀</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Eng Review</td>
+<td><code>review</code> 或 <code>plan-eng-review</code></td>
+<td>(DIFF) 或 (PLAN)</td>
+</tr>
+<tr>
+<td>CEO Review</td>
+<td><code>plan-ceo-review</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Design Review</td>
+<td><code>plan-design-review</code> 或 <code>design-review-lite</code></td>
+<td>(FULL) 或 (LITE)</td>
+</tr>
+<tr>
+<td>Adversarial</td>
+<td><code>adversarial-review</code> 或旧版 <code>codex-review</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Outside Voice</td>
+<td>来自 CEO 或 Eng 审查的 <code>codex-plan-review</code></td>
+<td>—</td>
+</tr>
+</tbody></table>
+<p>保留每条记录的 host、source、outside_provider、outside_status 和 phase。
+历史来源 &quot;claude&quot; 是原生子代理；&quot;claude-code&quot; 是外部 CLI。
+不要根据今天的运行框架推断旧的提供方或未知模型。原生结果不能填补缺失、已禁用或已跳过的外部覆盖。</p>
+<p>**来源归属：**若有记录的 <code>via</code> 就把它追加到后缀（&quot;CLEAR (PLAN via /autoplan)&quot;）；没有则保留 &quot;CLEAR (PLAN)&quot; 或 &quot;CLEAR (DIFF)&quot;。在看板下方，按工作流运行和阶段分组展示 <code>autoplan-voices</code> 和 <code>design-outside-voices</code>。展示每个阶段的提供方和 outside_status；保留部分覆盖的情况。这些细节不能清除 Eng Review。</p>
+<p><strong>2. 在给出结论之前检查新鲜度。</strong></p>
+<ul>
+<li>**内容优先规则：**对 <code>review</code>、<code>adversarial-review</code>、<code>codex-review</code>、
+ship 阶段审查和 <code>design-review-lite</code>，使用 <code>review_freshness.status</code>
+并展示它的 <code>reason</code>。CURRENT 表示一次已完成的干净审查，其开始与结束的
+内容指纹都等于当前的 <code>---WTREE---</code> 指纹。
+STALE 或 UNVERIFIED 不能清除 Eng Review。缺少 <code>review_freshness</code>，
+包括只有日志的旧记录，意味着 UNVERIFIED。绝不用 HEAD 相等或提交距离
+作为 diff 证据的替代，即使提交数为零也不行。
+展示已记录的 cycles、completed/converged 字段，以及缺失的来源/阶段
+覆盖。未知的覆盖不是通过。</li>
+<li><strong>计划记录</strong>（plan-ceo-review、plan-eng-review、plan-design-review 和
+codex-plan-review）使用 7 天窗口，而不是工作树指纹。
+如果存在 <code>plan_sha256</code>，可以比较计划文件并报告不一致。
+把记录的提交与 <code>---HEAD---</code> 比较；如果不同，运行
+<code>git rev-list --count STORED_COMMIT..HEAD</code> 并报告
+“Note: {skill} review from {date} may be stale — {N} commits since review”。
+命令失败意味着 UNKNOWN，按过期处理；没有提交跟踪时，建议重跑。所有审查都
+最新时省略这些提示。</li>
+</ul>
+<p>**3. 给出历史结论。**CLEARED 要求选中的 Eng Review 为 <code>clean</code>、在 7 天以内且
+在步骤 2 下是新鲜的。否则报告 NOT CLEARED 及其缺失、过期或存在未决问题的原因。
+没有 Eng Review 记录时，说明“没有保存的 Eng Review：运行只读 /plan-eng-review 打印的 <code>PERSIST:</code> 行，或重跑它”（docs/troubleshooting.md#plan-eng-review-not-persisted）。如果 <code>skip_eng_review</code> 为 true，Eng Review 展示
+“SKIPPED (global)”，而本看板为 CLEARED。
+这个结论绝不跳过 Step 9 及其发现、批准和收敛门禁。即使历史为 NOT CLEARED 也继续 Step 1。</p>
+<p>其他行提供的是背景信息，不能替代 Eng Review：</p>
+<ul>
+<li>产品/业务或范围决策建议做 CEO Review，常规修复或清理不建议。</li>
+<li>UI/UX 工作建议做 Design Review，后端、基础设施或纯提示词工作不建议。</li>
+<li>对抗性审查总是包含一次原生检查。可用且已启用的外部挑战作为补充；
+200 行以上的 diff 还会走结构化的 P1 门禁。</li>
+<li>Outside Voice 是 CEO/Eng 审查之后默认开启的计划审查。<code>codex_reviews</code>
+会禁用这个额外步骤。提供方失败时使用原生回退并记录缺失的外部覆盖；
+这一行永不作为发布的门禁。</li>
+</ul>
+<p>**4. 展示看板。**把缺失、过期、禁用或不可用的结果显示为显式状态，绝不显示为 CLEAR。把新鲜的 <code>clean</code> 结果显示为 CLEAR，把
+<code>issues_open</code> 显示为 ISSUES OPEN，同时不改变已存的状态。</p>
+<p><strong>REVIEW READINESS DASHBOARD</strong></p>
+<p>步骤 1 中的每个条目占一行。只有 Eng Review 标记为必需。</p>
+<table>
+<thead>
+<tr>
+<th>Review</th>
+<th align="right">Runs</th>
+<th>Last run</th>
+<th>Status</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>{行与后缀}</td>
+<td align="right">{计数}</td>
+<td>{时间戳或 —}</td>
+<td>{实际状态与原因}</td>
+<td>{yes/no}</td>
+</tr>
+</tbody></table>
+<p>VERDICT: {CLEARED 或 NOT CLEARED} — {原因}</p>
+<p>状态为 <code>unverified</code> 或 <code>unavailable</code> 的外部审查属于覆盖缺失，绝不是通过。</p>
+<p>对 200 行以上的 diff（<code>git diff origin/&lt;base&gt; --stat | tail -1</code>），建议
+<code>/plan-eng-review</code> 或 <code>/autoplan</code>。</p>
+<p>对 Design Review：运行 <code>source &lt;(~/.claude/skills/gstack/bin/gstack-diff-scope &lt;base&gt; 2&gt;/dev/null)</code>。如果 <code>SCOPE_FRONTEND=true</code> 且没有设计审查记录，提示：“Design Review 未运行 — Step 9 包含轻量检查；如需完整视觉审计可考虑 /design-review。”</p>
+<p>不询问，继续 Step 2；Step 9 会应用审查门禁。</p>
+<hr>
+<h2 id="step-2分发流水线检查">Step 2：分发流水线检查</h2>
+<p>检查新的独立产物（CLI 二进制、包、工具）的分发，已部署的 Web 服务不算。</p>
+<ol>
+<li><p>列出候选分发路径：</p>
+<pre><code class="language-bash">git diff origin/&lt;base&gt; --diff-filter=A --name-only | grep -E &#39;(^|/)(cmd/[^/]+/main\.go|bin/[^/]+|Cargo\.toml|setup\.py|package\.json)$&#39; | head -5
+</code></pre>
+<p>把 Step 1 status 中匹配的未跟踪文件也算进来。逐个阅读匹配项：
+单独一个新的 <code>package.json</code> 或 <code>Cargo.toml</code> 不是可发布产物；
+还要检查已有清单中新声明的二进制或包导出。只有当确实存在新的
+可分发包时才设门禁。</p>
+</li>
+<li><p>如果检测到新产物，检查是否有发布工作流：</p>
+<pre><code class="language-bash">ls .github/workflows/ 2&gt;/dev/null | grep -iE &#39;release|publish|dist&#39;
+grep -qE &#39;release|publish|deploy&#39; .gitlab-ci.yml 2&gt;/dev/null &amp;&amp; echo &quot;GITLAB_CI_RELEASE&quot;
+</code></pre>
+</li>
+<li><p>**有新产物但没有流水线：**AskUserQuestion：“合并之后，没有发布流水线
+用户就无法下载这个产物。”</p>
+<ul>
+<li>A) 现在就加上该平台的发布工作流</li>
+<li>B) 推迟，在 Step 14 记一条 P1 分发 TODO</li>
+<li>C) 不需要：仅内部/Web 使用，已由现有部署覆盖</li>
+</ul>
+</li>
+<li><p>**如果选 A：**按仓库的 CI 惯例添加打包/发布配置。
+先询问未知的目标、仓库或访问凭据；绝不臆造凭据。
+针对该产物再检查一遍，并把工作流纳入测试和审查。
+在 <code>/ship</code> 期间不要发布正式版本。</p>
+</li>
+<li><p>否则不加流水线，继续。</p>
+</li>
+</ol>
+<hr>
+<h2 id="step-3合并基础分支在测试之前">Step 3：合并基础分支（在测试之前）</h2>
+<p>合并 Step 1 中 fetch 到的基础引用，使测试和审查覆盖整合后的代码：</p>
+<pre><code class="language-bash">git merge origin/&lt;base&gt; --no-edit
+</code></pre>
+<p>**合并冲突：**简单冲突自动解决（VERSION、schema.rb、CHANGELOG 顺序）。对复杂或有歧义的冲突，<strong>STOP</strong>，展示冲突的选项，用 AskUserQuestion 决定解决方式，并等待答案后再编辑或继续。</p>
+<p>**如果已经是最新：**静默继续。</p>
+<p><strong>Ship 策略：</strong><code>~/.claude/skills/gstack/bin/gstack-ship-policy show-effective --base &lt;base&gt;</code>
+（docs/ship-policy.md）；它的 <code>ship:</code> 行约束 Step 12、16 和提交历史。</p>
+<p>如果整合改动了 Step 2 检查过的产物或分发配置，就用合并后的内容重做 Step 2（包括其中的决策），然后做 Step 4。</p>
+<hr>
+<blockquote>
+<p>**STOP。**在运行测试套件以及（若提示词文件有变更）评测套件（Step 4-6）之前，阅读 <code>~/.claude/skills/gstack/ship/sections/tests.md</code> 并完整执行。
+不要凭记忆工作——那一节才是这一步的事实来源。</p>
+</blockquote>
+<blockquote>
+<p>**STOP。**在免费测试通过后为并行的 Greptile 审查提前开 PR（Step 6.5）之前，阅读 <code>~/.claude/skills/gstack/ship/sections/greptile-early.md</code> 并完整执行。
+不要凭记忆工作——那一节才是这一步的事实来源。</p>
+</blockquote>
+<blockquote>
+<p>**STOP。**在审计 diff 的测试覆盖率（Step 7）之前，阅读 <code>~/.claude/skills/gstack/ship/sections/test-coverage.md</code> 并完整执行。
+不要凭记忆工作——那一节才是这一步的事实来源。</p>
+</blockquote>
+<blockquote>
+<p>**STOP。**在审计计划完成度、验证情况和范围漂移（Step 8）之前，阅读 <code>~/.claude/skills/gstack/ship/sections/plan-completion.md</code> 并完整执行。
+不要凭记忆工作——那一节才是这一步的事实来源。</p>
+</blockquote>
+<blockquote>
+<p>**STOP。**在落地前审查与专家分派（Step 9）之前，阅读 <code>~/.claude/skills/gstack/ship/sections/review-army.md</code> 并完整执行。
+不要凭记忆工作——那一节才是这一步的事实来源。</p>
+</blockquote>
+<blockquote>
+<p>**STOP。**在已有 PR 时处理 Greptile 审查意见（Step 10）之前，阅读 <code>~/.claude/skills/gstack/ship/sections/greptile.md</code> 并完整执行。
+不要凭记忆工作——那一节才是这一步的事实来源。</p>
+</blockquote>
+<blockquote>
+<p>**STOP。**在对抗性审查与经验捕获（Step 11）之前，阅读 <code>~/.claude/skills/gstack/ship/sections/adversarial.md</code> 并完整执行。
+不要凭记忆工作——那一节才是这一步的事实来源。</p>
+</blockquote>
+<h2 id="step-115绑定审查">Step 11.5：绑定审查</h2>
+<ol>
+<li>**选出两次审查。**运行 <code>~/.claude/skills/gstack/bin/gstack-review-read</code>。
+选出本次调用最终的 Step 9.4 记录（<code>skill:&quot;review&quot;</code>、<code>via:&quot;ship&quot;</code>）
+和 Step 11 的原生记录（<code>skill:&quot;adversarial-review&quot;</code>）。把每条记录对应到它保存的
+句柄、原始 token 和来源；拒绝外部提供方或更旧的记录。</li>
+<li>**比较它们的内容。**要求原生记录的 <code>review_binding.state</code>
+为 <code>verified</code>。三份快照必须一致：它的 <code>wtree</code>、Step 9.4 的
+<code>review_binding.start_wtree</code> 和 <code>review_binding.end_wtree</code>。不一致或缺少
+记录/字段会阻塞发布准备：报告 <strong>Review records missing or mismatched</strong>，
+并在 Step 12 之前插入 <code>9 → 10 → 11 → 11.5</code>。在 11.5 处绑定新记录。
+绝不把新 token 挂到旧工作上。</li>
+<li>**保留任何 QA 例外。**一个具名的探测风险例外可能让 Step 9.4 的
+根 <code>wtree</code> 缺失；条目 2 仍然比较它的开始/结束快照。内容一致
+不代表失败或未运行的探测就算通过。保留 Step 9.4 的不完整标记
+和用户的例外。</li>
+<li>**保存证据。**保存两条记录和与之一致的 <strong>reviewed tree</strong>，供
+Step 16 使用。继续 Step 12。</li>
+</ol>
+<h2 id="step-12版本号递增自动决策">Step 12：版本号递增（自动决策）</h2>
+<p>条目 3 需要 <code>BUMP_LEVEL</code>：复用本次调用已保存的级别。否则 FRESH 在条目 2 中选择它，ALREADY_BUMPED 在条目 1 中推导它。</p>
+<p><code>ship: queue_mode stamp-at-merge</code> 会替换条目 1–4。</p>
+<ol>
+<li><p><strong>分类状态</strong>——纯读取，从不写入：</p>
+<pre><code class="language-bash">bun --no-env-file --config=/dev/null run ~/.claude/skills/gstack/bin/gstack-version-bump classify --base &lt;base&gt;
+</code></pre>
+<p>把 JSON 中的 <code>baseVersion</code> 保存为 <code>BASE_VERSION</code>，然后读取 <code>state</code> 并分派：</p>
+<ul>
+<li><strong>FRESH</strong> → 使用已记录的级别，或在条目 2 中选择级别，然后检查队列并写入。</li>
+<li><strong>ALREADY_BUMPED</strong> → 保持 <code>NEW_VERSION=currentVersion</code>。如果缺少 <code>BUMP_LEVEL</code>，
+就取 <code>baseVersion</code> 到 <code>currentVersion</code> 之间第一个变化的组件
+（major/minor/patch/micro；不存在的第四段视为零）。继续条目 3，
+而不是再做一次自动递增。</li>
+<li><strong>DRIFT_STALE_PKG</strong> → 运行 <code>gstack-version-bump repair</code>，然后重新分类。
+成功则按 ALREADY_BUMPED 处理，包括它的队列检查；失败则停止。
+仅靠修复永不再次递增版本。</li>
+<li><strong>DRIFT_UNEXPECTED</strong> → STOP：package.json 与 VERSION 不一致，而 VERSION
+与基础分支一致。先处理这处手工编辑，再重新分类。</li>
+<li><strong>NO_VERSION</strong> → 逐字打印 <code>notice</code>，并在不做版本变更的情况下 ship：跳过
+Step 12 的剩余部分和 Step 13 的 CHANGELOG 条目，绝不创建 VERSION，在 Step 18 使用
+无前缀的标题，并在 Step 20 记录 <code>&quot;version&quot;:null</code>。</li>
+<li><strong>退出码 2</strong> → STOP 并展示 stderr：所配置的版本文件缺失、为空、
+不可读或格式错误。修复它或它的固定配置，然后重新分类。绝不用 <code>0.0.0.0</code> 顶替。</li>
+</ul>
+</li>
+<li><p><strong>根据 diff 决定递增级别</strong>（由 agent 判断）：</p>
+<ul>
+<li><strong>MICRO</strong>：少于 50 行，琐碎的调整/配置。<strong>PATCH</strong>：50 行以上，没有功能信号。</li>
+<li><strong>MINOR</strong>：出现任何功能信号（新路由/页面、迁移、模块）或 500 行以上时询问。
+<strong>MAJOR</strong>：出现里程碑或破坏性变更时询问（<code>ship: bump patch</code> 永不询问）。
+AskUserQuestion：带理由的推荐级别、更小的级别，或取消。
+等待；取消会在发布写入或推送之前停止，并保留现有工作。
+用小写的 <code>BUMP_LEVEL</code> 保存。声称的版本号可以把下一个可用号往前推，
+但不能改变已选的 MICRO/PATCH/MINOR/MAJOR 级别。</li>
+</ul>
+</li>
+<li><p><strong>队列感知的挑选：</strong></p>
+<pre><code class="language-bash">QUEUE_JSON=$(bun --no-env-file --config=/dev/null run ~/.claude/skills/gstack/bin/gstack-next-version --base &lt;base&gt; --bump &quot;$BUMP_LEVEL&quot; --current-version &quot;$BASE_VERSION&quot; 2&gt;/dev/null || echo &#39;{&quot;offline&quot;:true}&#39;)
+CANDIDATE_VERSION=$(echo &quot;$QUEUE_JSON&quot; | jq -r &#39;.version // empty&#39;)
+</code></pre>
+<p>**先判定是否合格：**要求工具输出成功，且版本号非空并有效。
+<code>offline:false</code> 合格；<code>offline:true</code> 只有在带 <code>fallback:&quot;git&quot;</code> 时才算合格。
+离线输出缺少该回退、命令失败、输出格式错误或版本号为空
+都不可用，即使其中含有看起来像版本号的字符串。</p>
+<p><strong>不完整</strong>（<code>complete:false</code>）：<code>unknown_claims</code> 中的 PR 未被读取；挑选可能
+撞车。重跑条目 3 一次；仍然不完整则 AskUserQuestion：使用它（推荐；
+Version Gate CI 会重读队列）还是停止。</p>
+<ul>
+<li>**可用候选：**打印警告和已声称的队列。FRESH 设置 <code>NEW_VERSION=CANDIDATE_VERSION</code>。
+ALREADY_BUMPED 把它与 <code>currentVersion</code> 比较：若不同，询问是重新递增
+（刷新 CHANGELOG/PR 标题）还是保持当前值（CI 会拒绝冲突）。
+只有获得批准才改变既有版本。按 <code>branch</code> 和 <code>version</code> 检查 JSON 的
+<code>active_siblings</code>；持有 <code>&gt;= NEW_VERSION</code> 的兄弟分支需要做出选择：
+越过它，或结束本次尝试并同步。</li>
+<li>**没有可用候选：**打印 queue-unverified。FRESH 用本地 <code>BUMP_LEVEL</code>
+算术；ALREADY_BUMPED 保持 <code>currentVersion</code>。绝不用空候选。</li>
+</ul>
+</li>
+<li><p><strong>写入递增</strong>（FRESH，或获得批准的重新递增）：</p>
+<pre><code class="language-bash">bun --no-env-file --config=/dev/null run ~/.claude/skills/gstack/bin/gstack-version-bump write --version &quot;$NEW_VERSION&quot; --regen-digest --changelog CHANGELOG.md
+</code></pre>
+<p>它会写入 VERSION、清单和锁文件，并把 <code>## [Unreleased]</code> 移到 NEW_VERSION 下
+以供 Step 13 使用。退出码 2 表示什么都没写：展示 stderr，停止。
+退出码 3 是半写入：重新分类并对 DRIFT_STALE_PKG 执行 <code>repair</code>。</p>
+<p><code>--regen-digest</code> 只在 <code>scripts/gen-agents-digest.ts</code> 和已提交的 <code>agents-digest/gstack-AGENTS.md</code> 都存在时才运行它；如果
+<code>agentsDigest</code> 为 false，运行 <code>bun --no-env-file --config=/dev/null scripts/gen-agents-digest.ts</code> 并把摘要随递增一起暂存。推送之前，
+验证已提交的摘要与所选 VERSION 的生成结果一致。</p>
+</li>
+<li><p><strong>在版本已写入之后记录发布决策</strong>，包括获得批准的 ALREADY_BUMPED
+重新递增。跳过未变化的版本和只修清单的修复。</p>
+<pre><code class="language-bash">~/.claude/skills/gstack/bin/gstack-decision-log &#39;{&quot;decision&quot;:&quot;Ship NEW_VERSION (BUMP_LEVEL)&quot;,&quot;rationale&quot;:&quot;WHY&quot;,&quot;scope&quot;:&quot;repo&quot;,&quot;source&quot;:&quot;skill&quot;,&quot;confidence&quot;:9}&#39; 2&gt;/dev/null || true
+</code></pre>
+<p>替换 <code>NEW_VERSION</code>、<code>BUMP_LEVEL</code> 和一行 <code>WHY</code>（范围或破坏性变更信号）；尽力而为。</p>
+</li>
+</ol>
+<blockquote>
+<p>**STOP。**在撰写 CHANGELOG 条目（Step 13）之前，阅读 <code>~/.claude/skills/gstack/ship/sections/changelog.md</code> 并完整执行。
+不要凭记忆工作——那一节才是这一步的事实来源。</p>
+</blockquote>
+<h2 id="step-14todosmd自动更新">Step 14：TODOS.md（自动更新）</h2>
+<p>阅读 <code>~/.claude/skills/gstack/review/TODOS-format.md</code>。</p>
+<p>**1. 打开或创建：**阅读根目录的 <code>TODOS.md</code>。用户明确选择“add TODO”即授权
+用 <code># TODOS</code> 和 <code>## Completed</code> 创建它。否则若文件缺失，询问：A) 创建一个
+按组件/优先级组织的 TODOS.md，B) 跳过。选跳过则直接到条目 5。</p>
+<p>**2. 组织方式：**使用组件标题、<code>**Priority:**</code> P0–P4，以及底部的 <code>## Completed</code>。
+如果结构混乱，询问：A) 重组并保留全部内容
+（推荐），B) 保持原样。</p>
+<p><strong>3. 添加已批准的推迟项：</strong></p>
+<ul>
+<li>Step 2：把已批准的分发后续工作作为 P1 加入，写上缺失的流水线和受影响的产物。</li>
+<li>Step 8：把每个已批准的 P1 计划推迟项加入，带 <code>Deferred from plan: {plan file path}</code> 和缺失的工作。</li>
+<li>Step 5：保留已写入的 P0 测试失败条目；按失败和来源去重，补上缺失的已批准条目，并附错误输出和分支。
+绝不把被砍掉的范围变成 TODO，也绝不臆造未经批准的后续工作。复用匹配的条目而不是重复创建。</li>
+</ul>
+<p>**4. 检测已完成的 TODO：**把标题、文件和行为与
+<code>git diff origin/&lt;base&gt;</code>、未跟踪文件和 <code>git log origin/&lt;base&gt;..HEAD --oneline</code> 对比。
+把已证实的完成项移到 <code>## Completed</code>，并标注 <code>**Completed:** vX.Y.Z (YYYY-MM-DD)</code>；
+不确定的条目保持未完成。</p>
+<p>**5. 保存摘要：**报告新增、推迟、完成、剩余数量和创建/重组情况。如果创建被拒绝或写入失败，给出警告，并在 Step 19 的 PR 摘要中带上未保存的后续工作；绝不说它们已经保存。TODO 写入失败不阻塞流程。</p>
+<hr>
+<h2 id="step-145文档审计每次-ship-都做">Step 14.5：文档审计（每次 ship 都做）</h2>
+<p>**文档同步不变量：**每次 ship 都在最终提交/验证/发布之前分派 /document-release 子代理，包括重跑、已推送的分支、已有 PR 和纯文档改动。
+没有改动意味着审计被执行过，而不是被跳过；报告该节已验证的结果。</p>
+<blockquote>
+<p>**STOP。**在最终提交/验证之前审计文档（Step 14.5）时，每次 ship 都要阅读 <code>~/.claude/skills/gstack/ship/sections/documentation.md</code> 并完整执行。
+不要凭记忆工作——那一节才是这一步的事实来源。</p>
+</blockquote>
+<h2 id="step-15提交可二分的小块">Step 15：提交（可二分的小块）</h2>
+<p>做出可二分的提交；如果已经提交过，继续 Step 16。绝不创建空提交。</p>
+<ol>
+<li>把改动与它们的测试、配置/路由、视图和 Step 14.5 的文档归在一起；
+迁移可以单独成一次提交。少于 4 个文件、总计不足 50 行时可以合成一次提交。</li>
+<li>按依赖顺序排列：基础设施 → 模型/服务 → 控制器/视图。
+每次提交都能独立工作（没有断裂的导入或缺失的代码）。
+把 VERSION + CHANGELOG + TODOS.md 放在功能提交之后。</li>
+<li>使用 <code>&lt;type&gt;: &lt;summary&gt;</code>（feat/fix/chore/refactor/docs）和一段简短的正文；修复
+用户点名的 issue 时加上 <code>Fixes: #&lt;n&gt;</code> 尾注。只有最后的
+VERSION/CHANGELOG 提交才带发布版本号和共同作者尾注。不要打 Git tag：</li>
+</ol>
+<pre><code class="language-bash">git commit -m &quot;$(cat &lt;&lt;&#39;EOF&#39;
+chore: bump version and changelog (vX.Y.Z.W)
+
+Co-Authored-By: Claude &lt;noreply@anthropic.com&gt;
+EOF
+)&quot;
+</code></pre>
+<hr>
+<h2 id="step-16验证门禁">Step 16：验证门禁</h2>
+<p><strong>铁律：没有新鲜的验证证据，就不做完成声明。</strong></p>
+<p>按顺序运行阶段 1–5；下面的恢复说明指出从哪里续跑。验证期间或之后内容
+发生变化，就从阶段 1 重新开始，并在 Step 17 之前完成全部五个阶段。保持内容不变的提交会让证据继续有效。</p>
+<h3 id="1-结束写入者并准备产物">1. 结束写入者并准备产物</h3>
+<p>检查写入者句柄，包括文档子任务。在另一个写入者运行之前，确认它已终止
+或已正常结束；仅有超时或取消的确认就意味着 STOP，直到确认完成。</p>
+<p>在项目说明、清单、构建文件和 CI 中找到已声明的生成/构建命令。运行它们并保存结果。如果没有，记录为不适用并写明检查过的来源。缺少前置条件或构建失败会阻止 ship：
+报告 <strong>Build failed or prerequisite missing</strong>，附上命令、错误和所需的修复。绝不臆造替代命令。
+**如果被阻塞：**修复它，然后重复阶段 1。通过后继续
+到阶段 2；在那里把任何内容修复视为行为变更。</p>
+<h3 id="2-选择变更路径">2. 选择变更路径</h3>
+<p>用 <code>~/.claude/skills/gstack/bin/gstack-wtree</code> 抓取当前目录树。把
+<code>git diff &lt;reviewed-tree&gt; &lt;current-tree&gt;</code> 与 Step 12 之前保存的快照对比。
+缺少快照会阻塞这次比较，与 HEAD 是否相等无关。</p>
+<p>按这个顺序对比较结果分类：</p>
+<ol>
+<li>**行为、测试或构建输入发生变化：**提示词/模板算作行为。
+把 <code>5–11.5 → 12–14 → 16</code> 插入到待办的 Step 17 之前，然后停止本步骤。
+这次修复排除 Step 14.5，因为重建可能改变生成的文档。
+Step 16 从阶段 1 重新开始：重建并再次比较，之后由阶段 3 判断
+文档新鲜度。后续修复沿用同一份工作清单。</li>
+<li>**只有作者的文档或发布元数据发生变化：**保留 Step 8 的原始子任务
+报告和计数。用已记录的验证方式复查受影响的计划项，
+并把当前证据追加到调用记录中。如果某个分类不再成立，只运行 Step 8 的审计和
+决策门禁，然后回到 Step 16 阶段 1。绝不自己编辑子任务的计数。</li>
+<li>**没有变化，或仅文档的检查仍然支持该计划：**继续到阶段 3，
+不做新的代码审查。</li>
+</ol>
+<h3 id="3-判定文档的新鲜度">3. 判定文档的新鲜度</h3>
+<p>把所选发布路径、生成产物和文档/模板的基线与哈希，与 Step 14.5 保存的值比较。以往调用的
+审计或风险决策永远不算数。</p>
+<table>
+<thead>
+<tr>
+<th>结果</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>本次调用中被接受的审计与所有输入一致</td>
+<td>继续到阶段 4。</td>
+</tr>
+<tr>
+<td>用户接受的具名文档风险覆盖同一批准范围和确切内容，且不可豁免的门禁清除</td>
+<td>继续到阶段 4；保留 <code>Documentation: blocked</code>、其原因和不完整的范围。</td>
+</tr>
+<tr>
+<td>缺失、过期或被阻塞</td>
+<td>使用下面的恢复流程。绝不悄悄刷新哈希。</td>
+</tr>
+</tbody></table>
+<p>报告变化的输入、阻塞点和已用尝试次数：</p>
+<ul>
+<li>**还有一次尝试，且有变化的输入或可用的修复：**在 Step 17 之前插入
+<code>14.5 → 15 → 16</code>。使用带现有计数的 Blocked 恢复流程。
+在 Step 15 之前验证结果，然后重启 Step 16 阶段 1。</li>
+<li>**否则：**STOP，除非用户接受
+那个具体的具名文档风险，且所有不可豁免的门禁都清除（按
+Step 14.5 的 Blocked 恢复规则）。内容未变且已批准则进入阶段 4；
+修复过的内容进入阶段 1。</li>
+</ul>
+<p>绝不运行第三次审计。子任务返回不等于接受。</p>
+<h3 id="4-验证冻结的候选版本">4. 验证冻结的候选版本</h3>
+<p>在验证和推送期间冻结输入。运行已声明的文档/链接/生成文件
+检查；报告任何不可用的检查。</p>
+<p>**输入一致时复用检查。**比较该检查已保存和当前的消耗文件、夹具、依赖和执行参数的哈希或完整字节。
+依赖变化或未知时需要重跑。对模型评判者，比较完整的
+展开请求、评分标准、参数和构建器/运行时依赖。引用原始
+命令、结果/计数、时间戳和日志，绝不重新采样。强制审查仍然要运行。</p>
+<p>**也要检查每条测试泳道的回执。**使用它实际的 Step 5 标签/命令：
+<code>--label &lt;lane&gt; --expect-cmd &#39;&lt;exact Step 5 command&gt;&#39;</code>。检查自那次运行以来的变化；
+<code>--allow-paths</code> 只豁免发布元数据。仅改 <code>package.json</code> 版本号的编辑
+可以算数；脚本、依赖和运行时配置的改动需要实跑测试。
+不确定的编辑不能被豁免。文档、TODO 改动、新增/生成的测试和修复
+会让证据变成 STALE，即使没有新的代码审查。只有在所有允许的编辑都是发布元数据时，
+才使用这个示例：</p>
+<pre><code class="language-bash">~/.claude/skills/gstack/bin/gstack-evidence check --label tests --expect-cmd &#39;&lt;tests&gt;&#39; --label vitest --expect-cmd &#39;&lt;vitest&gt;&#39; --max-age 24 --allow-paths CHANGELOG.md,VERSION,package.json,agents-digest/gstack-AGENTS.md
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>回执结果</th>
+<th>下一步动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FRESH（退出码 0）</td>
+<td>引用标签、退出码、时间戳、日志和 <code>tests_ran</code>。</td>
+</tr>
+<tr>
+<td>STALE/MISSING：内容、命令或时间变化，或没有已证实的运行</td>
+<td>运行 <code>~/.claude/skills/gstack/bin/gstack-evidence run --label &lt;lane&gt; -- &#39;&lt;command&gt;&#39;</code>，读取结果并复查一次。按下面的说明处理失败。</td>
+</tr>
+<tr>
+<td>ZERO-RUN：回执的 <code>tests_ran</code> 为 0</td>
+<td>等同 STALE：该泳道什么也没证明。用 Step 5 的 ZERO-RUN 分诊（按失败泳道处理），绝不当作 FRESH，即使退出码为 0。</td>
+</tr>
+<tr>
+<td><code>tests_ran: unknown</code></td>
+<td>不阻塞：保留退出码 0 的结论，引用该泳道时写 <code>count unavailable</code>。绝不记成 ZERO-RUN，也不记成有计数的通过。</td>
+</tr>
+<tr>
+<td>只有回执的存储/回读失败</td>
+<td>用成功运行的证据独立证明最终内容未变、命令相同且时限有效。引用它确切的命令、退出码、时间戳和日志，标注 <strong>ledger unavailable</strong>，绝不用 FRESH。没有这些证明时，按 STALE/MISSING 处理。</td>
+</tr>
+</tbody></table>
+<p>没有测试泳道时：要求 Step 5 对最终内容给出明确的未测试范围批准，
+或者运行 Step 5–15（包括无测试的决策），然后回到 Step 16 阶段 1。
+报告这个缺口，绝不用 FRESH；构建必须通过。</p>
+<p>**新增、变化或未被豁免的测试失败：**停止发布。运行 Step 5–15，
+从 Step 5 的分诊开始，然后回到 Step 16 阶段 1。如果在阶段 5 报告时
+才发现失败，同样适用这个恢复流程。重新进入 Step 14.5 时
+保留它已有的审计计数；它不授权第三次尝试。</p>
+<h3 id="5-先报告再推送">5. 先报告，再推送</h3>
+<p>只提交 Step 15 之后仍未提交、且已批准并已验证的发布改动，
+包括生成产物；使用它的分组规则；绝不创建空提交。
+保留无关的用户文件。</p>
+<p>贴出构建/文档/测试结果。豁免只可用于同样的、已验证的既有失败和已批准范围；引用实际的批准和失败
+计数，绝不用 FRESH 或全绿。新增、变化或未被豁免的测试失败按
+阶段 4 的恢复流程处理，然后才发布。</p>
+<p>然后是诚实清单，两行，来自 Step 9 最新的 <code>Gate edits:</code> 行
+及其记录：</p>
+<ul>
+<li>对每个门禁发现：<code>gate</code>、路径、处置（<code>kept</code>/<code>restored</code>/<code>open</code>）、
+<code>reason</code> 和记录器盖章的 <code>actor</code>。如果没有，则写覆盖行
+（<code>none detected (...)</code>、<code>partial (...)</code> 或 <code>UNAVAILABLE — ...</code>）。</li>
+<li>每条测试泳道的 <code>tests_ran</code>（N、ZERO-RUN 或 <code>count unavailable</code>）。
+以审计者的姿态写这份报告：本次会话自身的门禁编辑是供读者审视的证据，
+不是需要辩护的立场；被保留的门禁只陈述理由，别的都不写。否则继续 Step 17。</li>
+</ul>
+<hr>
+<h2 id="step-17推送">Step 17：推送</h2>
+<p><strong>凭据推送前守卫——在推送之前运行：</strong></p>
+<pre><code class="language-bash">_REDACT_PREPUSH=$(~/.claude/skills/gstack/bin/gstack-config get redact_prepush_hook 2&gt;/dev/null || echo &quot;false&quot;)
+_HOOK_PATH=$(git rev-parse --git-path hooks/pre-push 2&gt;/dev/null || echo &quot;&quot;)
+_HOOK_STATE=&quot;missing&quot;
+if [ -e &quot;$_HOOK_PATH&quot; ] || [ -L &quot;$_HOOK_PATH&quot; ]; then
+  _HOOK_STATE=&quot;unmanaged&quot;
+  if [ -f &quot;$_HOOK_PATH&quot; ] &amp;&amp; [ ! -L &quot;$_HOOK_PATH&quot; ] &amp;&amp; grep -Fqx &#39;# gstack-redact pre-push (managed)&#39; &quot;$_HOOK_PATH&quot; 2&gt;/dev/null; then
+    _HOOK_STATE=&quot;managed&quot;
+  fi
+fi
+_HOOKS_DIR=$(git rev-parse --git-path hooks 2&gt;/dev/null || echo &quot;&quot;)
+_HOOKS_IN_GIT_DIR=&quot;no&quot;
+_HOOKS_CONFIG_STATUS=0
+git config --get core.hooksPath &gt;/dev/null 2&gt;&amp;1 || _HOOKS_CONFIG_STATUS=$?
+if [ -n &quot;$_HOOK_PATH&quot; ] &amp;&amp; [ -n &quot;$_HOOKS_DIR&quot; ] &amp;&amp; [ &quot;$_HOOKS_CONFIG_STATUS&quot; = &quot;1&quot; ] &amp;&amp; [ ! -L &quot;$_HOOKS_DIR&quot; ]; then
+  _HOOKS_IN_GIT_DIR=&quot;yes&quot;
+fi
+GSTACK_STATE_ROOT=$(~/.claude/skills/gstack/bin/gstack-paths --get GSTACK_STATE_ROOT); : &quot;${GSTACK_STATE_ROOT:?gstack-paths failed; reinstall with ./setup or /gstack-upgrade}&quot;
+_PREPUSH_PROMPTED=$([ -f &quot;$GSTACK_STATE_ROOT/.redact-prepush-prompted&quot; ] &amp;&amp; echo &quot;yes&quot; || echo &quot;no&quot;)
+if [ &quot;$_REDACT_PREPUSH&quot; = &quot;true&quot; ] &amp;&amp; [ &quot;$_HOOKS_IN_GIT_DIR&quot; = &quot;yes&quot; ] &amp;&amp; [ &quot;$_HOOK_STATE&quot; != &quot;unmanaged&quot; ]; then
+  ~/.claude/skills/gstack/bin/gstack-redact install-prepush-hook || exit $?
+fi
+echo &quot;REDACT_PREPUSH: $_REDACT_PREPUSH&quot;
+echo &quot;HOOK_STATE: $_HOOK_STATE&quot;
+echo &quot;HOOKS_IN_GIT_DIR: $_HOOKS_IN_GIT_DIR&quot;
+echo &quot;PREPUSH_PROMPTED: $_PREPUSH_PROMPTED&quot;
+</code></pre>
+<p>按回显的值分派：</p>
+<ol>
+<li><p><strong><code>REDACT_PREPUSH: true</code></strong>——这段代码安装或刷新受管理的
+钩子，保留 <code>pre-push.local</code> 和完整的 stdin。安装器失败时，
+在推送前 STOP。<code>HOOKS_IN_GIT_DIR: no</code>：不要安装；
+请求手动集成。<code>HOOK_STATE: unmanaged</code>：只有当钩子是默认目录中
+正常的、非符号链接的文件且没有 <code>pre-push.local</code> 时，才征询同意；
+否则请求手动集成。悬空的符号链接属于未管理。绝不覆盖任何一方的策略。</p>
+</li>
+<li><p><strong><code>REDACT_PREPUSH</code> 不为 true 且 <code>PREPUSH_PROMPTED: no</code></strong>——一次性
+提议（整机只提一次）。AskUserQuestion：</p>
+<blockquote>
+<p>gstack 可以安装一个按仓库生效的 git pre-push 钩子，阻止包含凭据
+（API key、token、私钥）的推送。它是护栏而非强制手段——
+<code>GSTACK_REDACT_PREPUSH=skip</code> 可以绕过它。
+要为你发布所用的仓库安装它吗？</p>
+</blockquote>
+<p>选项：</p>
+<ul>
+<li>A) 是——安装凭据守卫（推荐）</li>
+<li>B) 否——不要再问</li>
+</ul>
+<p>如果选 A：运行 <code>~/.claude/skills/gstack/bin/gstack-config set redact_prepush_hook true</code>
+然后重新运行上面的代码，并应用同样的目录和未管理钩子规则。
+如果选 B：运行 <code>~/.claude/skills/gstack/bin/gstack-config set redact_prepush_hook false</code>。
+无论选哪个答案之后都<strong>总是</strong>执行（问题失败时绝不执行；下次必须重新提议）：</p>
+<pre><code class="language-bash">GSTACK_STATE_ROOT=$(~/.claude/skills/gstack/bin/gstack-paths --get GSTACK_STATE_ROOT); : &quot;${GSTACK_STATE_ROOT:?gstack-paths failed; reinstall with ./setup or /gstack-upgrade}&quot;
+touch &quot;$GSTACK_STATE_ROOT/.redact-prepush-prompted&quot;
+</code></pre>
+</li>
+<li><p><strong>之前已拒绝</strong>——不作评论地继续。</p>
+</li>
+</ol>
+<p>**针对已就绪的既有 PR/MR 存在未决门禁发现：**当 Step 9 留下状态为 <code>open</code> 的门禁
+发现时，在推送前查找 <code>&lt;branch-name&gt;</code> 对应的开放 PR/MR
+（<code>gh pr list --head &lt;branch-name&gt; --state open --json number,isDraft</code>；GitLab
+<code>glab mr list --source-branch &lt;branch-name&gt; --output json</code>，读取 <code>draft</code>）。查找
+失败会在此 STOP。如果存在且不是草稿：</p>
+<ol>
+<li>前导信息回显了 <code>SESSION_KIND: spawned</code> 或 <code>headless</code>：<strong>推送前 STOP。</strong>
+报告未决的门禁发现（<code>gate</code>、路径）和该 PR/MR；不推送、不声称
+已发布。之后由人来处置。</li>
+<li>否则 AskUserQuestion 一次：A) 现在就解决这些未决项——在 Step 17 之前插入 <code>9 → 10 → 11 → 11.5 → 12 → 13 → 14 → 14.5 → 15 → 16</code>；B) 带 <code>Gate edits: N open</code> 横幅
+按就绪状态发布。把 B 作为人类授权的发布记录到调用记录中；Step 19 会读取它。绝不把就绪的 PR 改成草稿。</li>
+</ol>
+<p>新 PR 或已有的草稿无需提问：Step 19 会创建或保持草稿。</p>
+<p>**幂等检查：**检查分支是否已经推送且为最新。</p>
+<pre><code class="language-bash">LOCAL=$(git rev-parse HEAD) || exit 1
+REMOTE_REF=$(git ls-remote --heads origin refs/heads/&lt;branch-name&gt;) || {
+  echo &quot;STATUS: BLOCKED — cannot verify remote branch; restore access before pushing&quot;
+  exit 1
+}
+REMOTE=$(printf &#39;%s\n&#39; &quot;$REMOTE_REF&quot; | awk &#39;{print $(1)}&#39;)
+REMOTE=${REMOTE:-none}
+echo &quot;LOCAL: $LOCAL  REMOTE: $REMOTE&quot;
+[ &quot;$LOCAL&quot; = &quot;$REMOTE&quot; ] &amp;&amp; echo &quot;ALREADY_PUSHED&quot; || echo &quot;PUSH_NEEDED&quot;
+</code></pre>
+<p><code>ALREADY_PUSHED</code>：跳过推送，继续 Step 18。否则带上游跟踪推送：</p>
+<pre><code class="language-bash">git push -u origin &lt;branch-name&gt;
+</code></pre>
+<p>**如果推送失败，STOP。**不做 Step 19，也不声称已发布。报告错误：</p>
+<ul>
+<li>**非快进推送：**fetch 并查看远端，然后按 Step 3 的
+冲突规则合并。返回 Step 17 之前先运行 Step 5–16。绝不改写历史。</li>
+<li>**认证、钩子或网络失败：**修复原因，然后即使内容未变也要重跑 Step 16，
+之后再回到 Step 17。绝不绕过失败的门禁。
+绝不 force-push。只有推送成功或已确认 <code>ALREADY_PUSHED</code> 才继续。</li>
+</ul>
+<p>继续 Step 18。推送之后不再运行任何文档写入者。</p>
+<hr>
+<h2 id="step-18准备发布元数据">Step 18：准备发布元数据</h2>
+<p>先在识别出的平台上查找 <code>&lt;branch-name&gt;</code> 对应的开放 PR/MR：</p>
+<ul>
+<li>GitHub：<code>gh pr list --head &lt;branch-name&gt; --state open --json number,title,url</code></li>
+<li>GitLab：<code>glab mr list --source-branch &lt;branch-name&gt; --output json</code>（默认就是 open）。</li>
+</ul>
+<p>空数组意味着新建；匹配到一条则提供已有的标题/身份。
+查找失败或有歧义的匹配会 <strong>STOP</strong> 等待处理，绝不意味着没有 PR。
+保存结果供 Step 19 复查。</p>
+<p>pr-body 节根据该结果准备标题，然后发布；
+<code>--no-pr</code> 或自动化通道走 handoff 节。</p>
+<blockquote>
+<p>**STOP。**在准备标题并用已验证的文档结果创建或更新 PR/MR（Step 18-19）之前，阅读 <code>~/.claude/skills/gstack/ship/sections/pr-body.md</code> 并完整执行。
+不要凭记忆工作——那一节才是这一步的事实来源。</p>
+</blockquote>
+<blockquote>
+<p>**STOP。**在把分支交给协调者而不是开 PR（--no-pr 或自动化通道；Step 18）之前，阅读 <code>~/.claude/skills/gstack/ship/sections/handoff.md</code> 并完整执行。
+不要凭记忆工作——那一节才是这一步的事实来源。</p>
+</blockquote>
+<h2 id="step-20持久化-ship-指标">Step 20：持久化 ship 指标</h2>
+<p>通过 <code>gstack-review-log</code> 为 <code>/retro</code> 记录指标；它自行处理项目/分支路径、
+JSON 校验、存储和同步，且<strong>不接受路径参数</strong>。</p>
+<pre><code class="language-bash">~/.claude/skills/gstack/bin/gstack-review-log &#39;{&quot;skill&quot;:&quot;ship&quot;,&quot;timestamp&quot;:&quot;&#39;&quot;$(date -u +%Y-%m-%dT%H:%M:%SZ)&quot;&#39;&quot;,&quot;coverage_pct&quot;:COVERAGE_PCT,&quot;coverage_schema&quot;:2,&quot;coverage_pct_value&quot;:COVERAGE_PCT_VALUE,&quot;weak_gaps&quot;:WEAK_GAPS,&quot;tests_extended&quot;:TESTS_EXTENDED,&quot;tests_rejected&quot;:TESTS_REJECTED,&quot;regression_proof&quot;:REGRESSION_PROOF,&quot;plan_items_total&quot;:PLAN_TOTAL,&quot;plan_items_done&quot;:PLAN_DONE,&quot;verification_result&quot;:&quot;VERIFY_RESULT&quot;,&quot;version&quot;:&quot;VERSION&quot;,&quot;branch&quot;:&quot;&#39;&quot;$(git rev-parse --abbrev-ref HEAD)&quot;&#39;&quot;}&#39;
+</code></pre>
+<p>从更早的步骤中替换：</p>
+<ul>
+<li><strong>COVERAGE_PCT</strong>：Step 7 图表中的整数百分比；null/未确定记为 -1</li>
+<li><strong>COVERAGE_PCT_VALUE</strong>：Step 7 的 <code>coverage_pct_value</code>（门禁的 X）作为整数，缺失或被忽略时为 <code>null</code></li>
+<li><strong>WEAK_GAPS</strong>、<strong>TESTS_EXTENDED</strong>、<strong>TESTS_REJECTED</strong>：Step 7 的 <code>weak_gaps</code>、<code>tests_extended</code> 和 <code>tests_rejected</code> 的计数（键缺失或被忽略时为 0）</li>
+<li><strong>REGRESSION_PROOF</strong>：来自 Step 7 的 <code>{&quot;red_at_head&quot;:N,&quot;base_green&quot;:N,&quot;base_unavailable&quot;:N}</code>，缺失时为 <code>null</code></li>
+<li><strong>PLAN_TOTAL</strong>：Step 8 中提取的计划项总数（没有计划文件时为 0）</li>
+<li><strong>PLAN_DONE</strong>：Step 8 中 DONE + CHANGED 项的数量（没有计划文件时为 0）</li>
+<li><strong>VERIFY_RESULT</strong>：&quot;pass&quot;、&quot;fail&quot; 或 &quot;skipped&quot;，在 Step 9 执行完 Step 8.1 的验证清单后设置</li>
+<li><strong>VERSION</strong>：Step 12 的 <code>NEW_VERSION</code>；在 NO_VERSION 下为 <code>null</code>（不加引号）</li>
+</ul>
+<p>分支由 shell 提供。无需确认即可运行。</p>
+<hr>
+<h2 id="step-21plan-tune-可发现性提示仅首次成功-ship">Step 21：plan-tune 可发现性提示（仅首次成功 ship）</h2>
+<p>在一次成功的 ship 之后，每台机器只展示一次这个不阻塞的 /plan-tune 提示：</p>
+<pre><code class="language-bash">GSTACK_STATE_ROOT=$(~/.claude/skills/gstack/bin/gstack-paths --get GSTACK_STATE_ROOT); : &quot;${GSTACK_STATE_ROOT:?gstack-paths failed; reinstall with ./setup or /gstack-upgrade}&quot;
+_NUDGE_MARKER=&quot;$GSTACK_STATE_ROOT/.plan-tune-nudge-shown&quot;
+_QT=$(~/.claude/skills/gstack/bin/gstack-config get question_tuning 2&gt;/dev/null || echo &quot;false&quot;)
+if [ ! -f &quot;$_NUDGE_MARKER&quot; ] &amp;&amp; [ &quot;$_QT&quot; = &quot;false&quot; ]; then
+  echo &quot;&quot;
+  echo &quot;gstack can learn from your AskUserQuestion answers. Run /plan-tune to opt in&quot;
+  echo &quot;— it captures which prompts you find valuable vs noisy and (with hooks installed)&quot;
+  echo &quot;auto-decides your never-ask preferences.&quot;
+  mkdir -p &quot;$GSTACK_STATE_ROOT&quot; &amp;&amp; touch &quot;$_NUDGE_MARKER&quot;
+fi
+</code></pre>
+<p>标记文件或已启用的 question_tuning 会抑制它；删除标记即可重新启用。</p>
+<hr>
+<h2 id="章节自检完成之前">章节自检（完成之前）</h2>
+<p>列出适用的章节索引条目，并确认每一节都已阅读。如果你是凭
+记忆工作的，STOP，阅读对应章节并重做那一步。使用 <code>gstack-version-bump</code>；绝不要
+自己手写 VERSION/package.json。</p>
+<hr>
+<h2 id="重要规则">重要规则</h2>
+<p>遵循编号门禁及其明确的例外。</p>
+<ul>
+<li>**绝不 force push。**只用普通的 <code>git push</code>。</li>
+<li>**提前开的 Greptile PR 保持开放。**Step 6.5 开启它之后若停下，草稿会
+保持开放并留一条说明原因的评论（greptile-early 节）；绝不关闭它。</li>
+<li><strong>使用所配置版本文件的格式</strong>（VERSION 为 4 段）；在 NO_VERSION 下，
+绝不臆造一个。</li>
+<li>**Step 7 会生成覆盖率测试。**它们必须在提交前通过。绝不提交失败的测试。</li>
+</ul>
+</article>
+    
+    <nav class="pager" aria-label="上一篇和下一篇">
+  <a class="prev" href="./setup-gbrain.html">← setup-gbrain</a>
+  <a class="next" href="./skillify.html">skillify →</a>
+</nav>
+  </main>
+</body>
+</html>

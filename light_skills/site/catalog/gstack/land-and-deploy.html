@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>land-and-deploy · Skills Book</title>
+  <link rel="stylesheet" href="../../assets/book.css">
+</head>
+<body class="with-sidebar">
+  <aside class="sidebar"><div class="brand"><a href="../../index.html">Skills Book</a></div><section><h2>第一部 两种范式</h2><ul><li><a href="../../book/01-two-paradigms/01-same-and-different.html">gstack 与 mattpocock_skills：相同与差异</a></li></ul></section><section><h2>第二部 想清楚</h2><ul><li><a href="../../book/02-think/05-product-questioning.html">产品追问：office-hours 与 grilling</a></li></ul></section><section><h2>gstack</h2><ul><li><a href="./autoplan.html">autoplan</a></li><li><a href="./benchmark.html">benchmark</a></li><li><a href="./benchmark-models.html">benchmark-models</a></li><li><a href="./browse.html">browse</a></li><li><a href="./canary.html">canary</a></li><li><a href="./capy/gstack.html">capy/gstack</a></li><li><a href="./careful.html">careful</a></li><li><a href="./codex.html">codex</a></li><li><a href="./context-restore.html">context-restore</a></li><li><a href="./context-save.html">context-save</a></li><li><a href="./cso.html">cso</a></li><li><a href="./design-consultation.html">design-consultation</a></li><li><a href="./design-html.html">design-html</a></li><li><a href="./design-review.html">design-review</a></li><li><a href="./design-shotgun.html">design-shotgun</a></li><li><a href="./deslop-shared-libs.html">deslop-shared-libs</a></li><li><a href="./devex-review.html">devex-review</a></li><li><a href="./diagram.html">diagram</a></li><li><a href="./document-generate.html">document-generate</a></li><li><a href="./document-release.html">document-release</a></li><li><a href="./eval-plan.html">eval-plan</a></li><li><a href="./freeze.html">freeze</a></li><li><a href="./gstack.html">gstack</a></li><li><a href="./gstack-upgrade.html">gstack-upgrade</a></li><li><a href="./guard.html">guard</a></li><li><a href="./hackernews-frontpage.html">hackernews-frontpage</a></li><li><a href="./health.html">health</a></li><li><a href="./investigate.html">investigate</a></li><li><a href="./ios-clean.html">ios-clean</a></li><li><a href="./ios-design-review.html">ios-design-review</a></li><li><a href="./ios-fix.html">ios-fix</a></li><li><a href="./ios-qa.html">ios-qa</a></li><li><a href="./ios-sync.html">ios-sync</a></li><li><a href="./land-and-deploy.html">land-and-deploy</a></li><li><a href="./landing-report.html">landing-report</a></li><li><a href="./learn.html">learn</a></li><li><a href="./make-pdf.html">make-pdf</a></li><li><a href="./office-hours.html">office-hours</a></li><li><a href="./open-gstack-browser.html">open-gstack-browser</a></li><li><a href="./openclaw/ceo-review.html">openclaw/ceo-review</a></li><li><a href="./openclaw/investigate.html">openclaw/investigate</a></li><li><a href="./openclaw/office-hours.html">openclaw/office-hours</a></li><li><a href="./openclaw/retro.html">openclaw/retro</a></li><li><a href="./pair-agent.html">pair-agent</a></li><li><a href="./plan-ceo-review.html">plan-ceo-review</a></li><li><a href="./plan-design-review.html">plan-design-review</a></li><li><a href="./plan-devex-review.html">plan-devex-review</a></li><li><a href="./plan-eng-review.html">plan-eng-review</a></li><li><a href="./plan-tune.html">plan-tune</a></li><li><a href="./qa.html">qa</a></li><li><a href="./qa-only.html">qa-only</a></li><li><a href="./retro.html">retro</a></li><li><a href="./review.html">review</a></li><li><a href="./scrape.html">scrape</a></li><li><a href="./setup-browser-cookies.html">setup-browser-cookies</a></li><li><a href="./setup-deploy.html">setup-deploy</a></li><li><a href="./setup-gbrain.html">setup-gbrain</a></li><li><a href="./ship.html">ship</a></li><li><a href="./skillify.html">skillify</a></li><li><a href="./spec.html">spec</a></li><li><a href="./sync-gbrain.html">sync-gbrain</a></li><li><a href="./test-audit.html">test-audit</a></li><li><a href="./unfreeze.html">unfreeze</a></li></ul></section><section><h2>mattpocock</h2><ul><li><a href="../mattpocock/ask-matt/SKILL.html">ask-matt</a></li><li><a href="../mattpocock/chief-of-staff.html">chief-of-staff</a></li><li><a href="../mattpocock/claude-handoff.html">claude-handoff</a></li><li><a href="../mattpocock/code-review.html">code-review</a></li><li><a href="../mattpocock/codebase-design/SKILL.html">codebase-design</a></li><li><a href="../mattpocock/diagnosing-bugs.html">diagnosing-bugs</a></li><li><a href="../mattpocock/domain-modeling/SKILL.html">domain-modeling</a></li><li><a href="../mattpocock/git-guardrails-claude-code.html">git-guardrails-claude-code</a></li><li><a href="../mattpocock/grill-me.html">grill-me</a></li><li><a href="../mattpocock/grill-with-docs.html">grill-with-docs</a></li><li><a href="../mattpocock/grilling.html">grilling</a></li><li><a href="../mattpocock/handoff.html">handoff</a></li><li><a href="../mattpocock/implement.html">implement</a></li><li><a href="../mattpocock/implement-spec.html">implement-spec</a></li><li><a href="../mattpocock/improve-codebase-architecture/SKILL.html">improve-codebase-architecture</a></li><li><a href="../mattpocock/loop-me.html">loop-me</a></li><li><a href="../mattpocock/migrate-to-shoehorn.html">migrate-to-shoehorn</a></li><li><a href="../mattpocock/pr.html">pr</a></li><li><a href="../mattpocock/prototype/SKILL.html">prototype</a></li><li><a href="../mattpocock/research.html">research</a></li><li><a href="../mattpocock/retro.html">retro</a></li><li><a href="../mattpocock/scaffold-exercises.html">scaffold-exercises</a></li><li><a href="../mattpocock/setup-matt-pocock-skills/SKILL.html">setup-matt-pocock-skills</a></li><li><a href="../mattpocock/setup-pre-commit.html">setup-pre-commit</a></li><li><a href="../mattpocock/setup-ts-deep-modules.html">setup-ts-deep-modules</a></li><li><a href="../mattpocock/tdd/SKILL.html">tdd</a></li><li><a href="../mattpocock/teach/SKILL.html">teach</a></li><li><a href="../mattpocock/to-questionnaire.html">to-questionnaire</a></li><li><a href="../mattpocock/to-spec.html">to-spec</a></li><li><a href="../mattpocock/to-tickets.html">to-tickets</a></li><li><a href="../mattpocock/triage/SKILL.html">triage</a></li><li><a href="../mattpocock/wait-what.html">wait-what</a></li><li><a href="../mattpocock/wayfinder.html">wayfinder</a></li><li><a href="../mattpocock/wizard.html">wizard</a></li><li><a href="../mattpocock/writing-beats.html">writing-beats</a></li><li><a href="../mattpocock/writing-for-agents/SKILL.html">writing-for-agents</a></li><li><a href="../mattpocock/writing-fragments.html">writing-fragments</a></li><li><a href="../mattpocock/writing-shape.html">writing-shape</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">技能全库</a></p></aside>
+  <main class="content">
+    <section class="source-box">
+  <strong>来源</strong>：gstack · <code>land-and-deploy/SKILL.md</code> · v1.91.226.0 · commit <code>8d95013</code><br>
+  <strong>许可证</strong>：MIT · <a href="https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/land-and-deploy/SKILL.md">查看原仓库</a> · <a href="../../source-snapshots/gstack/land-and-deploy/SKILL.md">查看英文快照</a> · 快照：<code>source-snapshots/gstack/land-and-deploy/SKILL.md</code><br>
+  <strong>翻译</strong>：2026-10-30 · 译者注以 <code>&gt; 译者注：</code> 标出
+</section>
+    <section class="skill-overview">
+  <strong>land-and-deploy</strong>
+  <span>gstack</span>
+  <span>用户调用</span>
+  <p>接手 /ship 产出的 PR，通过就绪门禁后合并，监控部署并以金丝雀验证生产，最后给出带证据的落地报告。</p>
+</section>
+    <nav class="page-toc" aria-label="页内目录"><strong>本页目录</strong><ul><li class="toc-depth-1"><a href="#land-and-deploy--合并部署验证">/land-and-deploy — 合并、部署、验证</a></li><li class="toc-depth-2"><a href="#可由用户调用">可由用户调用</a></li><li class="toc-depth-2"><a href="#参数">参数</a></li><li class="toc-depth-2"><a href="#自动化与批准">自动化与批准</a></li><li class="toc-depth-2"><a href="#语气与叙述">语气与叙述</a></li><li class="toc-depth-2"><a href="#分节索引--遇到对应情形时读取该节">分节索引 — 遇到对应情形时读取该节</a></li><li class="toc-depth-2"><a href="#步骤-1起飞前检查">步骤 1：起飞前检查</a></li><li class="toc-depth-2"><a href="#步骤-15首次运行的演练校验">步骤 1.5：首次运行的演练校验</a></li><li class="toc-depth-2"><a href="#步骤-2合并前检查">步骤 2：合并前检查</a></li><li class="toc-depth-2"><a href="#步骤-3等待-ci若挂起">步骤 3：等待 CI（若挂起）</a></li><li class="toc-depth-2"><a href="#步骤-34version-漂移检测工作区感知的-ship">步骤 3.4：VERSION 漂移检测（工作区感知的 ship）</a></li><li class="toc-depth-2"><a href="#步骤-6等待部署若适用">步骤 6：等待部署（若适用）</a></li><li class="toc-depth-3"><a href="#策略-agithub-actions-工作流">策略 A：GitHub Actions 工作流</a></li><li class="toc-depth-3"><a href="#策略-b平台-cliflyiorenderheroku">策略 B：平台 CLI（Fly.io、Render、Heroku）</a></li><li class="toc-depth-3"><a href="#策略-c自动部署平台vercelnetlify">策略 C：自动部署平台（Vercel、Netlify）</a></li><li class="toc-depth-3"><a href="#策略-d自定义部署钩子">策略 D：自定义部署钩子</a></li><li class="toc-depth-3"><a href="#共同部分计时与失败处理">共同部分：计时与失败处理</a></li><li class="toc-depth-2"><a href="#步骤-7金丝雀验证按需调整深度">步骤 7：金丝雀验证（按需调整深度）</a></li><li class="toc-depth-2"><a href="#步骤-8回滚如需要">步骤 8：回滚（如需要）</a></li><li class="toc-depth-2"><a href="#步骤-9部署报告">步骤 9：部署报告</a></li><li class="toc-depth-2"><a href="#步骤-10建议后续动作">步骤 10：建议后续动作</a></li><li class="toc-depth-2"><a href="#分节自检收尾之前">分节自检（收尾之前）</a></li><li class="toc-depth-2"><a href="#重要规则">重要规则</a></li></ul></nav>
+    <article class="markdown-body"><h1 id="land-and-deploy--合并部署验证">/land-and-deploy — 合并、部署、验证</h1>
+<p>作为<strong>发布工程师（Release Engineer）</strong>，接手 <code>/ship</code> 创建的 PR：检查就绪状态、带批准合并、监控部署、验证生产，并报告证据。</p>
+<h2 id="可由用户调用">可由用户调用</h2>
+<p>当用户输入 <code>/land-and-deploy</code> 时，运行这个技能。</p>
+<h2 id="参数">参数</h2>
+<ul>
+<li><code>/land-and-deploy</code> — 从当前分支自动检测 PR，不指定部署后 URL</li>
+<li><code>/land-and-deploy &lt;url&gt;</code> — 自动检测 PR，并在该 URL 上验证部署</li>
+<li><code>/land-and-deploy #123</code> — 指定 PR 编号</li>
+<li><code>/land-and-deploy #123 &lt;url&gt;</code> — 指定 PR，并给出验证 URL</li>
+</ul>
+<h2 id="自动化与批准">自动化与批准</h2>
+<p>自动执行只读检测和轮询。适用时，首次运行的设置确认（步骤 1.5）和
+合并前批准（步骤 3.5）是强制的。遇到访问缺失、目标/状态未知、未批准的红灯、
+CI 挂起或缺失、冲突、测试失败，一律停止。
+出现任何合并错误之后，先读服务器状态，再决定是否停止。
+失败、超时、staging 选择、回滚和可选清理走下面这些显式决策；任何批准都不能
+覆盖阻塞项，也不能授权换一个修订版本。</p>
+<h2 id="语气与叙述">语气与叙述</h2>
+<p>叙述进度，说清实际的 app/PR，并在提问之前解释利害。
+首次运行：讲解每项检查做什么。已确认的运行：简短的状态更新。</p>
+<hr>
+<h2 id="分节索引--遇到对应情形时读取该节">分节索引 — 遇到对应情形时读取该节</h2>
+<p>这个技能是一副决策树骨架。下面的步骤指向按需读取的分节。执行某一步之前要
+先把对应分节完整读完，不要凭记忆操作。</p>
+<table>
+<thead>
+<tr>
+<th>何时</th>
+<th>读这一节</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>运行首次演练校验 — 步骤 1.5 的检查返回 FIRST_RUN 或 CONFIG_CHANGED（CONFIRMED 时跳过）</td>
+<td><code>sections/first-run-validation.md</code></td>
+</tr>
+<tr>
+<td>合并前就绪门禁（步骤 3.5）— 不可逆合并之前的最后一道检查</td>
+<td><code>sections/readiness-gate.md</code></td>
+</tr>
+<tr>
+<td>合并 PR 并检测部署策略（步骤 4-5）</td>
+<td><code>sections/merge-and-deploy.md</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="步骤-1起飞前检查">步骤 1：起飞前检查</h2>
+<p>告诉用户：“正在检查访问权限并找到你的 PR。”</p>
+<ol>
+<li>检查 GitHub CLI 认证：</li>
+</ol>
+<pre><code class="language-bash">gh auth status
+</code></pre>
+<p>如果未认证，<strong>停止</strong>；请用户运行 <code>gh auth login</code>，然后重试。</p>
+<ol start="2">
+<li>把任何 URL 存为 <code>VERIFY_URL</code>（一次显式验证请求）。把 <code>PR_NUMBER</code>
+设为 <code>#NNN</code> 参数里的数字，或者从当前分支检测一次：</li>
+</ol>
+<pre><code class="language-bash">REPO=$(gh repo view --json nameWithOwner -q .nameWithOwner) || exit 1
+if [ -z &quot;$PR_NUMBER&quot; ]; then
+  PR_NUMBER=$(gh pr view --repo &quot;$REPO&quot; --json number -q .number) || exit 1
+fi
+PR_JSON=$(gh pr view &quot;$PR_NUMBER&quot; --repo &quot;$REPO&quot; --json number,state,title,url,mergeable,baseRefName,headRefName,headRefOid,baseRefOid) || exit 1
+PR_HEAD=$(printf &#39;%s&#39; &quot;$PR_JSON&quot; | jq -er .headRefOid) || exit 1
+HEAD_BRANCH=$(printf &#39;%s&#39; &quot;$PR_JSON&quot; | jq -er .headRefName) || exit 1
+BASE_BRANCH=$(printf &#39;%s&#39; &quot;$PR_JSON&quot; | jq -er .baseRefName) || exit 1
+</code></pre>
+<p>把这些值带过每一个新的 shell。之后每条命令都针对这个仓库和这个 PR，
+绝不再依赖隐式的当前分支检测。查询失败意味着未知，而不是空 PR。
+告诉用户选中的编号、标题、head → base 以及 head SHA。</p>
+<ol start="3">
+<li>没有 PR：<strong>停止</strong>，建议 <code>/ship</code>。CLOSED：<strong>停止</strong>，请对方重新打开。MERGED：
+<strong>停止</strong>，建议 <code>/canary &lt;url&gt;</code>；不要再次合并，也不要声称发生过部署。
+只有 OPEN 才继续。在使用任何基于 HEAD 的证据之前，要求对应的干净检出：</li>
+</ol>
+<pre><code class="language-bash">LOCAL_HEAD=$(git rev-parse HEAD) || exit 1
+LOCAL_BRANCH=$(git branch --show-current) || exit 1
+LOCAL_STATUS=$(git status --porcelain) || exit 1
+if [ &quot;$LOCAL_HEAD&quot; != &quot;$PR_HEAD&quot; ] || [ &quot;$LOCAL_BRANCH&quot; != &quot;$HEAD_BRANCH&quot; ] || [ -n &quot;$LOCAL_STATUS&quot; ]; then
+  echo &quot;LOCAL_TARGET_MISMATCH&quot;
+  exit 1
+fi
+git fetch &quot;https://github.com/$REPO.git&quot; &quot;$BASE_BRANCH&quot; || exit 1
+BASE_SHA=$(git rev-parse FETCH_HEAD) || exit 1
+SCOPE_RESULT=$(~/.claude/skills/gstack/bin/gstack-diff-scope &quot;$BASE_SHA&quot;) || exit 1
+eval &quot;$SCOPE_RESULT&quot;
+</code></pre>
+<p>不匹配时<strong>停止</strong>，请用户保存工作、检出/更新该 PR
+分支，然后重跑。不要替他们切换、重置或暂存。合并之前保留 <code>BASE_SHA</code>、PR 的
+提交列表和所有范围标记；清理之后 HEAD 可能改变。
+未知范围不等于仅文档。<code>DOCS_ONLY=true</code> 要求 SCOPE_DOCS 且没有其他范围。</p>
+<hr>
+<h2 id="步骤-15首次运行的演练校验">步骤 1.5：首次运行的演练校验</h2>
+<p>检查此前是否有设置确认，以及配置是否变化（这不是部署成功的证据）：</p>
+<pre><code class="language-bash">GSTACK_STATE_ROOT=$(~/.claude/skills/gstack/bin/gstack-paths --get GSTACK_STATE_ROOT); : &quot;${GSTACK_STATE_ROOT:?gstack-paths failed; reinstall with ./setup or /gstack-upgrade}&quot;
+SLUG=$(~/.claude/skills/gstack/bin/gstack-slug --get SLUG 2&gt;/dev/null)
+if [ ! -f &quot;$GSTACK_STATE_ROOT&quot;/projects/$SLUG/land-deploy-confirmed ]; then
+  echo &quot;FIRST_RUN&quot;
+else
+  # 检查部署配置自确认以来是否变化
+  SAVED_HASH=$(cat &quot;$GSTACK_STATE_ROOT&quot;/projects/$SLUG/land-deploy-confirmed 2&gt;/dev/null)
+  CURRENT_HASH=$(sed -n &#39;/## Deploy Configuration/,/^## /p&#39; CLAUDE.md 2&gt;/dev/null | shasum -a 256 | cut -d&#39; &#39; -f1)
+  # 同时哈希会影响部署行为的工作流文件
+  WORKFLOW_HASH=$(find .github/workflows -maxdepth 1 \( -name &#39;*deploy*&#39; -o -name &#39;*cd*&#39; \) 2&gt;/dev/null | xargs cat 2&gt;/dev/null | shasum -a 256 | cut -d&#39; &#39; -f1)
+  COMBINED_HASH=&quot;${CURRENT_HASH}-${WORKFLOW_HASH}&quot;
+  if [ &quot;$SAVED_HASH&quot; != &quot;$COMBINED_HASH&quot; ] &amp;&amp; [ -n &quot;$SAVED_HASH&quot; ]; then
+    echo &quot;CONFIG_CHANGED&quot;
+  else
+    echo &quot;CONFIRMED&quot;
+  fi
+fi
+</code></pre>
+<p><strong>如果 CONFIRMED：</strong> 说“设置此前已确认。”转到步骤 2；不要读演练分节。</p>
+<p><strong>如果 FIRST_RUN 或 CONFIG_CHANGED：</strong> 读取并执行演练分节：</p>
+<blockquote>
+<p><strong>停止。</strong> 在运行首次演练校验之前 — 步骤 1.5 的检查返回 FIRST_RUN 或 CONFIG_CHANGED（CONFIRMED 时跳过），读取 <code>~/.claude/skills/gstack/land-and-deploy/sections/first-run-validation.md</code> 并整体执行它。
+不要凭记忆操作 — 那一节才是这一步的事实源。</p>
+</blockquote>
+<p>选项 A 保存指纹并继续到步骤 2；B/C 停止。</p>
+<hr>
+<h2 id="步骤-2合并前检查">步骤 2：合并前检查</h2>
+<p>告诉用户：“正在检查 CI 状态和合并就绪情况……”</p>
+<pre><code class="language-bash">~/.claude/skills/gstack/bin/gstack-ci-gate --repo &quot;$REPO&quot; --pr &quot;$PR_NUMBER&quot; --expect-head &quot;$PR_HEAD&quot; --registration-wait 60
+</code></pre>
+<p>它以这个 head 上的全部检查作为门禁条件，无论是否必需。依据第一行
+<code>VERDICT &lt;verdict&gt; &lt;sha&gt;</code>（<code>&lt;sha&gt;</code> 必须是 <code>PR_HEAD</code>）行动，绝不要依据退出码。
+认证/网络/schema 错误属于 ERROR，绝不是“没有必需检查”。</p>
+<ol>
+<li>ERROR，或 <code>required=y|?</code> 的检查 FAIL：<strong>停止</strong>，展示输出。</li>
+<li>只有 <code>required=n</code> 的失败，或 NO_CHECKS（60 秒后重新轮询仍显示
+“no CI ran on <code>&lt;sha&gt;</code>”）：步骤 3.5 必须批准它。</li>
+<li>PENDING：步骤 3。PASS：跳过步骤 3 的等待；
+继续到步骤 3.4，然后合并之前进步骤 3.5。</li>
+</ol>
+<p>同时检查合并冲突：</p>
+<pre><code class="language-bash">gh pr view &quot;$PR_NUMBER&quot; --repo &quot;$REPO&quot; --json mergeable -q .mergeable
+</code></pre>
+<p>如果 <code>CONFLICTING</code>：<strong>停止</strong>，先解决冲突。读取失败/UNKNOWN：<strong>停止</strong>，
+就绪状态未建立。</p>
+<hr>
+<h2 id="步骤-3等待-ci若挂起">步骤 3：等待 CI（若挂起）</h2>
+<p>按 4 分钟一轮轮询（shell 超时 300 秒），最多 15 分钟；记录等待情况：</p>
+<pre><code class="language-bash">~/.claude/skills/gstack/bin/gstack-ci-gate --repo &quot;$REPO&quot; --pr &quot;$PR_NUMBER&quot; --expect-head &quot;$PR_HEAD&quot; --wait 240
+</code></pre>
+<p>其他判定按步骤 2 处理。15 分钟仍 PENDING：列出仍在挂起的检查；
+询问 A) 再等 15 分钟，B) 排除指名的 <code>required=n</code> 检查（步骤 3.5
+逐项批准），或 C) 停止。</p>
+<hr>
+<h2 id="步骤-34version-漂移检测工作区感知的-ship">步骤 3.4：VERSION 漂移检测（工作区感知的 ship）</h2>
+<pre><code class="language-bash">BRANCH_VERSION=$(git show &quot;$PR_HEAD:VERSION&quot; 2&gt;/dev/null | tr -d &#39;\r\n[:space:]&#39;)
+BASE_VERSION=$(git show &quot;$BASE_SHA:VERSION&quot; 2&gt;/dev/null | tr -d &#39;\r\n[:space:]&#39;)
+git fetch -q origin &quot;$BASE_BRANCH&quot;
+read -r MODE CL &lt; &lt;(~/.claude/skills/gstack/bin/gstack-ship-policy show-effective --base &quot;$BASE_BRANCH&quot; --json |
+  jq -r &#39;select(.valid).policy | &quot;\(.queue_mode) \(.changelog)&quot;&#39;)
+Q=$(bun --no-env-file --config=/dev/null run ~/.claude/skills/gstack/bin/gstack-next-version --base &quot;$BASE_BRANCH&quot; \
+  --exclude-pr &quot;$PR_NUMBER&quot; --bump patch --current-version &quot;$BASE_VERSION&quot; 2&gt;/dev/null || echo &#39;{&quot;offline&quot;:true}&#39;)
+Q=$(echo &quot;$Q&quot; | jq -r --arg v &quot;$BRANCH_VERSION&quot; &#39;[.claimed[]? | select(.version == $v).pr] as $c | if .no_version
+  then &quot;NO_VERSION&quot; elif $c != [] then &quot;STOP also claimed by #\($c[0])&quot; elif .offline or (.complete | not)
+  then &quot;unavailable: claims unread&quot; else &quot;ok&quot; end&#39;)
+cl() { sed -n &#39;s/^## \[\([^]]*\)\].*/\1/p&#39; | head -2 | xargs; }
+H=$(git show &quot;$PR_HEAD:$CL&quot; 2&gt;/dev/null | cl); B=$(git show &quot;$BASE_SHA:$CL&quot; 2&gt;/dev/null | cl)
+V=$(awk -v a=&quot;$BASE_VERSION&quot; -v b=&quot;$BRANCH_VERSION&quot; &#39;BEGIN { r = &quot;^[0-9]+[.][0-9]+[.][0-9]+([.][0-9]+)?$&quot;
+  if (a !~ r || b !~ r || split(a, x, &quot;.&quot;) != (n = split(b, y, &quot;.&quot;))) { print &quot;bad&quot;; exit }
+  for (i = 1; i &lt;= n &amp;&amp; x[i] == y[i]; i++); if (i &gt; n || y[i] &lt; x[i]) { print &quot;low&quot;; exit }
+  s = y[i] == x[i] + 1; for (j = i + 1; j &lt;= n; j++) s = s &amp;&amp; !y[j]; print s ? &quot;one&quot; : &quot;up&quot; }&#39;)
+if [ &quot;$Q&quot; = NO_VERSION ]; then R=$Q
+elif [ &quot;$V&quot; = bad ]; then R=&quot;unavailable: bad version&quot;
+elif [ &quot;$MODE&quot; = stamp-at-merge ]; then
+  [ &quot;$V&quot; = one ] &amp;&amp; { [ -z &quot;$H&quot; ] || [ &quot;$H&quot; = &quot;$(echo $BRANCH_VERSION ${B%% *})&quot; ]; } &amp;&amp; R=ok || R=&quot;STOP stamp stale&quot;
+elif [ &quot;$V&quot; = low ]; then R=&quot;STOP base is at or above it&quot;
+elif [ -z &quot;$MODE&quot; ]; then R=&quot;unavailable: no policy&quot;
+else R=$Q; fi
+echo &quot;VERSION_CHECK: $R ($MODE: $BRANCH_VERSION, base $BASE_VERSION)&quot;
+</code></pre>
+<ul>
+<li><code>NO_VERSION</code>：打印 <code>VERSION check: not applicable (&lt;version_source.reason&gt;)</code>；绝不
+期待带版本前缀的标题、CHANGELOG 版本头或 tag。</li>
+<li><code>unavailable</code>：如实报告；继续到步骤 3.5（CI 的版本门禁是兜底）。</li>
+<li><code>ok</code>：继续；更高的同级声明或 MICRO 升版不算漂移。</li>
+<li><code>STOP stamp stale</code>（stamp-at-merge：不是 base 加一次升版，或者顶部 CHANGELOG 标题
+不是它、接着才是 base 的）：<strong>停止</strong>；在 PR 分支上运行 `gstack-restamp --next --base<base> --pr <n> --expect-base <BASE_SHA> --allow-repo-commands`，推送这个 stamp diff，
+等 CI，然后重跑。</li>
+<li>其他 <code>STOP</code>：<strong>停止</strong>，说明“检测到 VERSION 漂移”、判定结果，并：从功能分支
+重跑 <code>/ship</code>（它的 ALREADY_BUMPED 路径会协调 VERSION、package.json、
+CHANGELOG 头和 PR 标题）。绝不在此自动升版或合并：重复版本可能
+覆盖另一个分支的发布说明。</li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>停止。</strong> 在合并前就绪门禁（步骤 3.5）之前 — 不可逆合并之前的最后一道检查，读取 <code>~/.claude/skills/gstack/land-and-deploy/sections/readiness-gate.md</code> 并整体执行它。
+不要凭记忆操作 — 那一节才是这一步的事实源。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>停止。</strong> 在合并 PR 并检测部署策略（步骤 4-5）之前，读取 <code>~/.claude/skills/gstack/land-and-deploy/sections/merge-and-deploy.md</code> 并整体执行它。
+不要凭记忆操作 — 那一节才是这一步的事实源。</p>
+</blockquote>
+<hr>
+<h2 id="步骤-6等待部署若适用">步骤 6：等待部署（若适用）</h2>
+<p>除非是为回滚而来，否则设置 <code>TARGET=production</code> 和 <code>DEPLOY_SHA=MERGE_SHA</code>。使用
+步骤 3.5/5 得到的部署事实；把状态和金丝雀健康分开保存。仅仅 URL 可访问，
+不能证明这个修订版本已经部署。没有配置触发器时：不要自己发明一个。</p>
+<h3 id="策略-agithub-actions-工作流">策略 A：GitHub Actions 工作流</h3>
+<p>如果检测到部署工作流，找出由该合并提交触发的那次运行：</p>
+<pre><code class="language-bash">gh run list --repo &quot;$REPO&quot; --branch &quot;$BASE_BRANCH&quot; --limit 10 --json databaseId,headSha,status,conclusion,name,workflowName
+</code></pre>
+<p>匹配 <code>DEPLOY_SHA</code>、工作流和目标环境。如果还没有出现运行记录，在同一个
+20 分钟期限内重复查询。另一个 SHA 上的同名匹配不是证据。</p>
+<p>每 30 秒轮询一次：</p>
+<pre><code class="language-bash">gh run view &lt;run-id&gt; --repo &quot;$REPO&quot; --json status,conclusion
+</code></pre>
+<h3 id="策略-b平台-cliflyiorenderheroku">策略 B：平台 CLI（Fly.io、Render、Heroku）</h3>
+<p>如果 CLAUDE.md 里配置了部署状态命令（例如 <code>fly status --app myapp</code>），用它代替
+GitHub Actions 轮询，或与之并用。</p>
+<p><strong>Fly.io：</strong> 检查配置的 app（不要执行 <code>fly deploy</code>）：</p>
+<pre><code class="language-bash">fly status --app {app} 2&gt;/dev/null
+</code></pre>
+<p>找已启动的 Machine，以及绑定到 <code>DEPLOY_SHA</code> 的一次 release；只看时间是
+不能作为证据的。</p>
+<p><strong>Render：</strong> 查看它针对所连接分支/修订版本的 release 记录，然后测可达性：</p>
+<pre><code class="language-bash">curl -sf {production-url} -o /dev/null -w &quot;%{http_code}&quot; 2&gt;/dev/null
+</code></pre>
+<p>每 30 秒轮询一次。HTTP 200 只能证明可达，不能证明线上跑的是哪个 release。</p>
+<p><strong>Heroku：</strong> 查看最新 release：</p>
+<pre><code class="language-bash">heroku releases --app {app} -n 1 2&gt;/dev/null
+</code></pre>
+<h3 id="策略-c自动部署平台vercelnetlify">策略 C：自动部署平台（Vercel、Netlify）</h3>
+<p>当配置为在这次合并时自动部署，等 60 秒，检查 <code>DEPLOY_SHA</code> 对应的部署记录，
+然后进步骤 7。没有记录意味着部署未验证，而不是成功。</p>
+<h3 id="策略-d自定义部署钩子">策略 D：自定义部署钩子</h3>
+<p>只运行配置好的只读状态命令。检查它的退出码和修订版本输出；通用的健康检查
+无法证明一次新部署。</p>
+<p>已记录的命令触发器按步骤 5 的路线 2 执行：它从默认分支的检出目录运行，由用户
+执行，或者在你获得用户显式批准后由你执行。退出码为零或 URL 可访问，本身都不是
+修订版本的证据。</p>
+<h3 id="共同部分计时与失败处理">共同部分：计时与失败处理</h3>
+<p>记录部署开始时间。每 2 分钟展示一次进度：“部署仍在进行……（已过 {X} 分钟）。
+对大多数平台来说这很正常。”</p>
+<p>匹配的修订版本成功部署：记录 <code>DEPLOY_STATUS=PASSED</code>、耗时
+和证据。继续到步骤 7；若没有可用 URL，则进步骤 5 的 URL 提问。</p>
+<p>如果部署失败/取消：记录 <code>DEPLOY_STATUS=FAILED</code>，然后使用 AskUserQuestion：</p>
+<ul>
+<li><strong>重述背景：</strong>“合并之后部署工作流失败了。代码已合并，但可能还没上线。我能做的是：”</li>
+<li><strong>建议：</strong> 选 A，先调查再决定是否回退。</li>
+<li>A) 让我看看部署日志，弄清哪里出了问题</li>
+<li>B) 立即回退这次合并 — 回到上一个版本</li>
+<li>C) 仍然继续做健康检查 — 部署失败可能只是某一步抖动，站点也许实际上是好的</li>
+</ul>
+<p><strong>A：</strong> 读 <code>gh run view &lt;run-id&gt; --repo &quot;$REPO&quot; --log-failed</code>（或配置的平台
+日志），总结原因和证据的局限，然后询问：回退（步骤 8）、检查健康（步骤 7），
+还是以未验证状态收尾（步骤 9）。不做自动代码修改，也不自动重新部署。
+<strong>B：</strong> 步骤 8。<strong>C：</strong> 有 URL 就进步骤 7，否则进步骤 5 的 URL 提问。金丝雀通过
+永远不能抹掉 FAILED 的部署证据。</p>
+<p>到 20 分钟时（包括等待运行记录出现的时间），询问：<strong>A)</strong> 再有限地等
+20 分钟，<strong>B)</strong> 不做验证直接收尾。A 只重置等待期限并恢复同一套查询/轮询；
+B 记录部署挂起/未知并进步骤 9。
+状态查询失败属于未知：展示错误，并给出同样的有限等待或收尾选择，
+不要编造成功。在回滚监控期间，失败只提供看日志或挂起报告，绝不第二次自动回退。</p>
+<hr>
+<h2 id="步骤-7金丝雀验证按需调整深度">步骤 7：金丝雀验证（按需调整深度）</h2>
+<p>告诉用户确认或未确认的是哪个目标/修订版本，然后检查它的 URL。
+如果浏览器不可用，记录 SKIPPED 并写明该目标的原因。
+staging 选项 A 回到它的生产路线；C 直接进步骤 9，且不声称
+STAGING VERIFIED。生产则带着不完整的健康证据进步骤 9。</p>
+<p>使用此前保存的合并前范围，以及步骤 5 的优先级规则；URL/触发式部署路径
+同样要验证仅文档改动。除非是从 staging 选项 A/C 进入，否则设置 <code>TARGET=production</code>。</p>
+<table>
+<thead>
+<tr>
+<th>差异范围</th>
+<th>金丝雀深度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>仅 SCOPE_DOCS</td>
+<td>步骤 5 路由到这里时做冒烟检查；否则在那边跳过</td>
+</tr>
+<tr>
+<td>仅 SCOPE_CONFIG</td>
+<td>冒烟：下面这个 Aside 脚本；<code>NAV=</code> 里的 <code>responseStatus</code> 必须是 200</td>
+</tr>
+<tr>
+<td>仅 SCOPE_BACKEND</td>
+<td>控制台错误 + 性能检查</td>
+</tr>
+<tr>
+<td>SCOPE_FRONTEND（任意）</td>
+<td>完整：控制台 + 性能 + 截图</td>
+</tr>
+<tr>
+<td>混合范围</td>
+<td>完整金丝雀</td>
+</tr>
+</tbody></table>
+<p><strong>完整金丝雀序列</strong> — 一个 <code>aside repl</code> 脚本做完整个检查（先挂控制台钩子，再加载，再取证据）：</p>
+<pre><code class="language-bash">aside repl &#39;
+const HOOK = `(() =&gt; { window.__gstackErrs = window.__gstackErrs || []; const oe = console.error; console.error = (...a) =&gt; { window.__gstackErrs.push(a.map(String).join(&quot; &quot;)); oe.apply(console, a); }; window.addEventListener(&quot;error&quot;, e =&gt; window.__gstackErrs.push(&quot;uncaught: &quot; + e.message)); window.addEventListener(&quot;unhandledrejection&quot;, e =&gt; window.__gstackErrs.push(&quot;unhandledrejection: &quot; + (e.reason &amp;&amp; e.reason.message || e.reason))); })()`;
+const pg = await openTab(&quot;about:blank&quot;);
+await pg._sendToTarget(&quot;Page.addScriptToEvaluateOnNewDocument&quot;, { source: HOOK });
+await pg.goto(&quot;&lt;url&gt;&quot;);
+console.log(&quot;URL=&quot; + pg.url());
+console.log(&quot;CONSOLE_ERRORS=&quot; + JSON.stringify(await pg.evaluate(() =&gt; window.__gstackErrs)));
+console.log(&quot;NAV=&quot; + await pg.evaluate(() =&gt; JSON.stringify(performance.getEntriesByType(&quot;navigation&quot;)[0])));
+console.log(&quot;TEXT_START&quot;); console.log((await pg.evaluate(() =&gt; document.body.innerText)).slice(0, 20000)); console.log(&quot;TEXT_END&quot;);
+await pg.screenshot({ path: &quot;post-deploy.jpg&quot;, type: &quot;jpeg&quot;, quality: 60, fullPage: true });
+const a = await annotatedScreenshot(pg);
+await fs.writeFile(path.join(pwd, &quot;post-deploy-annotated.png&quot;), Buffer.from(a.base64Image, &quot;base64&quot;));
+console.log(&quot;ASIDE_DIR=&quot; + pwd);
+await closeTab(pg);
+console.log(&quot;GSTACK_STEP_OK&quot;);
+&#39;
+</code></pre>
+<p>然后把证据从打印出来的会话目录里复制出来：</p>
+<pre><code class="language-bash">mkdir -p .gstack/deploy-reports &amp;&amp; cp &quot;&lt;ASIDE_DIR&gt;/post-deploy.jpg&quot; &quot;&lt;ASIDE_DIR&gt;/post-deploy-annotated.png&quot; .gstack/deploy-reports/
+</code></pre>
+<p>逐行读输出：</p>
+<ul>
+<li><code>URL=</code> — 页面加载成功并留在站点上（不是跳转到错误页）。以 <code>[error</code> 开头的行，
+或者缺少 <code>GSTACK_STEP_OK</code>，都表示加载失败。</li>
+<li><code>CONSOLE_ERRORS=</code> — 检查关键错误：包含 <code>Error</code>、<code>Uncaught</code>、<code>Failed to load</code>、<code>TypeError</code>、<code>ReferenceError</code> 的条目。忽略警告。</li>
+<li><code>NAV=</code> — <code>responseStatus</code> 是文档的 HTTP 状态（Chromium PerformanceNavigationTiming）— 必须是 200。<code>loadEventEnd</code> 是页面加载耗时。检查它低于 10 秒。</li>
+<li><code>TEXT_START</code> / <code>TEXT_END</code> — 核实页面有真实内容（不是空白，也不是通用错误页）。</li>
+<li><code>post-deploy.jpg</code> 和带标注的 <code>post-deploy-annotated.png</code> 是证据。读取复制出来的截图，让用户直接看到它。</li>
+</ul>
+<p><strong>健康评估：</strong></p>
+<ul>
+<li>页面加载成功且状态为 200（<code>NAV=</code> 里的 <code>responseStatus</code>）→ PASS</li>
+<li>没有关键控制台错误 → PASS</li>
+<li>页面有真实内容（不是空白或错误屏）→ PASS</li>
+<li>加载耗时低于 10 秒 → PASS</li>
+</ul>
+<p>只评估所选深度要求的检查项；未执行的检查标记为 N/A。
+所有必需检查通过：为该目标记录 HEALTHY。staging 按前面
+步骤 5a 选定的 A/C 路线返回；生产进步骤 9。保留部署的不确定性。</p>
+<p>如果任何一项失败：展示证据（截图路径、控制台错误、性能数字）。使用 AskUserQuestion：</p>
+<ul>
+<li><strong>重述背景：</strong>“部署之后我在线上站点上发现了些问题。我看到的是：{具体问题}。这可能是临时的（缓存清理、CDN 传播），也可能真的是问题。”</li>
+<li><strong>建议：</strong> 按严重程度选 — 严重（站点挂了）选 B，轻微（控制台错误）选 A。</li>
+<li>A) 暂时接受这些已观察到的问题 — 报告 DEGRADED，而不是健康</li>
+<li>B) 确实坏了 — 回退这次合并，回到上一个版本</li>
+<li>C) 让我再查一查 — 打开站点看日志，再决定</li>
+</ul>
+<p><strong>A：</strong> 记录 DEGRADED 和用户的确认，然后进步骤 9（不要悄悄从失败的 staging
+继续做生产验证）。<strong>B：</strong> 步骤 8，且必须获得显式回滚批准。<strong>C：</strong> 检查页面/证据
+和只读日志；总结发现，然后询问再做一次复查（重复步骤 7）、回滚（步骤 8），
+还是以 DEGRADED 收尾（步骤 9）。这些调查绝不修改代码或重新部署。
+当 <code>ROLLBACK=true</code> 时，失败保持为 ROLLBACK PENDING；只提供调查或报告，
+不要再提供一次回退。同时检查 staging 和生产时，两者的截图要分开保存。</p>
+<hr>
+<h2 id="步骤-8回滚如需要">步骤 8：回滚（如需要）</h2>
+<p>只在用户显式选择回滚之后进入。说明这会追加反向提交；在回滚部署完成并通过
+健康检查之前，生产并未恢复。
+要求工作区干净，从 <code>REPO</code> 拉取 <code>BASE_BRANCH</code>，切到本地 base
+并只快进到刚拉取的 tip。base 脏、已分叉或被占用：<strong>停止</strong>
+并置为 ROLLBACK PENDING，绝不 reset/force 或丢弃工作。</p>
+<p>检查实际落地的提交，而不只看请求的合并方式：</p>
+<pre><code class="language-bash">git show --no-patch --format=&#39;%H %P&#39; &quot;$MERGE_SHA&quot;
+</code></pre>
+<ul>
+<li>两个父提交：确认父 1 是 base 侧历史，然后
+<code>git revert -m 1 &quot;$MERGE_SHA&quot; --no-edit</code>。</li>
+<li>单父提交且<strong>确认为 squash</strong>：<code>git revert &quot;$MERGE_SHA&quot; --no-edit</code>。</li>
+<li><strong>Rebase 合并：</strong> 确定这个 PR 实际落地的精确提交范围，并按从新到旧
+回退。单独的 <code>mergeCommit.oid</code> 只是最后一个提交，不是整个范围。
+范围/方式未知（包括外部合并），或其他父提交形态：<strong>停止</strong>
+并置为 ROLLBACK PENDING，请求人工回滚；不要猜。</li>
+</ul>
+<p>冲突：停下，展示 <code>git status</code> 和尝试过的命令，把解决交给
+用户。干净回退之后，记录 <code>REVERT_SHA</code> 并推送到选定的 base：
+<code>git push &quot;https://github.com/$REPO.git&quot; &quot;HEAD:refs/heads/$BASE_BRANCH&quot;</code>。如果分支
+保护拒绝了推送，保留这个提交，在那里创建 <code>revert/pr-&lt;number&gt;-&lt;timestamp&gt;</code>，
+推送该分支，并针对 <code>BASE_BRANCH</code> 开一个回滚 PR。报告它的 URL 和
+ROLLBACK PENDING；没有单独批准绝不合并它。其他推送错误以错误和挂起状态
+停止，不要绕过保护。</p>
+<p>成功推送 base 之后，设置 <code>ROLLBACK=true</code>、<code>TARGET=production</code>、
+<code>DEPLOY_SHA=REVERT_SHA</code>，并把该修订版本的生产部署/健康重置为 UNKNOWN/SKIPPED。
+原始/staging 证据分开保存。按步骤 6-7 监控，期间不要重置这些值。只有确认了回滚
+部署并且生产金丝雀健康，才可以给出 REVERTED（在不需要部署的情况下，确认 base
+上的回退也算）。所有不完整、失败、跳过或基于 PR 的回滚路径都
+进步骤 9 并置为 ROLLBACK PENDING。在报告里保留原始合并 SHA。</p>
+<hr>
+<h2 id="步骤-9部署报告">步骤 9：部署报告</h2>
+<p>选择第一条匹配的判定；绝不要从合并或 HTTP 200 推断部署成功：</p>
+<table>
+<thead>
+<tr>
+<th>证据</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>已请求回滚，但尚未在 base 上确认，也未在线上验证健康（适用部署时）</td>
+<td>ROLLBACK PENDING</td>
+</tr>
+<tr>
+<td>按步骤 8 确认了回滚</td>
+<td>REVERTED</td>
+</tr>
+<tr>
+<td>任何被接受的目标健康失败</td>
+<td>DEGRADED</td>
+</tr>
+<tr>
+<td>用户选择仅 staging 且 staging 通过</td>
+<td>STAGING VERIFIED — PRODUCTION UNVERIFIED</td>
+</tr>
+<tr>
+<td>显式的无需部署确认，或步骤 5 的仅文档跳过</td>
+<td>MERGED — NO DEPLOY NEEDED</td>
+</tr>
+<tr>
+<td>匹配的生产部署 PASSED 且生产 HEALTHY</td>
+<td>DEPLOYED AND VERIFIED</td>
+</tr>
+<tr>
+<td>匹配的生产部署 PASSED，但金丝雀被跳过/不可用</td>
+<td>DEPLOYED (UNVERIFIED)</td>
+</tr>
+<tr>
+<td>其他一切情况，包括部署失败/挂起/未知，即使旧站点仍然健康</td>
+<td>MERGED (UNVERIFIED)</td>
+</tr>
+</tbody></table>
+<p>展示 <strong>LAND &amp; DEPLOY REPORT</strong> 并保存 <code>.gstack/deploy-reports/{date}-pr{number}-deploy.md</code>
+（<code>date</code> = UTC 的 YYYY-MM-DD）。内容包括 PR/标题/仓库、head → base、已批准的 head、
+合并时间戳/SHA/方式/路径、首次运行状态、CI/审查状态和警告、
+范围、分别列出的部署/staging/金丝雀结果及其证据链接/错误、控制台
+数量、加载耗时、截图路径（未检查时为 N/A）、判定和下一步动作。
+用秒记录演练、CI 等待、排队、部署、staging、金丝雀和总耗时；
+跳过的阶段耗时为 0 并写明原因，绝不编造通过。内联审查记作
+passed/skipped/not-needed；合并前停下的内联修复不能出现在这里。
+回滚要包含 revert SHA 或 PR URL，以及未完成的工作。</p>
+<pre><code class="language-bash">GSTACK_STATE_ROOT=$(~/.claude/skills/gstack/bin/gstack-paths --get GSTACK_STATE_ROOT); : &quot;${GSTACK_STATE_ROOT:?gstack-paths failed; reinstall with ./setup or /gstack-upgrade}&quot;
+mkdir -p .gstack/deploy-reports
+SLUG=$(~/.claude/skills/gstack/bin/gstack-slug --get SLUG 2&gt;/dev/null)
+mkdir -p &quot;$GSTACK_STATE_ROOT&quot;/projects/$SLUG
+</code></pre>
+<p>向 <code>~/.claude/skills/gstack/bin/gstack-review-log &#39;&lt;JSON&gt;&#39;</code> 传一条 JSON 条目，
+写入仪表盘的按分支 JSONL 日志。只有 DEPLOYED AND VERIFIED 或
+MERGED — NO DEPLOY NEEDED 时 <code>status</code> 才是 SUCCESS；确认回滚时为 REVERTED，
+其他情况为 INCOMPLETE。保留完整的 <code>verdict</code> 和各自独立的证据状态：</p>
+<pre><code class="language-json">{&quot;skill&quot;:&quot;land-and-deploy&quot;,&quot;timestamp&quot;:&quot;&lt;ISO&gt;&quot;,&quot;status&quot;:&quot;&lt;SUCCESS/REVERTED/INCOMPLETE&gt;&quot;,&quot;verdict&quot;:&quot;&lt;verdict&gt;&quot;,&quot;pr&quot;:&lt;number&gt;,&quot;merge_sha&quot;:&quot;&lt;sha&gt;&quot;,&quot;merge_path&quot;:&quot;&lt;auto/direct/queue/external&gt;&quot;,&quot;first_run&quot;:&lt;true/false&gt;,&quot;deploy_status&quot;:&quot;&lt;PASSED/FAILED/PENDING/UNKNOWN/NOT_NEEDED&gt;&quot;,&quot;verification&quot;:&quot;&lt;HEALTHY/DEGRADED/SKIPPED&gt;&quot;,&quot;staging_status&quot;:&quot;&lt;VERIFIED/DEGRADED/SKIPPED/N/A&gt;&quot;,&quot;review_status&quot;:&quot;&lt;observed status&gt;&quot;,&quot;dry_run_s&quot;:&lt;N&gt;,&quot;ci_wait_s&quot;:&lt;N&gt;,&quot;queue_s&quot;:&lt;N&gt;,&quot;deploy_s&quot;:&lt;N&gt;,&quot;staging_s&quot;:&lt;N&gt;,&quot;canary_s&quot;:&lt;N&gt;,&quot;total_s&quot;:&lt;N&gt;}
+</code></pre>
+<hr>
+<h2 id="步骤-10建议后续动作">步骤 10：建议后续动作</h2>
+<p>用平实的语言说明判定。已验证：改动已经上线。未验证/降级：
+点名缺失的证据/问题，以及接下来要检查的确切工作流/状态命令或 <code>/canary &lt;url&gt;</code>。
+无需部署：已合并，按所述原因跳过验证。
+仅 staging：生产仍未验证，但不一定没部署。回滚挂起：说明谁必须解决冲突、
+合并回滚 PR 或验证它的部署。
+REVERTED：引用回滚证据；不要声称原分支在清理后还活着。
+提供 <code>/canary &lt;url&gt;</code> 做延长监控，性能重要时用 <code>/benchmark &lt;url&gt;</code>，文档需要
+更新时用 <code>/document-release</code>。</p>
+<hr>
+<h2 id="分节自检收尾之前">分节自检（收尾之前）</h2>
+<p>你跑的是一个分片技能。针对你的情形，列出分节索引里提到的每一个适用分节，
+并确认你为每一节都发起过 Read（步骤 1.5 为 CONFIRMED 时正确做法是跳过演练分节）。
+漏了 Read：<strong>停止</strong>，现在就读源文件。
+重新核对只读证据；绝不因为漏了某个分节就重做合并/部署。</p>
+<hr>
+<h2 id="重要规则">重要规则</h2>
+<ul>
+<li>绝不 force-push、绕过 CI、重放已确认的合并，或隐瞒缺失的证据。</li>
+<li>自动检测事实；未知时、或适用显式批准门禁时提问。</li>
+<li>按每一步给出的间隔和期限轮询（步骤 3 的 4 分钟 CI 轮次；合并回读和部署状态
+30 秒），并使用对应的进度提示。</li>
+<li>合并失败后，适当时提供已批准的回滚；绝不自动回滚一次回滚。</li>
+<li>只验证一次；<code>/canary</code> 提供延长监控。复查需要用户选择。</li>
+<li>使用 <code>--delete-branch</code>；以非破坏方式并带确认地处理失败的清理。</li>
+</ul>
+</article>
+    
+    <nav class="pager" aria-label="上一篇和下一篇">
+  <a class="prev" href="./ios-sync.html">← ios-sync</a>
+  <a class="next" href="./landing-report.html">landing-report →</a>
+</nav>
+  </main>
+</body>
+</html>

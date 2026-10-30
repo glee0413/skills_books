@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>setup-gbrain · Skills Book</title>
+  <link rel="stylesheet" href="../../assets/book.css">
+</head>
+<body class="with-sidebar">
+  <aside class="sidebar"><div class="brand"><a href="../../index.html">Skills Book</a></div><section><h2>第一部 两种范式</h2><ul><li><a href="../../book/01-two-paradigms/01-same-and-different.html">gstack 与 mattpocock_skills：相同与差异</a></li></ul></section><section><h2>第二部 想清楚</h2><ul><li><a href="../../book/02-think/05-product-questioning.html">产品追问：office-hours 与 grilling</a></li></ul></section><section><h2>gstack</h2><ul><li><a href="./autoplan.html">autoplan</a></li><li><a href="./benchmark.html">benchmark</a></li><li><a href="./benchmark-models.html">benchmark-models</a></li><li><a href="./browse.html">browse</a></li><li><a href="./canary.html">canary</a></li><li><a href="./capy/gstack.html">capy/gstack</a></li><li><a href="./careful.html">careful</a></li><li><a href="./codex.html">codex</a></li><li><a href="./context-restore.html">context-restore</a></li><li><a href="./context-save.html">context-save</a></li><li><a href="./cso.html">cso</a></li><li><a href="./design-consultation.html">design-consultation</a></li><li><a href="./design-html.html">design-html</a></li><li><a href="./design-review.html">design-review</a></li><li><a href="./design-shotgun.html">design-shotgun</a></li><li><a href="./deslop-shared-libs.html">deslop-shared-libs</a></li><li><a href="./devex-review.html">devex-review</a></li><li><a href="./diagram.html">diagram</a></li><li><a href="./document-generate.html">document-generate</a></li><li><a href="./document-release.html">document-release</a></li><li><a href="./eval-plan.html">eval-plan</a></li><li><a href="./freeze.html">freeze</a></li><li><a href="./gstack.html">gstack</a></li><li><a href="./gstack-upgrade.html">gstack-upgrade</a></li><li><a href="./guard.html">guard</a></li><li><a href="./hackernews-frontpage.html">hackernews-frontpage</a></li><li><a href="./health.html">health</a></li><li><a href="./investigate.html">investigate</a></li><li><a href="./ios-clean.html">ios-clean</a></li><li><a href="./ios-design-review.html">ios-design-review</a></li><li><a href="./ios-fix.html">ios-fix</a></li><li><a href="./ios-qa.html">ios-qa</a></li><li><a href="./ios-sync.html">ios-sync</a></li><li><a href="./land-and-deploy.html">land-and-deploy</a></li><li><a href="./landing-report.html">landing-report</a></li><li><a href="./learn.html">learn</a></li><li><a href="./make-pdf.html">make-pdf</a></li><li><a href="./office-hours.html">office-hours</a></li><li><a href="./open-gstack-browser.html">open-gstack-browser</a></li><li><a href="./openclaw/ceo-review.html">openclaw/ceo-review</a></li><li><a href="./openclaw/investigate.html">openclaw/investigate</a></li><li><a href="./openclaw/office-hours.html">openclaw/office-hours</a></li><li><a href="./openclaw/retro.html">openclaw/retro</a></li><li><a href="./pair-agent.html">pair-agent</a></li><li><a href="./plan-ceo-review.html">plan-ceo-review</a></li><li><a href="./plan-design-review.html">plan-design-review</a></li><li><a href="./plan-devex-review.html">plan-devex-review</a></li><li><a href="./plan-eng-review.html">plan-eng-review</a></li><li><a href="./plan-tune.html">plan-tune</a></li><li><a href="./qa.html">qa</a></li><li><a href="./qa-only.html">qa-only</a></li><li><a href="./retro.html">retro</a></li><li><a href="./review.html">review</a></li><li><a href="./scrape.html">scrape</a></li><li><a href="./setup-browser-cookies.html">setup-browser-cookies</a></li><li><a href="./setup-deploy.html">setup-deploy</a></li><li><a href="./setup-gbrain.html">setup-gbrain</a></li><li><a href="./ship.html">ship</a></li><li><a href="./skillify.html">skillify</a></li><li><a href="./spec.html">spec</a></li><li><a href="./sync-gbrain.html">sync-gbrain</a></li><li><a href="./test-audit.html">test-audit</a></li><li><a href="./unfreeze.html">unfreeze</a></li></ul></section><section><h2>mattpocock</h2><ul><li><a href="../mattpocock/ask-matt/SKILL.html">ask-matt</a></li><li><a href="../mattpocock/chief-of-staff.html">chief-of-staff</a></li><li><a href="../mattpocock/claude-handoff.html">claude-handoff</a></li><li><a href="../mattpocock/code-review.html">code-review</a></li><li><a href="../mattpocock/codebase-design/SKILL.html">codebase-design</a></li><li><a href="../mattpocock/diagnosing-bugs.html">diagnosing-bugs</a></li><li><a href="../mattpocock/domain-modeling/SKILL.html">domain-modeling</a></li><li><a href="../mattpocock/git-guardrails-claude-code.html">git-guardrails-claude-code</a></li><li><a href="../mattpocock/grill-me.html">grill-me</a></li><li><a href="../mattpocock/grill-with-docs.html">grill-with-docs</a></li><li><a href="../mattpocock/grilling.html">grilling</a></li><li><a href="../mattpocock/handoff.html">handoff</a></li><li><a href="../mattpocock/implement.html">implement</a></li><li><a href="../mattpocock/implement-spec.html">implement-spec</a></li><li><a href="../mattpocock/improve-codebase-architecture/SKILL.html">improve-codebase-architecture</a></li><li><a href="../mattpocock/loop-me.html">loop-me</a></li><li><a href="../mattpocock/migrate-to-shoehorn.html">migrate-to-shoehorn</a></li><li><a href="../mattpocock/pr.html">pr</a></li><li><a href="../mattpocock/prototype/SKILL.html">prototype</a></li><li><a href="../mattpocock/research.html">research</a></li><li><a href="../mattpocock/retro.html">retro</a></li><li><a href="../mattpocock/scaffold-exercises.html">scaffold-exercises</a></li><li><a href="../mattpocock/setup-matt-pocock-skills/SKILL.html">setup-matt-pocock-skills</a></li><li><a href="../mattpocock/setup-pre-commit.html">setup-pre-commit</a></li><li><a href="../mattpocock/setup-ts-deep-modules.html">setup-ts-deep-modules</a></li><li><a href="../mattpocock/tdd/SKILL.html">tdd</a></li><li><a href="../mattpocock/teach/SKILL.html">teach</a></li><li><a href="../mattpocock/to-questionnaire.html">to-questionnaire</a></li><li><a href="../mattpocock/to-spec.html">to-spec</a></li><li><a href="../mattpocock/to-tickets.html">to-tickets</a></li><li><a href="../mattpocock/triage/SKILL.html">triage</a></li><li><a href="../mattpocock/wait-what.html">wait-what</a></li><li><a href="../mattpocock/wayfinder.html">wayfinder</a></li><li><a href="../mattpocock/wizard.html">wizard</a></li><li><a href="../mattpocock/writing-beats.html">writing-beats</a></li><li><a href="../mattpocock/writing-for-agents/SKILL.html">writing-for-agents</a></li><li><a href="../mattpocock/writing-fragments.html">writing-fragments</a></li><li><a href="../mattpocock/writing-shape.html">writing-shape</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">技能全库</a></p></aside>
+  <main class="content">
+    <section class="source-box">
+  <strong>来源</strong>：gstack · <code>setup-gbrain/SKILL.md</code> · v1.91.226.0 · commit <code>8d95013</code><br>
+  <strong>许可证</strong>：MIT · <a href="https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/setup-gbrain/SKILL.md">查看原仓库</a> · <a href="../../source-snapshots/gstack/setup-gbrain/SKILL.md">查看英文快照</a> · 快照：<code>source-snapshots/gstack/setup-gbrain/SKILL.md</code><br>
+  <strong>翻译</strong>：2026-10-30 · 译者注以 <code>&gt; 译者注：</code> 标出
+</section>
+    <section class="skill-overview">
+  <strong>setup-gbrain</strong>
+  <span>gstack</span>
+  <span>用户调用</span>
+  <p>为一个编程智能体装好 gbrain：安装 CLI、初始化本地 PGLite 或 Supabase 大脑、注册 MCP，并按远端记录信任策略。</p>
+</section>
+    <nav class="page-toc" aria-label="页内目录"><strong>本页目录</strong><ul><li class="toc-depth-1"><a href="#setup-gbrain--为-gbrain-做编程智能体上手配置">/setup-gbrain — 为 gbrain 做编程智能体上手配置</a></li><li class="toc-depth-2"><a href="#用户可调用">用户可调用</a></li><li class="toc-depth-2"><a href="#分节索引--遇到对应情形时再读该节">分节索引 — 遇到对应情形时再读该节</a></li><li class="toc-depth-2"><a href="#step-1-探测当前状态">Step 1: 探测当前状态</a></li><li class="toc-depth-2"><a href="#step-15-本地引擎损坏的修复">Step 1.5: 本地引擎损坏的修复</a></li><li class="toc-depth-2"><a href="#step-17-代码智能方案的选择索引的-step-0">Step 1.7: 代码智能方案的选择（索引的 Step 0）</a></li><li class="toc-depth-2"><a href="#step-2-选择一条路径askuserquestion">Step 2: 选择一条路径（AskUserQuestion）</a></li><li class="toc-depth-2"><a href="#step-3-安装-gbrain-cli如果缺失">Step 3: 安装 gbrain CLI（如果缺失）</a></li><li class="toc-depth-2"><a href="#step-4-初始化大脑">Step 4: 初始化大脑</a></li><li class="toc-depth-2"><a href="#step-5-验证-gbrain-doctor">Step 5: 验证 gbrain doctor</a></li><li class="toc-depth-2"><a href="#step-5a-把-gbrain-注册为-claude-code-mcp">Step 5a: 把 gbrain 注册为 Claude Code MCP</a></li><li class="toc-depth-3"><a href="#path-4remote-mcp--带-bearer-的-http-传输">Path 4（Remote MCP —— 带 bearer 的 HTTP 传输）</a></li><li class="toc-depth-3"><a href="#paths-12a2b3本地-stdio">Paths 1、2a、2b、3（本地 stdio）</a></li><li class="toc-depth-3"><a href="#两条路径共同的部分">两条路径共同的部分</a></li><li class="toc-depth-2"><a href="#step-6-per-remote-策略带门禁的仓库导入">Step 6: Per-remote 策略（带门禁的仓库导入）</a></li><li class="toc-depth-2"><a href="#step-7-提议-artifacts-同步并接入-gbrain">Step 7: 提议 artifacts 同步并接入 gbrain</a></li><li class="toc-depth-3"><a href="#path-4remote-mcp-artifacts-init-之后即完成">Path 4（Remote MCP）—— artifacts-init 之后即完成</a></li><li class="toc-depth-3"><a href="#paths-12a2b3本地-stdio-接上联邦源">Paths 1、2a、2b、3（本地 stdio）—— 接上联邦源</a></li><li class="toc-depth-2"><a href="#step-75-对话记录摄取的同意">Step 7.5: 对话记录摄取的同意</a></li><li class="toc-depth-2"><a href="#step-8-把--gbrain-configuration-持久化到-claudemd">Step 8: 把 ## GBrain Configuration 持久化到 CLAUDE.md</a></li><li class="toc-depth-2"><a href="#step-9-冒烟测试">Step 9: 冒烟测试</a></li><li class="toc-depth-3"><a href="#path-4remote-mcp">Path 4（Remote MCP）</a></li><li class="toc-depth-3"><a href="#paths-12a2b3本地-stdio-1">Paths 1、2a、2b、3（本地 stdio）</a></li><li class="toc-depth-2"><a href="#step-95-大脑信任策略">Step 9.5: 大脑信任策略</a></li><li class="toc-depth-2"><a href="#step-10-greenyellowred-结论块幂等的-doctor-输出">Step 10: GREEN/YELLOW/RED 结论块（幂等的 doctor 输出）</a></li><li class="toc-depth-3"><a href="#path-4remote-mcp-1">Path 4（Remote MCP）</a></li><li class="toc-depth-3"><a href="#paths-12a2b3本地-stdio-2">Paths 1、2a、2b、3（本地 stdio）</a></li><li class="toc-depth-3"><a href="#下一步sync-gbrain">下一步：/sync-gbrain</a></li><li class="toc-depth-2"><a href="#setup-gbrain---cleanup-orphans">/setup-gbrain --cleanup-orphans</a></li><li class="toc-depth-2"><a href="#遥测">遥测</a></li><li class="toc-depth-2"><a href="#重要规则">重要规则</a></li></ul></nav>
+    <article class="markdown-body"><h1 id="setup-gbrain--为-gbrain-做编程智能体上手配置">/setup-gbrain — 为 gbrain 做编程智能体上手配置</h1>
+<p>你要在用户的机器上装好 gbrain（<a href="https://github.com/garrytan/gbrain%EF%BC%89%EF%BC%8C%E4%B8%80%E4%B8%AA%E6%8C%81%E4%B9%85%E5%8C%96%E7%9A%84%E7%9F%A5%E8%AF%86%E5%BA%93%EF%BC%8C%E8%AE%A9%E5%BD%93%E5%89%8D%E8%BF%99%E4%B8%AA%E7%BC%96%E7%A8%8B%E6%99%BA%E8%83%BD%E4%BD%93%EF%BC%88%E9%80%9A%E5%B8%B8%E6%98%AF">https://github.com/garrytan/gbrain），一个持久化的知识库，让当前这个编程智能体（通常是</a> Claude Code）既能以 CLI 调用它，也能以 MCP 工具调用它。</p>
+<p><strong>范围上的诚实：</strong> 本技能的 MCP 注册步骤（5a）用 <code>claude mcp add</code>，明确面向 Claude Code。其他本地宿主（Cursor、Codex CLI 等）仍会得到 PATH 上的 gbrain CLI —— 它们可以在配置完成后，自己在 MCP 配置里注册 <code>gbrain serve</code>。</p>
+<p><strong>适用对象：</strong> 本地机器（macOS、Linux、Windows）。openclaw/hermes 之类的智能体通常跑在各自带 gbrain 的云端 docker 容器里；要在它们和本地 Claude Code 之间“共享”一个大脑，只能通过共享 Postgres（Supabase）。</p>
+<h2 id="用户可调用">用户可调用</h2>
+<p>当用户输入 <code>/setup-gbrain</code> 时，运行本技能。调用模式：</p>
+<ul>
+<li><code>/setup-gbrain</code> —— 完整流程（默认）</li>
+<li><code>/setup-gbrain --repo</code> —— 只翻转当前仓库的 per-remote 策略</li>
+<li><code>/setup-gbrain --switch</code> —— 只迁移引擎（PGLite ↔ Supabase）</li>
+<li><code>/setup-gbrain --resume-provision &lt;ref&gt;</code> —— 重新进入此前被中断的
+Supabase 自动创建流程的轮询步骤</li>
+<li><code>/setup-gbrain --cleanup-orphans</code> —— 列出并删除进行中的 Supabase 项目</li>
+</ul>
+<p>调用参数由你自己解析 —— 这些只是给技能的散文提示，并没有实现成调度二进制。</p>
+<hr>
+<h2 id="分节索引--遇到对应情形时再读该节">分节索引 — 遇到对应情形时再读该节</h2>
+<p>本技能是一副决策树骨架。下面的步骤指向按需阅读的小节。做某一步之前先把对应小节整篇读完；不要凭记忆干活。</p>
+<table>
+<thead>
+<tr>
+<th>何时</th>
+<th>读这一节</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>执行 Step 1.5 的坏引擎修复 —— Step 1 的探测返回的 <code>gbrain_local_status</code> 是 <code>broken-db</code> 或 <code>broken-config</code>，且没有传任何快捷参数</td>
+<td><code>sections/engine-remediation.md</code></td>
+</tr>
+<tr>
+<td>在 Step 4 初始化大脑 —— 只运行 Step 2 所选路径（Paths 1/2a/2b/3/4 或 Switch）对应的流程（其中也包含 <code>--cleanup-orphans</code> 会复用的 PAT 授权范围披露）</td>
+<td><code>sections/brain-init.md</code></td>
+</tr>
+<tr>
+<td>在 Paths 1、2a、2b 或 3 上执行 Step 7.5 的对话记录与记忆摄取门禁（Path 4 完全跳过本节 —— 见骨架里的跳过说明）</td>
+<td><code>sections/transcript-gate.md</code></td>
+</tr>
+<tr>
+<td>把 Step 8 的 <code>## GBrain Configuration</code> 块持久化到 CLAUDE.md</td>
+<td><code>sections/claude-md-persist.md</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="step-1-探测当前状态">Step 1: 探测当前状态</h2>
+<pre><code class="language-bash">~/.claude/skills/gstack/bin/gstack-gbrain-detect
+</code></pre>
+<p>捕获 JSON 输出。它包含：<code>gbrain_on_path</code>、<code>gbrain_version</code>、<code>gbrain_config_exists</code>、<code>gbrain_engine</code>、<code>gbrain_doctor_ok</code>、<code>gbrain_mcp_mode</code>、<code>gstack_brain_sync_mode</code>、<code>gstack_brain_git</code>、<code>gstack_artifacts_remote</code>，以及 <code>gbrain_local_status</code> 字段（取值之一：<code>ok</code>、<code>no-cli</code>、<code>missing-config</code>、<code>broken-config</code>、<code>broken-db</code>、<code>engine-locked</code>、<code>timeout</code>、<code>db-unreachable</code>、<code>thin-client</code>）。把 <code>timeout</code> 当作 <code>ok</code> 处理（引擎慢但健康）—— 它绝不触发 Step 1.5 的修复。<code>db-unreachable</code> 同样处理：一次网络错误（离线沙箱、VPN 断开）在访问已配置的数据库时发生，配置没有变化，绝不能挪走；打印 <code>gbrain_local_status_detail</code> 然后继续。<code>thin-client</code> 也当作 <code>ok</code>：这台机器是远端 HTTP MCP 大脑的瘦客户端，按设计没有本地引擎 —— 依赖大脑的块照常渲染，探测 JSON 里带 <code>gbrain_thin_client: {probed: false}</code>（配置已验证；远端可达性在使用时检查，那里 gbrain 调用会优雅降级）。</p>
+<p>跳过已经完成的下游步骤。用一行报告探测到的状态，让用户知道发现了什么：</p>
+<blockquote>
+<p>&quot;Detected: gbrain v0.18.2 on PATH, engine=postgres, doctor=ok,
+ sync=artifacts-only. Nothing to install; jumping to the policy check.&quot;</p>
+</blockquote>
+<p>在这里根据 <code>--repo</code>、<code>--switch</code>、<code>--resume-provision</code>、<code>--cleanup-orphans</code> 调用参数分支，跳到对应的步骤。</p>
+<hr>
+<h2 id="step-15-本地引擎损坏的修复">Step 1.5: 本地引擎损坏的修复</h2>
+<p>从 Step 1 的探测输出里读 <code>gbrain_local_status</code>。<strong>如果它是 <code>broken-db</code> 或 <code>broken-config</code>，且没有传快捷参数</strong>，说明用户的本地引擎不可用 —— 在 Step 2 之前先跑下面的修复流程。</p>
+<p>对于 <code>gbrain_local_status</code> 为 <code>no-cli</code> 或 <code>missing-config</code> 的情况，不要触发 Step 1.5 —— 直接落到 Step 2（在那里 <code>no-cli</code> 触发 Step 3 安装，<code>missing-config</code> 触发 Step 4 初始化）。这种情况下不要读修复小节。</p>
+<blockquote>
+<p><strong>STOP.</strong> 在执行 Step 1.5 的坏引擎修复之前 —— Step 1 的探测返回的 <code>gbrain_local_status</code> 是 <code>broken-db</code> 或 <code>broken-config</code>，且没有传任何快捷参数，请阅读 <code>~/.claude/skills/gstack/setup-gbrain/sections/engine-remediation.md</code> 并完整执行。
+不要凭记忆干活 —— 那一节才是这一步的事实源。</p>
+</blockquote>
+<hr>
+<h2 id="step-17-代码智能方案的选择索引的-step-0">Step 1.7: 代码智能方案的选择（索引的 Step 0）</h2>
+<p>你现在是在 /setup-gbrain 内部：用户点名要 gbrain，所以“用哪个检索方案”这个问题已经有答案了。绝不要在这里问，也绝不要让这一步拖延或带偏真正的配置流程。尽力记录这个选择，然后立刻继续 Step 2：</p>
+<pre><code class="language-bash">[ -f ~/.claude/skills/gstack/bin/gstack-code-intelligence ] \
+  &amp;&amp; bun --no-env-file --config=/dev/null ~/.claude/skills/gstack/bin/gstack-code-intelligence select gbrain 2&gt;/dev/null \
+  || true
+</code></pre>
+<p>下面的提议仪式只在本技能是从别的入口进来、且没有指定任何方案时适用（例如某个探索索引选项的路由技能）。即便那种情况也要注意：</p>
+<ul>
+<li><p><code>&quot;offer&quot;: false</code>，原因为 <code>bin-absent</code> → 已安装的 gstack 早于 code-intelligence CLI。完全跳过这一步，继续执行技能 —— 用户要的是 gbrain，那就装 gbrain。绝不要因为一个可选的缺失门禁就阻塞配置。</p>
+</li>
+<li><p><code>&quot;offer&quot;: false</code>，原因为 <code>small-repo</code> → 这里的 grep 已经够快；用一行说明，并只在用户点名要 gbrain 时继续执行本技能。</p>
+</li>
+<li><p><code>&quot;offer&quot;: false</code>，原因为 <code>provider-selected</code> 或 <code>declined</code> → 这台机器层面的问题已经回答过；静默沿用并继续。</p>
+</li>
+<li><p><code>&quot;offer&quot;: true</code> → 通过 AskUserQuestion 把返回的选项呈现一次：
+<strong>GBrain</strong>（推荐 —— 语义记忆加代码，会把仓库内容发到你自己（YOUR）的 gbrain 数据库，按仓库征得同意）、<strong>Sourcebot</strong>（自托管的全库搜索，跑在 localhost 时即本地）、<strong>Graphify</strong>（本地 tree-sitter 图，任何东西都不出机器，由用户自行安装），或 <strong>No indexing</strong>。记录选择：<code>gstack-code-intelligence select &lt;provider|none&gt;</code> —— <code>none</code> 会持久化这次拒绝，今后任何仓库上都不会再有技能来问（重新启用：<code>gstack-code-intelligence select &lt;provider&gt;</code>）。本地计算类方案和远端发送类方案是两份独立的同意 —— 绝不打包在一起。</p>
+</li>
+<li><p>按仓库的发送同意（GBrain/Sourcebot）用
+<code>gstack-code-intelligence consent &lt;repo&gt; yes|no</code> 记录，并且总会被 gstack-gbrain-repo-policy 里的 <code>deny</code> 层级否决 —— 信任库是“代码能否离开某个仓库”的唯一权威。</p>
+</li>
+</ul>
+<p>如果用户选了 GBrain（或直接点名要本技能），继续往下。如果选了 Sourcebot/Graphify，运行 <code>gstack-code-intelligence index &lt;repo&gt;</code> 然后停止 —— 本技能剩下的部分都是 gbrain 专属的。</p>
+<h2 id="step-2-选择一条路径askuserquestion">Step 2: 选择一条路径（AskUserQuestion）</h2>
+<p>只在 Step 1 显示没有可用的现有配置、且没有传快捷参数时才触发。<strong>特殊情况：</strong> 如果探测输出里 <code>gbrain_mcp_mode=remote-http</code>，说明 HTTP MCP 已经注册 —— 直接跳到 Step 5a 验证（重新测试注册）以及 Step 6 之后，把这次运行当作幂等的。不要再问 Step 2。</p>
+<p>问题标题：&quot;Where should your brain live?&quot;</p>
+<p>选项（按探测到的状态呈现）：</p>
+<ul>
+<li><strong>1 — Supabase，我已经有连接串。</strong> 云端智能体用户，openclaw/hermes 已经为他们建好了一个。从 Supabase 控制台粘贴 Session Pooler URL（Settings → Database → Connection Pooler → Session）。<em>提示词里要带上的信任面提醒：</em>“粘贴这个 URL 就等于让你的本地 Claude Code 对你的云端智能体能看到的每一页都拥有完整读写权限。如果这不是你想要的信任级别，改选 PGLite 本地，并接受两个大脑彼此隔离。”</li>
+<li><strong>2a — Supabase，自动创建新项目。</strong> 需要一个 Supabase Personal Access Token（约 90 秒）。团队共享大脑的最佳选择。</li>
+<li><strong>2b — Supabase，手动创建。</strong> 你自己走完 supabase.com 的注册流程；准备好后把 URL 粘回来。</li>
+<li><strong>3 — PGLite 本地。</strong> 零账号，约 30 秒。只在这台机器上的隔离大脑。最适合先试试。</li>
+<li><strong>4 — 远端 gbrain MCP。</strong> 别人（或你的另一台机器）已经在用 HTTP 传输跑 <code>gbrain serve</code>。你粘贴 MCP URL 加一个 bearer 令牌；本技能把它注册为你的 MCP。不需要本地大脑数据库，也不需要本地安装。当大脑跨机器共享或由队友运行时推荐这一项。</li>
+<li><strong>Switch</strong>（只在 Step 1 探测到已有引擎时）：&quot;You already have a
+<code>&lt;engine&gt;</code> brain. Migrate it to the other engine?&quot; → 运行
+<code>gbrain migrate --to &lt;other&gt;</code>，外面包一层 <code>timeout 180s</code>。</li>
+</ul>
+<p>不要静默替用户选；触发 AskUserQuestion。</p>
+<hr>
+<h2 id="step-3-安装-gbrain-cli如果缺失">Step 3: 安装 gbrain CLI（如果缺失）</h2>
+<p><strong>在 Path 4（Remote MCP）上完全跳过。</strong> Path 4 不需要本地 gbrain 二进制 —— 所有调用都通过 MCP 到远端服务器。跳到 Step 4（Path 4 子节）。</p>
+<p>对 Paths 1、2a、2b、3、switch —— 只在 <code>gbrain_on_path=false</code> 时：</p>
+<pre><code class="language-bash">~/.claude/skills/gstack/bin/gstack-gbrain-install
+</code></pre>
+<p>安装器会先复用已有的 checkout（探测 <code>~/git/gbrain</code>、<code>~/gbrain</code>），然后校验 PATH 遮蔽（链接后的 <code>gbrain --version</code> 必须与安装目录的 <code>package.json</code> 一致）。PATH 遮蔽失败时安装器以状态码 3 退出，并给出清楚的修复菜单；把完整输出呈现给用户然后停下（STOP）。不要继续执行技能 —— 在用户修好 PATH 之前，环境是坏的。</p>
+<hr>
+<h2 id="step-4-初始化大脑">Step 4: 初始化大脑</h2>
+<p>路径相关。Step 2 所选路径的初始化流程 —— Paths 1、2a、2b、3、4（4a-4e），以及 Switch 迁移流程 —— 都在 brain-init 小节里。只运行所选路径对应的子节。</p>
+<blockquote>
+<p><strong>STOP.</strong> 在 Step 4 初始化大脑之前 —— 只运行 Step 2 所选路径对应的流程（Paths 1/2a/2b/3/4 或 Switch；其中也包含 <code>--cleanup-orphans</code> 会复用的 PAT 授权范围披露），请阅读 <code>~/.claude/skills/gstack/setup-gbrain/sections/brain-init.md</code> 并完整执行。
+不要凭记忆干活 —— 那一节才是这一步的事实源。</p>
+</blockquote>
+<hr>
+<h2 id="step-5-验证-gbrain-doctor">Step 5: 验证 gbrain doctor</h2>
+<p><strong>在 Path 4（Remote MCP）上完全跳过。</strong> 大脑宿主自己跑 doctor；我们没有本地数据库访问权限来做内省。Step 4c 的验证往返已经证明服务器可达、已鉴权、且 MCP 版本兼容。</p>
+<p>对 Paths 1、2a、2b、3、switch：</p>
+<pre><code class="language-bash">doctor=$(gbrain doctor --json)
+status=$(echo &quot;$doctor&quot; | jq -r .status)
+</code></pre>
+<p>如果状态是 <code>ok</code> 或 <code>warnings</code>，继续。其他任何值 → 呈现完整的 doctor 输出然后停下（STOP）。</p>
+<hr>
+<h2 id="step-5a-把-gbrain-注册为-claude-code-mcp">Step 5a: 把 gbrain 注册为 Claude Code MCP</h2>
+<p>只在 <code>which claude</code> 能解析时执行。问： &quot;Give Claude Code a typed tool surface
+for gbrain? (recommended yes)&quot;</p>
+<p>注册形式取决于 Step 2 所选的路径：</p>
+<h3 id="path-4remote-mcp--带-bearer-的-http-传输">Path 4（Remote MCP —— 带 bearer 的 HTTP 传输）</h3>
+<p>拆掉任何先前的注册（可能是旧配置留下的 local-stdio，也可能是令牌已轮换的过期 remote-http），然后在用户作用域上用 HTTP + bearer 注册：</p>
+<pre><code class="language-bash">claude mcp remove gbrain -s user 2&gt;/dev/null || true
+claude mcp remove gbrain 2&gt;/dev/null || true
+claude mcp add --scope user --transport http gbrain &quot;$MCP_URL&quot; \
+  --header &quot;Authorization: Bearer $GBRAIN_MCP_TOKEN&quot;
+unset GBRAIN_MCP_TOKEN  # zero from process env after registration
+claude mcp list | grep gbrain  # verify: should show &quot;✓ Connected&quot;
+</code></pre>
+<p><strong>令牌存储说明：</strong> <code>claude mcp add --header &quot;Authorization: Bearer ...&quot;</code>
+会在进程启动期间把 bearer 放进 argv，约 10ms 内对 <code>ps</code> 可见。令牌的常驻位置是 <code>~/.claude.json</code>（模式 0600 —— Claude Code 自己为每个 MCP 服务器提供的凭据面）。这个取舍记录在 <code>setup-gbrain/memory.md</code>。如果未来的 Claude Code 版本为 headers 增加了 stdin 或环境变量输入形式，就改用它。</p>
+<h3 id="paths-12a2b3本地-stdio">Paths 1、2a、2b、3（本地 stdio）</h3>
+<p>在<strong>用户作用域</strong>注册，并使用指向 gbrain 二进制的<strong>绝对路径</strong>。用户作用域让 MCP 在这台机器的每个 Claude Code 会话里都可用，而不只是当前工作区。绝对路径避免了 Claude Code 以子进程方式拉起 <code>gbrain serve</code> 时的 PATH 解析问题。</p>
+<p>在 Windows（Git Bash/MSYS）上，<code>gbrain.exe</code> 的 binstub 会在新控制台里启动 bun，于是每个 Claude Code 会话都会为这个 MCP 弹出可见终端。改为注册 <code>bun.exe</code> 加 gbrain 的入口，它会附到 Claude Code 的隐藏控制台上。若没有这些文件，就用完整文件名注册 <code>gbrain.exe</code>，因为 Claude Code 不会给存储的路径补 <code>.exe</code>。</p>
+<pre><code class="language-bash">GBRAIN_BIN=$(command -v gbrain)
+[ -z &quot;$GBRAIN_BIN&quot; ] &amp;&amp; GBRAIN_BIN=&quot;$HOME/.bun/bin/gbrain&quot;
+claude mcp remove gbrain -s user 2&gt;/dev/null || true
+claude mcp remove gbrain 2&gt;/dev/null || true
+case &quot;$(uname -s)&quot; in
+  MINGW*|MSYS*|CYGWIN*)
+    BUN_ROOT=&quot;${BUN_INSTALL:-$HOME/.bun}&quot;
+    GBRAIN_ENTRY=&quot;$BUN_ROOT/install/global/node_modules/gbrain/src/cli.ts&quot;
+    if [ -f &quot;$BUN_ROOT/bin/bun.exe&quot; ] &amp;&amp; [ -f &quot;$GBRAIN_ENTRY&quot; ]; then
+      claude mcp add --scope user gbrain -- &quot;$BUN_ROOT/bin/bun.exe&quot; &quot;$GBRAIN_ENTRY&quot; serve
+    else
+      claude mcp add --scope user gbrain -- &quot;$BUN_ROOT/bin/gbrain.exe&quot; serve
+    fi
+    ;;
+  *)
+    claude mcp add --scope user gbrain -- &quot;$GBRAIN_BIN&quot; serve
+    ;;
+esac
+claude mcp list | grep gbrain  # verify: should show &quot;✓ Connected&quot;
+</code></pre>
+<p>在本地 PGLite 大脑上，如果某个已打开的 Claude Code 会话的 gbrain 持有数据库的单写锁，<code>claude mcp list</code> 可能显示 <code>Failed to connect</code>。只要那个会话里 <code>mcp__gbrain__*</code> 工具能用，注册就是好的。</p>
+<h3 id="两条路径共同的部分">两条路径共同的部分</h3>
+<p>如果 <code>claude</code> 不在 PATH 上：输出 &quot;MCP registration skipped — this skill is
+Claude-Code-targeted; register <code>gbrain serve</code> (or your remote MCP URL) in
+your agent&#39;s MCP config manually.&quot; 然后继续到 step 6。</p>
+<p><strong>给用户的提醒：</strong> 已经打开的 Claude Code 会话在重启前不会接上新 MCP 工具。告诉他们： &quot;Restart any open
+Claude Code sessions to see <code>mcp__gbrain__*</code> tools — they&#39;re loaded at
+session start, not mid-session.&quot;</p>
+<hr>
+<h2 id="step-6-per-remote-策略带门禁的仓库导入">Step 6: Per-remote 策略（带门禁的仓库导入）</h2>
+<p>如果我们处在一个带 <code>origin</code> 远端的 git 仓库里，检查策略：</p>
+<pre><code class="language-bash">current_tier=$(~/.claude/skills/gstack/bin/gstack-gbrain-repo-policy get)
+</code></pre>
+<p>分支：</p>
+<ul>
+<li><p><code>read-write</code> → 导入本仓库：<code>gbrain import &quot;$(pwd)&quot; --no-embed</code>，然后在后台跑
+<code>gbrain embed --stale &amp;</code>。</p>
+</li>
+<li><p><code>read-only</code> → 完全跳过导入（这个层级由未来的自动导入钩子 + gbrain 解析器注入来执行，不在这里）。</p>
+</li>
+<li><p><code>deny</code> → 什么都不做。</p>
+</li>
+<li><p><code>unset</code> → AskUserQuestion: &quot;How should <code>&lt;normalized-remote&gt;</code> interact with
+gbrain?&quot;</p>
+<ul>
+<li><code>read-write</code> —— 智能体可以从这个仓库搜索并写入新页面</li>
+<li><code>read-only</code> —— 智能体可以搜索，但永不写入</li>
+<li><code>deny</code> —— 完全不交互</li>
+<li><code>skip-for-now</code> —— 不持久化，下次再问</li>
+</ul>
+<p>得到答复后（skip-for-now 除外）：</p>
+<pre><code class="language-bash">~/.claude/skills/gstack/bin/gstack-gbrain-repo-policy set &quot;$REMOTE&quot; &quot;$TIER&quot;
+</code></pre>
+<p>然后当且仅当为 <code>read-write</code> 时导入。</p>
+</li>
+</ul>
+<p>如果在 git 仓库之外，或者没有 origin 远端：带一句说明跳过这一步。</p>
+<p>对于 <code>/setup-gbrain --repo</code> 调用，只执行 Step 6 然后退出。</p>
+<hr>
+<h2 id="step-7-提议-artifacts-同步并接入-gbrain">Step 7: 提议 artifacts 同步并接入 gbrain</h2>
+<p>行为对话记录的摄取是另一个独立步骤（7.5）。</p>
+<p>另起一个 AskUserQuestion: &quot;Also sync your gstack artifacts (CEO plans,
+designs, reports, retros) to a private git repo that gbrain can index
+across machines?&quot;</p>
+<p>选项：</p>
+<ul>
+<li>Yes, full sync（所有允许清单内的内容）</li>
+<li>Yes, artifacts-only（计划、设计、复盘 —— 跳过行为数据）</li>
+<li>No thanks</li>
+</ul>
+<p>如果选是，运行 artifacts-init 助手。它会请用户选一个 git 宿主（GitHub 经 <code>gh</code>、GitLab 经 <code>glab</code>，或手动粘贴 URL），创建 <code>gstack-artifacts-$USER</code>（私有），并把规范的 HTTPS URL 写到 <code>~/.gstack-artifacts-remote.txt</code>。传入 Step 4c 验证输出里的 <code>--url-form-supported</code>（Path 4），或传 <code>false</code>（Paths 1/2/3 —— 本地模式不做探测）：</p>
+<pre><code class="language-bash">URL_FORM=${URL_FORM_SUPPORTED:-false}
+~/.claude/skills/gstack/bin/gstack-artifacts-init --url-form-supported &quot;$URL_FORM&quot;
+~/.claude/skills/gstack/bin/gstack-config set artifacts_sync_mode artifacts-only
+# or &quot;full&quot; if user picked yes-full
+</code></pre>
+<p><code>gstack-artifacts-init</code> 最后总会打印一个 &quot;Send this to your brain admin&quot; 块，里面是确切的 <code>gbrain sources add</code> 命令。本技能从不自动执行服务端的 gbrain 命令；即便用户本人就是大脑管理员，复制粘贴打印出来的命令也是一致的交互体验。</p>
+<h3 id="path-4remote-mcp-artifacts-init-之后即完成">Path 4（Remote MCP）—— artifacts-init 之后即完成</h3>
+<p>在远端模式下，本地 <code>gstack-gbrain-source-wireup</code> 助手<strong>不会</strong>运行（它会去调本地 <code>gbrain</code> CLI，而 Path 4 并不安装它）。改由大脑管理员在大脑宿主上运行打印出来的命令。跳到 Step 7.5。</p>
+<h3 id="paths-12a2b3本地-stdio-接上联邦源">Paths 1、2a、2b、3（本地 stdio）—— 接上联邦源</h3>
+<p>然后把 artifacts 仓库接入 gbrain，让它的内容可从任何 gbrain 客户端搜索。这个助手会创建 <code>~/.gstack/</code> 的一个 <code>git worktree</code>，通过 <code>gbrain sources add --path --federated</code> 把它注册为联邦源，并运行一次初始的 <code>gbrain sync</code>。仅限 local-stdio 路径。</p>
+<p>先从 <code>~/.gbrain/config.json</code> 里取出数据库 URL 并显式传入，这样即使其他进程在同步中途改写 <code>~/.gbrain/config.json</code>（例如机器上别处并发运行的 <code>gbrain init</code>），wireup 依然稳健：</p>
+<pre><code class="language-bash">GBRAIN_URL=$(python3 -c &quot;
+import json, os, sys
+try:
+    c = json.load(open(os.path.expanduser(&#39;~/.gbrain/config.json&#39;)))
+    print(c.get(&#39;database_url&#39;, &#39;&#39;))
+except Exception:
+    pass
+&quot;)
+~/.claude/skills/gstack/bin/gstack-gbrain-source-wireup --strict \
+  ${GBRAIN_URL:+--database-url &quot;$GBRAIN_URL&quot;}
+</code></pre>
+<p><code>--strict</code> 在缺少前置条件（gbrain 未安装、低于 0.18.0、或还没有 <code>~/.gstack/.git</code>）时以非零状态退出，好让用户看到失败，而不是悄悄留下一个没接线的脑子。非零退出时，呈现助手的输出并按技能规则停下（STOP）—— 在修好前置条件之前，跨机器搜索不会工作。</p>
+<hr>
+<h2 id="step-75-对话记录摄取的同意">Step 7.5: 对话记录摄取的同意</h2>
+<p><strong>在 Path 4（Remote MCP）上完全跳过。</strong> 对话记录摄取会去调本地 <code>gbrain</code> CLI，而 Path 4 并不安装它。远端模式用户依赖大脑服务器自己的摄取节奏 —— 如果你的大脑管理员想索引这台机器的对话记录，就从你的 <code>gstack-artifacts-$USER</code> 仓库（Step 7 中建立）按他们喜欢的节奏拉取。这里不要替用户保存对话记录模式；对话记录保持跳过，直到用户自己选择（<code>/sync-gbrain</code> 会问）。继续到 Step 8。</p>
+<p>对 Paths 1、2a、2b、3，运行摄取门禁：</p>
+<blockquote>
+<p><strong>STOP.</strong> 在 Paths 1、2a、2b 或 3 上执行 Step 7.5 的对话记录与记忆摄取门禁之前（Path 4 完全跳过本节 —— 见骨架里的跳过说明），请阅读 <code>~/.claude/skills/gstack/setup-gbrain/sections/transcript-gate.md</code> 并完整执行。
+不要凭记忆干活 —— 那一节才是这一步的事实源。</p>
+</blockquote>
+<hr>
+<h2 id="step-8-把--gbrain-configuration-持久化到-claudemd">Step 8: 把 <code>## GBrain Configuration</code> 持久化到 CLAUDE.md</h2>
+<p>CLAUDE.md 就是审计轨迹：配置成功后，把配置块持久化进去。确切的块格式（remote-http 与 local-stdio）在 claude-md-persist 小节里。搜索指引块只由 <code>/sync-gbrain</code> 写入（Step 10 会提议它）。</p>
+<blockquote>
+<p><strong>STOP.</strong> 在把 Step 8 的 <code>## GBrain Configuration</code> 块持久化到 CLAUDE.md 之前，请阅读 <code>~/.claude/skills/gstack/setup-gbrain/sections/claude-md-persist.md</code> 并完整执行。
+不要凭记忆干活 —— 那一节才是这一步的事实源。</p>
+</blockquote>
+<hr>
+<h2 id="step-9-冒烟测试">Step 9: 冒烟测试</h2>
+<h3 id="path-4remote-mcp">Path 4（Remote MCP）</h3>
+<p><code>mcp__gbrain__*</code> 工具在会话中途不可见 —— 它们在 Claude Code 会话启动时加载。所以同一次技能运行里的实测冒烟测试只有信息价值：打印出用户重启 Claude Code 后可以运行的等价 curl 命令。Step 4c 的验证往返已经证明服务器可达、已鉴权、MCP 版本兼容，所以我们不再重复测试那一点。</p>
+<p>打印到 stdout：</p>
+<pre><code>After restarting Claude Code, the `mcp__gbrain__*` tools become callable.
+Smoke test: ask the agent to run `mcp__gbrain__search` with any query
+(&quot;test page&quot; works). You should see a JSON list of pages.
+
+To verify from the shell right now (without waiting for restart):
+  curl -s -X POST -H &#39;Content-Type: application/json&#39; \
+       -H &#39;Accept: application/json, text/event-stream&#39; \
+       -H &#39;Authorization: Bearer &lt;YOUR_TOKEN&gt;&#39; \
+       -d &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;method&quot;:&quot;tools/list&quot;,&quot;params&quot;:{}}&#39; \
+       &lt;YOUR_MCP_URL&gt;
+</code></pre>
+<p>不要在 curl 命令里打印真实令牌 —— 保留占位符 <code>&lt;YOUR_TOKEN&gt;</code>，这样这段片段可以安全地复制到聊天里或分享出去。</p>
+<h3 id="paths-12a2b3本地-stdio-1">Paths 1、2a、2b、3（本地 stdio）</h3>
+<pre><code class="language-bash">SLUG=&quot;setup-gbrain-smoke-test-$(date +%s)&quot;
+SMOKE_PAGE=$(mktemp &quot;${TMPDIR:-/tmp}/gstack-gbrain-smoke.XXXXXX&quot;)
+echo &quot;Set up on $(date). Smoke test for /setup-gbrain.&quot; &gt; &quot;$SMOKE_PAGE&quot;
+gbrain put &quot;$SLUG&quot; &lt; &quot;$SMOKE_PAGE&quot;; PUT_RC=$?
+rm -f &quot;$SMOKE_PAGE&quot;
+[ &quot;$PUT_RC&quot; -eq 0 ] &amp;&amp; gbrain search &quot;smoke test&quot; | grep -i &quot;$SLUG&quot;
+</code></pre>
+<p>确认往返可用。页面从临时文件输入，而不是管道：在 Windows 上，gbrain 读取管道输入会失败。失败时，呈现 <code>gbrain doctor --json</code> 输出并以 NEEDS_CONTEXT 升级停下（STOP）。</p>
+<hr>
+<h2 id="step-95-大脑信任策略">Step 9.5: 大脑信任策略</h2>
+<p>大脑信任策略控制 gstack 是否自动推送 <code>~/.gstack/</code> 下的产物、以及是否把校准判断写回这个大脑。它是按端点区分的：同时拥有本地 PGLite（个人）和团队远端 MCP（共享）的用户，两份策略分别跟踪。</p>
+<p>探测当前端点哈希与当前策略：</p>
+<pre><code class="language-bash">_HASH=$(~/.claude/skills/gstack/bin/gstack-config endpoint-hash 2&gt;/dev/null)
+_POLICY=$(~/.claude/skills/gstack/bin/gstack-config get brain_trust_policy@$_HASH 2&gt;/dev/null || echo unset)
+echo &quot;ENDPOINT_HASH: $_HASH&quot;
+echo &quot;BRAIN_TRUST_POLICY: $_POLICY&quot;
+</code></pre>
+<p>按传输方式与当前策略分支：</p>
+<p><strong>如果 <code>_POLICY</code> 是 <code>personal</code> 或 <code>shared</code>：</strong> 策略已设定。打印 &quot;Trust policy for this endpoint: $_POLICY&quot; 并跳到 Step 10。</p>
+<p><strong>如果 <code>_POLICY</code> 是 <code>unset</code> 且 <code>_HASH == &quot;local&quot;</code>：</strong> 自动设为 personal（本地引擎天然单租户）。不用 AskUserQuestion。</p>
+<pre><code class="language-bash">~/.claude/skills/gstack/bin/gstack-config set brain_trust_policy@$_HASH personal
+echo &quot;Trust policy auto-set to &#39;personal&#39; for local PGLite (single-tenant by construction).&quot;
+</code></pre>
+<p><strong>如果 <code>_POLICY</code> 是 <code>unset</code> 且 <code>_HASH != &quot;local&quot;</code>（远端 MCP）：</strong> 通过 AskUserQuestion 问信任策略问题：</p>
+<blockquote>
+<p>这个 MCP 端点上的大脑 —— 是你个人的大脑，还是
+共享/团队的大脑？</p>
+<p>Personal：gstack 会自动推送 ~/.gstack/ 下的产物（CEO 计划、设计
+文档、复盘、经验），并在你做决策时把校准判断写回。你的大脑
+每个会话都会变得更聪明。如果这个大脑是你一个人配的，就选它。</p>
+<p>Shared/team：默认只读。gstack 会读上下文，但任何写入前都会
+先问。对于不该被个人判断污染共享语料的大脑更安全。</p>
+</blockquote>
+<p>选项：</p>
+<ul>
+<li>A) Personal（自托管远端大脑推荐）</li>
+<li>B) Shared/team</li>
+</ul>
+<p>答复后持久化：</p>
+<pre><code class="language-bash">~/.claude/skills/gstack/bin/gstack-config set brain_trust_policy@$_HASH &lt;personal|shared&gt;
+</code></pre>
+<p>如果选了 <code>personal</code> 且 <code>artifacts_sync_mode</code> 仍是 <code>off</code>，也把它默认设为 <code>full</code>（个人大脑自动推送）：</p>
+<pre><code class="language-bash">_CURRENT_SYNC=$(~/.claude/skills/gstack/bin/gstack-config get artifacts_sync_mode 2&gt;/dev/null || echo off)
+if [ &quot;$_CURRENT_SYNC&quot; = &quot;off&quot; ]; then
+  ~/.claude/skills/gstack/bin/gstack-config set artifacts_sync_mode full
+  echo &quot;artifacts_sync_mode auto-set to &#39;full&#39; (personal brain default).&quot;
+fi
+</code></pre>
+<p>向后兼容：<code>artifacts_sync_mode_prompted</code> 已经是 <code>true</code> 的既有用户保留他们的答案；这个门禁只对新端点或升级后首次运行的用户触发。</p>
+<h2 id="step-10-greenyellowred-结论块幂等的-doctor-输出">Step 10: GREEN/YELLOW/RED 结论块（幂等的 doctor 输出）</h2>
+<p>Step 1-9 完成后，做总结。在已配置的机器上重跑 <code>/setup-gbrain</code> 是一等的 doctor 路径：每一步都探测现有状态，只修缺失的部分，然后在这里汇报。</p>
+<pre><code class="language-bash">GSTACK_STATE_ROOT=$(~/.claude/skills/gstack/bin/gstack-paths --get GSTACK_STATE_ROOT); : &quot;${GSTACK_STATE_ROOT:?gstack-paths failed; reinstall with ./setup or /gstack-upgrade}&quot;
+~/.claude/skills/gstack/bin/gstack-gbrain-detect 2&gt;/dev/null || true
+~/.claude/skills/gstack/bin/gstack-config has transcript_ingest_mode &amp;&amp; echo &quot;transcript_ingest_mode: $(~/.claude/skills/gstack/bin/gstack-config get transcript_ingest_mode)&quot; || echo &quot;transcript_ingest_mode: not set&quot;
+~/.claude/skills/gstack/bin/gstack-config get artifacts_sync_mode 2&gt;/dev/null || echo &quot;off&quot;
+[ -f &quot;$GSTACK_STATE_ROOT&quot;/.gbrain-sync-state.json ] &amp;&amp; cat &quot;$GSTACK_STATE_ROOT&quot;/.gbrain-sync-state.json || echo &quot;{}&quot;
+</code></pre>
+<p>从探测输出里读 <code>gbrain_mcp_mode</code>，选对结论模板。每一行是 <code>[OK]/[FIX]/[WARN]/[ERR]</code>。</p>
+<h3 id="path-4remote-mcp-1">Path 4（Remote MCP）</h3>
+<pre><code>gbrain status: GREEN  (mode: remote-http)
+
+  MCP ............. OK   {SERVER_NAME} v{SERVER_VERSION} at {MCP_URL}
+  Auth ............ OK   bearer accepted (verified via /tools/list)
+  Engine .......... N/A  remote mode
+  Doctor .......... N/A  remote mode (brain admin runs `gbrain doctor`)
+  Repo policy ..... OK   {read-write|read-only|deny}
+  Artifacts repo .. OK   {gstack_artifacts_remote URL}
+  Artifacts sync .. OK   {artifacts_sync_mode}
+  Transcripts ..... OK   {recent|all}: route to artifacts repo → remote brain | INFO {off|not set}: skipped
+  Code search ..... {OK local-pglite (~/.gbrain/pglite) | N/A declined at Step 4d}
+  CLAUDE.md ....... OK
+  Smoke test ...... INFO printed for post-restart manual verification
+
+Restart Claude Code to pick up the `mcp__gbrain__*` tools.
+Re-run `/setup-gbrain` any time the bearer rotates or the URL moves.
+</code></pre>
+<p><strong>Code search</strong> 行反映 Step 4d 的选择：</p>
+<ul>
+<li>如果用户选了 A（Yes）：<code>OK local-pglite</code>，此后 <code>gbrain_local_status == &quot;ok&quot;</code>。</li>
+<li>如果用户选了 B（No）：<code>N/A declined at Step 4d</code> —— 执行 <code>gstack-config set local_code_index_offered true</code> 以关闭未来的迁移提醒。</li>
+</ul>
+<p><strong>Transcripts</strong> 行：在 remote-http 模式下，gstack-memory-ingest 把暂存的对话记录写到 <code>~/.gstack/transcripts/run-&lt;pid&gt;-&lt;ts&gt;/</code>，gstack-brain-sync 把它们推到 artifacts 仓库；大脑管理员的拉取任务再把它们索引进远端大脑。本地 PGLite（如果存在）保持仅用于代码。</p>
+<h3 id="paths-12a2b3本地-stdio-2">Paths 1、2a、2b、3（本地 stdio）</h3>
+<pre><code>gbrain status: GREEN  (mode: local-stdio)
+
+  CLI ............. OK   &lt;gbrain version&gt;
+  Engine .......... OK   &lt;pglite|supabase&gt; at &lt;path&gt;
+  doctor .......... OK
+  MCP ............. OK   registered (user scope)
+  Repo policy ..... OK   &lt;read-write|read-only|deny&gt;
+  Code import ..... OK   &lt;last_imported_head&gt;
+  Artifacts sync .. OK   &lt;artifacts_sync_mode&gt; to &lt;remote&gt;
+  Transcripts ..... OK   &lt;recent|all&gt;: &lt;N&gt; sessions, last ingest &lt;when&gt; | INFO &lt;off|not set&gt;: skipped
+  CLAUDE.md ....... OK
+  Smoke test ...... OK   put → search round-trip
+
+Run `/setup-gbrain` again any time gbrain feels off; it&#39;s safe and idempotent.
+</code></pre>
+<p>对话记录模式为 <code>not set</code> 不算失败：对话记录会一直跳过，直到用户做出选择，而 <code>/sync-gbrain</code> 会问。</p>
+<p>如果任何一行是 YELLOW 或 RED，结论行会说明，失败的行会给出一句话的“下一步动作”（例如
+<code>Engine .......... ERR  PGLite corrupt — re-import from a clone of your brain remote with \</code>gbrain import`<code>）。 没有自动恢复：在启用 brain-sync 的情况下，大脑远端以 markdown + git 保存着经过整理的内容，可以从克隆用 </code>gbrain import` 恢复。</p>
+<h3 id="下一步sync-gbrain">下一步：<code>/sync-gbrain</code></h3>
+<p>本技能不写 CLAUDE.md 里的 <code>## GBrain Search Guidance</code> 块；等本仓库的代码索引能响应一次读取后，由 <code>/sync-gbrain</code> 写入。除非结论是 RED，否则 AskUserQuestion: &quot;Run <code>/sync-gbrain</code> now to index this
+repo and add the search guidance to CLAUDE.md?&quot; A) 现在就运行（阅读并遵循 sync-gbrain 技能）B) 稍后。如果选 B，或 <code>SESSION_KIND: spawned</code> 或 <code>headless</code>，以点名 <code>/sync-gbrain</code> 作为下一步收尾。</p>
+<hr>
+<h2 id="setup-gbrain---cleanup-orphans"><code>/setup-gbrain --cleanup-orphans</code></h2>
+<p>重新收集一次 PAT（展示 Path 2a 的 PAT 授权范围披露 —— 它在 brain-init 小节里；如果还没加载就去读那一节），然后用密钥读取助手收集它，并列出用户的 Supabase 项目。PAT 通过用户粘贴读入环境变量；绝不把它敲进命令里：</p>
+<pre><code class="language-bash"># We don&#39;t rely on a stored PAT.
+. ~/.claude/skills/gstack/bin/gstack-gbrain-lib.sh
+read_secret_to_env SUPABASE_ACCESS_TOKEN &quot;Paste PAT: &quot; || exit 1
+projects=$(curl -s -H &quot;Authorization: Bearer $SUPABASE_ACCESS_TOKEN&quot; \
+  https://api.supabase.com/v1/projects)
+</code></pre>
+<p>解析响应，找出任何名字以 <code>gbrain</code> 开头、且 <code>ref</code> 与用户当前 <code>~/.gbrain/config.json</code> 里 pooler URL 不匹配的项目。对每个孤儿项目单独 AskUserQuestion: &quot;Delete orphan project
+<code>&lt;ref&gt;</code> (<code>&lt;name&gt;</code>, created <code>&lt;created_at&gt;</code>)?&quot; —— 绝不批量；逐项目确认是一扇单向门。</p>
+<p>确认删除后：</p>
+<pre><code class="language-bash">curl -s -X DELETE -H &quot;Authorization: Bearer $SUPABASE_ACCESS_TOKEN&quot; \
+  https://api.supabase.com/v1/projects/$REF
+</code></pre>
+<p>没有第二次显式确认，绝不删除正在使用的大脑。</p>
+<p>结束时：<code>unset SUPABASE_ACCESS_TOKEN</code>。提醒吊销事宜。</p>
+<hr>
+<h2 id="遥测">遥测</h2>
+<p>前言的 Telemetry 块在退出时记录技能成功/失败。发出事件时，把这些枚举型分类值加到遥测负载里（安全 —— 没有自由文本密钥，绝不含 URL 或 PAT）：</p>
+<ul>
+<li><code>scenario</code>: <code>supabase-existing</code> | <code>supabase-auto-provision</code> |
+<code>supabase-manual</code> | <code>pglite-local</code> | <code>switch-to-supabase</code> |
+<code>switch-to-pglite</code> | <code>repo-flip-only</code> | <code>cleanup-orphans</code> |
+<code>resume-provision</code></li>
+<li><code>install_performed</code>: <code>yes</code> | <code>no</code>（复用了已有 checkout） | <code>skipped</code>（此前已存在）</li>
+<li><code>mcp_registered</code>: <code>yes</code> | <code>no</code> | <code>claude-missing</code></li>
+<li><code>trust_tier_set</code>: <code>read-write</code> | <code>read-only</code> | <code>deny</code> |
+<code>skip-for-now</code> | <code>n/a</code>（在 git 仓库之外）</li>
+</ul>
+<p>绝不把 <code>SUPABASE_ACCESS_TOKEN</code>、<code>DB_PASS</code>、<code>GBRAIN_POOLER_URL</code>、<code>GBRAIN_DATABASE_URL</code> 或任何 <code>postgresql://</code> 子串传进遥测调用。</p>
+<hr>
+<h2 id="重要规则">重要规则</h2>
+<ul>
+<li><p><strong>所有密钥守同一条规则。</strong> PAT、DB_PASS、pooler URL：只走环境变量，绝不走 argv，绝不记录日志，绝不由我们持久化到磁盘。唯一长期保存 pooler URL 的文件是 <code>~/.gbrain/config.json</code>，由 gbrain 自己的 <code>init</code> 以 0600 模式写入 —— 那是 gbrain 的纪律，不是我们的。</p>
+</li>
+<li><p><strong>STOP 点是硬性的。</strong> Gbrain doctor 不健康、安装器 PATH 遮蔽、migrate 超时、冒烟测试失败 —— 每一个都是 STOP。不要糊过去。</p>
+</li>
+<li><p><strong>并发运行锁。</strong> 技能启动时，先创建父目录再原子地获取锁。保留 mkdir 的错误输出；父目录缺失和文件系统故障并不是有竞争运行的证据：</p>
+<pre><code class="language-bash">GSTACK_STATE_ROOT=$(~/.claude/skills/gstack/bin/gstack-paths --get GSTACK_STATE_ROOT); : &quot;${GSTACK_STATE_ROOT:?gstack-paths failed; reinstall with ./setup or /gstack-upgrade}&quot;
+if ! mkdir -p &quot;$GSTACK_STATE_ROOT&quot;; then
+  echo &quot;ERROR: Cannot create setup-gbrain lock parent $GSTACK_STATE_ROOT.&quot; &gt;&amp;2
+  exit 1
+fi
+if ! mkdir &quot;$GSTACK_STATE_ROOT&quot;/.setup-gbrain.lock.d; then
+  if [ -d &quot;$GSTACK_STATE_ROOT&quot;/.setup-gbrain.lock.d ]; then
+    echo &quot;Another /setup-gbrain instance is running. Wait for it, or remove $GSTACK_STATE_ROOT/.setup-gbrain.lock.d only if you are sure it is stale.&quot; &gt;&amp;2
+  else
+    echo &quot;ERROR: Cannot acquire setup-gbrain lock.&quot; &gt;&amp;2
+  fi
+  exit 1
+fi
+</code></pre>
+<p>在正常退出时以及其他 SIGINT trap 中释放已获取的锁。</p>
+</li>
+<li><p><strong>CLAUDE.md 是审计轨迹。</strong> 配置成功后始终在 Step 8 更新它。</p>
+</li>
+</ul>
+</article>
+    
+    <nav class="pager" aria-label="上一篇和下一篇">
+  <a class="prev" href="./setup-deploy.html">← setup-deploy</a>
+  <a class="next" href="./ship.html">ship →</a>
+</nav>
+  </main>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>document-generate · Skills Book</title>
+  <link rel="stylesheet" href="../../assets/book.css">
+</head>
+<body class="with-sidebar">
+  <aside class="sidebar"><div class="brand"><a href="../../index.html">Skills Book</a></div><section><h2>第一部 两种范式</h2><ul><li><a href="../../book/01-two-paradigms/01-same-and-different.html">gstack 与 mattpocock_skills：相同与差异</a></li></ul></section><section><h2>第二部 想清楚</h2><ul><li><a href="../../book/02-think/05-product-questioning.html">产品追问：office-hours 与 grilling</a></li></ul></section><section><h2>gstack</h2><ul><li><a href="./autoplan.html">autoplan</a></li><li><a href="./benchmark.html">benchmark</a></li><li><a href="./benchmark-models.html">benchmark-models</a></li><li><a href="./browse.html">browse</a></li><li><a href="./canary.html">canary</a></li><li><a href="./capy/gstack.html">capy/gstack</a></li><li><a href="./careful.html">careful</a></li><li><a href="./codex.html">codex</a></li><li><a href="./context-restore.html">context-restore</a></li><li><a href="./context-save.html">context-save</a></li><li><a href="./cso.html">cso</a></li><li><a href="./design-consultation.html">design-consultation</a></li><li><a href="./design-html.html">design-html</a></li><li><a href="./design-review.html">design-review</a></li><li><a href="./design-shotgun.html">design-shotgun</a></li><li><a href="./deslop-shared-libs.html">deslop-shared-libs</a></li><li><a href="./devex-review.html">devex-review</a></li><li><a href="./diagram.html">diagram</a></li><li><a href="./document-generate.html">document-generate</a></li><li><a href="./document-release.html">document-release</a></li><li><a href="./eval-plan.html">eval-plan</a></li><li><a href="./freeze.html">freeze</a></li><li><a href="./gstack.html">gstack</a></li><li><a href="./gstack-upgrade.html">gstack-upgrade</a></li><li><a href="./guard.html">guard</a></li><li><a href="./hackernews-frontpage.html">hackernews-frontpage</a></li><li><a href="./health.html">health</a></li><li><a href="./investigate.html">investigate</a></li><li><a href="./ios-clean.html">ios-clean</a></li><li><a href="./ios-design-review.html">ios-design-review</a></li><li><a href="./ios-fix.html">ios-fix</a></li><li><a href="./ios-qa.html">ios-qa</a></li><li><a href="./ios-sync.html">ios-sync</a></li><li><a href="./land-and-deploy.html">land-and-deploy</a></li><li><a href="./landing-report.html">landing-report</a></li><li><a href="./learn.html">learn</a></li><li><a href="./make-pdf.html">make-pdf</a></li><li><a href="./office-hours.html">office-hours</a></li><li><a href="./open-gstack-browser.html">open-gstack-browser</a></li><li><a href="./openclaw/ceo-review.html">openclaw/ceo-review</a></li><li><a href="./openclaw/investigate.html">openclaw/investigate</a></li><li><a href="./openclaw/office-hours.html">openclaw/office-hours</a></li><li><a href="./openclaw/retro.html">openclaw/retro</a></li><li><a href="./pair-agent.html">pair-agent</a></li><li><a href="./plan-ceo-review.html">plan-ceo-review</a></li><li><a href="./plan-design-review.html">plan-design-review</a></li><li><a href="./plan-devex-review.html">plan-devex-review</a></li><li><a href="./plan-eng-review.html">plan-eng-review</a></li><li><a href="./plan-tune.html">plan-tune</a></li><li><a href="./qa.html">qa</a></li><li><a href="./qa-only.html">qa-only</a></li><li><a href="./retro.html">retro</a></li><li><a href="./review.html">review</a></li><li><a href="./scrape.html">scrape</a></li><li><a href="./setup-browser-cookies.html">setup-browser-cookies</a></li><li><a href="./setup-deploy.html">setup-deploy</a></li><li><a href="./setup-gbrain.html">setup-gbrain</a></li><li><a href="./ship.html">ship</a></li><li><a href="./skillify.html">skillify</a></li><li><a href="./spec.html">spec</a></li><li><a href="./sync-gbrain.html">sync-gbrain</a></li><li><a href="./test-audit.html">test-audit</a></li><li><a href="./unfreeze.html">unfreeze</a></li></ul></section><section><h2>mattpocock</h2><ul><li><a href="../mattpocock/ask-matt/SKILL.html">ask-matt</a></li><li><a href="../mattpocock/chief-of-staff.html">chief-of-staff</a></li><li><a href="../mattpocock/claude-handoff.html">claude-handoff</a></li><li><a href="../mattpocock/code-review.html">code-review</a></li><li><a href="../mattpocock/codebase-design/SKILL.html">codebase-design</a></li><li><a href="../mattpocock/diagnosing-bugs.html">diagnosing-bugs</a></li><li><a href="../mattpocock/domain-modeling/SKILL.html">domain-modeling</a></li><li><a href="../mattpocock/git-guardrails-claude-code.html">git-guardrails-claude-code</a></li><li><a href="../mattpocock/grill-me.html">grill-me</a></li><li><a href="../mattpocock/grill-with-docs.html">grill-with-docs</a></li><li><a href="../mattpocock/grilling.html">grilling</a></li><li><a href="../mattpocock/handoff.html">handoff</a></li><li><a href="../mattpocock/implement.html">implement</a></li><li><a href="../mattpocock/implement-spec.html">implement-spec</a></li><li><a href="../mattpocock/improve-codebase-architecture/SKILL.html">improve-codebase-architecture</a></li><li><a href="../mattpocock/loop-me.html">loop-me</a></li><li><a href="../mattpocock/migrate-to-shoehorn.html">migrate-to-shoehorn</a></li><li><a href="../mattpocock/pr.html">pr</a></li><li><a href="../mattpocock/prototype/SKILL.html">prototype</a></li><li><a href="../mattpocock/research.html">research</a></li><li><a href="../mattpocock/retro.html">retro</a></li><li><a href="../mattpocock/scaffold-exercises.html">scaffold-exercises</a></li><li><a href="../mattpocock/setup-matt-pocock-skills/SKILL.html">setup-matt-pocock-skills</a></li><li><a href="../mattpocock/setup-pre-commit.html">setup-pre-commit</a></li><li><a href="../mattpocock/setup-ts-deep-modules.html">setup-ts-deep-modules</a></li><li><a href="../mattpocock/tdd/SKILL.html">tdd</a></li><li><a href="../mattpocock/teach/SKILL.html">teach</a></li><li><a href="../mattpocock/to-questionnaire.html">to-questionnaire</a></li><li><a href="../mattpocock/to-spec.html">to-spec</a></li><li><a href="../mattpocock/to-tickets.html">to-tickets</a></li><li><a href="../mattpocock/triage/SKILL.html">triage</a></li><li><a href="../mattpocock/wait-what.html">wait-what</a></li><li><a href="../mattpocock/wayfinder.html">wayfinder</a></li><li><a href="../mattpocock/wizard.html">wizard</a></li><li><a href="../mattpocock/writing-beats.html">writing-beats</a></li><li><a href="../mattpocock/writing-for-agents/SKILL.html">writing-for-agents</a></li><li><a href="../mattpocock/writing-fragments.html">writing-fragments</a></li><li><a href="../mattpocock/writing-shape.html">writing-shape</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">技能全库</a></p></aside>
+  <main class="content">
+    <section class="source-box">
+  <strong>来源</strong>：gstack · <code>document-generate/SKILL.md</code> · v1.91.226.0 · commit <code>8d95013</code><br>
+  <strong>许可证</strong>：MIT · <a href="https://github.com/garrytan/gstack/blob/8d9501373b55897447ae30f1d281c4dbc8a1369e/document-generate/SKILL.md">查看原仓库</a> · <a href="../../source-snapshots/gstack/document-generate/SKILL.md">查看英文快照</a> · 快照：<code>source-snapshots/gstack/document-generate/SKILL.md</code><br>
+  <strong>翻译</strong>：2026-10-30 · 译者注以 <code>&gt; 译者注：</code> 标出
+</section>
+    <section class="skill-overview">
+  <strong>document-generate</strong>
+  <span>gstack</span>
+  <span>用户调用</span>
+  <p>先通读代码再动笔，按 Diataxis 四个象限为功能、模块或整个项目写出结构完整的高质量文档。</p>
+</section>
+    <nav class="page-toc" aria-label="页内目录"><strong>本页目录</strong><ul><li class="toc-depth-1"><a href="#document-generatediataxis-文档写作">Document Generate：Diataxis 文档写作</a></li><li class="toc-depth-2"><a href="#步骤-0范围与意图">步骤 0：范围与意图</a></li><li class="toc-depth-2"><a href="#步骤-1代码考古研究阶段">步骤 1：代码考古（研究阶段）</a></li><li class="toc-depth-2"><a href="#步骤-2diataxis-划分">步骤 2：Diataxis 划分</a></li><li class="toc-depth-2"><a href="#步骤-3先写参考文档">步骤 3：先写参考文档</a></li><li class="toc-depth-2"><a href="#步骤-4写解释文档">步骤 4：写解释文档</a></li><li class="toc-depth-2"><a href="#步骤-5写操作指南">步骤 5：写操作指南</a></li><li class="toc-depth-2"><a href="#verification">Verification</a></li><li class="toc-depth-2"><a href="#troubleshooting">Troubleshooting</a></li><li class="toc-depth-2"><a href="#step-2-build-the-first-working-piece">Step 2: [Build the first working piece]</a></li><li class="toc-depth-2"><a href="#step-n-final-step">Step N: [Final step]</a></li><li class="toc-depth-2"><a href="#what-you-built">What you built</a></li><li class="toc-depth-2"><a href="#重要规则">重要规则</a></li></ul></nav>
+    <article class="markdown-body"><h1 id="document-generatediataxis-文档写作">Document Generate：Diataxis 文档写作</h1>
+<p>你在执行 <code>/document-generate</code> 工作流。你的任务是：为某个功能、模块或整个项目产出<strong>高质量、有结构</strong>的文档。在写下第一行文档之前，先把代码研究透。</p>
+<p>这个技能有两种调用方式：</p>
+<ol>
+<li><strong>独立调用</strong> —— 用户把你指向某个功能、模块或项目，说&quot;给它写文档&quot;</li>
+<li><strong>由 /document-release 调用</strong> —— 覆盖图识别出了缺口，你去补上</li>
+</ol>
+<p>你遵循 <strong>Diataxis 框架</strong> —— 文档的四个象限，各自服务不同的读者需求：</p>
+<ul>
+<li><strong>教程（Tutorial）</strong> —— 面向学习，带新手一步步走完一个可运行的例子</li>
+<li><strong>操作指南（How-to）</strong> —— 面向任务，说明如何完成某个具体目标（假定读者有基本熟悉度）</li>
+<li><strong>参考（Reference）</strong> —— 面向信息，完整准确的技术描述</li>
+<li><strong>解释（Explanation）</strong> —— 面向理解，说明事情为什么是这样运作的</li>
+</ul>
+<p><strong>理念：先研究整体，再写各个部分。</strong> 就像建筑师在画第一个房间之前先勘察整个场地，你在写任何文档之前先读完整个代码表面。这能避免&quot;只描述了半个功能&quot;这种典型失败。</p>
+<hr>
+<h2 id="步骤-0范围与意图">步骤 0：范围与意图</h2>
+<ol>
+<li><p>确定要写什么：</p>
+<ul>
+<li><strong>带具体目标调用时</strong>（功能、模块、文件、技能）：范围就是这个目标</li>
+<li><strong>为整个项目调用时</strong>：范围就是整个项目</li>
+<li><strong>由 /document-release 带缺口调用时</strong>：范围是覆盖图里列出的具体实体</li>
+</ul>
+</li>
+<li><p>用 AskUserQuestion 确认范围，并询问文档落点：</p>
+<ul>
+<li>A) 直接在现有文件里写文档（README、ARCHITECTURE 等）</li>
+<li>B) 创建独立的文档文件（例如 <code>docs/</code> 目录）</li>
+<li>C) 两者都做 —— 现有文件里放摘要 + 独立文件里放深度文档</li>
+</ul>
+<p>RECOMMENDATION: 选 C，因为它同时最大化可发现性和深度。</p>
+</li>
+<li><p>确定输出格式：</p>
+<ul>
+<li>如果项目已有 <code>docs/</code> 目录，遵循它的约定</li>
+<li>如果项目用了文档框架（Nextra、Docusaurus、MkDocs、VitePress），遵循它的格式</li>
+<li>否则用 <code>docs/</code> 下的纯 Markdown 文件</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="步骤-1代码考古研究阶段">步骤 1：代码考古（研究阶段）</h2>
+<p>文档的质量取决于你对代码的理解程度，所以这一步权重最大。</p>
+<ol>
+<li><strong>摸清项目结构：</strong></li>
+</ol>
+<pre><code class="language-bash">find . -type f -not -path &quot;./.git/*&quot; -not -path &quot;./node_modules/*&quot; -not -path &quot;./.gstack/*&quot; -not -path &quot;./dist/*&quot; -not -path &quot;./build/*&quot; -not -path &quot;./.next/*&quot; | head -200
+</code></pre>
+<ol start="2">
+<li><p><strong>读入口文件。</strong> 识别并阅读：</p>
+<ul>
+<li>README.md、ARCHITECTURE.md、CONTRIBUTING.md、CLAUDE.md / AGENTS.md</li>
+<li>package.json / Cargo.toml / pyproject.toml / go.mod（判断项目类型）</li>
+<li>主入口文件（index.ts、main.rs、app.py、cmd/main.go）</li>
+<li>配置文件与示例</li>
+</ul>
+</li>
+<li><p><strong>读每个目标实体的源码。</strong> 对每个要写文档的功能/模块：</p>
+<ul>
+<li>从头到尾读实现文件（不只是签名）</li>
+<li>读测试 —— 它们揭示了预期行为、边界情况和用法模式</li>
+<li>读目标依赖的、以及依赖目标的相邻模块</li>
+<li>读已有行内注释，尤其是 <code>// NOTE:</code>、<code>// DESIGN:</code>、<code>// WHY:</code></li>
+</ul>
+</li>
+<li><p><strong>建立概念图。</strong> 动笔之前，先产出一份内部提纲：</p>
+</li>
+</ol>
+<pre><code>Target: [feature/module name]
+Purpose: [one sentence — what problem does it solve?]
+Key concepts: [list the 3-5 concepts a reader must understand]
+Public surface: [commands, functions, config options, API endpoints]
+Dependencies: [what it needs from other modules]
+Dependents: [what relies on it]
+Edge cases: [from reading tests and code]
+Design decisions: [any non-obvious &quot;why&quot; choices]
+</code></pre>
+<ol start="5">
+<li>输出：&quot;Researched N files, identified K public surface items, M concepts, and J design decisions.&quot;</li>
+</ol>
+<hr>
+<h2 id="步骤-2diataxis-划分">步骤 2：Diataxis 划分</h2>
+<p>对每个目标实体，决定要产出哪几个 Diataxis 象限。不是每个实体都需要四个都写。</p>
+<p><strong>决策矩阵：</strong></p>
+<table>
+<thead>
+<tr>
+<th>实体类型</th>
+<th>教程？</th>
+<th>操作指南？</th>
+<th>参考？</th>
+<th>解释？</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户会交互的新功能</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>也许</td>
+</tr>
+<tr>
+<td>CLI 命令或参数</td>
+<td>也许</td>
+<td>✅</td>
+<td>✅</td>
+<td>否</td>
+</tr>
+<tr>
+<td>内部模块/架构</td>
+<td>否</td>
+<td>否</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>配置项</td>
+<td>否</td>
+<td>✅</td>
+<td>✅</td>
+<td>否</td>
+</tr>
+<tr>
+<td>设计模式 / 理念</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>API 端点</td>
+<td>也许</td>
+<td>✅</td>
+<td>✅</td>
+<td>否</td>
+</tr>
+<tr>
+<td>工作流（多步流程）</td>
+<td>✅</td>
+<td>✅</td>
+<td>否</td>
+<td>也许</td>
+</tr>
+</tbody></table>
+<p>输出划分计划：</p>
+<pre><code>Documentation plan:
+  [entity]              [tutorial] [how-to] [reference] [explanation]
+  Widget system         ✅ new     ✅ new   ✅ new      ✅ new
+  --verbose flag        ❌        ✅ new   ✅ inline   ❌
+  Bayesian scheduler    ❌        ❌       ✅ new      ✅ new
+</code></pre>
+<p>如果计划要创建 5 篇以上文档，先用 AskUserQuestion 确认再继续。范围较小时直接进行。</p>
+<hr>
+<h2 id="步骤-3先写参考文档">步骤 3：先写参考文档</h2>
+<p>参考文档是基础。它们基于事实、完整，且直接从代码推导。要在教程或操作指南之前写，因为它们确立了词汇。</p>
+<p><strong>参考文档模板：</strong></p>
+<pre><code class="language-markdown"># [Entity Name]
+
+[One paragraph: what it is, what it does, when you&#39;d use it.]
+
+## API / Interface
+
+[Complete listing of public surface: functions, commands, config options, parameters.
+Include types, defaults, and constraints. Pull directly from code — do not paraphrase
+loosely.]
+
+## Options / Configuration
+
+[If applicable: every option with its type, default, and effect.]
+
+## Examples
+
+[2-3 concrete examples showing actual usage. Prefer real command output or code that
+would actually compile/run.]
+
+## Related
+
+[Links to other reference docs, how-tos, or explanations that provide context.]
+</code></pre>
+<p><strong>参考文档的规则：</strong></p>
+<ul>
+<li>准确优先于优雅。每个说法都必须能追溯到代码。</li>
+<li>写出类型、默认值和约束。&quot;接受一个字符串&quot;不够 —— &quot;接受一个字符串（最多 256 字符，必须匹配 <code>^[a-z-]+$</code>）&quot;才是参考级别。</li>
+<li>给出复制粘贴就能真正跑通的真实示例。</li>
+<li>不要解释<em>为什么</em> —— 那属于解释文档。</li>
+</ul>
+<hr>
+<h2 id="步骤-4写解释文档">步骤 4：写解释文档</h2>
+<p>解释文档回答&quot;为什么是这样运作的？&quot;它们承载设计理由。</p>
+<p><strong>解释文档模板：</strong></p>
+<pre><code class="language-markdown"># [Concept / Design Decision]
+
+[Opening paragraph: the problem this design solves, stated in terms a smart reader
+who hasn&#39;t seen the code would understand.]
+
+## The problem
+
+[Concrete description of what goes wrong without this design. Real failure modes,
+not abstract risks.]
+
+## The approach
+
+[How the design solves the problem. Include diagrams (ASCII or Mermaid) for
+architectural concepts.]
+
+## Trade-offs
+
+[What was given up. Every design decision trades something — name it explicitly.]
+
+## Alternatives considered
+
+[If discoverable from code comments, ADRs, or git history: what was tried or
+rejected and why.]
+</code></pre>
+<p><strong>解释文档的规则：</strong></p>
+<ul>
+<li>从问题开始，不是从方案开始。</li>
+<li>架构用 ASCII 图。它们可 grep、diff 友好，而且到处都能渲染。</li>
+<li>明确写出取舍。&quot;我们选 X 而不是 Y，因为 Z&quot;是黄金标准。</li>
+<li>不要重复参考材料 —— 给链接。</li>
+</ul>
+<hr>
+<h2 id="步骤-5写操作指南">步骤 5：写操作指南</h2>
+<p>操作指南面向任务。它们假定读者懂基础，只想完成某件具体的事。</p>
+<p><strong>操作指南模板：</strong></p>
+<pre><code class="language-markdown"># How to [accomplish specific task]
+
+[One sentence: what you&#39;ll accomplish and the end result.]
+
+## Prerequisites
+
+[What the reader needs before starting. Be specific — versions, installed tools,
+config state.]
+
+## Steps
+
+1. [Action verb] [specific instruction]
+
+   ```bash
+   [exact command]
+</code></pre>
+<p>   [Expected output or result, if non-obvious.]</p>
+<ol start="2">
+<li>[Next step...]</li>
+</ol>
+<h2 id="verification">Verification</h2>
+<p>[How to confirm it worked. A command, a URL to visit, a test to run.]</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>[Common failure modes and their fixes. Pull from tests and error handling code.]</p>
+<pre><code>
+**操作指南的规则：**
+- 标题以 &quot;How to&quot; 开头 —— 没有例外。这是读者的入口。
+- 每一步都必须可执行。不要写&quot;考虑是否……&quot;，要写&quot;运行 X&quot;或&quot;把 Y 加到 Z&quot;。
+- 要有验证步骤。读者不应该问&quot;它成功了吗？&quot;
+- 如果任务可能失败，故障排查小节是必需的。
+
+---
+
+## 步骤 6：写教程
+
+教程面向学习。它们带新手从零走到一个可运行的例子。这类最难写好，也最有价值。
+
+**教程模板：**
+
+```markdown
+# [Tutorial title — describes what you&#39;ll build/learn]
+
+[Opening paragraph: what you&#39;ll build, why it&#39;s useful, and what you&#39;ll understand
+by the end. Keep it concrete — &quot;You&#39;ll build a working X that does Y&quot; not
+&quot;This tutorial covers X&quot;.]
+
+## What you&#39;ll need
+
+[Prerequisites: tools, versions, prior knowledge. Link to installation guides.]
+
+## Step 1: [Set up the foundation]
+
+[Start from a clean state. Show every command. Explain what each does on first
+encounter — but briefly, not a lecture.]
+
+```bash
+[exact command]
+</code></pre>
+<p>[Brief explanation of what just happened.]</p>
+<h2 id="step-2-build-the-first-working-piece">Step 2: [Build the first working piece]</h2>
+<p>[Get to a working, visible result as fast as possible. The reader should see
+something happen within the first 3 steps.]</p>
+<p>...</p>
+<h2 id="step-n-final-step">Step N: [Final step]</h2>
+<h2 id="what-you-built">What you built</h2>
+<p>[Recap: what the reader now has and what it can do. Link to reference docs
+for deeper exploration. Suggest next steps.]</p>
+<pre><code>
+**教程的规则：**
+- **首次结果在 3 步之内。** 如果读者到第 3 步还没看到东西跑起来，教程太慢了。
+- 每一步都必须产生可见的变化或输出。不要只写&quot;现在配置 X&quot;却不展示会变什么。
+- 用读者会真正输入的确切命令。不要&quot;运行适当的命令&quot;这种抽象说法。
+- 错误路径：如果某一步经常失败，就地把错误和修复方式写出来。
+- 以 &quot;What you built&quot; 结尾 —— 把教程接回真实用例。
+
+---
+
+## 步骤 7：跨文档链接与可发现性
+
+写完全部文档后：
+
+1. **在象限之间加交叉链接。** 每篇参考文档都应链接到它的操作指南，每篇操作指南都应链接回参考。教程应同时链接两者。
+
+2. **更新入口文件。** 在以下位置加上新文档的引用：
+   - README.md —— 加到文档小节或目录
+   - CLAUDE.md / AGENTS.md —— 相关时加到项目结构
+   - 任何已有的文档索引或侧边栏配置
+
+3. **验证可发现性。** 每篇新文档都必须能从 README.md 出发两次点击内到达。如果用了文档框架，把它加进侧边栏/导航配置。
+
+4. **检查坏链。** grep 所有指向不存在文件的 `](` 引用。
+
+---
+
+## 步骤 8：质量自审
+
+提交之前，对照这些标准审每一篇文档：
+
+**准确性门禁：**
+- [ ] 每个代码示例复制粘贴后都能编译 / 运行 / 通过
+- [ ] 每处 API 描述都匹配真实的代码签名
+- [ ] 展示的每条命令都产生所描述的输出
+- [ ] 没有对已改名/已移除实体的过时引用
+
+**完整性门禁：**
+- [ ] 参考文档覆盖 100% 的公共表面
+- [ ] 操作指南覆盖用户最可能尝试的前 3 个任务
+- [ ] 教程在 ≤3 步内到达可运行结果
+- [ ] 解释文档写出取舍，而不只是选择
+
+**文风门禁：**
+- [ ] 写给一个没看过代码的聪明人
+- [ ] 没有未加简短行内解释的术语，首次出现要给说明
+- [ ] 主动语态、具体名词、短句
+- [ ] 写&quot;你现在可以……&quot;，不写&quot;系统提供了……&quot;
+
+继续之前先修掉所有不合格项。
+
+---
+
+## 步骤 9：提交与输出
+
+1. 按文件名逐个暂存新文档（绝不用 `git add -A` 或 `git add .`）。
+
+**提交前的脱敏扫描。** 生成的文档里经常出现示例凭据；扫描暂存区的文档内容，遇到 HIGH 级凭据就阻断（提交进仓库的活格式密钥就是泄露）。按 span 的占位符过滤会放行明显的文档示例（例如 `AKIAIOSFODNN7EXAMPLE`）；活格式密钥无论出现在哪里都阻断，是否在代码围栏里都一样：
+
+```bash
+REDACT_VIS=$(~/.claude/skills/gstack/bin/gstack-config get redact_repo_visibility 2&gt;/dev/null)
+[ -z &quot;$REDACT_VIS&quot; ] &amp;&amp; REDACT_VIS=$(gh repo view --json visibility -q .visibility 2&gt;/dev/null | tr &#39;A-Z&#39; &#39;a-z&#39;)
+git diff --cached --no-color | grep &#39;^+&#39; | sed &#39;s/^+//&#39; | \
+  ~/.claude/skills/gstack/bin/gstack-redact --repo-visibility &quot;${REDACT_VIS:-unknown}&quot; --json
+# exit 3 (HIGH) → unstage the offending doc, remove the secret, re-stage. Do NOT commit.
+</code></pre>
+<ol start="2">
+<li>创建提交：</li>
+</ol>
+<pre><code class="language-bash">git commit -m &quot;$(cat &lt;&lt;&#39;EOF&#39;
+docs: generate [scope] documentation (Diataxis)
+
+[One-line summary of what was documented]
+
+Quadrants: [list which quadrants were produced]
+
+Co-Authored-By: Claude &lt;noreply@anthropic.com&gt;
+EOF
+)&quot;
+</code></pre>
+<ol start="3">
+<li>推送到当前分支：</li>
+</ol>
+<pre><code class="language-bash">git push
+</code></pre>
+<ol start="4">
+<li><strong>如果存在 PR</strong>，在 PR 描述里加一个 <code>## Documentation Generated</code> 小节，列出每个新文件及其 Diataxis 象限和一行说明：</li>
+</ol>
+<pre><code>## Documentation Generated
+
+| File | Quadrant | Description |
+|------|----------|-------------|
+| docs/tutorial-getting-started.md | Tutorial | Walk-through from install to first working example |
+| docs/reference-widget-api.md | Reference | Complete widget API with types, defaults, examples |
+| docs/explanation-bayesian-scheduler.md | Explanation | Why the scheduler uses Bayesian inference |
+| docs/howto-custom-widgets.md | How-to | Creating and registering custom widgets |
+</code></pre>
+<ol start="5">
+<li>输出结构化摘要：</li>
+</ol>
+<pre><code>Documentation generated:
+  Scope: [what was documented]
+  Files: [N] new, [M] updated
+  Coverage:
+    Tutorials:    [count] ([list])
+    How-tos:      [count] ([list])
+    Reference:    [count] ([list])
+    Explanation:  [count] ([list])
+  Quality: [pass/fail on each gate]
+</code></pre>
+<hr>
+<h2 id="重要规则">重要规则</h2>
+<ul>
+<li><strong>先研究再写。</strong> 步骤 1 不是可选的。读代码、读测试、读已有文档。研究不足只会写出浮于表面的文档。</li>
+<li><strong>准确性没有商量余地。</strong> 每个代码示例都必须能跑。每处 API 描述都必须匹配真实代码。细节没把握就再读一遍源码 —— 不要猜。</li>
+<li><strong>Diataxis 象限服务不同读者。</strong> 不要把教程内容混进参考文档，也不要把参考内容混进操作指南。每个象限对应特定状态下的特定读者。</li>
+<li><strong>教程的首次结果时间。</strong> 如果读者到第 3 步还没看到东西跑起来，重构教程。</li>
+<li><strong>万物交叉链接。</strong> 孤立的文档等于没人能找到的文档。</li>
+<li><strong>文风：友好、具体、面向用户。</strong> 写就像在给一个没看过代码的聪明人解释。绝不写成企业腔，绝不写成学术腔。</li>
+<li><strong>完整优先于极简。</strong> AI 让写全文档变得便宜。不要写&quot;最小可用文档&quot; —— 写完整文档。把海煮干。</li>
+</ul>
+</article>
+    
+    <nav class="pager" aria-label="上一篇和下一篇">
+  <a class="prev" href="./diagram.html">← diagram</a>
+  <a class="next" href="./document-release.html">document-release →</a>
+</nav>
+  </main>
+</body>
+</html>

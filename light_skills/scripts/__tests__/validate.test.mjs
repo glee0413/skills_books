@@ -91,13 +91,43 @@ test("frontmatter 与来源不一致会失败", () => {
   assert.ok(issues.some((i) => i.code === "frontmatter-mismatch"));
 });
 
-test("发布模式拒绝空正文和占位文本", () => {
+test("发布模式拒绝空正文和占位文本，但允许代码块里的 TODO", () => {
   assert.ok(validateReleaseContent({ page: "---\nid: a/b\n---\n", id: "a/b" }).some((i) => i.code === "empty-body"));
   assert.ok(
     validateReleaseContent({ page: "---\nid: a/b\n---\n\n[待翻译]\n", id: "a/b" }).some(
       (i) => i.code === "placeholder",
     ),
   );
+  assert.ok(
+    validateReleaseContent({ page: "---\nid: a/b\n---\n\nTODO: 补充这一节\n", id: "a/b" }).some(
+      (i) => i.code === "placeholder",
+    ),
+  );
+  assert.equal(
+    validateReleaseContent({ page: "---\nid: a/b\n---\n\n```sh\ngrep TODO .\n```\n", id: "a/b" }).length,
+    0,
+  );
+  assert.equal(
+    validateReleaseContent({ page: "---\nid: a/b\n---\n\n更新 `TODOS.md` 里的条目。\n", id: "a/b" }).length,
+    0,
+  );
+});
+
+test("mattpocock 允许 H1 之前的导语", () => {
+  const issues = validateTranslationPage({
+    page: `---\nid: a/b\ntitle: b\ndescription: 说明\ninvocation: model\nproject: mattpocock\nsourceCommit: abc\nsourceRef: v1\nsourcePath: b.md\nsnapshotPath: b.md\nlicense: MIT\ntranslatedAt: 2026-10-30\n---\n\n导语。\n\n# B\n`,
+    sourceRecord: {
+      id: "a/b",
+      project: "mattpocock",
+      commit: "abc",
+      ref: "v1",
+      sourcePath: "b.md",
+      snapshotPath: "b.md",
+      license: "MIT",
+    },
+    source: "导语。\n\n# B\n",
+  });
+  assert.equal(issues.filter((i) => i.code === "missing-h1-start").length, 0);
 });
 
 test("目录比较能发现过期和多余文件", async () => {
