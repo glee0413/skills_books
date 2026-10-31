@@ -80,13 +80,13 @@ translatedAt: 2026-10-31
 
 ```json
 "features" : {
-    "type" : "Record",
+    "type": "Record",
     "attributes": {
         "age" : {
-            "type": "Long"
+            "type" : "Long"
         },
         "height": {
-            "type": "Long"
+            "type" : "Long"
         },
         "eyecolor": {
             "type": "String"
