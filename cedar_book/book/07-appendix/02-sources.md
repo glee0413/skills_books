@@ -14,7 +14,7 @@
 
 ## 本书覆盖了什么
 
-- **文档**：术语、PhotoFlash 场景、授权流程、策略语法、实体、数据类型、操作符、验证、模板、JSON 格式、schema 三篇、安全、最佳实践、授权模式、策略示例，共 17 个条目。
+- **文档**：`cedar-docs` 全部 48 个实际内容页，覆盖术语、场景、授权流程、策略语法、实体与 JSON 语法、数据类型、操作符、验证、模板、JSON 格式、schema 四篇、安全、19 篇最佳实践、授权模式、策略示例、设计模式、集成、版本历史和文档首页。
 - **SDK**：仓库总览、`cedar-policy` Rust API、CLI、WASM、symcc，共 5 个条目。
 - **示例**：示例仓库总览、TinyTodo 教程、六个真实用例总览、Rust Hello World，共 4 个条目。
 
@@ -26,7 +26,7 @@
 
 - Cedar 的 Rust 实现源码、测试套件、语言服务器实现和 WASM 内部细节；只保留公开 README 和 API 用法。
 - Lean 形式模型和 `cedar-spec` 仓库；安全章节只引用其结论，不展开证明。
-- Cedar 文档中未选入的页面、图片、include 片段和 Amazon Verified Permissions 专有文档。
+- Cedar 文档中的图片、include 片段、静态资源和 Amazon Verified Permissions 专有文档；48 个实际内容页已全部覆盖，6 行重定向桩不计入。
 - 示例仓库里的 TinyTodo 完整实现、其他语言的 hello world、基准测试和策略语言实战等目录；TinyTodo 只取教程。
 - 六个用例目录中的全部策略文件没有逐一存快照，只存了用例总览 README；章节引用的策略、schema、链接文件和夹具来自同一固定 commit 的 `opensrc/cedar-examples/`。`sales_orgs/` 是上游额外的变体目录，不在本书六个用例之列。
 

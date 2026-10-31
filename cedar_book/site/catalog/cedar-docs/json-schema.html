@@ -1,0 +1,146 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JSON Schema 格式 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="./terminology.html">术语与核心概念</a></li><li><a href="./scenario.html">PhotoFlash 示例场景</a></li><li><a href="./authorization.html">授权如何工作</a></li><li><a href="./policy-syntax.html">策略语法基础</a></li><li><a href="./entities.html">实体与实体层级</a></li><li><a href="./data-types.html">数据类型</a></li><li><a href="./operators.html">操作符</a></li><li><a href="./validation.html">策略验证</a></li><li><a href="./templates.html">策略模板</a></li><li><a href="./json-format.html">JSON 策略格式</a></li><li><a href="./schema.html">Schema 概览</a></li><li><a href="./schema-format.html">Cedar Schema 格式</a></li><li><a href="./schema-linking.html">Schema 链接</a></li><li><a href="./security.html">安全模型</a></li><li><a href="./best-practices.html">最佳实践概览</a></li><li><a href="./auth-patterns.html">授权模式</a></li><li><a href="./policy-examples.html">策略示例</a></li><li><a href="./index.html">文档首页</a></li><li><a href="./entities-syntax.html">实体与上下文 JSON 语法</a></li><li><a href="./integration-express.html">在 Express 中集成 Cedar</a></li><li><a href="./integrations.html">Cedar 集成方式</a></li><li><a href="./patterns.html">授权设计模式</a></li><li><a href="./resources.html">学习资源</a></li><li><a href="./level-validation.html">分级验证</a></li><li><a href="./syntax-grammar.html">策略语法参考</a></li><li><a href="./schema-grammar.html">Cedar Schema 语法参考</a></li><li><a href="./json-schema.html">JSON Schema 格式</a></li><li><a href="./json-schema-grammar.html">JSON Schema 语法参考</a></li><li><a href="./doc-history.html">文档版本历史</a></li><li><a href="./bp-compound-auth.html">复合授权</a></li><li><a href="./bp-fine-grained-permissions.html">细粒度权限</a></li><li><a href="./bp-implementing-roles-attributes.html">用属性实现角色</a></li><li><a href="./bp-implementing-roles-groups.html">用组实现角色</a></li><li><a href="./bp-implementing-roles-templates.html">用模板实现角色</a></li><li><a href="./bp-implementing-roles.html">实现基于角色的访问控制</a></li><li><a href="./bp-map-actions.html">把动作映射到业务域</a></li><li><a href="./bp-meta-permissions.html">元权限</a></li><li><a href="./bp-model-all-perms.html">建模所有权限</a></li><li><a href="./bp-mutable-identifiers.html">避免可变标识符</a></li><li><a href="./bp-naming-conventions.html">命名约定</a></li><li><a href="./bp-normalize-data-input.html">规范化输入数据</a></li><li><a href="./bp-other-considerations.html">其他考虑</a></li><li><a href="./bp-populate-policy-scope.html">填充策略作用域</a></li><li><a href="./bp-relationship-representation.html">表示关系</a></li><li><a href="./bp-resources-containers.html">资源容器</a></li><li><a href="./bp-separate-principals.html">分离主体与容器</a></li><li><a href="./bp-user-groups.html">利用用户组</a></li><li><a href="./bp-using-the-context.html">使用上下文</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-docs · <code>docs/collections/_schema/json-schema.md</code> · a0b2849 · commit <code>a0b2849</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-docs/blob/a0b28494644671804c60301fee4d59f5fc4fbd99/docs/collections/_schema/json-schema.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-docs/docs/collections/_schema/json-schema.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="json-schema-格式">JSON Schema 格式</h1>
+<p>这是 Cedar schema 的 JSON 表示，与 <a href="./schema-format.html">Cedar 格式</a>等价，Cedar CLI 可以在两者之间转换。一个 schema 包含一个或多个命名空间。</p>
+<h2 id="命名空间">命名空间</h2>
+<p>每个命名空间必须有两个 JSON 对象 <code>entityTypes</code> 与 <code>actions</code>，可选第三个 <code>commonTypes</code>，三者顺序任意。主体的类型与资源类型写在 <code>entityTypes</code>，具体动作写在 <code>actions</code>——这种分离是因为动作在 schema 里是逐个定义的实体（类型都是 <code>Action</code>），而主体和资源只定义<strong>类型</strong>，具体实体在实体存储中创建。命名空间名必须是合法标识符，不能包含保留的 <code>__cedar</code>，并会自动前置到作用域内所有类型上：</p>
+<pre><code class="language-json">{
+    &quot;ExampleCo::Database&quot;: {
+        &quot;entityTypes&quot;: {
+            &quot;Table&quot;: {
+                ...
+            }
+        },
+        &quot;actions&quot;: {
+            &quot;createTable&quot;: {
+                ...
+            }
+        }
+    }
+}
+</code></pre>
+<p>上面这段实际定义的是实体类型 <code>ExampleCo::Database::Table</code> 与动作实体 <code>ExampleCo::Database::Action::&quot;createTable&quot;</code>。跨命名空间引用要写全限定名，例如 <code>&quot;name&quot;: &quot;ExampleCo::Clients::Manufacturer&quot;</code>。命名空间可以加 <code>annotations</code>，但没有命名空间的声明不能加注解。还有一条限制：不能用命名空间内的定义遮蔽空命名空间里的同名定义。改动命名空间名会连带要求修改策略和其他命名空间中的引用。</p>
+<h2 id="entitytypes">entityTypes</h2>
+<p><code>entityTypes</code> 是主体与资源类型的集合，每个条目包含类型名、<code>memberOfTypes</code>、<code>shape</code>、可选的 <code>tags</code> 与 <code>annotations</code>：</p>
+<pre><code class="language-json">&quot;entityTypes&quot;: {
+    &quot;EntityTypeName1&quot;: {
+        &quot;memberOfTypes&quot;: [ &quot;parentGroupTypeName1&quot;, &quot;parentGroupTypeName2&quot;, … ],
+        &quot;shape&quot;: { … }
+    },
+    &quot;EntityTypeName2&quot;: {
+        &quot;memberOfTypes&quot;: [ &quot;parentGroupTypeName1&quot;, &quot;parentGroupTypeName2&quot;, … ],
+        &quot;shape&quot;: { … }
+    }
+}
+</code></pre>
+<ul>
+<li><strong>类型名</strong>必须是规范化标识符，不能含空格、换行、控制字符或注释。</li>
+<li><strong><code>memberOfTypes</code></strong> 列出可作为直接父实体的类型。留空或省略表示该类型不能有父实体。同命名空间只写类型名，跨命名空间要带前缀，例如 <code>&quot;Aws::Cognito::UserPool_1::UserGroup&quot;</code>。</li>
+<li><strong><code>shape</code></strong> 必须是 <code>Record</code> 并给出 <code>attributes</code>；省略 <code>shape</code> 等价于没有数据，即属性为空 record。</li>
+<li><strong><code>tags</code></strong> 指定该类型实体允许的标签类型；不写就不允许有标签。</li>
+<li>某些版本还支持 <code>enum</code>，直接列出合法 EID。</li>
+</ul>
+<p>属性默认<strong>必填</strong>，因此策略可以假定它一定存在；加 <code>&quot;required&quot;: false</code> 才变为可选：</p>
+<pre><code class="language-json">&quot;jobLevel&quot;: {
+    &quot;type&quot;: &quot;Long&quot;,
+    &quot;required&quot;: false
+},
+</code></pre>
+<h2 id="属性类型">属性类型</h2>
+<p><code>type</code> 可以是 <code>&quot;String&quot;</code>、<code>&quot;Long&quot;</code>、<code>&quot;Boolean&quot;</code>（也接受等价的 <code>&quot;Bool&quot;</code>）、<code>&quot;Record&quot;</code>、<code>&quot;Set&quot;</code>、<code>&quot;Entity&quot;</code>、<code>&quot;Extension&quot;</code>、<code>&quot;EntityOrCommon&quot;</code>，或某个公共类型名。前三个无需附加信息，其余写法如下。</p>
+<p><code>Record</code> 内嵌属性表，结构与实体 <code>shape</code> 相同：</p>
+<pre><code class="language-json">&quot;features&quot; : {
+    &quot;type&quot; : &quot;Record&quot;,
+    &quot;attributes&quot;: {
+        &quot;age&quot; : {
+            &quot;type&quot;: &quot;Long&quot;
+        },
+        &quot;height&quot;: {
+            &quot;type&quot;: &quot;Long&quot;
+        },
+        &quot;eyecolor&quot;: {
+            &quot;type&quot;: &quot;String&quot;
+        }
+    }
+}
+</code></pre>
+<p><code>Entity</code> 必须用 <code>name</code> 指明实体类型；<code>Set</code> 用 <code>element</code> 描述成员；<code>Extension</code> 用 <code>name</code> 指明扩展类型，也可以直接写 <code>{&quot;type&quot;: &quot;ipaddr&quot;}</code>，两者等价：</p>
+<pre><code class="language-json">&quot;Owner&quot;: {
+    &quot;type&quot;: &quot;Entity&quot;,
+    &quot;name&quot;: &quot;User&quot;
+}
+</code></pre>
+<pre><code class="language-json">&quot;Admins&quot;: {
+    &quot;type&quot;: &quot;Set&quot;,
+    &quot;element&quot;: {
+        &quot;type&quot;: &quot;Entity&quot;,
+        &quot;name&quot;: &quot;User&quot;
+    }
+}
+</code></pre>
+<pre><code class="language-json">&quot;gateway&quot;: {
+    &quot;type&quot;: &quot;Extension&quot;,
+    &quot;name&quot;: &quot;ipaddr&quot;
+}
+</code></pre>
+<p><code>EntityOrCommon</code> 是更贴近 Cedar 格式的写法，名字既可能是实体类型也可能是公共类型；两者同名时优先按公共类型解释。它也是 CLI 从 Cedar 格式转 JSON 时的输出形式。</p>
+<h2 id="actions">actions</h2>
+<p><code>actions</code> 里每个条目对应一个动作实体。键是<strong>实体标识符</strong>而不是类型名，因此可以包含 Cedar 字符串里合法的任意内容，例如 <code>&quot;ViewPhoto&quot;</code>。在策略中引用时写作 <code>MyApplicationNamespace::Action::&quot;ViewPhoto&quot;</code>。</p>
+<p><code>memberOf</code> 声明动作组归属，省略即不属于任何组；组本身也是动作，必须在 <code>actions</code> 中定义。跨命名空间的组要同时给出 <code>id</code> 与 <code>type</code>。下面的三个动作演示了两点：<code>read</code> 的两类类型列表都是 <code>[]</code>，因此它只能当动作组、不能出现在请求里；<code>viewPhoto</code> 与 <code>listAlbums</code> 只写 <code>id</code> 就加入了同命名空间的 <code>read</code> 组：</p>
+<pre><code class="language-json">&quot;actions&quot;: {
+    &quot;read&quot;: {
+        &quot;appliesTo&quot;: {
+            &quot;principalTypes&quot;: [],
+            &quot;resourceTypes&quot;: []
+        }
+    },
+    &quot;viewPhoto&quot;: {
+        &quot;memberOf&quot;: [
+            {
+                &quot;id&quot;: &quot;read&quot;
+            }
+        ],
+        &quot;appliesTo&quot;: {
+            &quot;principalTypes&quot;: [ &quot;User&quot; ],
+            &quot;resourceTypes&quot;: [ &quot;Photo&quot; ]
+        }
+    },
+    &quot;listAlbums&quot;: {
+        &quot;memberOf&quot;: [
+            {
+                &quot;id&quot;: &quot;read&quot;
+            }
+        ],
+        &quot;appliesTo&quot;: {
+            &quot;principalTypes&quot;: [ &quot;User&quot; ],
+            &quot;resourceTypes&quot;: [ &quot;Account&quot; ]
+        }
+    }
+}
+</code></pre>
+<p><code>appliesTo</code> 的 <code>context</code> 与实体 <code>shape</code> 格式相同，省略即空 record，此时策略访问 <code>context</code> 属性会报验证错误。下面的写法要求请求必须带 <code>field1</code>（Boolean）与 <code>field2</code>（Long），可选的 <code>field3</code> 是 String：</p>
+<pre><code class="language-json">&quot;actions&quot;: {
+    &quot;SomeAction&quot;: {
+        &quot;appliesTo&quot;: {
+            &quot;principalTypes&quot;: [ ... ],
+            &quot;resourceTypes&quot;: [ ... ],
+            &quot;context&quot;: {
+                &quot;type&quot;: &quot;Record&quot;,
+                &quot;attributes&quot;: {
+                    &quot;field1&quot;: { &quot;type&quot;: &quot;Boolean&quot; },
+                    &quot;field2&quot;: { &quot;type&quot;: &quot;Long&quot; },
+                    &quot;field3&quot;: { &quot;type&quot;: &quot;String&quot;,
+                                &quot;required&quot;: false }
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<h2 id="commontypes">commonTypes</h2>
+<p>公共类型把重复的结构抽出来，写法就是一份属性类型声明。最典型的场景是多个动作共享同一个上下文形状：定义 <code>ReusedContext</code> 后，<code>view</code> 与 <code>upload</code> 都写 <code>&quot;context&quot;: { &quot;type&quot;: &quot;ReusedContext&quot; }</code>，策略里照样用 <code>context.is_authenticated</code> 访问。公共类型也能用于实体 <code>shape</code>：把 <code>Person</code> 定义成 record，再让 <code>Employee</code> 与 <code>Customer</code> 都写 <code>&quot;shape&quot;: { &quot;type&quot;: &quot;Person&quot; }</code>。类型之间可以互相引用，但不能形成环——例如 <code>Name</code> 作为 <code>String</code> 的别名可用，若 <code>Name</code> 反过来依赖 <code>Person</code> 就会报错。</p>
+<h2 id="完整示例的结构">完整示例的结构</h2>
+<p>原文的 PhotoFlash schema 把上述内容串了起来：<code>User</code> 可属于 <code>UserGroup</code>，带 <code>department</code> 与 <code>jobLevel</code>；<code>Account</code> 有一个 <code>owner</code> 和可选的 <code>admins</code> 集合；<code>Album</code> 可嵌套 <code>Album</code>，带 <code>private</code> 与 <code>account</code>；<code>Photo</code> 可放入 <code>Album</code>，同样带 <code>private</code> 与 <code>account</code>。动作 <code>viewPhoto</code> 面向 <code>User</code> 与 <code>Photo</code>，<code>listAlbums</code> 面向 <code>User</code> 与 <code>Account</code>，<code>uploadPhoto</code> 面向 <code>User</code> 与 <code>Album</code>，三者的 context 都要求 <code>authenticated</code>，其中上传还带一个嵌套的 <code>photo</code> record（<code>file_size</code> 与 <code>file_type</code>）。</p>
+<p>对应的 Cedar 格式见 <a href="./schema-format.html">Cedar Schema 格式</a>，验证行为见<a href="./validation.html">策略验证</a>。</p>
+</article></main></body></html>

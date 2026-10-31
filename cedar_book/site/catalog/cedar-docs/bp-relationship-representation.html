@@ -1,0 +1,40 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>表示关系 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="./terminology.html">术语与核心概念</a></li><li><a href="./scenario.html">PhotoFlash 示例场景</a></li><li><a href="./authorization.html">授权如何工作</a></li><li><a href="./policy-syntax.html">策略语法基础</a></li><li><a href="./entities.html">实体与实体层级</a></li><li><a href="./data-types.html">数据类型</a></li><li><a href="./operators.html">操作符</a></li><li><a href="./validation.html">策略验证</a></li><li><a href="./templates.html">策略模板</a></li><li><a href="./json-format.html">JSON 策略格式</a></li><li><a href="./schema.html">Schema 概览</a></li><li><a href="./schema-format.html">Cedar Schema 格式</a></li><li><a href="./schema-linking.html">Schema 链接</a></li><li><a href="./security.html">安全模型</a></li><li><a href="./best-practices.html">最佳实践概览</a></li><li><a href="./auth-patterns.html">授权模式</a></li><li><a href="./policy-examples.html">策略示例</a></li><li><a href="./index.html">文档首页</a></li><li><a href="./entities-syntax.html">实体与上下文 JSON 语法</a></li><li><a href="./integration-express.html">在 Express 中集成 Cedar</a></li><li><a href="./integrations.html">Cedar 集成方式</a></li><li><a href="./patterns.html">授权设计模式</a></li><li><a href="./resources.html">学习资源</a></li><li><a href="./level-validation.html">分级验证</a></li><li><a href="./syntax-grammar.html">策略语法参考</a></li><li><a href="./schema-grammar.html">Cedar Schema 语法参考</a></li><li><a href="./json-schema.html">JSON Schema 格式</a></li><li><a href="./json-schema-grammar.html">JSON Schema 语法参考</a></li><li><a href="./doc-history.html">文档版本历史</a></li><li><a href="./bp-compound-auth.html">复合授权</a></li><li><a href="./bp-fine-grained-permissions.html">细粒度权限</a></li><li><a href="./bp-implementing-roles-attributes.html">用属性实现角色</a></li><li><a href="./bp-implementing-roles-groups.html">用组实现角色</a></li><li><a href="./bp-implementing-roles-templates.html">用模板实现角色</a></li><li><a href="./bp-implementing-roles.html">实现基于角色的访问控制</a></li><li><a href="./bp-map-actions.html">把动作映射到业务域</a></li><li><a href="./bp-meta-permissions.html">元权限</a></li><li><a href="./bp-model-all-perms.html">建模所有权限</a></li><li><a href="./bp-mutable-identifiers.html">避免可变标识符</a></li><li><a href="./bp-naming-conventions.html">命名约定</a></li><li><a href="./bp-normalize-data-input.html">规范化输入数据</a></li><li><a href="./bp-other-considerations.html">其他考虑</a></li><li><a href="./bp-populate-policy-scope.html">填充策略作用域</a></li><li><a href="./bp-relationship-representation.html">表示关系</a></li><li><a href="./bp-resources-containers.html">资源容器</a></li><li><a href="./bp-separate-principals.html">分离主体与容器</a></li><li><a href="./bp-user-groups.html">利用用户组</a></li><li><a href="./bp-using-the-context.html">使用上下文</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-docs · <code>docs/collections/_bestpractices/bp-relationship-representation.md</code> · a0b2849 · commit <code>a0b2849</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-docs/blob/a0b28494644671804c60301fee4d59f5fc4fbd99/docs/collections/_bestpractices/bp-relationship-representation.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-docs/docs/collections/_bestpractices/bp-relationship-representation.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="表示关系">表示关系</h1>
+<p>资源之间的关系有两种主要表达方式。选哪一种，取决于这段关系是否已经存在应用数据库里、并因权限之外的原因（例如合规）被维护。若已经存在，采用属性式；若不存在、只为授权而设，采用模板式。</p>
+<h2 id="属性式关系">属性式关系</h2>
+<p>属性可以作为授权决定的<strong>输入</strong>，表示主体与一个或多个资源之间的关系。这种模式适用于关系本来就因权限之外的目的被跟踪和管理的场景：例如记录主要账户持有人是“了解你的客户”合规要求，权限由这些关系派生。关系数据在授权系统之外维护，做决策时作为输入取来。</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;df82e4ad-949e-44cb-8acf-2d1acda71798&quot;,
+  &quot;name&quot;: &quot;alice&quot;,
+  &quot;email&quot;: &quot;alice@example.com&quot;,
+  &quot;primaryOnAccounts&quot;: [
+    &quot;Account::\&quot;c943927f-d803-4f40-9a53-7740272cb969\&quot;&quot;,
+    &quot;Account::\&quot;b8ee140c-fa09-46c3-992e-099438930894\&quot;&quot;
+  ]
+}
+</code></pre>
+<p>策略中沿属性判断即可：</p>
+<pre><code class="language-cedar">permit (
+    principal,
+    action in Action::&quot;primaryAccountHolderActions&quot;,
+    resource
+) when {
+    resource in principal.primaryOnAccounts
+};
+</code></pre>
+<p>反过来，把同样的关系放在资源的 <code>primaryAccountHolders</code> 属性上、存一组用户，也等价。若主体与资源之间有多种关系，应分别建模为不同属性。例如账户还有授权签字人，且这些人的权限不同，就要另设 <code>authorizedSignatoryOnAccounts</code> 属性，并配一条 <code>authorizedSignatoryActions</code> 的策略，而不是混进同一个集合。</p>
+<h2 id="模板式关系">模板式关系</h2>
+<p>如果关系存在的唯一目的就是权限管理，适合把它存成模板链接策略，也就是模板；也可以理解为“在某个具体资源上被授予的角色”。</p>
+<p>文档管理系统中，文档所有者 Alice 允许 Bob 参与文档，形成 contributor 关系，其唯一目的就是允许编辑和评论，因此可以用模板表示。做法是每种关系建一个模板，例如 <code>Contributor</code> 与 <code>Reviewer</code>：</p>
+<pre><code class="language-cedar">permit (
+    principal == ?principal,
+    action in Action::&quot;DocumentContributorActions&quot;,
+    resource in ?resource
+);
+</code></pre>
+<p>面向用户组时，把 <code>==</code> 换成 <code>in</code>，即 <code>principal in ?principal</code>；其余不变。授予访问时，用具体的主体和资源实例化模板，得到一条链接策略，例如把某个用户或用户组与某份文档、某个文件夹关联起来。模板本身只说明“这类关系允许哪些动作”，具体授予谁、授予到哪个资源，由链接时的占位符取值决定。</p>
+<h2 id="如何选择">如何选择</h2>
+<p>判断标准只有一条：这段关系是否独立于授权而存在。合规、账单、组织架构等外部系统已经维护的关系，用属性，避免在授权侧再造一份；纯属“某人被允许访问某物”的授予记录，用模板，让每次授予对应一条可单独回收的链接策略。两者也能并存。模板的占位符与生命周期成本见<a href="./templates.html">策略模板</a>，实体与父子关系见<a href="./entities.html">实体与实体层级</a>。</p>
+</article></main></body></html>

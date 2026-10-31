@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>在 Express 中集成 Cedar · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="./terminology.html">术语与核心概念</a></li><li><a href="./scenario.html">PhotoFlash 示例场景</a></li><li><a href="./authorization.html">授权如何工作</a></li><li><a href="./policy-syntax.html">策略语法基础</a></li><li><a href="./entities.html">实体与实体层级</a></li><li><a href="./data-types.html">数据类型</a></li><li><a href="./operators.html">操作符</a></li><li><a href="./validation.html">策略验证</a></li><li><a href="./templates.html">策略模板</a></li><li><a href="./json-format.html">JSON 策略格式</a></li><li><a href="./schema.html">Schema 概览</a></li><li><a href="./schema-format.html">Cedar Schema 格式</a></li><li><a href="./schema-linking.html">Schema 链接</a></li><li><a href="./security.html">安全模型</a></li><li><a href="./best-practices.html">最佳实践概览</a></li><li><a href="./auth-patterns.html">授权模式</a></li><li><a href="./policy-examples.html">策略示例</a></li><li><a href="./index.html">文档首页</a></li><li><a href="./entities-syntax.html">实体与上下文 JSON 语法</a></li><li><a href="./integration-express.html">在 Express 中集成 Cedar</a></li><li><a href="./integrations.html">Cedar 集成方式</a></li><li><a href="./patterns.html">授权设计模式</a></li><li><a href="./resources.html">学习资源</a></li><li><a href="./level-validation.html">分级验证</a></li><li><a href="./syntax-grammar.html">策略语法参考</a></li><li><a href="./schema-grammar.html">Cedar Schema 语法参考</a></li><li><a href="./json-schema.html">JSON Schema 格式</a></li><li><a href="./json-schema-grammar.html">JSON Schema 语法参考</a></li><li><a href="./doc-history.html">文档版本历史</a></li><li><a href="./bp-compound-auth.html">复合授权</a></li><li><a href="./bp-fine-grained-permissions.html">细粒度权限</a></li><li><a href="./bp-implementing-roles-attributes.html">用属性实现角色</a></li><li><a href="./bp-implementing-roles-groups.html">用组实现角色</a></li><li><a href="./bp-implementing-roles-templates.html">用模板实现角色</a></li><li><a href="./bp-implementing-roles.html">实现基于角色的访问控制</a></li><li><a href="./bp-map-actions.html">把动作映射到业务域</a></li><li><a href="./bp-meta-permissions.html">元权限</a></li><li><a href="./bp-model-all-perms.html">建模所有权限</a></li><li><a href="./bp-mutable-identifiers.html">避免可变标识符</a></li><li><a href="./bp-naming-conventions.html">命名约定</a></li><li><a href="./bp-normalize-data-input.html">规范化输入数据</a></li><li><a href="./bp-other-considerations.html">其他考虑</a></li><li><a href="./bp-populate-policy-scope.html">填充策略作用域</a></li><li><a href="./bp-relationship-representation.html">表示关系</a></li><li><a href="./bp-resources-containers.html">资源容器</a></li><li><a href="./bp-separate-principals.html">分离主体与容器</a></li><li><a href="./bp-user-groups.html">利用用户组</a></li><li><a href="./bp-using-the-context.html">使用上下文</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-docs · <code>docs/collections/_auth/integration-express.md</code> · a0b2849 · commit <code>a0b2849</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-docs/blob/a0b28494644671804c60301fee4d59f5fc4fbd99/docs/collections/_auth/integration-express.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-docs/docs/collections/_auth/integration-express.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="在-express-中集成-cedar">在 Express 中集成 Cedar</h1>
+<p>官方 Express 集成采用<strong>中间件</strong>思路：把授权挂在请求链上，不改动已有的路由处理器。中间件拦截请求，按你定义的策略求值，只把已授权的请求放行到业务代码。原文称，相比开发者自己设计集成方式，这种标准化做法能少写约 90% 的代码，同时减少自定义集成代码带来的安全风险。</p>
+<p>开始之前，需要安装 Node.js 与 npm，并有一个 Express 应用；如果要用真实身份登录，还需要一个 OpenID Connect（OIDC）身份提供方（纯测试可省略）。示例围绕仓库 <code>cedar-policy/authorization-for-expressjs</code> 展开。</p>
+<h2 id="第一步安装中间件包">第一步：安装中间件包</h2>
+<pre><code class="language-bash">npm i --save @cedar-policy/authorization-for-expressjs
+</code></pre>
+<p>这个包同时负责生成 Cedar schema、生成示例策略，以及在应用内执行授权。</p>
+<h2 id="第二步从-api-生成-schema">第二步：从 API 生成 schema</h2>
+<p><a href="./schema.html">schema</a> 定义应用的授权模型：有哪些实体类型、允许哪些动作。官方建议给 schema 指定一个命名空间，示例用 <code>YourNamespace</code>。应用启动时会用这份 schema 验证策略。</p>
+<p>该包能读取应用的 OpenAPI 规范并生成 Cedar schema，其中 <code>paths</code> 对象是必需的。若没有规范，可以先用 <code>express-openapi-generator</code> 生成：</p>
+<pre><code class="language-bash">npx @cedar-policy/authorization-for-expressjs generate-schema --api-spec openapi.json --namespace YourNamespace --mapping-type SimpleRest
+</code></pre>
+<p>命令会在包根目录生成 <code>v4.cedarschema.json</code>。</p>
+<h2 id="第三步定义授权策略">第三步：定义授权策略</h2>
+<p>Cedar 的默认行为是拒绝：没有配置任何策略时，所有请求都会被拒。先根据 schema 生成示例策略：</p>
+<pre><code class="language-bash">npx @cedar-policy/authorization-for-expressjs generate-policies --schema v4.cedarschema.json
+</code></pre>
+<p>策略会写入 <code>/policies</code> 目录，随后按业务改写。示例给了两条：管理员组可做任意动作，员工组只能做四个与资源相关的动作。</p>
+<pre><code class="language-cedar">// Defines permitted administrator user group actions
+permit (
+    principal in YourNamespace::UserGroup::&quot;&lt;userPoolId&gt;|administrator&quot;,
+    action,
+    resource
+);
+
+// Defines permitted employee user group actions
+permit (
+    principal in YourNamespace::UserGroup::&quot;&lt;userPoolId&gt;|employee&quot;,
+    action in
+        [YourNamespace::Action::&quot;GET /resources&quot;,
+         YourNamespace::Action::&quot;POST /resources&quot;,
+         YourNamespace::Action::&quot;GET /resources/{resourceId}&quot;,
+         YourNamespace::Action::&quot;PUT /resources/{resourceId}&quot;],
+    resource
+);
+</code></pre>
+<p>注意动作命名：默认是 <code>&lt;HTTP Method&gt; /&lt;PATH&gt;</code>；如果 OpenAPI 里写了 <code>operationId</code>，schema 中的动作名会改用 <code>operationId</code>，策略里的写法必须同步。策略规模变大后，可以用 Cedar Analysis CLI 分析实际授予了哪些权限。</p>
+<h2 id="第四步在应用里调用-cedar">第四步：在应用里调用 Cedar</h2>
+<p>先构造决策引擎与中间件。下面这段放在 <code>app.js</code> 顶部：</p>
+<pre><code class="language-javascript">const { ExpressAuthorizationMiddleware, CedarInlineAuthorizationEngine } = require(&#39;@cedar-policy/authorization-for-expressjs&#39;);
+
+const policies = [
+    fs.readFileSync(path.join(__dirname, &#39;policies&#39;, &#39;policy_1.cedar&#39;), &#39;utf8&#39;),
+    fs.readFileSync(path.join(__dirname, &#39;policies&#39;, &#39;policy_2.cedar&#39;), &#39;utf8&#39;)
+];
+
+const cedarAuthorizationEngine = new CedarInlineAuthorizationEngine({
+    staticPolicies: policies.join(&#39;\n&#39;),
+    schema: {
+        type: &#39;jsonString&#39;,
+        schema: fs.readFileSync(path.join(__dirname, &#39;v4.cedarschema.json&#39;), &#39;utf8&#39;),
+    }
+});
+
+const expressAuthorization = new ExpressAuthorizationMiddleware({
+    schema: {
+        type: &#39;jsonString&#39;,
+        schema: fs.readFileSync(path.join(__dirname, &#39;v4.cedarschema.json&#39;), &#39;utf8&#39;),
+    },
+    authorizationEngine: cedarAuthorizationEngine,
+    principalConfiguration: {
+        type: &#39;custom&#39;,
+        getPrincipalEntity: principalEntityFetcher
+    },
+    skippedEndpoints: [
+        {httpVerb: &#39;get&#39;, path: &#39;/login&#39;},
+        {httpVerb: &#39;get&#39;, path: &#39;/api-spec/v3&#39;},
+    ],
+    logger: {
+        debug: s =&gt; console.log(s),
+        log: s =&gt; console.log(s),
+    }
+});
+</code></pre>
+<p>然后把它挂到请求链上，位置很关键：必须放在认证中间件之后，这样 <code>req.user</code> 才有值；不需要鉴权的端点通过 <code>skippedEndpoints</code> 排除。</p>
+<pre><code class="language-javascript">const app = express();
+
+app.use(express.json());
+app.use(verifyToken());   // validate user token
+// ... other pre-authz middlewares
+
+app.use(expressAuthorization.middleware);
+
+// ... other middlewares
+</code></pre>
+<h2 id="第五步提供-principal-实体">第五步：提供 principal 实体</h2>
+<p>Cedar 需要用户所属组和属性才能判断。中间件通过配置里的 <code>getPrincipalEntity</code> 回调取得 principal 实体，这个函数要自己实现：</p>
+<pre><code class="language-javascript">async function principalEntityFetcher(req) {
+    const user = req.user;   // it&#39;s common practice for the authn middleware to store the user info from the decoded token here
+    const userGroups = user[&quot;groups&quot;].map(userGroupId =&gt; ({
+        type: &#39;YourNamespace::UserGroup&#39;,
+        id: userGroupId       
+    }));
+    return {
+        uid: {
+            type: &#39;YourNamespace::User&#39;,
+            id: user.sub
+        },
+        attrs: {
+            ...user,
+        },
+        parents: userGroups 
+    };
+}
+</code></pre>
+<p>返回值的形状正是<a href="./entities-syntax.html">实体与上下文 JSON 语法</a>里的 <code>uid</code>、<code>attrs</code>、<code>parents</code>。组 ID 必须与策略中 <code>UserGroup::&quot;...&quot;</code> 的写法一致，否则 <code>principal in ...</code> 永远不匹配。</p>
+<h2 id="排错与后续">排错与后续</h2>
+<p>授权失败时依次检查：schema 格式、策略格式、JWT 是否有效，并打开 debug 日志看中间件拿到了什么。跑通之后可以继续做自定义映射器、为决策加监控与日志、为不同角色补充策略。</p>
+<p>同一套中间件模式在其他框架上的抽象见<a href="./integrations.html">Cedar 集成方式</a>；想自己封装时，底层接口见 <a href="../cedar/sdk.html">Rust SDK</a>。</p>
+</article></main></body></html>

@@ -1,0 +1,139 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>实体与上下文 JSON 语法 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="./terminology.html">术语与核心概念</a></li><li><a href="./scenario.html">PhotoFlash 示例场景</a></li><li><a href="./authorization.html">授权如何工作</a></li><li><a href="./policy-syntax.html">策略语法基础</a></li><li><a href="./entities.html">实体与实体层级</a></li><li><a href="./data-types.html">数据类型</a></li><li><a href="./operators.html">操作符</a></li><li><a href="./validation.html">策略验证</a></li><li><a href="./templates.html">策略模板</a></li><li><a href="./json-format.html">JSON 策略格式</a></li><li><a href="./schema.html">Schema 概览</a></li><li><a href="./schema-format.html">Cedar Schema 格式</a></li><li><a href="./schema-linking.html">Schema 链接</a></li><li><a href="./security.html">安全模型</a></li><li><a href="./best-practices.html">最佳实践概览</a></li><li><a href="./auth-patterns.html">授权模式</a></li><li><a href="./policy-examples.html">策略示例</a></li><li><a href="./index.html">文档首页</a></li><li><a href="./entities-syntax.html">实体与上下文 JSON 语法</a></li><li><a href="./integration-express.html">在 Express 中集成 Cedar</a></li><li><a href="./integrations.html">Cedar 集成方式</a></li><li><a href="./patterns.html">授权设计模式</a></li><li><a href="./resources.html">学习资源</a></li><li><a href="./level-validation.html">分级验证</a></li><li><a href="./syntax-grammar.html">策略语法参考</a></li><li><a href="./schema-grammar.html">Cedar Schema 语法参考</a></li><li><a href="./json-schema.html">JSON Schema 格式</a></li><li><a href="./json-schema-grammar.html">JSON Schema 语法参考</a></li><li><a href="./doc-history.html">文档版本历史</a></li><li><a href="./bp-compound-auth.html">复合授权</a></li><li><a href="./bp-fine-grained-permissions.html">细粒度权限</a></li><li><a href="./bp-implementing-roles-attributes.html">用属性实现角色</a></li><li><a href="./bp-implementing-roles-groups.html">用组实现角色</a></li><li><a href="./bp-implementing-roles-templates.html">用模板实现角色</a></li><li><a href="./bp-implementing-roles.html">实现基于角色的访问控制</a></li><li><a href="./bp-map-actions.html">把动作映射到业务域</a></li><li><a href="./bp-meta-permissions.html">元权限</a></li><li><a href="./bp-model-all-perms.html">建模所有权限</a></li><li><a href="./bp-mutable-identifiers.html">避免可变标识符</a></li><li><a href="./bp-naming-conventions.html">命名约定</a></li><li><a href="./bp-normalize-data-input.html">规范化输入数据</a></li><li><a href="./bp-other-considerations.html">其他考虑</a></li><li><a href="./bp-populate-policy-scope.html">填充策略作用域</a></li><li><a href="./bp-relationship-representation.html">表示关系</a></li><li><a href="./bp-resources-containers.html">资源容器</a></li><li><a href="./bp-separate-principals.html">分离主体与容器</a></li><li><a href="./bp-user-groups.html">利用用户组</a></li><li><a href="./bp-using-the-context.html">使用上下文</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-docs · <code>docs/collections/_auth/entities-syntax.md</code> · a0b2849 · commit <code>a0b2849</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-docs/blob/a0b28494644671804c60301fee4d59f5fc4fbd99/docs/collections/_auth/entities-syntax.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-docs/docs/collections/_auth/entities-syntax.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="实体与上下文-json-语法">实体与上下文 JSON 语法</h1>
+<p>调用 <code>Authorizer::is_authorized()</code> 时，除了策略列表和请求，还要提供实体列表。Cedar 公共 API 提供了从 JSON 构造这些输入的入口，例如 <code>Entities::from_json_value()</code> 和 <code>Context::from_json_str()</code>。这一页说明这两种 JSON 的具体形状。</p>
+<h2 id="实体列表的外形">实体列表的外形</h2>
+<p>顶层是一个 JSON 数组，每个元素代表一个实体，包含三个字段，外加可选的标签：</p>
+<pre><code class="language-json">[
+    {
+        &quot;uid&quot;: {},
+        &quot;parents&quot;: [],
+        &quot;attrs&quot;: {}
+    },
+    {
+        ...
+    }
+]
+</code></pre>
+<h2 id="attrs属性与类型映射">attrs：属性与类型映射</h2>
+<p><code>attrs</code> 是属性名到值的映射。JSON 原始类型会自动转换成对应的 Cedar 类型：字符串转 String、整数转 Long、布尔转 Bool、数组转 Set、对象转 Record。所以下面的写法不需要额外声明类型：</p>
+<pre><code class="language-json">&quot;attrs&quot;: {
+    &quot;department&quot;: &quot;HardwareEngineering&quot;,
+    &quot;jobLevel&quot;: 5
+}
+</code></pre>
+<p>属性值若指向另一个实体，用 <code>__entity</code> 转义，其值是带 <code>type</code> 和 <code>id</code> 的对象；若值是扩展类型，用 <code>__extn</code> 转义，其值带 <code>fn</code> 和 <code>arg</code>：</p>
+<pre><code class="language-json">&quot;attrs&quot;: {
+    &quot;department&quot;: &quot;HardwareEngineering&quot;,
+    &quot;jobLevel&quot;: 5,
+    &quot;manager&quot;: {
+       &quot;__entity&quot;: {
+           &quot;type&quot;: &quot;User&quot;,
+           &quot;id&quot;: &quot;78EF12&quot;
+       }
+    }
+}
+</code></pre>
+<pre><code class="language-json">&quot;attrs&quot;: {
+    &quot;department&quot;: &quot;HardwareEngineering&quot;,
+    &quot;jobLevel&quot;: 5,
+    &quot;home_ip&quot;: {
+       &quot;__extn&quot;: {
+           &quot;fn&quot;: &quot;ip&quot;,
+           &quot;arg&quot;: &quot;222.222.222.101&quot;
+       }
+    }
+}
+</code></pre>
+<p>类型名与函数名都必须是<strong>规范化</strong>的，不能夹带空白或 Cedar 注释，例如 <code>&quot;type&quot;: &quot;User &quot;</code> 非法。</p>
+<h2 id="uidparents-与-tags">uid、parents 与 tags</h2>
+<p><code>uid</code> 指定实体类型与唯一标识，<code>__entity</code> 可写可不写，下面两种写法等价，都表示 <code>User</code> 类型、ID 为 <code>12UA45</code> 的实体：</p>
+<pre><code class="language-json">&quot;uid&quot;: {
+    &quot;__entity&quot;: {
+        &quot;type&quot;: &quot;User&quot;,
+        &quot;id&quot;: &quot;12UA45&quot;
+    }
+}
+</code></pre>
+<pre><code class="language-json">&quot;uid&quot;: {
+    &quot;type&quot;: &quot;User&quot;,
+    &quot;id&quot;: &quot;12UA45&quot;
+}
+</code></pre>
+<p>类型应当是 schema 中定义过的类型，ID 必须唯一、不可变、不可复用，且任何类型名都不能包含保留的 <code>__cedar</code>。</p>
+<p><code>parents</code> 是实体引用数组，表示层级中的容器，例如用户所属的组；写法与 <code>uid</code> 相同，<code>__entity</code> 可省略：</p>
+<pre><code class="language-json">&quot;parents&quot;: [
+    {
+        &quot;type&quot;: &quot;UserGroup&quot;,
+        &quot;id&quot;: &quot;aliceFriends&quot;
+    },
+    {
+        &quot;type&quot;: &quot;UserGroup&quot;,
+        &quot;id&quot;: &quot;bobFriends&quot;
+    }
+]
+</code></pre>
+<p><code>tags</code> 的写法与 <code>attrs</code> 完全相同，键名和值的格式一致。标签的键在运行时才确定，适合按文件、按批次这类动态维度描述实体。</p>
+<h2 id="一个完整例子">一个完整例子</h2>
+<p>下面的数组同时用到 <code>uid</code>、<code>attrs</code> 与 <code>parents</code>，并对 <code>uid</code>/<code>parents</code> 省略 <code>__entity</code>；属性里的实体值和扩展值则显式写出转义。原文提醒：真实文件还应补上被引用但未定义的 <code>UserGroup</code> 实体。</p>
+<pre><code class="language-json">[
+    {
+        &quot;uid&quot;: { &quot;type&quot;: &quot;User&quot;, &quot;id&quot;: &quot;alice&quot; },
+        &quot;attrs&quot;: {
+            &quot;department&quot;: &quot;HardwareEngineering&quot;,
+            &quot;jobLevel&quot;: 5,
+            &quot;homeIp&quot;: { &quot;__extn&quot;: { &quot;fn&quot;: &quot;ip&quot;, &quot;arg&quot;: &quot;222.222.222.7&quot; } },
+            &quot;confidenceScore&quot;: { &quot;__extn&quot;: { &quot;fn&quot;: &quot;decimal&quot;, &quot;arg&quot;: &quot;33.57&quot; } }
+        },
+        &quot;parents&quot;: [
+            { &quot;type&quot;: &quot;UserGroup&quot;, &quot;id&quot;: &quot;aliceFriends&quot; },
+            { &quot;type&quot;: &quot;UserGroup&quot;, &quot;id&quot;: &quot;bobFriends&quot; }
+        ]
+    },
+    {
+        &quot;uid&quot;: { &quot;type&quot;: &quot;User&quot;, &quot;id&quot;: &quot;ahmad&quot;},
+        &quot;attrs&quot; : {
+            &quot;department&quot;: &quot;HardwareEngineering&quot;,
+            &quot;jobLevel&quot;: 4,
+            &quot;manager&quot;: { &quot;__entity&quot;: { &quot;type&quot;: &quot;User&quot;, &quot;id&quot;: &quot;alice&quot; } }
+        },
+        &quot;parents&quot;: []
+    }
+]
+</code></pre>
+<h2 id="context">Context</h2>
+<p><code>context</code> 是请求级的瞬时信息，例如时间、来源 IP、是否使用 MFA 设备。它的每一项都是键值对，值的语法与实体的 <code>attrs</code> 完全一致：</p>
+<pre><code class="language-json">{
+    &quot;authnMfa&quot;: true
+}
+</code></pre>
+<p>同样支持 <code>__entity</code> 与 <code>__extn</code> 转义，写不写都可以：</p>
+<pre><code class="language-json">{
+    &quot;sourceIp&quot;: &quot;10.0.1.101&quot;,
+    &quot;authnMfa&quot;: true
+}
+</code></pre>
+<p>策略里用点号从 <code>context</code> 取值：</p>
+<pre><code class="language-cedar">when {
+    context.sourceIp.isInRange(ip(&quot;222.222.222.0/24&quot;))
+}
+</code></pre>
+<p><code>context</code> 是 record 而不是实体，读取它的字段不需要额外的实体数据，这也是分级验证中 level 0 仍可访问上下文的原因。</p>
+<h2 id="schema-based-parsing">schema-based parsing</h2>
+<p>Cedar 支持“基于 schema 的解析”：只要 schema 指明某个属性是实体引用或扩展值，就可以省掉 <code>__entity</code>、<code>__extn</code>，甚至省掉扩展函数名：</p>
+<pre><code class="language-json">&quot;attrs&quot;: {
+    &quot;department&quot;: &quot;HardwareEngineering&quot;,
+    &quot;jobLevel&quot;: 5,
+    &quot;manager&quot;: {
+       &quot;type&quot;: &quot;User&quot;,
+       &quot;id&quot;: &quot;78EF12&quot;
+    },
+    &quot;home_ip&quot;: {
+       &quot;fn&quot;: &quot;ip&quot;,
+       &quot;arg&quot;: &quot;222.222.222.101&quot;
+    }
+}
+</code></pre>
+<p>如果 schema 声明 <code>home_ip</code> 是 IP 地址，那么 <code>&quot;home_ip&quot;: &quot;222.222.222.101&quot;</code> 也合法。实体本身的结构见<a href="./entities.html">实体与实体层级</a>，属性类型见<a href="./data-types.html">数据类型</a>。</p>
+</article></main></body></html>
