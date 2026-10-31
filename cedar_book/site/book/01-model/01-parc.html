@@ -1,0 +1,96 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>授权请求与 PARC · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a class="active" href="./01-parc.html">授权请求与 PARC</a></li><li><a href="./02-entities.html">实体、属性、组与层级</a></li><li><a href="./03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../../catalog/cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../../catalog/cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../../catalog/cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../../catalog/cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../../catalog/cedar-docs/data-types.html">数据类型</a></li><li><a href="../../catalog/cedar-docs/operators.html">操作符</a></li><li><a href="../../catalog/cedar-docs/validation.html">策略验证</a></li><li><a href="../../catalog/cedar-docs/templates.html">策略模板</a></li><li><a href="../../catalog/cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../../catalog/cedar-docs/schema.html">Schema 概览</a></li><li><a href="../../catalog/cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../../catalog/cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../../catalog/cedar-docs/security.html">安全模型</a></li><li><a href="../../catalog/cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../../catalog/cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../../catalog/cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../../catalog/cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../../catalog/cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../../catalog/cedar/cli.html">Cedar CLI</a></li><li><a href="../../catalog/cedar/wasm.html">Cedar WASM</a></li><li><a href="../../catalog/cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../../catalog/cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../../catalog/cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../../catalog/cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../../catalog/cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="授权请求与-parc">授权请求与 PARC</h1>
+<p>上一篇说 Cedar 只做判断。这一篇拆开看：它到底被问了什么，又按什么步骤给出答案。理解这两件事之后，策略里那些看似奇怪的写法——为什么 <code>forbid</code> 总是赢、为什么属性写错不一定报错——都会变得顺理成章。</p>
+<h2 id="一次请求问四个问题">一次请求问四个问题</h2>
+<p>Cedar 的授权请求在问：<strong>这个主体，能不能在这个上下文里，对这个资源执行这个动作？</strong> 四个要素合称 PARC：</p>
+<ul>
+<li><strong>P</strong>（principal）：主体，发起请求的用户、服务或其他身份；</li>
+<li><strong>A</strong>（action）：动作，主体想执行的操作；</li>
+<li><strong>R</strong>（resource）：资源，动作作用的对象；</li>
+<li><strong>C</strong>（context）：上下文，这次请求特有的瞬时信息，比如来源 IP、时间、是否通过了多因素认证。</li>
+</ul>
+<p>前三项是实体引用，第四项是一条记录（record）。一个具体请求可以写成：</p>
+<pre><code class="language-text">P = User::&quot;jane&quot;
+A = Action::&quot;viewPhoto&quot;
+R = Photo::&quot;vacation.jpg&quot;
+C = {}            // 空记录
+</code></pre>
+<p>这四项的分工不是随意的。P、A、R 是系统里相对稳定的部分，描述“谁对什么做什么”；C 是每次请求都可能不同的部分，描述“这一次调用有什么特殊之处”。把 IP 白名单、MFA 状态塞进主体的属性里，会让实体数据随请求漂移；放进 <code>context</code> 才是本意。官方文档把这一点列为一条最佳实践：<a href="../../catalog/cedar-docs/best-practices.html">不要把主体、动作、资源的信息放进 context</a>。</p>
+<h2 id="请求之外策略与实体数据">请求之外：策略与实体数据</h2>
+<p>光有 PARC 还不够。引擎还要两样东西：<strong>策略集合</strong>，以及<strong>实体数据</strong>——主体属于哪些组、照片在哪个相册、资源有哪些属性。</p>
+<p>概念上，你可以认为引擎在判断时能看到应用的全部策略和全部实体数据。工程上这往往做不到，也没必要：一个请求只可能命中一小部分策略，只需要与它相关的那片实体数据。哪些算相关，是个需要认真回答的问题，漏掉一个组关系就可能把本该放行的请求判成拒绝。Cedar 提供了分级验证（level validation）来帮你推导每个请求需要哪些数据，详见<a href="../03-schema/02-validation.html">策略验证</a>。</p>
+<p>有一条保守但常用的做法：策略全给，实体数据按请求范围裁剪。策略数量通常可控，漏策略比漏实体更难发现。</p>
+<h2 id="匹配只看作用域的三个表达式">匹配：只看作用域的三个表达式</h2>
+<p>拿到请求后，引擎逐条策略判断它是否<strong>满足</strong>（satisfy）这个请求。第一步是<strong>匹配</strong>（match），只看作用域里的三个表达式：</p>
+<ul>
+<li>主体约束，比如 <code>principal == User::&quot;jane&quot;</code> 或 <code>principal in Group::&quot;janeFriends&quot;</code>；</li>
+<li>动作约束，比如 <code>action == Action::&quot;viewPhoto&quot;</code>；</li>
+<li>资源约束，比如 <code>resource == Photo::&quot;vacation.jpg&quot;</code> 或 <code>resource in Album::&quot;janeTrips&quot;</code>。</li>
+</ul>
+<p>把请求里的 P、A、R 分别代入，三个都得到 <code>true</code>，这条策略才匹配。作用域没写的部分视为 <code>true</code>：<code>permit (principal, action, resource)</code> 匹配一切请求。</p>
+<p>一个重要的设计细节：这三个表达式<strong>不会</strong>求值出错。它们只做实体比较和层级判断，不读取属性，因此不存在“属性不存在”这类错误。错误只可能出现在后面的条件里。</p>
+<h2 id="条件按书写顺序求值">条件：按书写顺序求值</h2>
+<p>匹配之后才轮到 <code>when</code> 和 <code>unless</code>。规则很简单：</p>
+<ul>
+<li><code>when</code> 的表达式必须为 <code>true</code>；</li>
+<li><code>unless</code> 的表达式必须为 <code>false</code>。</li>
+</ul>
+<p>但求值顺序有讲究。引擎按书写顺序逐个条件求值，遇到第一个不满足的条件就停下，整条策略返回 <code>false</code>，后面的条件不再看。如果某个条件求值出错，整条策略返回 <code>error</code>，同样不再往下走。</p>
+<p>这意味着 <code>when</code> 和 <code>unless</code> 的先后不只是风格问题。当两个子句都可能出错时，你在诊断信息里看到的错误取决于谁先被求值。写条件时，把“便宜且能排除大多数请求”的判断放在前面，既省时间，也让错误更容易定位。</p>
+<h2 id="合并三条规则">合并：三条规则</h2>
+<p>每条策略现在都有了一个结果：<code>true</code>、<code>false</code> 或 <code>error</code>。引擎按三条规则合并：</p>
+<ol>
+<li>只要有任意一条 <code>forbid</code> 为 <code>true</code>，最终结果是 <code>Deny</code>；</li>
+<li>否则，只要有任意一条 <code>permit</code> 为 <code>true</code>，最终结果是 <code>Allow</code>；</li>
+<li>否则，最终结果是 <code>Deny</code>。</li>
+</ol>
+<p>请注意规则 1 的措辞：任意一条。一百条 <code>permit</code> 也压不住一条命中的 <code>forbid</code>。这就是“拒绝优先”（forbid overrides permit）——<code>forbid</code> 定义的是权限的护栏，而不是与 <code>permit</code> 投票。</p>
+<h2 id="完整例子deny-是怎么来的">完整例子：Deny 是怎么来的</h2>
+<p>把上一节的规则跑一遍。请求是“<code>jane</code> 能否对 <code>vacation.jpg</code> 执行 <code>viewPhoto</code>”，实体数据里 <code>User::&quot;jane&quot;</code> 属于 <code>Group::&quot;kevinsFriends&quot;</code>，<code>Photo::&quot;vacation.jpg&quot;</code> 的所有者是 <code>User::&quot;kevin&quot;</code>，标签是 <code>[&quot;Private&quot;,&quot;Work&quot;]</code>。策略库有四条：</p>
+<pre><code class="language-cedar">// P1: Jane can perform any action on photo vacation.jpg
+permit (
+    principal == User::&quot;jane&quot;,
+    action,
+    resource == Photo::&quot;vacation.jpg&quot;
+);
+</code></pre>
+<pre><code class="language-cedar">// P2: Members of kevinFriends can view Kevin&#39;s photos tagged Holiday
+permit (
+    principal in UserGroup::&quot;kevinFriends&quot;,
+    action == Action::&quot;viewPhoto&quot;,
+    resource
+)
+when {
+    resource.tags.contains(&quot;Holiday&quot;)
+};
+</code></pre>
+<pre><code class="language-cedar">// P3: Nobody can view a Private photo unless they own it
+forbid (
+    principal,
+    action == Action::&quot;viewPhoto&quot;,
+    resource
+)
+when { resource.tags.contains(&quot;Private&quot;) }
+unless { principal == resource.owner };
+</code></pre>
+<pre><code class="language-cedar">// P4: Owners can update tags
+permit (
+    principal,
+    action == Action::&quot;updateTags&quot;,
+    resource
+)
+when { principal == resource.owner };
+</code></pre>
+<p>逐条看：</p>
+<ul>
+<li><strong>P1 满足</strong>。主体和资源都精确命中，动作未受限，没有条件。</li>
+<li><strong>P2 不满足</strong>。作用域全部匹配——按给定的实体数据，<code>jane</code> 确实在 <code>kevinsFriends</code> 组里（原文这里 <code>UserGroup</code> 与 <code>Group</code>、<code>kevinFriends</code> 与 <code>kevinsFriends</code> 的拼写不一致，不影响结论）——但 <code>when</code> 要求标签含 <code>&quot;Holiday&quot;</code>，而这张照片只有 <code>&quot;Private&quot;</code> 和 <code>&quot;Work&quot;</code>，条件为 <code>false</code>。</li>
+<li><strong>P3 满足</strong>。动作是 <code>viewPhoto</code>，资源带 <code>&quot;Private&quot;</code>，而 <code>jane</code> 不是所有者 <code>kevin</code>，所以 <code>unless</code> 为 <code>false</code>，条件链通过。</li>
+<li><strong>P4 不满足</strong>。它在匹配阶段就失败了：请求的动作是 <code>viewPhoto</code>，不等于 <code>updateTags</code>，条件根本不会被求值。</li>
+</ul>
+<p>结果是 <code>Deny</code>，起决定作用的是 P3。这里有两点值得记住：<strong>一条 <code>permit</code> 满足并不能保证放行</strong>（P1 就满足了）；<strong><code>forbid</code> 不需要和 <code>permit</code> 成对出现</strong>，它只拒绝，不授予。P3 命中时，即使 P1 再宽松，结果仍然是拒绝。</p>
+<h2 id="出错跳过与诊断信息">出错跳过与诊断信息</h2>
+<p><code>error</code> 怎么处理？Cedar 的选择是<strong>跳过</strong>（skip on error）：出错的策略不参与合并，就像它不存在一样。这个选择看起来危险，其实是经过权衡的。</p>
+<p>如果改成“任何策略出错就整体拒绝”，那么一个跑了很久、有一百条策略的系统，可能因为新加的第一百零一条策略写错了属性名，突然拒绝所有请求。这种故障模式杀伤力太大。跳过则把错误的爆炸半径限制在那一条策略上，同时引擎会把出错的策略 ID 和错误细节放进响应里，应用可以自行决定：记日志、告警，或者在关键路径上把错误升级为拒绝。</p>
+<p>除了错误，响应里还有<strong>决定策略</strong>（determining policies）：<code>Allow</code> 时是那些满足的 <code>permit</code>，<code>Deny</code> 时是那些满足的 <code>forbid</code>，如果是因为无人命中而拒绝，这个列表就是空的。排查“为什么他能看”和“为什么他不能看”时，先看这个列表，比逐条读策略快得多。</p>
+<p>最后提醒一句：不要吞掉诊断信息。把 <code>Deny</code> 和 <code>error</code> 都当成拒绝在安全上是保守的，但在可维护性上是灾难——你会在某个凌晨发现所有照片都打不开，却不知道是哪条策略在报错。授权引擎的返回值不是布尔值，而是一份带证据的决定；完整的算法描述见<a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a>。</p>
+</article><nav class="pager"><a class="prev" href="../00-intro/01-why-cedar.html">← 为什么需要 Cedar</a><a class="next" href="./02-entities.html">实体、属性、组与层级 →</a></nav></main></body></html>

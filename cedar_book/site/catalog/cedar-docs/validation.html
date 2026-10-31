@@ -1,0 +1,84 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>策略验证 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="./terminology.html">术语与核心概念</a></li><li><a href="./scenario.html">PhotoFlash 示例场景</a></li><li><a href="./authorization.html">授权如何工作</a></li><li><a href="./policy-syntax.html">策略语法基础</a></li><li><a href="./entities.html">实体与实体层级</a></li><li><a href="./data-types.html">数据类型</a></li><li><a href="./operators.html">操作符</a></li><li><a href="./validation.html">策略验证</a></li><li><a href="./templates.html">策略模板</a></li><li><a href="./json-format.html">JSON 策略格式</a></li><li><a href="./schema.html">Schema 概览</a></li><li><a href="./schema-format.html">Cedar Schema 格式</a></li><li><a href="./schema-linking.html">Schema 链接</a></li><li><a href="./security.html">安全模型</a></li><li><a href="./best-practices.html">最佳实践概览</a></li><li><a href="./auth-patterns.html">授权模式</a></li><li><a href="./policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-docs · <code>docs/collections/_policies/validation.md</code> · a0b2849 · commit <code>a0b2849</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-docs/blob/a0b28494644671804c60301fee4d59f5fc4fbd99/docs/collections/_policies/validation.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-docs/docs/collections/_policies/validation.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="策略验证">策略验证</h1>
+<p>策略也是代码，写错在所难免。下面这条策略语法完全合法，却塞满了拼写和类型错误：</p>
+<pre><code class="language-cedar">permit (
+    principal == ExampleCo::Uzer::&quot;12345&quot;,   // should be &quot;User&quot;, not &quot;Uzer&quot;
+    action == ExampleCo::Action::&quot;ReadFile&quot;, // should be &quot;readFile&quot;, not &quot;ReadFile&quot;
+    resource == ExampleCo::User::&quot;67890&quot;     // &quot;readFile&quot; isn&#39;t a valid operation on a User
+)
+when {
+    principal.isAcctive           // should be &quot;isActive&quot;, not &quot;isAcctive&quot;
+      &amp;&amp;
+    principal.username &gt; 2        // comparing a string against a number
+};
+</code></pre>
+<p>Cedar 无法孤立地判断对错：<code>Uzer</code> 和 <code>User</code> 都是合法名字。若直接拿去求值，作用域错误会让它永不匹配；即使修好作用域，求值也会因访问未定义属性、字符串与整数比较而报错。而报错的策略会被忽略，应用最终只得到默认的 <code>DENY</code>——问题被掩盖了。</p>
+<p>**验证（validation）**就是为解决这个痛点：在策略创建或加载时，用 <strong>schema</strong> 提供的信息检查它。</p>
+<h2 id="schema-提供什么">Schema 提供什么</h2>
+<p>验证需要知道：正确的实体类型名、每个类型有哪些属性及类型、允许的父子关系、有哪些动作，以及每个动作对 principal、resource、context 的类型要求。一个最小例子：</p>
+<pre><code class="language-json">{
+    &quot;ExampleCo::Personnel&quot;: {
+        &quot;entityTypes&quot;: {
+            &quot;Employee&quot;: {
+                &quot;shape&quot;: {
+                    &quot;type&quot;: &quot;Record&quot;,
+                    &quot;attributes&quot;: {
+                        &quot;name&quot;: { &quot;type&quot;: &quot;String&quot; },
+                        &quot;jobLevel&quot;: { &quot;type&quot;: &quot;Long&quot; },
+                        &quot;numberOfLaptops&quot;: {
+                            &quot;type&quot;: &quot;Long&quot;,
+                            &quot;required&quot;: false
+                        }
+                    }
+                }
+            },
+            &quot;System&quot;: {}
+        },
+        &quot;actions&quot;: {
+            &quot;remoteAccess&quot;: {
+                &quot;appliesTo&quot;: {
+                    &quot;principalTypes&quot;: [&quot;Employee&quot;],
+                    &quot;resourceTypes&quot;: [&quot;System&quot;]
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<p>它声明：实体位于命名空间 <code>ExampleCo::Personnel</code> 中，<strong>策略里</strong>引用要写全前缀（<code>ExampleCo::Personnel::Employee</code>），而<strong>schema 内部</strong>不用；<code>Employee</code> 必有 <code>name</code>（String）与 <code>jobLevel</code>（Long），<code>numberOfLaptops</code>（Long）可选；<code>System</code> 没有属性；动作 <code>remoteAccess</code> 只接受 <code>Employee</code> 主体和 <code>System</code> 资源。context 的格式也可以在这里规定，从而连 context 引用错误一起查出来。</p>
+<h2 id="诊断示例">诊断示例</h2>
+<p>在上面的 schema 下，验证器知道该动作的 principal 必为 <code>Employee</code>，于是对下面三条比较分别给出：</p>
+<pre><code class="language-cedar">permit (
+    principal,
+    action == ExampleCo::Personnel::Action::&quot;remoteAccess&quot;,
+    resource
+)
+when {
+    principal.numberOfLatpops &lt; 5 &amp;&amp;        // (1)
+    principal.name &gt; 3 &amp;&amp;                   // (2)
+    principal.jobLevel == &quot;somethingelse&quot;   // (3)
+};
+</code></pre>
+<ol>
+<li><strong>验证错误</strong>：<code>numberOfLatpops</code> 拼错，<code>Employee</code> 没有这个属性。</li>
+<li><strong>验证错误</strong>：<code>&gt;</code> 只接受 <code>Long</code>，而左侧是 <code>String</code>，运行时必然报错。</li>
+<li><strong>验证警告</strong>：<code>Long == String</code> 永远为假。不会运行时报错，但几乎肯定不是作者本意，因此标为警告。</li>
+</ol>
+<h2 id="能查出什么">能查出什么</h2>
+<p>错误类：未识别的实体类型、未识别的动作、动作被用在它不支持的主体或资源上、<code>in</code> 与 <code>==</code> 误用（如把 <code>in</code> 写成 <code>==</code>）、未识别的属性、未加保护地访问可选属性（应写成 <code>principal has numberOfLaptops &amp;&amp; principal.numberOfLaptops &gt; 1</code>）、操作符类型不匹配、枚举类型实体的非法字面量。</p>
+<p>警告类：恒为 <code>false</code> 因此永不生效的条件（如主体类型根本不可能有 <code>manager</code> 属性）、字符串或标识符混用多种文字系统、字符串中的双向文本控制字符、实体标识符里的异常字符。后三类都是同形字攻击的常见载体。</p>
+<h2 id="验证是独立的一步">验证是独立的一步</h2>
+<p>授权 API <strong>不会</strong>在求值请求时顺带验证；验证是单独的 API，应在策略加载或创建时调用。schema 相当于应用与策略之间的契约：请求的 <code>A</code> 必须是 schema 列出的动作，<code>P</code>/<code>R</code>/<code>C</code> 的类型要匹配，实体数据也要符合 <code>entityTypes</code> 的结构。违反契约时，即使策略通过了验证，求值也可能报错而被跳过。可选的请求级校验工具包括 Cedar CLI 和 Rust API 的 <code>Request::new()</code>；也可以用 schema-based parsing 校验实体与 context 的 JSON。</p>
+<p>因此 schema 一旦变更，授权模型就变了，已上线的策略需要重新验证。</p>
+<h2 id="可靠性边界">可靠性边界</h2>
+<p>验证具备 <strong>validation soundness</strong>：对符合 schema 的请求，通过验证的策略不会出现绝大多数求值错误。这个性质用 Lean 定理证明器形式化证明过，Rust 实现也通过差分测试与 Lean 版本对齐。</p>
+<p>但有三类错误不被排除：</p>
+<ul>
+<li><strong>整数溢出</strong>：两个大 <code>Long</code> 相加超出 64 位，Cedar 报错而不回绕，验证器不检测。</li>
+<li><strong>实体缺失</strong>：策略引用的实体不在请求数据中，访问其属性会失败；请求级校验也不检查实体是否存在。</li>
+<li><strong>非字面量的扩展值</strong>：如 <code>ip(principal.IPAddr)</code>，若该属性值不是合法 IP 就会报错。默认的 strict 模式直接禁止这类写法（报 <code>extension constructors may not be called with non-literal expressions</code>），而 <code>ip(&quot;XYZ&quot;)</code> 无论哪种模式都验证失败。</li>
+</ul>
+<p>除这三类外，前面列出的错误都不会在通过验证的策略上发生。schema 还有额外价值：可作为文档生成、策略编辑器、策略分析与方案交流的输入。即使 Cedar 允许无 schema 起步，项目进入生产前仍应定义它。相关格式见 schema 相关页面，条件写法见<a href="./operators.html">操作符</a>。</p>
+</article></main></body></html>

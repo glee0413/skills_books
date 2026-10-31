@@ -1,0 +1,32 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rust Hello World · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../cedar-docs/data-types.html">数据类型</a></li><li><a href="../cedar-docs/operators.html">操作符</a></li><li><a href="../cedar-docs/validation.html">策略验证</a></li><li><a href="../cedar-docs/templates.html">策略模板</a></li><li><a href="../cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../cedar-docs/schema.html">Schema 概览</a></li><li><a href="../cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../cedar-docs/security.html">安全模型</a></li><li><a href="../cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="./readme.html">示例仓库总览</a></li><li><a href="./tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="./use-cases.html">六个真实用例</a></li><li><a href="./rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-examples · <code>cedar-rust-hello-world/README.md</code> · f4d2dbb · commit <code>f4d2dbb</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-examples/blob/f4d2dbbab361a38372e6d6fcfc7b777eb1b30c37/cedar-rust-hello-world/README.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-examples/cedar-rust-hello-world/README.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="rust-hello-world">Rust Hello World</h1>
+<p>这个示例的核心代码都在 <code>src/main.rs</code>，却把集成 Cedar 时需要掌握的动作都点名了。README 明确列出五件事：从文本解析策略；构造访问请求并询问是否被策略允许；构造带可选 <code>context</code> 的请求；随请求提供实体；验证策略与 schema 一致。读懂它，等于拿到一份集成清单。</p>
+<h2 id="五个演示函数">五个演示函数</h2>
+<p>README 用函数名对应上述能力，逐个看：</p>
+<ul>
+<li><code>parse_policy</code>：解析一条策略，并提取其中的组成部分。它演示 <code>PolicySet</code> 的解析，以及如何读取 principal、action、resource 的约束，适合用来写策略检查工具。</li>
+<li><code>json_context</code>：从 JSON 值构造请求的 <code>context</code>。上下文承载请求时刻的瞬时信息，例如 IP、时间、MFA 状态；它们不属于实体属性，因此不该塞进实体存储。</li>
+<li><code>entity_json</code>：从 JSON 构造实体。对应生产中最常见的形态——实体数据来自数据库或 API，序列化成 JSON 再转成 <code>Entities</code>。</li>
+<li><code>entity_objects</code>：从 Rust 对象构造实体。适合类型安全要求高的场景：先定义业务结构体，再实现转换，避免字符串键拼错。</li>
+<li><code>validate</code>：校验策略。把 schema 与策略一起交给验证器，能在上线前发现未知属性、未知动作和类型不匹配。</li>
+</ul>
+<p>这五个函数构成一条由浅入深的路径：先能读策略，再能发请求；先只带主体、动作、资源，再补上下文与实体；最后加上静态校验。TinyTodo 那种完整应用，本质上就是把这条路径工程化。</p>
+<h2 id="运行方式">运行方式</h2>
+<p>示例期望 <code>cedar</code> 仓库被克隆到顶层目录，也就是与 <code>cedar-examples</code> 同级的位置。然后按 README 的说明，在 <code>Cargo.toml</code> 里给 <code>cedar-policy</code> 加上 <code>path = &quot;../cedar/cedar-policy&quot;</code>，让 Cargo 使用本地版本而非 crates.io 版本。改好后运行：</p>
+<pre><code class="language-shell">cargo run
+</code></pre>
+<p>如果目录结构不对，构建会直接报找不到包。也可以改用 crates.io 上的发布版，把路径依赖换成版本号，但那样就看不到本地仓库的改动。</p>
+<h2 id="从-hello-world-到真实集成">从 Hello World 到真实集成</h2>
+<p>示例刻意保持“单文件、无框架”，因此有些生产问题它不回答：</p>
+<ul>
+<li><strong>策略从哪来</strong>。示例里是字符串常量，生产中通常来自配置文件或策略服务，并需要版本管理。</li>
+<li><strong>实体怎么保持一致</strong>。示例用静态数据；真实系统的实体存储必须与业务数据库同步，否则授权决策基于过期事实。</li>
+<li><strong>失败怎么处理</strong>。示例用 <code>unwrap</code>；生产代码要把解析错误、请求构造错误和验证失败区分开，分别上报。</li>
+<li><strong>决策如何记录</strong>。<code>Response</code> 带有 <code>diagnostics</code>，包含命中的策略 ID 与错误；这些信息应进入审计日志，而不是只留一个 <code>Deny</code>。</li>
+</ul>
+<h2 id="与其他示例的衔接">与其他示例的衔接</h2>
+<p>读完这个最小程序，下一步推荐 TinyTodo：它把 <code>is_authorized</code> 封装成一个方法，在每个 handler 开头调用，并演示了实体存储如何转成 <code>Entities</code>、策略如何按 <code>@id</code> 命名、启动时如何校验 schema。再往后是六个真实用例，用来看不同业务形态下策略怎么写。</p>
+<p>如果只记一件事：Cedar 的集成面很小——解析策略、组装请求、提供实体、读取决策、校验 schema。剩下的复杂度都来自应用自身的数据一致性。</p>
+</article></main></body></html>

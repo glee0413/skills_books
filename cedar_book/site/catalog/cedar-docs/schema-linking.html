@@ -1,0 +1,60 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Schema 链接 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="./terminology.html">术语与核心概念</a></li><li><a href="./scenario.html">PhotoFlash 示例场景</a></li><li><a href="./authorization.html">授权如何工作</a></li><li><a href="./policy-syntax.html">策略语法基础</a></li><li><a href="./entities.html">实体与实体层级</a></li><li><a href="./data-types.html">数据类型</a></li><li><a href="./operators.html">操作符</a></li><li><a href="./validation.html">策略验证</a></li><li><a href="./templates.html">策略模板</a></li><li><a href="./json-format.html">JSON 策略格式</a></li><li><a href="./schema.html">Schema 概览</a></li><li><a href="./schema-format.html">Cedar Schema 格式</a></li><li><a href="./schema-linking.html">Schema 链接</a></li><li><a href="./security.html">安全模型</a></li><li><a href="./best-practices.html">最佳实践概览</a></li><li><a href="./auth-patterns.html">授权模式</a></li><li><a href="./policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-docs · <code>docs/collections/_schema/schema-linking.md</code> · a0b2849 · commit <code>a0b2849</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-docs/blob/a0b28494644671804c60301fee4d59f5fc4fbd99/docs/collections/_schema/schema-linking.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-docs/docs/collections/_schema/schema-linking.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="schema-链接">Schema 链接</h1>
+<p>从 Cedar 4.6 起，schema 可以只<strong>声明</strong>实体类型和动作而不给出定义，关键字是 <code>external</code>。这类外部声明由<strong>链接</strong>（linking）解决：把若干 schema 合并，用同名定义填充每个 <code>external</code> 声明。链接的产物仍是 schema，其中可能还有未解决的外部声明。</p>
+<p>链接的输出与 schema 的传入顺序、分组方式无关，这是它可以安全用于分布式建模的前提。</p>
+<h2 id="基本链接">基本链接</h2>
+<p>下面的 <code>Documents</code> schema 声明了 <code>User</code>，<code>Users</code> schema 定义了它。</p>
+<p><strong><code>Documents</code> schema</strong></p>
+<pre><code class="language-cedarschema">external entity User;
+entity Document {
+    owner: User,
+};
+</code></pre>
+<p><strong><code>Users</code> schema</strong></p>
+<pre><code class="language-cedarschema">entity User;
+</code></pre>
+<p><strong>Linked result</strong></p>
+<pre><code class="language-cedarschema">entity Document {
+    owner: User,
+};
+entity User;
+</code></pre>
+<p>两个 schema 也可以互相解析对方的声明：<code>Documents</code> 声明 <code>User</code> 并定义 <code>Document</code>，<code>Users</code> 声明 <code>Document</code> 并定义带 <code>lastRead: Document</code> 属性的 <code>User</code>，链接后两份定义同时成立。</p>
+<p>若所有参与链接的 schema 都没有定义某个外部声明，它就保持 <code>external</code>。例如 <code>Documents</code> 与 <code>Folders</code> 都只声明 <code>external entity User;</code>，链接结果里 <code>User</code> 仍未解析，另外两个实体照常合并。外部动作的解析方式完全相同：一方 <code>external action viewDocument;</code>，另一方给出 <code>appliesTo</code>，链接后即得到完整动作。</p>
+<h2 id="带祖先的实体类型">带祖先的实体类型</h2>
+<p>外部实体类型可以声明父类型，链接时会把各方的父类型合并。</p>
+<p><strong><code>Documents</code> schema</strong></p>
+<pre><code class="language-cedarschema">external entity Account;
+external entity Folder in Account;
+</code></pre>
+<p><strong><code>Shares</code> schema</strong></p>
+<pre><code class="language-cedarschema">external entity Team;
+external entity Folder in Team;
+</code></pre>
+<p><strong>Linked result</strong></p>
+<pre><code class="language-cedarschema">external entity Account;
+external entity Team;
+external entity Folder in [Account, Team];
+</code></pre>
+<p>这里有一条硬性约束：<strong>每个已定义实体类型的祖先集合在链接前后必须保持不变</strong>。原文给了一个反例——<code>Documents</code> 定义 <code>entity Document in Folder;</code>，而 <code>Shares</code> 声明 <code>external entity Folder in Account;</code>。链接会把 <code>Account</code> 变成 <code>Folder</code> 的父类型，从而间接成为 <code>Document</code> 的祖先，改变了 <code>Document</code> 的定义，因此链接失败。这条规则是为了避免因链接产生不可靠的验证结论。</p>
+<h2 id="带祖先的动作">带祖先的动作</h2>
+<p>动作的规则更严：链接时，<strong>同一动作的所有声明必须声明相同的祖先</strong>。例如一方只有 <code>external action viewDocument;</code>，另一方写 <code>external action viewDocument in readActions;</code>，链接直接报错。原因不难理解：动作只应有一套适用范围与成员关系，若各方给出不同的动作组归属，合并后的语义就没有唯一答案。注意这与外部实体类型不同——实体类型允许各方补充不同的父类型，动作不允许。</p>
+<h2 id="用外部声明做部分验证">用外部声明做部分验证</h2>
+<p>含外部声明的 schema 并非无用，它仍能完成一部分验证。</p>
+<p>可以做：</p>
+<ul>
+<li>验证<strong>已定义类型</strong>的实体，即使其属性、标签或祖先引用了外部类型；</li>
+<li>验证动作，无论外部还是已定义；</li>
+<li>验证针对<strong>已定义动作</strong>的请求。</li>
+</ul>
+<p>不能做：</p>
+<ul>
+<li>验证策略；</li>
+<li>验证外部类型的实体；</li>
+<li>验证针对<strong>外部动作</strong>的请求。</li>
+</ul>
+<p>原因很直接：策略验证需要完整的类型与属性信息，外部声明没有定义体；同理，外部类型的实体和外部动作的请求也缺少可用于检查的结构。需要完整能力时，先把 schema 链接成没有未解决外部声明的版本。</p>
+<p>Schema 的整体结构见 <a href="./schema.html">Schema 概览</a>，可读语法的写法见 <a href="./schema-format.html">Cedar Schema 格式</a>，验证流程见<a href="./validation.html">策略验证</a>。</p>
+</article></main></body></html>

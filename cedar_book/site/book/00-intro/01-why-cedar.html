@@ -1,0 +1,61 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>为什么需要 Cedar · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a class="active" href="./01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../../catalog/cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../../catalog/cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../../catalog/cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../../catalog/cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../../catalog/cedar-docs/data-types.html">数据类型</a></li><li><a href="../../catalog/cedar-docs/operators.html">操作符</a></li><li><a href="../../catalog/cedar-docs/validation.html">策略验证</a></li><li><a href="../../catalog/cedar-docs/templates.html">策略模板</a></li><li><a href="../../catalog/cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../../catalog/cedar-docs/schema.html">Schema 概览</a></li><li><a href="../../catalog/cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../../catalog/cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../../catalog/cedar-docs/security.html">安全模型</a></li><li><a href="../../catalog/cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../../catalog/cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../../catalog/cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../../catalog/cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../../catalog/cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../../catalog/cedar/cli.html">Cedar CLI</a></li><li><a href="../../catalog/cedar/wasm.html">Cedar WASM</a></li><li><a href="../../catalog/cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../../catalog/cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../../catalog/cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../../catalog/cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../../catalog/cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="为什么需要-cedar">为什么需要 Cedar</h1>
+<p>几乎每个应用都会长出一套权限代码。最初它只是用户表上的一个 <code>role</code> 字段，几行 <code>if</code> 就能应付：</p>
+<pre><code class="language-rust">if user.role == &quot;admin&quot; || photo.owner_id == user.id {
+    serve_photo(photo);
+}
+</code></pre>
+<p>然后产品提出共享相册，运营要求按部门放行，法务要求“标记为私密的照片任何人都不能看”，客户要求多租户隔离。于是 <code>if</code> 变成 <code>if</code> 套 <code>if</code>，同一套判断在列表接口、详情接口、导出任务和后台脚本里各写一遍。半年后，没有人能回答一个简单问题：<strong>谁能看到这张照片？</strong> 答案散落在十几处代码里，还得考虑每处代码的执行顺序。</p>
+<p>Cedar 想解决的就是这个问题：把“谁能在什么条件下对什么做什么”从业务代码里拆出来，写成一种独立的、可读、可分析、可审计的语言。</p>
+<h2 id="认证回答你是谁授权回答你能做什么">认证回答“你是谁”，授权回答“你能做什么”</h2>
+<p>这两个词经常被混用。认证（authentication）验证主体确实是它声称的那个人，手段是密码、令牌、多因素设备。授权（authorization）则在身份已经确定之后，判断这个身份提出的这次请求是否被允许。</p>
+<p>Cedar 只做后一半。当用户通过认证，应用就把他当作一个主体（principal），然后拿着这个主体、他想执行的动作、他想操作的对象，去问 Cedar 要一个答案。Cedar 官方文档在<a href="../../catalog/cedar-docs/terminology.html">术语表</a>里把这条边界写得很清楚：授权以认证为前提，但 Cedar 不参与认证。</p>
+<h2 id="cedar-是什么">Cedar 是什么</h2>
+<p>用一句话说：Cedar 是一门用来编写和执行授权策略的语言，附带一个授权引擎。应用把策略交给它，把每次请求的上下文交给它，它返回 <code>Allow</code> 或 <code>Deny</code>。</p>
+<p>一段策略读起来接近自然语言：</p>
+<pre><code class="language-cedar">permit (
+    principal == User::&quot;alice&quot;,
+    action == Action::&quot;view&quot;,
+    resource in Album::&quot;jane_vacation&quot;
+);
+</code></pre>
+<p>这段策略的意思是：<code>alice</code> 可以查看 <code>jane_vacation</code> 相册里的照片。注意 <code>resource in Album::&quot;jane_vacation&quot;</code>——照片不必逐张列出，只要它在相册的层级里就算命中。这种“按关系而不是按清单授权”的能力，是手写 <code>if</code> 很难维护的。</p>
+<p>Cedar 项目给自己的定位有三个关键词：<strong>表达力</strong>（原生支持 RBAC 和 ABAC 这类常见模型）、<strong>性能</strong>（策略结构可被索引，实时判断延迟有界）、<strong>可分析</strong>（为自动化推理而设计，可以证明策略符合预期）。更关键的一点是策略与代码分离：策略可以被独立编写、修改、分析和审计，改一条规则不需要重新发布服务。</p>
+<h2 id="cedar-不是什么">Cedar 不是什么</h2>
+<p>把边界划清楚，能省掉很多误用：</p>
+<ul>
+<li><strong>不是认证系统。</strong> 它不校验密码、不签发令牌、不管理会话。你必须在调用 Cedar 之前完成身份验证。</li>
+<li><strong>不是数据库。</strong> 它不存储用户、相册和照片。实体数据由应用在每次请求时提供，Cedar 只做判断。</li>
+<li><strong>不是权限管理后台。</strong> 策略的增删改查、界面、审批流属于上层产品（例如 Amazon Verified Permissions），Cedar 本身只定义语言和引擎。</li>
+<li><strong>不是通用编程语言。</strong> 它没有循环、没有 IO，有界大小的策略保证终止且无副作用。这是特性，不是缺陷：正因为它不能做别的事，才能被形式化分析。</li>
+<li><strong>不负责执行。</strong> Cedar 返回决策，真正拦截请求、隐藏字段、拒绝写入的是你的应用。拿到 <code>Deny</code> 却照常返回数据，Cedar 帮不了你。</li>
+</ul>
+<h2 id="默认拒绝拒绝优先">默认拒绝，拒绝优先</h2>
+<p>Cedar 的合并规则只有三条，却决定了整套策略的写法：</p>
+<ol>
+<li>任何一条 <code>forbid</code> 命中，结果就是 <code>Deny</code>；</li>
+<li>否则，任何一条 <code>permit</code> 命中，结果就是 <code>Allow</code>；</li>
+<li>都没有命中，结果是 <code>Deny</code>。</li>
+</ol>
+<p>第一条和第三条合起来意味着：<strong>空策略库拒绝一切</strong>。访问权限只能由 <code>permit</code> 显式授予，不能靠“没有禁止”推断出来。第一条还意味着 <code>forbid</code> 是一道护栏，任何 <code>permit</code> 都翻不过去：</p>
+<pre><code class="language-cedar">// Only the owner can access any resource tagged &quot;private&quot;
+
+forbid ( principal, action, resource )
+when { resource.tags.contains(&quot;private&quot;) }    // assumes that resource has &quot;tags&quot;
+unless { resource in principal.account };     // assumes that principal has &quot;account&quot;
+</code></pre>
+<p>这条策略没有限定主体、动作和资源，它对所有请求生效，只在资源带 <code>private</code> 标签、且请求者不属于资源所在账户时拒绝。写它的人不需要知道现有或将来会有哪些 <code>permit</code>，因为它永远优先。</p>
+<p>这正是 Cedar 想要的阅读体验：读 <code>permit</code> 时只需理解它授予了什么，不必操心它“没有禁止什么”；读 <code>forbid</code> 时可以独立理解，不必顺着其他策略推演。授权逻辑最难维护的部分，往往是那些“因为某处没写所以放行”的隐含路径，Cedar 从语言层面把它们消掉了。完整的合并算法和出错处理见<a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a>。</p>
+<h2 id="什么时候值得用-cedar">什么时候值得用 Cedar</h2>
+<p>适合引入 Cedar 的信号通常长这样：</p>
+<ul>
+<li>权限是<strong>细粒度</strong>的，取决于资源归属、组成员、标签、时间或 IP，而不是一个全局角色；</li>
+<li>系统是<strong>多租户</strong>的，租户之间必须硬隔离，且租户内还有自己的管理员；</li>
+<li>权限规则会被<strong>非开发者</strong>审查，需要能拿着文本逐条讨论；</li>
+<li>出问题时需要<strong>证据</strong>：这次为什么放行、哪条策略起了作用；</li>
+<li>规则变化频繁，希望改配置而不是改代码、发版本。</li>
+</ul>
+<p>反过来，如果整个系统只有“管理员”和“普通用户”两个布尔位，也没有审计和演进压力，几张表加一个中间件就够了。引入 Cedar 需要建模实体、写 schema、接 SDK，这笔投入要在规则复杂到 <code>if</code> 开始失控时才划算。</p>
+<h2 id="这本书怎么走">这本书怎么走</h2>
+<p>接下来的三章建立基础模型：先讲一次授权请求由什么组成、引擎如何得出结论，再讲实体、属性和层级，最后用贯穿全书的 PhotoFlash 例子把前两章串起来。之后进入策略语言、Schema 与验证、Rust SDK 与 CLI，最后用 TinyTodo 和六个真实用例收尾。</p>
+<p>如果你只想先建立直觉，从<a href="../01-model/01-parc.html">授权请求与 PARC</a>开始；如果你习惯先看代码，可以跳到 <a href="../04-sdk/02-cli.html">CLI 快速上手</a>，跑通一次 <code>ALLOW</code> 再回头读模型。术语的统一译法见仓库根目录的 <code>GLOSSARY.md</code>，策略的工程约束见<a href="../../catalog/cedar-docs/security.html">安全模型</a>。</p>
+</article><nav class="pager"><a class="prev" href="#"></a><a class="next" href="../01-model/01-parc.html">授权请求与 PARC →</a></nav></main></body></html>

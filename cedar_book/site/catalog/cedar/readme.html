@@ -1,0 +1,75 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Cedar 仓库与 SDK 总览 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../cedar-docs/data-types.html">数据类型</a></li><li><a href="../cedar-docs/operators.html">操作符</a></li><li><a href="../cedar-docs/validation.html">策略验证</a></li><li><a href="../cedar-docs/templates.html">策略模板</a></li><li><a href="../cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../cedar-docs/schema.html">Schema 概览</a></li><li><a href="../cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../cedar-docs/security.html">安全模型</a></li><li><a href="../cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="./readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="./sdk.html">cedar-policy Rust API</a></li><li><a href="./cli.html">Cedar CLI</a></li><li><a href="./wasm.html">Cedar WASM</a></li><li><a href="./symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar · <code>README.md</code> · v4.3.0-782-gd5fb0422 · commit <code>d5fb042</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar/blob/d5fb0422e6edb8617b595428530224663e122668/README.md">查看原仓库</a> · <a href="../../source-snapshots/cedar/README.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="cedar-仓库与-sdk-总览">Cedar 仓库与 SDK 总览</h1>
+<p>这个仓库是 Cedar 策略语言的 Rust 实现，包含授权引擎、验证器、命令行工具、WASM 绑定和符号编译器。读它的顶层 README，重点不是学语法，而是搞清楚“哪个 crate 负责哪件事”，以及一次最小授权判定需要哪些输入。</p>
+<h2 id="仓库定位把授权从业务代码里搬出来">仓库定位：把授权从业务代码里搬出来</h2>
+<p>Cedar 用来在应用中编写和执行授权策略。应用把细粒度权限写成策略，运行时把访问请求交给 Cedar 授权引擎判定。因为策略独立于应用代码，所以可以单独编写、更新、分析和审计；配套的验证器还能对照 schema 检查策略是否与应用声明的授权模型一致。</p>
+<p>官方用三个词概括设计目标：</p>
+<ul>
+<li><strong>表达力</strong>（Expressive）：语言简单，但足以覆盖 RBAC、ABAC 等常见授权模型。</li>
+<li><strong>性能</strong>（Performant）：策略结构可被索引，支持低延迟、可扩展的实时判定。</li>
+<li><strong>可分析</strong>（Analyzable）：为自动化推理而设计，工具可以优化策略，甚至证明安全模型符合预期。</li>
+</ul>
+<p>这三点后面会反复出现：策略写法影响可分析性，crate 划分则对应“执行、验证、分析”三条链路。</p>
+<h2 id="工作区里的-crate-分工">工作区里的 crate 分工</h2>
+<p>仓库是一个 Cargo workspace，公开 crate 与内部 crate 混在一起：</p>
+<ul>
+<li><code>cedar-policy</code>：主 crate，负责授权请求判定和按 schema 验证策略，应用通常只依赖它。</li>
+<li><code>cedar-policy-symcc</code>：符号编译器，把策略编译成 SMT 约束，可对策略性质做形式化验证并给出反例。</li>
+<li><code>cedar-policy-cli</code>：命令行接口，提供 <code>cedar</code> 可执行文件。</li>
+<li><code>cedar-language-server</code>：Cedar 语言服务器实现。</li>
+<li><code>cedar-wasm</code>：WASM 接口，供 JavaScript/TypeScript 使用。</li>
+<li><code>cedar-policy-core</code>：内部 crate，含解析器、求值器、类型检查器等核心组件。</li>
+<li><code>cedar-policy-formatter</code>：内部 crate，策略自动格式化。</li>
+<li><code>cedar-testing</code>：内部 crate，集成测试代码。</li>
+</ul>
+<p>对应用开发者来说，日常只需要 <code>cedar-policy</code>；调试策略时加 <code>cedar-policy-cli</code>；需要跨语言或做形式化证明时再看 <code>cedar-wasm</code> 与 <code>cedar-policy-symcc</code>。</p>
+<h2 id="快速开始一份策略一份实体一次判定">快速开始：一份策略、一份实体、一次判定</h2>
+<p>README 的例子把策略放在 <code>policy.cedar</code>：</p>
+<pre><code class="language-cedar">permit (
+  principal == User::&quot;alice&quot;,
+  action == Action::&quot;view&quot;,
+  resource in Album::&quot;jane_vacation&quot;
+);
+</code></pre>
+<p>含义是：<code>alice</code> 可以查看 <code>&quot;jane_vacation&quot;</code> 相册里的照片。实体放在 <code>entities.json</code>：</p>
+<pre><code class="language-json">[
+    {
+        &quot;uid&quot;: { &quot;type&quot;: &quot;User&quot;, &quot;id&quot;: &quot;alice&quot;} ,
+        &quot;attrs&quot;: {&quot;age&quot;: 18},
+        &quot;parents&quot;: []
+    },
+    {
+        &quot;uid&quot;: { &quot;type&quot;: &quot;Photo&quot;, &quot;id&quot;: &quot;VacationPhoto94.jpg&quot;},
+        &quot;attrs&quot;: {},
+        &quot;parents&quot;: [{ &quot;type&quot;: &quot;Album&quot;, &quot;id&quot;: &quot;jane_vacation&quot; }]
+    },
+    {
+        &quot;uid&quot;: { &quot;type&quot;: &quot;Photo&quot;, &quot;id&quot;: &quot;SecretPhoto94.jpg&quot;},
+        &quot;attrs&quot;: {},
+        &quot;parents&quot;: [{ &quot;type&quot;: &quot;Album&quot;, &quot;id&quot;: &quot;jane_secrets&quot; }]
+    }
+]
+</code></pre>
+<p>Cedar 把主体、资源、动作都表示成实体：实体有类型（如 <code>User</code>）、id（如 <code>alice</code>）、属性（如 <code>age</code> 为整数 <code>18</code>）和父实体。父关系构成层级，策略里的 <code>in</code> 就是在层级上判断可达性——所以照片属于哪个相册，决定了 <code>resource in Album::&quot;jane_vacation&quot;</code> 是否成立。</p>
+<p>用 CLI 发起第一次请求：</p>
+<pre><code class="language-sh"> cargo run --bin cedar authorize \
+    --policies policy.cedar \
+    --entities entities.json \
+    --principal &#39;User::&quot;alice&quot;&#39; \
+    --action &#39;Action::&quot;view&quot;&#39; \
+    --resource &#39;Photo::&quot;VacationPhoto94.jpg&quot;&#39;
+</code></pre>
+<p>输出 <code>ALLOW</code>，因为 <code>VacationPhoto94.jpg</code> 的父实体是 <code>Album::&quot;jane_vacation&quot;</code>。换成 <code>SecretPhoto94.jpg</code> 再跑一次，输出 <code>DENY</code>：它属于 <code>jane_secrets</code>，没有任何策略明确允许 <code>alice</code> 查看。这就是“默认拒绝”——没有 <code>permit</code> 命中，结果就是拒绝。</p>
+<h2 id="构建版本与兼容性">构建、版本与兼容性</h2>
+<p>从源码构建只需：</p>
+<pre><code class="language-sh">cargo build
+</code></pre>
+<p>或 <code>cargo build --release</code>。在应用里引入则运行 <code>cargo add cedar-policy</code>。README 特别提醒 Cargo 版本号的差别：</p>
+<pre><code class="language-toml">[dependencies]
+cedar-policy = &quot;=2.4.2&quot;
+</code></pre>
+<p>等号表示锁死到 <code>2.4.2</code>；而 <code>cedar-policy = &quot;2.4.2&quot;</code> 只表示最低版本，允许任何语义化版本兼容的更新。对安全敏感的授权组件，这个区别值得明确写进依赖策略。</p>
+<p>变更记录按 crate 维护在 <code>main</code> 分支：<code>cedar-policy/CHANGELOG.md</code> 和 <code>cedar-policy-cli/CHANGELOG.md</code>；历史版本看 crates.io 或 GitHub Releases。文档在 docs.cedarpolicy.com，Rust API 文档在 docs.rs。若要上生产，README 明确要求先读安全最佳实践；想看在应用里怎么落地，可以直接跳到同仓库生态中的 TinyTodo 示例。</p>
+</article></main></body></html>

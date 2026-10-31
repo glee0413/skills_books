@@ -1,0 +1,120 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>用 Schema 建模授权世界 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a class="active" href="./01-schema.html">用 Schema 建模授权世界</a></li><li><a href="./02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../../catalog/cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../../catalog/cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../../catalog/cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../../catalog/cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../../catalog/cedar-docs/data-types.html">数据类型</a></li><li><a href="../../catalog/cedar-docs/operators.html">操作符</a></li><li><a href="../../catalog/cedar-docs/validation.html">策略验证</a></li><li><a href="../../catalog/cedar-docs/templates.html">策略模板</a></li><li><a href="../../catalog/cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../../catalog/cedar-docs/schema.html">Schema 概览</a></li><li><a href="../../catalog/cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../../catalog/cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../../catalog/cedar-docs/security.html">安全模型</a></li><li><a href="../../catalog/cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../../catalog/cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../../catalog/cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../../catalog/cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../../catalog/cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../../catalog/cedar/cli.html">Cedar CLI</a></li><li><a href="../../catalog/cedar/wasm.html">Cedar WASM</a></li><li><a href="../../catalog/cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../../catalog/cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../../catalog/cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../../catalog/cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../../catalog/cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="用-schema-建模授权世界">用 Schema 建模授权世界</h1>
+<p>策略回答“谁可以对什么做什么”，Schema 则回答“这个世界里有哪些东西”。它声明应用支持的实体类型、这些类型的属性与父子关系，以及可用的动作和每个动作适用的主体、资源、上下文。没有 Schema，Cedar 仍能解析和运行策略；有了 Schema，才能做类型检查、请求校验，并把授权模型当成一份可审阅的契约。官方说明见 <a href="../../catalog/cedar-docs/schema.html">Schema 概览</a>，语法细节见 <a href="../../catalog/cedar-docs/schema-format.html">Cedar Schema 格式</a>。</p>
+<h2 id="schema-声明了什么">Schema 声明了什么</h2>
+<p>一个 Schema 由零个或多个命名空间组成。每个命名空间里可以有三类定义：实体类型（entity type）、动作（action）和公共类型（common type）。实体类型描述主体与资源，例如 <code>User</code>、<code>Album</code>、<code>Photo</code>；动作描述操作，例如 <code>viewPhoto</code>、<code>uploadPhoto</code>。公共类型只是给一组属性形状起名字，避免在多个实体或动作里重复抄写同一段 record。</p>
+<p>Schema 不负责认证，也不负责判断“Alice 是不是管理员”。它只规定数据长什么样。真正的权限判断仍由 permit/forbid 策略完成，两者的分工见 <a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a>。</p>
+<h2 id="命名空间与限定名">命名空间与限定名</h2>
+<p>命名空间用 <code>::</code> 分隔，作用域内的定义可以不加前缀互相引用；跨命名空间必须写全名。下面的 <code>PhotoFlash</code> 中可以直接写 <code>User</code>，而在策略或其他命名空间里要写 <code>PhotoFlash::User</code>。动作的全名还会带上固定的 <code>Action</code> 类型，例如 <code>PhotoFlash::Action::&quot;viewPhoto&quot;</code>。</p>
+<pre><code class="language-cedarschema">namespace PhotoFlash {
+  entity User in UserGroup = {
+    &quot;department&quot;: String,
+    &quot;jobLevel&quot;: Long,
+  };
+  entity UserGroup;
+  entity Album in Album = {
+    &quot;account&quot;: Account,
+    &quot;private&quot;: Bool,
+  };
+  entity Account = {
+    &quot;admins&quot;?: Set&lt;User&gt;,
+    &quot;owner&quot;: User,
+  };
+  entity Photo in Album = {
+    &quot;account&quot;: Account,
+    &quot;private&quot;: Bool,
+  };
+}
+</code></pre>
+<p>命名空间名不能包含空白、控制字符或注释，也不能使用保留的 <code>__cedar</code>。同一个命名空间不能重复声明，里面的同名定义也不允许重复。</p>
+<h2 id="实体类型成员关系与属性">实体类型：成员关系与属性</h2>
+<p><code>entity User in [Group]</code> 里的 <code>in</code> 声明成员关系，也就是这种实体的直接父实体可以是哪些类型。父类型可以写一个，也可以写方括号列表。属性写在 <code>{ ... }</code> 中，类型可以是 <code>Bool</code>、<code>String</code>、<code>Long</code>、实体类型、<code>Set&lt;T&gt;</code> 或嵌套 record。属性名既可以是标识符，也可以是字符串。</p>
+<pre><code class="language-cedarschema">entity User in [Group] {
+    personalGroup: Group,
+    delegate?: User,
+    blocked: Set&lt;User&gt;,
+    team: Team,
+} tags String;
+</code></pre>
+<p>这里 <code>personalGroup</code> 必填，<code>delegate</code> 后面的 <code>?</code> 表示可选，<code>blocked</code> 是用户集合，<code>tags String</code> 表示该类型实体可以带任意多个字符串标签。省略属性声明等价于空 record。Cedar 4.3 之后还可以写 <code>entity Group enum [&quot;G1&quot;, &quot;G2&quot;, &quot;G3&quot;];</code> 限定实体 id 只能是枚举值；4.6 之后可以用 <code>external entity</code> 先声明、后链接定义。</p>
+<p>成员关系不是“继承属性”。父实体主要用于 <code>in</code> 判断，例如 <code>principal in Group::&quot;admins&quot;</code>。层级与组的完整语义见 <a href="../../catalog/cedar-docs/entities.html">实体与实体层级</a>。</p>
+<h2 id="可选属性与-has">可选属性与 has</h2>
+<p>属性默认必填。可选属性若直接读取，实体又恰好没有该属性，求值会报错；出错策略在授权时被忽略，只留下诊断信息。因此策略应先判断存在性：</p>
+<pre><code class="language-cedar">permit (
+    principal,
+    action == PhotoFlash::Action::&quot;viewPhoto&quot;,
+    resource
+)
+when {
+    principal has delegate &amp;&amp;
+    principal.delegate.jobLevel &gt; 5
+};
+</code></pre>
+<p><code>has</code> 放在 <code>&amp;&amp;</code> 左侧，利用短路避免访问不存在的属性。验证器也会把未加保护的访问标为错误，详见 <a href="../../catalog/cedar-docs/validation.html">策略验证</a>。</p>
+<h2 id="动作与-appliesto">动作与 appliesTo</h2>
+<p>动作定义用 <code>appliesTo</code> 限定主体类型、资源类型和上下文形状。<code>principal</code> 与 <code>resource</code> 必填，可以是一个类型或类型列表；<code>context</code> 可省略，省略时等价于空 record。动作还可以用 <code>in</code> 加入动作组，便于写粗粒度策略。</p>
+<pre><code class="language-cedarschema">action ViewDocument in [ReadActions, ExampleNS::Action::&quot;Write&quot;] appliesTo {
+    principal: [User,Public],
+    resource: Document,
+    context: {
+        network: ipaddr,
+        browser: String
+    }
+};
+</code></pre>
+<p>动作名是实体 id，不是实体类型；因此权限请求里的 action 是 <code>Action::&quot;ViewDocument&quot;</code>（带命名空间时再加前缀）。<code>appliesTo</code> 是验证器的关键输入：看到 <code>action == ...::&quot;viewPhoto&quot;</code>，它就能推断 <code>principal</code> 必然是 <code>User</code>、<code>resource</code> 必然是 <code>Photo</code>，从而检查属性访问是否合法。</p>
+<h2 id="公共类型给重复形状起名">公共类型：给重复形状起名</h2>
+<p>当多个动作共享同一段 context，或几个实体共享同一组属性时，反复抄写既冗长又容易写歪。公共类型用 <code>type 名字 = 类型</code> 声明一次，再在需要的地方引用。它可以出现在任何允许写类型的位置，也可以嵌套引用其他公共类型。</p>
+<pre><code class="language-cedarschema">type commonContext = {
+    ip: ipaddr,
+    is_authenticated: Bool,
+    timestamp: Long
+};
+action view appliesTo {
+    principal: User,
+    resource: File,
+    context: commonContext
+};
+action upload appliesTo {
+    principal: User,
+    resource: Server,
+    context: commonContext
+};
+</code></pre>
+<p>公共类型不能形成循环，例如 <code>type A = Set&lt;B&gt;; type B = {&quot;a&quot;: A};</code> 会被解析器拒绝。类型名冲突时，Cedar 按“公共类型 &gt; 实体类型 &gt; 原始/扩展类型”的顺序解析；要强制指向内置类型，可写 <code>__cedar::Long</code> 这样的全限定名。Schema 中的实体、动作、公共类型和命名空间都可以加 <code>@doc(&quot;...&quot;)</code> 之类的注解，供文档工具读取。</p>
+<h2 id="cedar-格式与-json-格式">Cedar 格式与 JSON 格式</h2>
+<p>同一个 Schema 有两种等价写法。Cedar 格式接近策略语法，适合手写；JSON 格式基于 JSON Schema，适合程序生成和交换。JSON 中每个命名空间包含 <code>entityTypes</code>、<code>actions</code>，可选 <code>commonTypes</code>；成员关系写成 <code>memberOfTypes</code>，属性形状写成 <code>&quot;type&quot;: &quot;Record&quot;</code> 加 <code>attributes</code>，可选属性写 <code>&quot;required&quot;: false</code>。</p>
+<pre><code class="language-json">{
+    &quot;ExampleCo::Personnel&quot;: {
+        &quot;entityTypes&quot;: {
+            &quot;Employee&quot;: {
+                &quot;shape&quot;: {
+                    &quot;type&quot;: &quot;Record&quot;,
+                    &quot;attributes&quot;: {
+                        &quot;name&quot;: { &quot;type&quot;: &quot;String&quot; },
+                        &quot;jobLevel&quot;: { &quot;type&quot;: &quot;Long&quot; },
+                        &quot;numberOfLaptops&quot;: {
+                            &quot;type&quot;: &quot;Long&quot;,
+                            &quot;required&quot;: false
+                        }
+                    }
+                }
+            },
+            &quot;System&quot;: {}
+        },
+        &quot;actions&quot;: {
+            &quot;remoteAccess&quot;: {
+                &quot;appliesTo&quot;: {
+                    &quot;principalTypes&quot;: [&quot;Employee&quot;],
+                    &quot;resourceTypes&quot;: [&quot;System&quot;]
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<p>两种格式可以互转：</p>
+<pre><code class="language-bash">cedar translate-schema --direction cedar-to-json --schema photoflash.cedarschema
+cedar translate-schema --direction json-to-cedar --schema photoflash.json
+</code></pre>
+<p>建模时建议从请求的三个要素倒推：先列出主体类型和资源类型，再写属性，最后为每个动作填 <code>appliesTo</code> 和 <code>context</code>。这样得到的 Schema 既能验证策略，也能直接约束请求数据。Schema 还是人、策略和工具之间的共同语言；模型一旦写错，后面的验证只会巩固错误前提，所以值得在动手写策略前多花时间推敲。下一章会把它接入验证流程，并讨论 level validation 与数据切片。</p>
+</article><nav class="pager"><a class="prev" href="../02-policy/03-templates-json.html">← 模板与 JSON 策略</a><a class="next" href="./02-validation.html">策略验证与 level validation →</a></nav></main></body></html>

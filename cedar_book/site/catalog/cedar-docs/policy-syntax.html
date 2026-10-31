@@ -1,0 +1,109 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>策略语法基础 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="./terminology.html">术语与核心概念</a></li><li><a href="./scenario.html">PhotoFlash 示例场景</a></li><li><a href="./authorization.html">授权如何工作</a></li><li><a href="./policy-syntax.html">策略语法基础</a></li><li><a href="./entities.html">实体与实体层级</a></li><li><a href="./data-types.html">数据类型</a></li><li><a href="./operators.html">操作符</a></li><li><a href="./validation.html">策略验证</a></li><li><a href="./templates.html">策略模板</a></li><li><a href="./json-format.html">JSON 策略格式</a></li><li><a href="./schema.html">Schema 概览</a></li><li><a href="./schema-format.html">Cedar Schema 格式</a></li><li><a href="./schema-linking.html">Schema 链接</a></li><li><a href="./security.html">安全模型</a></li><li><a href="./best-practices.html">最佳实践概览</a></li><li><a href="./auth-patterns.html">授权模式</a></li><li><a href="./policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-docs · <code>docs/collections/_policies/syntax-policy.md</code> · a0b2849 · commit <code>a0b2849</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-docs/blob/a0b28494644671804c60301fee4d59f5fc4fbd99/docs/collections/_policies/syntax-policy.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-docs/docs/collections/_policies/syntax-policy.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="策略语法基础">策略语法基础</h1>
+<p>一条 Cedar 策略是一段文本文档，由四部分组成：<strong>效果</strong>（必填）、<strong>作用域</strong>（必填）、<strong>条件</strong>（可选）、<strong>注解</strong>（可选），并且必须以分号 <code>;</code> 结尾。只有当请求精确匹配作用域、所有 <code>when</code> 为真、所有 <code>unless</code> 为假时，这条策略才求值为 <code>true</code>。</p>
+<h2 id="效果permit-与-forbid">效果：permit 与 forbid</h2>
+<p><code>permit</code> 表示策略匹配时产生 <code>Allow</code>，<code>forbid</code> 表示匹配时产生 <code>Deny</code>。所有策略求值后这样合并：</p>
+<ul>
+<li>至少一条匹配策略给出 <code>Allow</code>，且<strong>恰好零条</strong>策略给出 <code>Deny</code>，整体为 <code>Allow</code>；</li>
+<li>至少一条策略给出 <code>Deny</code>，<strong>或</strong>恰好零条策略给出 <code>Allow</code>，整体为 <code>Deny</code>。</li>
+</ul>
+<p>由此得到两条要点：空策略集的默认结果是拒绝，称为<strong>隐式拒绝（implicit deny）</strong>；任何一条策略给出拒绝，整体就是拒绝，称为<strong>显式拒绝（explicit deny）</strong>。显式拒绝<strong>永远</strong>压过其他策略的允许。</p>
+<pre><code class="language-cedar">permit (
+    principal == User::&quot;alice&quot;, 
+    action == Action::&quot;view&quot;, 
+    resource == Photo::&quot;VacationPhoto94.jpg&quot;
+);
+</code></pre>
+<p>上面的 <code>permit</code> 允许 Alice 查看某张照片。下面的 <code>forbid</code> 则禁止任何人操作 <code>private</code> 为 <code>true</code> 的资源，资源所有者也不例外地受此约束——但反过来说，这条策略不授予任何权限，所有者要走通请求，仍需另一条显式允许的策略。</p>
+<pre><code class="language-cedar">forbid (
+    principal,
+    action,
+    resource
+)
+when {
+    resource.private
+}
+unless {
+    principal == resource.owner
+};
+</code></pre>
+<h2 id="作用域principalactionresource">作用域：principal、action、resource</h2>
+<p>作用域回答三个问题：谁在请求、想做什么操作、对什么资源做。三者的顺序固定。</p>
+<p><code>principal</code> 必须出现；只写 <code>principal</code> 而不加约束，表示匹配<strong>任意</strong>主体。建议不要把角色或组直接当作主体，否则以后无法写更具体的策略，例如 <code>principal.level &gt;= 10</code> 这样的用户属性判断。</p>
+<pre><code class="language-cedar">//matches any principal entity of any type
+principal
+
+//matches only the one specified entity of type User
+principal == User::&quot;alice&quot;
+
+//matches any principal in the hierarchy of the specified Group
+principal in Group::&quot;alice_friends&quot;
+
+//matches any principal of type User
+principal is User
+
+//matches any principal of type User in the hierarchy of the specified Group
+principal is User in Group::&quot;alice_friends&quot;
+</code></pre>
+<p><code>action</code> 可以是一个动作，也可以是动作列表或动作组。<code>resource</code> 与 <code>principal</code> 一样必须出现，不加约束即匹配任意资源。</p>
+<pre><code class="language-cedar">action
+
+action == Action::&quot;view&quot;
+
+action in [Action::&quot;listAlbums&quot;, Action::&quot;listPhotos&quot;, Action::&quot;view&quot;]
+
+action in Action::&quot;admin&quot;
+</code></pre>
+<pre><code class="language-cedar">resource
+
+resource == Photo::&quot;VacationPhoto94.jpg&quot;
+
+resource in Album::&quot;alice_vacation&quot;
+
+resource is Photo
+
+resource is Photo in Album::&quot;alice_vacation&quot;
+</code></pre>
+<h2 id="条件when-与-unless">条件：when 与 unless</h2>
+<p>条件补充与本次请求相关的细节：来源 IP、HTTP 头、时间、用户的认证状态，或者主体与资源的属性。每个 <code>when</code> 都必须为 <code>true</code>、每个 <code>unless</code> 都必须为 <code>false</code>，策略才算匹配。作用域里的 principal/action/resource 是系统中的稳定信息，每次请求都带；<code>context</code> 是某个时间点的请求信息，只在相关场景中需要。</p>
+<pre><code class="language-cedar">permit (
+    principal, 
+    action == Action::&quot;editPhoto&quot;, 
+    resource
+)
+when {
+   resource.owner == principal
+};
+</code></pre>
+<p><code>when</code> 在表达式为 <code>true</code> 时让策略匹配。下例要求主体属于 <code>HardwareEngineering</code> 且 <code>jobLevel</code> 至少为 5；任一属性缺失，策略都不匹配。</p>
+<pre><code class="language-cedar">when {
+    principal.department == &quot;HardwareEngineering&quot; 
+    &amp;&amp;
+    principal.jobLevel &gt;= 5
+}
+</code></pre>
+<p><code>unless</code> 则在表达式为 <code>false</code> 时让策略匹配。下例在调用方未启用 MFA 时拒绝请求：</p>
+<pre><code class="language-cedar">forbid ( principal, action, resource )
+unless {
+  context.authentication.usedMFA
+};
+</code></pre>
+<p><code>when</code> 与 <code>unless</code> 按书写顺序求值，这一点在多个子句都可能出错时决定了你看到哪条错误，详见<a href="./scenario.html">PhotoFlash 示例场景</a>。</p>
+<h2 id="注解">注解</h2>
+<p>注解是挂在策略上的任意键值对，<strong>不影响求值</strong>，只是随策略一起存储，供读取策略的服务使用。它只能放在策略最顶端、效果之前，形式为 <code>@name(&quot;value&quot;)</code>；省略值时相当于空字符串，<code>@shadow_mode</code> 等价于 <code>@shadow_mode(&quot;&quot;)</code>。</p>
+<pre><code class="language-cedar">@advice(&quot;My advice&quot;)
+@id(&quot;My ID&quot;)
+@shadow_mode
+permit (
+    ...
+);
+</code></pre>
+<p>注意 <code>@id</code> 在 Cedar 语言里并不特殊，它和别的注解一样；Cedar CLI 用它来设置策略 ID，而 Rust API 等接口另有设置方式。</p>
+<h2 id="标识符安全">标识符安全</h2>
+<p>示例中的 <code>jane</code>、<code>bob</code> 只为可读。生产系统应使用 UUID 之类永不复用的标识符，否则旧名字被新人复用时会连带继承旧策略授予的权限。用 UUID 时建议加 <code>//</code> 注释标出友好名：</p>
+<pre><code class="language-cedar">principal == User::&quot;a1b2c3d4-e5f6-a1b2-c3d4-EXAMPLE11111&quot;, // alice
+</code></pre>
+<p>作用域之外，数据类型见<a href="./data-types.html">数据类型</a>，条件里可用的运算见<a href="./operators.html">操作符</a>。</p>
+</article></main></body></html>

@@ -1,0 +1,142 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>模板与 JSON 策略 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="./01-structure.html">策略结构与 permit/forbid</a></li><li><a href="./02-data-and-operators.html">数据类型与操作符</a></li><li><a class="active" href="./03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../../catalog/cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../../catalog/cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../../catalog/cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../../catalog/cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../../catalog/cedar-docs/data-types.html">数据类型</a></li><li><a href="../../catalog/cedar-docs/operators.html">操作符</a></li><li><a href="../../catalog/cedar-docs/validation.html">策略验证</a></li><li><a href="../../catalog/cedar-docs/templates.html">策略模板</a></li><li><a href="../../catalog/cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../../catalog/cedar-docs/schema.html">Schema 概览</a></li><li><a href="../../catalog/cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../../catalog/cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../../catalog/cedar-docs/security.html">安全模型</a></li><li><a href="../../catalog/cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../../catalog/cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../../catalog/cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../../catalog/cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../../catalog/cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../../catalog/cedar/cli.html">Cedar CLI</a></li><li><a href="../../catalog/cedar/wasm.html">Cedar WASM</a></li><li><a href="../../catalog/cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../../catalog/cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../../catalog/cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../../catalog/cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../../catalog/cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="模板与-json-策略">模板与 JSON 策略</h1>
+<p>前面两章写的都是静态策略：主体、动作、资源在文本里写死。真实系统里有两类需求会打破这种写法。第一类是“同一条规则要套用到很多主体或资源上”，例如每个用户分享相册时都生成一条权限；第二类是“策略由程序生成、存储和读取”，例如管理后台或策略服务。Cedar 分别用策略模板和 JSON 策略格式来应对。</p>
+<h2 id="模板把变化的部分挖空">模板：把变化的部分挖空</h2>
+<p>策略模板就是含有占位符的策略。占位符只有两个：<code>?principal</code> 和 <code>?resource</code>。下面这条模板允许某个主体查看和评论某个资源，除非资源带 <code>private</code> 标签：</p>
+<pre><code class="language-cedar">permit (
+  principal in ?principal,
+  action in [Action::&quot;view&quot;, Action::&quot;comment&quot;], 
+  resource in ?resource
+)
+unless {
+  resource.tag ==&quot;private&quot;
+};
+</code></pre>
+<p>模板本身不是可执行的策略，不能直接参与授权决策。它描述的是一个“策略形状”，等待调用方填入具体的实体。</p>
+<h2 id="槽位能放在哪里">槽位能放在哪里</h2>
+<p>占位符的位置限制很严：只能出现在作用域中 <code>==</code> 或 <code>in</code> 的右侧。与 <code>is</code> 组合的 <code>in</code> 也算，但单独的 <code>is</code> 不算，因为 <code>?principal</code> 代表的是一个实体，而不是一个类型。两个槽位可以只用一个，也可以同时使用。</p>
+<pre><code class="language-cedar">principal == ?principal
+resource in ?resource
+</code></pre>
+<p>把槽位放到条件里、动作上，或者放到 <code>==</code> 左边，都会被拒绝。这也说明模板的参数化能力是有边界的：它只能替换“哪个主体”和“哪个资源”，不能替换动作、属性名或条件里的常量。如果一条模板同时用了两个槽位，每次链接都必须为两个槽位都提供实体值，不能只填其中一个。</p>
+<h2 id="链接策略填值并保持联动">链接策略：填值并保持联动</h2>
+<p>填入具体值后得到的是模板链接策略（template-linked policy）。假设用户把 <code>vacationTrip</code> 相册分享给 <code>friendsAndFamily</code> 组，链接时传入 <code>UserGroup::&quot;friendsAndFamily&quot;</code> 和 <code>Album::&quot;vacationTrip&quot;</code>，其效果等同于下面这条静态策略：</p>
+<pre><code class="language-cedar">permit (
+  principal in UserGroup::&quot;friendsAndFamily&quot;,
+  action in [Action::&quot;view&quot;, Action::&quot;comment&quot;], 
+  resource in Album::&quot;vacationTrip&quot;
+)
+unless {
+  resource.tag ==&quot;private&quot;
+};
+</code></pre>
+<p>区别在于它并没有被真正展开成文本。链接策略始终指向模板，模板一改，所有链接策略立即使用新版本。修模板里的 <code>unless</code> 条件，比逐条改几百条策略安全得多。</p>
+<p>代价是策略库和用户生命周期绑在了一起。新用户入职、转岗、离职，都要相应地创建或归档链接策略。离职时应该归档而不是删除，否则会丢失“谁曾经被允许做什么”的审计记录。角色越复杂，需要创建和清理的链接策略越多，这部分运维成本要在设计阶段就算进去。</p>
+<h2 id="json-策略格式">JSON 策略格式</h2>
+<p>手写用 Cedar 文本，程序读写则用 JSON。Cedar 为单条策略和整个策略集都定义了 JSON 表示。下面是一条普通策略：</p>
+<pre><code class="language-cedar">permit (
+    principal == User::&quot;12UA45&quot;,
+    action == Action::&quot;view&quot;,
+    resource in Folder::&quot;abc&quot;
+) when {
+    context.tls_version == &quot;1.3&quot;
+};
+</code></pre>
+<p>它的 JSON 表示如下：</p>
+<pre><code class="language-json">{
+    &quot;effect&quot;: &quot;permit&quot;,
+    &quot;principal&quot;: {
+        &quot;op&quot;: &quot;==&quot;,
+        &quot;entity&quot;: { &quot;type&quot;: &quot;User&quot;, &quot;id&quot;: &quot;12UA45&quot; }
+    },
+    &quot;action&quot;: {
+        &quot;op&quot;: &quot;==&quot;,
+        &quot;entity&quot;: { &quot;type&quot;: &quot;Action&quot;, &quot;id&quot;: &quot;view&quot; }
+    },
+    &quot;resource&quot;: {
+        &quot;op&quot;: &quot;in&quot;,
+        &quot;entity&quot;: { &quot;type&quot;: &quot;Folder&quot;, &quot;id&quot;: &quot;abc&quot; }
+    },
+    &quot;conditions&quot;: [
+        {
+            &quot;kind&quot;: &quot;when&quot;,
+            &quot;body&quot;: {
+                &quot;==&quot;: {
+                    &quot;left&quot;: {
+                        &quot;.&quot;: {
+                            &quot;left&quot;: {
+                                &quot;Var&quot;: &quot;context&quot;
+                            },
+                            &quot;attr&quot;: &quot;tls_version&quot;
+                        }
+                    },
+                    &quot;right&quot;: {
+                        &quot;Value&quot;: &quot;1.3&quot;
+                    }
+                }
+            }
+        }
+    ]
+}
+</code></pre>
+<p>顶层固定是 <code>effect</code>、<code>principal</code>、<code>action</code>、<code>resource</code>、<code>conditions</code>，有注解时再加 <code>annotations</code>。作用域用 <code>op</code> 表示匹配方式：<code>All</code> 对应裸关键字，<code>==</code> 和 <code>in</code> 配 <code>entity</code>，<code>is</code> 配 <code>entity_type</code>，模板槽位则写成 <code>&quot;slot&quot;: &quot;?principal&quot;</code>。</p>
+<p>条件部分是一棵表达式树。变量写成 <code>{&quot;Var&quot;: &quot;context&quot;}</code>，字面量写成 <code>{&quot;Value&quot;: &quot;1.3&quot;}</code>，属性访问写成 <code>{&quot;.&quot;: {&quot;left&quot;: {&quot;Var&quot;: &quot;context&quot;}, &quot;attr&quot;: &quot;tls_version&quot;}}</code>，二元运算写成 <code>{&quot;==&quot;: {&quot;left&quot;: {&quot;Var&quot;: &quot;context&quot;}, &quot;right&quot;: {&quot;Value&quot;: &quot;1.3&quot;}}}</code> 这样的单键对象，集合和记录分别用 <code>Set</code> 与 <code>Record</code>。扩展函数直接用函数名作键，例如 <code>{&quot;decimal&quot;: [{&quot;Value&quot;: &quot;10.0&quot;}]}</code>。JSON 不保留注释、空白和换行，所以可读性要靠格式化工具补回来。</p>
+<h2 id="json-策略集与模板链接">JSON 策略集与模板链接</h2>
+<p>整个策略集用三个键表示：<code>staticPolicies</code>、<code>templates</code>、<code>templateLinks</code>。静态策略和模板都是“ID 到策略内容”的映射，链接则单独列出模板 ID、新策略 ID 和槽位取值：</p>
+<pre><code class="language-json">{
+    &quot;staticPolicies&quot;: {
+        &quot;policy0&quot;: {
+            &quot;effect&quot;: &quot;permit&quot;,
+            &quot;principal&quot;: {
+                &quot;op&quot;: &quot;==&quot;,
+                &quot;entity&quot;: { &quot;type&quot;: &quot;User&quot;, &quot;id&quot;: &quot;12UA45&quot; }
+            },
+            &quot;action&quot;: {
+                &quot;op&quot;: &quot;==&quot;,
+                &quot;entity&quot;: { &quot;type&quot;: &quot;Action&quot;, &quot;id&quot;: &quot;view&quot; }
+            },
+            &quot;resource&quot;: {
+                &quot;op&quot;: &quot;in&quot;,
+                &quot;entity&quot;: { &quot;type&quot;: &quot;Folder&quot;, &quot;id&quot;: &quot;abc&quot; }
+            },
+            &quot;conditions&quot;: []
+        }
+    },
+    &quot;templates&quot;: {
+        &quot;template0&quot;: {
+            &quot;effect&quot;: &quot;forbid&quot;,
+            &quot;principal&quot;: {
+                &quot;op&quot;: &quot;==&quot;,
+                &quot;entity&quot;: { &quot;type&quot;: &quot;User&quot;, &quot;id&quot;: &quot;12UA45&quot; }
+            },
+            &quot;action&quot;: {
+                &quot;op&quot;: &quot;==&quot;,
+                &quot;entity&quot;: { &quot;type&quot;: &quot;Action&quot;, &quot;id&quot;: &quot;view&quot; }
+            },
+            &quot;resource&quot;: {
+                &quot;op&quot;: &quot;in&quot;,
+                &quot;slot&quot;: &quot;?resource&quot;
+            },
+            &quot;conditions&quot;: []
+        }
+    },
+    &quot;templateLinks&quot;: [
+        {
+            &quot;templateId&quot;: &quot;template0&quot;,
+            &quot;newId&quot;: &quot;policy1&quot;,
+            &quot;values&quot;: {
+                &quot;?resource&quot;: {
+                    &quot;type&quot;: &quot;Folder&quot;,
+                    &quot;id&quot;: &quot;def&quot;
+                }
+            }
+        }
+    ]
+}
+</code></pre>
+<p>把模板误放进 <code>staticPolicies</code> 会直接报错，因为静态策略不允许含槽位；<code>values</code> 的键只能是 <code>?principal</code> 或 <code>?resource</code>，值必须是实体对象。</p>
+<h2 id="用模板还是拼接字符串">用模板，还是拼接字符串</h2>
+<p>最直接的替代方案是拼字符串：把实体 id 插进策略文本再解析。它看起来简单，问题却不少。id 里出现引号或反斜杠就会破坏语法；拼出来的策略无法在写入前确认类型正确；模板更新时，你得找出所有生成的文本逐条替换，漏掉一条就产生行为不一致；审计时也看不出这些策略来自同一条规则。</p>
+<p>模板把这些问题交给 Cedar：槽位只接受实体值，链接时由 API 校验类型；模板与链接的关系被显式记录；改模板是一次原子操作。JSON 则进一步让程序不必生成文本，直接构造结构化对象，避免引号转义这一类错误。</p>
+<p>但模板不是万能参数化。它只能替换主体和资源，不能替换动作或条件常量；它也会把策略数量和用户数量绑定。如果一条规则对所有同类主体都成立，优先用属性或组来表达，例如 <code>principal.department == &quot;HardwareEngineering&quot;</code>，而不是给每个人建一条链接。只有当“授权事实”确实是逐个主体、逐个资源累积出来的时候，模板才是合适的工具。</p>
+<p>继续阅读：<a href="../../catalog/cedar-docs/templates.html">策略模板</a>、<a href="../../catalog/cedar-docs/json-format.html">JSON 策略格式</a>、<a href="../../catalog/cedar-docs/policy-syntax.html">策略语法基础</a>，以及讲验证的 <a href="../03-schema/02-validation.html">策略验证与 level validation</a>。</p>
+</article><nav class="pager"><a class="prev" href="./02-data-and-operators.html">← 数据类型与操作符</a><a class="next" href="../03-schema/01-schema.html">用 Schema 建模授权世界 →</a></nav></main></body></html>

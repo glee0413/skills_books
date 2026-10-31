@@ -1,0 +1,90 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>符号验证 symcc · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../cedar-docs/data-types.html">数据类型</a></li><li><a href="../cedar-docs/operators.html">操作符</a></li><li><a href="../cedar-docs/validation.html">策略验证</a></li><li><a href="../cedar-docs/templates.html">策略模板</a></li><li><a href="../cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../cedar-docs/schema.html">Schema 概览</a></li><li><a href="../cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../cedar-docs/security.html">安全模型</a></li><li><a href="../cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="./readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="./sdk.html">cedar-policy Rust API</a></li><li><a href="./cli.html">Cedar CLI</a></li><li><a href="./wasm.html">Cedar WASM</a></li><li><a href="./symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar · <code>cedar-policy-symcc/README.md</code> · v4.3.0-782-gd5fb0422 · commit <code>d5fb042</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar/blob/d5fb0422e6edb8617b595428530224663e122668/cedar-policy-symcc/README.md">查看原仓库</a> · <a href="../../source-snapshots/cedar/cedar-policy-symcc/README.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="符号验证-symcc">符号验证 symcc</h1>
+<p>SymCC（Symbolic Cedar Compiler）把策略编译成 SMT-LIB 逻辑约束，再用求解器回答“这组策略是否具备某种性质”。与逐条请求测试不同，它覆盖的是<strong>所有</strong>合法请求，因此能证明策略永不报错、永不全允许，或与其他策略等价。</p>
+<h2 id="能验证哪些性质">能验证哪些性质</h2>
+<p>README 列出六个核心性质，都挂在 <code>CedarSymCompiler</code> 上：</p>
+<ul>
+<li><code>check_never_errors</code>：策略在任何请求下都不会求值出错。</li>
+<li><code>check_always_allows</code>：策略集对任何合法请求都允许。</li>
+<li><code>check_always_denies</code>：策略集对任何合法请求都拒绝。</li>
+<li><code>check_implies</code>：策略集包含（subsumption），即一组的允许集合被另一组覆盖。</li>
+<li><code>check_equivalent</code>：两组策略集等价。</li>
+<li><code>check_disjoint</code>：两组策略集的允许集合不相交。</li>
+</ul>
+<p>每个性质都有对应的 <code>check_*_with_counterexample</code> 版本。性质不成立时，它返回一个<strong>具体反例</strong>：一段合成出来的请求和实体存储。反例的价值在于可执行——可以直接丢给 <code>Authorizer</code> 复现，确认不是编译器或求解器的误报。</p>
+<p>这些结论的可信度有额外保障：符号编译器与验证器已在 Lean 中形式化建模并验证，README 链接到 cedar-spec 的 <code>verified-properties</code>。</p>
+<h2 id="环境准备cvc5-131">环境准备：cvc5 1.3.1</h2>
+<p>先下载或编译 cvc5 1.3.1，并设置环境变量：</p>
+<pre><code class="language-sh">CVC5=&lt;path to cvc5 1.3.1 executable&gt;
+</code></pre>
+<p>版本不能随意替换。SymCC 生成的 SMT-LIB 依赖该版本的求解能力与选项，换版本可能直接失败或得到不一致结果。</p>
+<h2 id="示例走读">示例走读</h2>
+<p>README 的目标是验证“策略集并非对所有合法请求都允许”。先看完整代码：</p>
+<pre><code class="language-rust">use tokio;
+use std::str::FromStr;
+use cedar_policy::{Schema, PolicySet, Authorizer, Decision};
+use cedar_policy_symcc::{solver::LocalSolver, CedarSymCompiler, SymEnv, WellTypedPolicies};
+
+#[tokio::main]
+async fn main() {
+    // Parse Cedar schema
+    let schema = Schema::from_cedarschema_str(r#&quot;
+        entity User;
+        entity Document { owner: User };
+        action view appliesTo {
+            principal: [User],
+            resource: [Document]
+        };
+    &quot;#).unwrap().0;
+
+    // Parse Cedar policy set
+    let policy_set = PolicySet::from_str(r#&quot;
+        permit(principal, action == Action::&quot;view&quot;, resource)
+        when { resource.owner == principal };
+    &quot;#).unwrap();
+
+    // Initialize the symbolic compiler
+    let cvc5 = LocalSolver::cvc5().unwrap();
+    let mut compiler = CedarSymCompiler::new(cvc5).unwrap();
+
+    // Iterate through all request environments and check the property
+    for req_env in schema.request_envs() {
+        // Encode the request environment symbolically
+        let sym_env = SymEnv::new(&amp;schema, &amp;req_env).unwrap();
+
+        // Validate/type check the policy set
+        let typed_policies = WellTypedPolicies::from_policies(&amp;policy_set, &amp;req_env, &amp;schema).unwrap();
+
+        // Verify that `policy_set` does not always allow any request
+        let always_denies = compiler.check_always_allows(&amp;typed_policies, &amp;sym_env).await.unwrap();
+        assert!(!always_denies);
+
+        // Similar to above, but returns a counterexample (a synthesized request
+        // and entity store) which is denied by the policy set.
+        let cex = compiler.check_always_allows_with_counterexample(&amp;typed_policies, &amp;sym_env).await.unwrap().unwrap();
+        let resp = Authorizer::new().is_authorized(&amp;cex.request, &amp;policy_set, &amp;cex.entities);
+        assert!(resp.decision() == Decision::Deny);
+    }
+}
+</code></pre>
+<p>流程可以归纳为五步：</p>
+<ol>
+<li><strong>定义 schema</strong>。用可读的 Cedarschema 语法声明 <code>User</code>、<code>Document</code> 和一个 <code>view</code> 动作。schema 决定“什么请求是合法的”，验证只在这个范围内进行。</li>
+<li><strong>解析策略集</strong>。策略允许文档所有者查看自己的文档，显然不是全允许，所以待证性质应当为假。</li>
+<li><strong>初始化编译器</strong>。<code>LocalSolver::cvc5()</code> 找到求解器，<code>CedarSymCompiler::new(cvc5)</code> 建立上下文。注意 <code>compiler</code> 需要 <code>mut</code>，因为求解过程会累积状态。</li>
+<li><strong>遍历请求环境</strong>。<code>schema.request_envs()</code> 枚举所有 principal/action/resource 类型组合；每个组合生成一个 <code>SymEnv</code>，再用 <code>WellTypedPolicies::from_policies</code> 做类型检查。跳过这一步，后续编码可能在没有类型保证的情况下进行。</li>
+<li><strong>检查并复现反例</strong>。<code>check_always_allows</code> 返回 <code>false</code>，断言通过；<code>check_always_allows_with_counterexample</code> 返回 <code>Some(cex)</code>，把 <code>cex.request</code> 与 <code>cex.entities</code> 交给普通授权器，确认决策确为 <code>Deny</code>。</li>
+</ol>
+<p>这段代码本身也是一个好的验证范式：<strong>先证明性质不成立，再用反例自证工具链正常</strong>。如果连这个明显为假的断言都过不了，问题多半在环境而非策略。</p>
+<h2 id="构建测试与代码结构">构建、测试与代码结构</h2>
+<p>在仓库根目录执行：</p>
+<pre><code class="language-sh">cargo build -p cedar-policy-symcc
+CVC5=&lt;absolute path to cvc5 1.3.1 executable&gt; cargo test -p cedar-policy-symcc
+</code></pre>
+<p>测试必须显式传入 <code>CVC5</code> 的<strong>绝对路径</strong>，因为测试进程的工作目录不固定。</p>
+<p>crate 内部分两层：<code>symcc</code> 是核心库，和 Lean 模型一一对应；<code>lib.rs</code> 是前端，不直接对应 Lean，但把接口从 <code>cedar-policy-core</code> 类型换成 <code>cedar-policy</code> 类型。这样应用开发者不必接触内部类型就能调用验证器。</p>
+<h2 id="什么时候值得用">什么时候值得用</h2>
+<p>适合三类问题：策略重构后想确认语义没变（<code>check_equivalent</code>）；新增 <code>forbid</code> 后想确认没有误伤（<code>check_implies</code> 或反例检查）；上线前想确认策略不会因缺属性而运行时报错（<code>check_never_errors</code>）。它不能替代单元测试——反例只说明“存在一个请求”，业务上是否重要仍需人判断——但能覆盖测试样例永远覆盖不到的组合空间。</p>
+</article></main></body></html>

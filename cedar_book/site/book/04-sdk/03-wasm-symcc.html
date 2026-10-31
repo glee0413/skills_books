@@ -1,0 +1,151 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WASM、语言服务器与符号验证 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="./01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="./02-cli.html">CLI 快速上手</a></li><li><a class="active" href="./03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../../catalog/cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../../catalog/cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../../catalog/cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../../catalog/cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../../catalog/cedar-docs/data-types.html">数据类型</a></li><li><a href="../../catalog/cedar-docs/operators.html">操作符</a></li><li><a href="../../catalog/cedar-docs/validation.html">策略验证</a></li><li><a href="../../catalog/cedar-docs/templates.html">策略模板</a></li><li><a href="../../catalog/cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../../catalog/cedar-docs/schema.html">Schema 概览</a></li><li><a href="../../catalog/cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../../catalog/cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../../catalog/cedar-docs/security.html">安全模型</a></li><li><a href="../../catalog/cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../../catalog/cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../../catalog/cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../../catalog/cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../../catalog/cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../../catalog/cedar/cli.html">Cedar CLI</a></li><li><a href="../../catalog/cedar/wasm.html">Cedar WASM</a></li><li><a href="../../catalog/cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../../catalog/cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../../catalog/cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../../catalog/cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../../catalog/cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="wasm语言服务器与符号验证">WASM、语言服务器与符号验证</h1>
+<p>CLI 和 Rust SDK 覆盖了服务端的主要场景，但还有三个工具面值得单独认识：浏览器和 Node.js 里的 WASM 绑定、编辑器里的语言服务器，以及把策略编译成 SMT 约束的符号验证器 SymCC。前者决定前端能不能预演授权，后两者决定策略写完以后能不能被检查。</p>
+<h2 id="在-jsts-中安装与加载-wasm">在 JS/TS 中安装与加载 WASM</h2>
+<p>WASM 包让 JavaScript 和 TypeScript 应用直接调用 Cedar 的解析、验证和授权函数，而不需要后端转发每一次判断：</p>
+<pre><code class="language-bash">npm i @cedar-policy/cedar-wasm --save
+</code></pre>
+<p>加载方式取决于运行环境，包因此提供三个入口。默认入口是 ES module，适合现代打包器；<code>@cedar-policy/cedar-wasm/nodejs</code> 用 Node 的 <code>fs</code> 同步读取 wasm，适合没有打包器的服务端脚本；<code>@cedar-policy/cedar-wasm/web</code> 暴露 <code>initSync</code>，让你自己决定 wasm 二进制怎么获取，某些 Jest 配置也需要它。</p>
+<p>在裸 Node 里可以直接 require：</p>
+<pre><code class="language-js">const cedar = require(&#39;@cedar-policy/cedar-wasm/nodejs&#39;);
+console.log(cedar.getCedarVersion());
+</code></pre>
+<p>用 Vite 时需要两个插件处理 wasm 和顶层 await：</p>
+<pre><code class="language-bash">npm i --save-dev vite-plugin-top-level-await vite-plugin-wasm
+</code></pre>
+<pre><code class="language-js">import wasm from &#39;vite-plugin-wasm&#39;;
+import topLevelAwait from &#39;vite-plugin-top-level-await&#39;;
+import { defineConfig } from &#39;vite&#39;;
+
+export default defineConfig({
+  plugins: [
+    wasm(),
+    topLevelAwait()
+  ]
+});
+</code></pre>
+<p>然后动态导入并缓存模块：</p>
+<pre><code class="language-js">import(&#39;@cedar-policy/cedar-wasm&#39;).then(mod =&gt; {
+  // cache it globally here or invoke functions like mod.getCedarVersion();
+});
+</code></pre>
+<h2 id="wasm-api-的形状">WASM API 的形状</h2>
+<p>核心导出是 <code>isAuthorized</code>。它接收一个对象，字段对应一次授权请求：<code>principal</code>、<code>action</code>、<code>resource</code>、<code>context</code>，再加上策略集合 <code>policies</code>、实体数组 <code>entities</code>，以及可选的 <code>schema</code> 和 <code>validateRequest</code>。返回值是 <code>{ decision, diagnostics }</code>，<code>decision</code> 为 <code>&quot;allow&quot;</code> 或 <code>&quot;deny&quot;</code>，<code>diagnostics.reason</code> 列出起作用的策略 ID，<code>diagnostics.errors</code> 收集求值错误。</p>
+<pre><code class="language-ts">import { isAuthorized } from &quot;@cedar-policy/cedar-wasm&quot;;
+
+const answer = isAuthorized({
+  principal: &#39;User::&quot;alice&quot;&#39;,
+  action: &#39;Action::&quot;view&quot;&#39;,
+  resource: &#39;Photo::&quot;VacationPhoto94.jpg&quot;&#39;,
+  context: {},
+  policies: {
+    staticPolicies: `
+      permit (
+        principal in UserGroup::&quot;jane_friends&quot;,
+        action == Action::&quot;view&quot;,
+        resource
+      );
+    `,
+  },
+  entities: [
+    {
+      uid: { type: &quot;User&quot;, id: &quot;alice&quot; },
+      attrs: {},
+      parents: [{ type: &quot;UserGroup&quot;, id: &quot;jane_friends&quot; }],
+    },
+    {
+      uid: { type: &quot;UserGroup&quot;, id: &quot;jane_friends&quot; },
+      attrs: {},
+      parents: [],
+    },
+  ],
+});
+
+console.log(answer.decision); // &quot;allow&quot;
+</code></pre>
+<p><code>policies.staticPolicies</code> 既可以是拼在一起的策略文本，也可以是策略数组，或“ID 到策略”的映射。<code>entities</code> 使用 Cedar 的实体 JSON 格式，<code>uid</code> 和 <code>parents</code> 里的 <code>{ type, id }</code> 会被识别为实体引用。提供 <code>schema</code> 时，上下文里的 <code>__entity</code>、<code>__extn</code> 转义可以省略，属性类型也会被检查。</p>
+<p>同一套绑定还导出 <code>validate</code>、<code>formatPolicies</code>、<code>checkParsePolicySet</code>、<code>checkParseEntities</code>、<code>checkParseSchema</code>、<code>schemaToJson</code>、<code>policyToJson</code>、<code>linkSchemas</code> 等函数，足以在浏览器里做一个策略编辑器。函数命名和参数形状见 <a href="../../catalog/cedar/wasm.html">WASM 精读</a>。</p>
+<h2 id="浏览器授权的边界">浏览器授权的边界</h2>
+<p>WASM 很适合做交互式预演：用户改一条策略，页面立刻显示某个请求会允许还是拒绝；也可以在前端做表单校验，避免把明显非法的请求发给后端。但它不是安全边界。浏览器里的 wasm 和策略都归用户所有，攻击者可以改代码、改实体，甚至直接调用后端接口。</p>
+<p>正确的分工是：前端用同一份策略做体验优化，后端用可信的 <code>PolicySet</code> 和 <code>Entities</code> 做最终决定。两边共享策略文本和 schema，但不要把前端结果当作授权凭据。若前端与后端结果不一致，应视为策略分发或数据同步的 bug，而不是“以某一边为准”。</p>
+<h2 id="符号验证把策略编译成-smt">符号验证：把策略编译成 SMT</h2>
+<p>SymCC 把 Cedar 策略和 schema 编译成 SMT-LIB 逻辑约束，再交给 SMT 求解器判断性质是否成立。它支持检查：策略永不求值出错、策略集总是允许、策略集总是拒绝、策略集之间的蕴含、等价和不相交。每个检查都有带反例的版本；性质不成立时，它会合成一个具体的请求和实体集合，可以直接拿去复现。</p>
+<p>它的编译器与验证器在 Lean 中做过形式化建模和验证，因此结果比“随机测试没发现问题”更强。使用前需要安装 cvc5 1.3.1，并让程序能找到它：</p>
+<pre><code class="language-sh">CVC5=&lt;path to cvc5 1.3.1 executable&gt;
+</code></pre>
+<p>Rust 里的调用方式如下：</p>
+<pre><code class="language-rust">use tokio;
+use std::str::FromStr;
+use cedar_policy::{Schema, PolicySet, Authorizer, Decision};
+use cedar_policy_symcc::{solver::LocalSolver, CedarSymCompiler, SymEnv, WellTypedPolicies};
+
+#[tokio::main]
+async fn main() {
+    // Parse Cedar schema
+    let schema = Schema::from_cedarschema_str(r#&quot;
+        entity User;
+        entity Document { owner: User };
+        action view appliesTo {
+            principal: [User],
+            resource: [Document]
+        };
+    &quot;#).unwrap().0;
+
+    // Parse Cedar policy set
+    let policy_set = PolicySet::from_str(r#&quot;
+        permit(principal, action == Action::&quot;view&quot;, resource)
+        when { resource.owner == principal };
+    &quot;#).unwrap();
+
+    // Initialize the symbolic compiler
+    let cvc5 = LocalSolver::cvc5().unwrap();
+    let mut compiler = CedarSymCompiler::new(cvc5).unwrap();
+
+    // Iterate through all request environments and check the property
+    for req_env in schema.request_envs() {
+        // Encode the request environment symbolically
+        let sym_env = SymEnv::new(&amp;schema, &amp;req_env).unwrap();
+
+        // Validate/type check the policy set
+        let typed_policies = WellTypedPolicies::from_policies(&amp;policy_set, &amp;req_env, &amp;schema).unwrap();
+
+        // Verify that `policy_set` does not always allow any request
+        let always_denies = compiler.check_always_allows(&amp;typed_policies, &amp;sym_env).await.unwrap();
+        assert!(!always_denies);
+
+        // Similar to above, but returns a counterexample (a synthesized request
+        // and entity store) which is denied by the policy set.
+        let cex = compiler.check_always_allows_with_counterexample(&amp;typed_policies, &amp;sym_env).await.unwrap().unwrap();
+        let resp = Authorizer::new().is_authorized(&amp;cex.request, &amp;policy_set, &amp;cex.entities);
+        assert!(resp.decision() == Decision::Deny);
+    }
+}
+</code></pre>
+<p>这段代码遍历 schema 推出的每个请求环境，逐个证明“策略集不会永远允许”。<code>check_always_allows_with_counterexample</code> 返回的反例再交给普通 <code>Authorizer</code>，确认它确实被拒绝，形成一次交叉检查。</p>
+<p>命令行也可以调用，但需要启用 <code>analyze</code> 的实验版 <code>cedar</code>。先准备一个只含单条策略的 <code>view.cedar</code>：</p>
+<pre><code>permit (
+  principal,
+  action == Action::&quot;GetList&quot;,
+  resource
+)
+when { principal in resource.readers };
+</code></pre>
+<p>选项放在子命令之前，cvc5 路径可以用 <code>--cvc5-path</code> 或 <code>CVC5</code> 环境变量指定：</p>
+<pre><code class="language-bash">cedar symcc \
+  --schema tinytodo.cedarschema \
+  --principal-type User \
+  --action &#39;Action::&quot;GetList&quot;&#39; \
+  --resource-type List \
+  never-errors \
+  --policies view.cedar
+</code></pre>
+<p>成功时输出 <code>✓ Policy never errors: VERIFIED</code>；如果性质不成立，则打印 <code>✗ ...: DOES NOT HOLD</code> 和反例。<code>never-errors</code> 这类单策略检查要求文件里恰好有一条静态策略；策略集级别的检查用 <code>always-allows</code>、<code>always-denies</code>、<code>equivalent</code>、<code>implies</code>、<code>disjoint</code>。模板会被忽略并给出警告。</p>
+<h2 id="什么时候值得上形式化验证">什么时候值得上形式化验证</h2>
+<p>形式化验证适合回答“所有可能的请求里，会不会有一条越过边界”，而不是“我这条测试过不过”。最典型的使用场景是策略重构：把一组细粒度策略合并成更少的规则后，用 <code>equivalent</code> 证明新旧策略集等价；拆分职责时，用 <code>disjoint</code> 证明两个策略集不会同时授权同一个请求；收紧权限前，用 <code>implies</code> 证明新策略集只覆盖旧策略集的子集。发现反例时，SymCC 给出的是完整的请求和实体，排查成本远低于线上事故。</p>
+<p>它也有成本：需要 cvc5，求解可能超时，实验特性的命令行接口可能变化，模板不会参与分析。因此日常提交仍然以 <code>validate</code> 和单元测试为主，把 SymCC 放在高风险策略变更、权限模型迁移和发布前的关键门禁上。验证只能证明“策略符合写下来的性质”，无法证明性质本身写对了；后者仍要靠 schema、用例和业务评审。更多细节见 <a href="../../catalog/cedar/symcc.html">符号验证精读</a>。</p>
+<h2 id="语言服务器把反馈放进编辑器">语言服务器：把反馈放进编辑器</h2>
+<p>仓库还提供 <code>cedar-language-server</code>，一个基于 LSP 的语言服务器。构建后把编辑器或 IDE 的 Cedar 客户端指向该可执行文件即可：</p>
+<pre><code class="language-bash">cargo build -p cedar-language-server --release
+# 产物：target/release/cedar-language-server
+</code></pre>
+<p>它支持策略和 schema 文档的语法诊断、格式化、补全、悬停、跳转到定义、文档符号、折叠，以及针对部分诊断的快速修复。把策略与对应的 <code>.cedarschema</code> 关联后，验证错误可以直接显示在编辑器中，不必每次切回终端跑 <code>cedar validate</code>。对经常改策略的团队，这比单独维护一套编辑器插件更省事；语言服务器与 CLI、SDK 共用同一套解析器和验证器，反馈也更一致。</p>
+</article><nav class="pager"><a class="prev" href="./02-cli.html">← CLI 快速上手</a><a class="next" href="../05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策 →</a></nav></main></body></html>

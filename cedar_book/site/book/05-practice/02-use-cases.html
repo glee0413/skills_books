@@ -1,0 +1,138 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="./01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a class="active" href="./02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../../catalog/cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../../catalog/cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../../catalog/cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../../catalog/cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../../catalog/cedar-docs/data-types.html">数据类型</a></li><li><a href="../../catalog/cedar-docs/operators.html">操作符</a></li><li><a href="../../catalog/cedar-docs/validation.html">策略验证</a></li><li><a href="../../catalog/cedar-docs/templates.html">策略模板</a></li><li><a href="../../catalog/cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../../catalog/cedar-docs/schema.html">Schema 概览</a></li><li><a href="../../catalog/cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../../catalog/cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../../catalog/cedar-docs/security.html">安全模型</a></li><li><a href="../../catalog/cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../../catalog/cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../../catalog/cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../../catalog/cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../../catalog/cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../../catalog/cedar/cli.html">Cedar CLI</a></li><li><a href="../../catalog/cedar/wasm.html">Cedar WASM</a></li><li><a href="../../catalog/cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../../catalog/cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../../catalog/cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../../catalog/cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../../catalog/cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="六个真实用例文档云github酒店标签角色税务流媒体">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</h1>
+<p>上一章的 TinyTodo 是完整应用，重点在“请求怎样进入 Cedar”。这一章看官方示例仓库的六个用例，学习把业务语言翻译成实体、动作和策略。每个目录都有策略、schema、实体和 <code>ALLOW/</code>、<code>DENY/</code> 夹具；酒店还提供静态与模板两版，税务用模板表达临时授权。</p>
+<p>读时固定问四件事：谁在什么条件下能做什么；实体图怎样表达关系；哪条规则写成 <code>permit</code>，哪条写成 <code>forbid</code>；哪些反例进了 <code>DENY/</code>。总览见 <a href="../../catalog/cedar-examples/use-cases.html">六个真实用例条目</a>。</p>
+<h2 id="文档云三条共享轴与跨租户屏蔽">文档云：三条共享轴与跨租户屏蔽</h2>
+<p>文档云模拟 Google Drive 或 Dropbox：用户创建、查看、评论、修改、删除文档，也管理共享权限；系统多租户，必须防止用户通过共享或屏蔽列表骚扰他人。</p>
+<p>实体模型把共享拆成三条轴：<code>Document.isPrivate</code> 控制是否私有，<code>viewACL</code>、<code>modifyACL</code>、<code>manageACL</code> 指向 <code>DocumentShare</code> 组，<code>publicAccess</code> 取 <code>none</code>、<code>view</code>、<code>edit</code>。<code>User</code> 有 <code>personalGroup</code> 和 <code>blocked</code>，<code>Group</code> 有 <code>owner</code>，<code>Public::&quot;public&quot;</code> 代表未认证访问者。</p>
+<p>关键策略先用 owner 兜底，再用 ACL 扩展：</p>
+<pre><code class="language-cedar">permit (
+  principal,
+  action == Action::&quot;ViewDocument&quot;,
+  resource
+)
+when { principal in resource.viewACL }
+unless { resource.isPrivate };
+</code></pre>
+<p>真正体现多租户安全的是 <code>forbid</code>：只要双方任意一侧的 <code>blocked</code> 包含对方，查看、修改、删除、改共享等动作全部拒绝。策略先写 <code>principal has blocked</code>，因为 <code>ViewDocument</code> 的主体可能是 <code>Public</code>，而 <code>blocked</code> 只在 <code>User</code> 上；没有存在性检查，策略无法通过验证。用例还有两条护栏：私有文档只有 owner 能碰，请求必须已认证。护栏不替代具体授权，而是把“任何情况下都不能发生”的条件钉死。</p>
+<p>值得学的是：把看、改、分享拆成不同 ACL，不要让一个布尔值承担全部语义；把认证状态放进上下文，而不是主体属性；用 <code>forbid</code> 表达屏蔽、私有性这类跨动作不变量。</p>
+<h2 id="github用组层级表达五种仓库角色">GitHub：用组层级表达五种仓库角色</h2>
+<p>GitHub 用例只覆盖组织视角的一个子集。<code>User</code> 和 <code>Team</code> 都能加入 <code>UserGroup</code>，<code>UserGroup</code> 还可以继续嵌套；<code>Repository</code> 用五个 <code>UserGroup</code> 属性表示 reader、triager、writer、maintainer、admin 五档角色；<code>Issue</code> 通过 <code>repo</code> 指回仓库，通过 <code>reporter</code> 指回报告人。</p>
+<p>策略几乎全部是“主体是否在某个组里”：</p>
+<pre><code class="language-cedar">permit (
+  principal,
+  action == Action::&quot;delete_issue&quot;,
+  resource
+)
+when { principal in resource.repo.readers &amp;&amp; principal == resource.reporter };
+</code></pre>
+<p>这一条同时用了角色（reader）和资源属性（报告人）。维护者删除 issue 由另一条策略按 <code>resource.repo.maintainers</code> 放行；管理员执行五个 <code>add_*</code> 动作，靠 <code>action in [...]</code> 一次覆盖。</p>
+<p>值得学的是“资源到角色的映射放在资源属性里”。五档角色不是全局角色，而是每个仓库各自的一组人；把组实体挂到 <code>Repository</code> 上，就不需要维护巨大的“用户—仓库—角色”外部表。<code>Issue</code> 存 <code>Repository</code> 实体引用而不是仓库 id，策略用 <code>resource.repo.readers</code> 跳转，实体图承担关联查询。</p>
+<h2 id="酒店连锁层级资源与模板化授权">酒店连锁：层级资源与模板化授权</h2>
+<p>酒店用例的资源是一棵树：<code>Hotel</code> 可以嵌套 <code>Hotel</code>，<code>Property</code> 属于 <code>Hotel</code>，<code>Reservation</code> 属于 <code>Property</code>。用户对某家酒店或物业拥有 viewer、member、admin 三种角色之一，角色只覆盖特定资源类型，例如只能看预订，不能看支付信息。</p>
+<p>静态版本把授权写进用户属性：<code>viewPermissions</code>、<code>memberPermissions</code> 是 <code>PermissionsMap</code>，按资源类型存放 <code>Set&lt;Hotel&gt;</code> 和 <code>Set&lt;Property&gt;</code>；admin 直接存两个集合。策略检查 <code>resource in principal.viewPermissions.hotelReservations</code>，利用 <code>in</code> 沿实体层级向上匹配。</p>
+<p>模板版本删掉这些 map，改成每个“角色—资源类型”一个模板：</p>
+<pre><code class="language-cedar">@id(&quot;MemberReservation&quot;)
+permit (
+  principal == ?principal,
+  action in
+    [Action::&quot;viewReservation&quot;,
+     Action::&quot;updateReservation&quot;,
+     Action::&quot;createReservation&quot;],
+  resource in ?resource
+);
+</code></pre>
+<p>授予 Alice 对 <code>Property::&quot;Green&quot;</code> 的 member 权限，就新增一条链接：</p>
+<pre><code class="language-json">    {
+        &quot;template_id&quot;: &quot;MemberReservation&quot;,
+        &quot;link_id&quot;: &quot;AliceMemberGreen&quot;,
+        &quot;args&quot;: {
+            &quot;?principal&quot;: &quot;User::\&quot;Alice\&quot;&quot;,
+            &quot;?resource&quot;: &quot;Property::\&quot;Green\&quot;&quot;
+        }
+    }
+</code></pre>
+<p>模板版把“谁被授予了什么”从用户属性搬到策略存储，实体数据更干净，授权变更也不必重写 <code>entities.json</code>。静态版更容易整体快照和审查，模板版更适合频繁授予和撤销；两版共用 schema 和夹具。</p>
+<p>值得学的是：层级资源用 <code>in</code> 表达继承，不要把父链拍平成字符串；授权关系会随业务增长时，优先考虑模板而不是膨胀的属性集合；<code>@id</code> 让策略可被测试输出和审计日志引用。</p>
+<h2 id="标签与角色abac-与动态生成的策略">标签与角色：ABAC 与动态生成的策略</h2>
+<p>标签角色用例来自虚构公司 ABC Technologies。用户属于一个或多个 <code>Role</code>，每个角色对应一个动作组，例如 <code>Role-A Actions</code>；用户在每个角色下还有一组标签，按“标签组”组织，例如 <code>country</code> 的取值为 <code>germany</code>、<code>italy</code>，特殊值 <code>ALL</code> 匹配一切。资源 <code>Workspace</code> 也有标签。规则是：用户在该角色下的标签与资源标签匹配时，才允许执行该角色动作组的动作。</p>
+<p>标签存在嵌套的可选属性里：<code>User.allowedTagsForRole[&quot;Role-A&quot;].country</code>、<code>Workspace.tags.country</code>。策略对每个标签组写一段几乎相同的 <code>when</code>，逻辑是“资源标签值全部包含在用户标签值中”，并特判 <code>ALL</code>：</p>
+<pre><code class="language-cedar">when
+{
+  // match the country tag if present for this role
+  principal.allowedTagsForRole has &quot;Role-A&quot; &amp;&amp;
+  (if
+     principal.allowedTagsForRole[&quot;Role-A&quot;] has country
+   then
+     if
+       resource.tags has country
+     then
+       principal.allowedTagsForRole[&quot;Role-A&quot;].country.contains(&quot;ALL&quot;) ||
+       resource.tags.country.contains(&quot;ALL&quot;) ||
+       principal.allowedTagsForRole
+         [&quot;Role-A&quot;]
+         .country
+         .containsAll(
+           resource.tags[&quot;country&quot;]
+         )
+     else
+       true
+   else
+     true)
+}
+</code></pre>
+<p>独特之处不在语法，而在生命周期：新增角色要同时改 schema、增加动作组成员、复制策略；新增标签要改 schema，并给所有角色策略补一段 <code>when</code>。README 讨论了用 map 类型、宏和通用模板减少重复。ABAC 的“数据驱动”不免费，标签维度越多，同步成本越高；若标签频繁演进，先设计生成策略的模板和测试。</p>
+<h2 id="税务组织匹配加客户同意">税务：组织匹配加客户同意</h2>
+<p>税务用例模拟一家为客户报税的公司。<code>Professional</code> 要读 <code>Client</code> 的 <code>Document</code>，必须同时满足两个条件：专业人员在组织、服务线、地点上与文档匹配（或被临时授权），且文档所有者已经同意该地区团队查看。组织匹配写成 <code>permit</code>，同意写成 <code>forbid</code>：</p>
+<pre><code class="language-cedar">permit (
+  principal,
+  action == Taxpreparer::Action::&quot;viewDocument&quot;,
+  resource
+)
+when
+{
+  principal.assigned_orgs
+    .contains(
+      {
+        organization: resource.owner.organization,
+        serviceline: resource.serviceline,
+        location: resource.location
+      }
+    )
+};
+
+forbid (
+  principal,
+  action == Taxpreparer::Action::&quot;viewDocument&quot;,
+  resource
+)
+unless
+{
+  context.consent.client == resource.owner &amp;&amp;
+  context.consent.team_region_list.contains(principal.location)
+};
+</code></pre>
+<p>临时授权用模板 <code>adhoc-access</code>，链接时填入具体的 <code>Professional</code> 和 <code>Document</code>。把同意写成 <code>forbid</code> 而不是给每条 <code>permit</code> 加 <code>when</code>，以后新增临时授权就自动受同意约束，不会漏掉；代价是审计要同时看允许和拒绝。</p>
+<p>值得学的是：把“资格”和“同意”分开建模，前者是主体与资源的匹配，后者是请求时携带、由所有者签发的凭证；<code>context.consent</code> 是结构化 record，不是布尔标志，能精确到地区列表；用 <code>forbid</code> 守住跨策略的全局前提。</p>
+<h2 id="流媒体时间会员档位与就寝时间">流媒体：时间、会员档位与就寝时间</h2>
+<p>流媒体用例把内容分成 <code>Movie</code> 和 <code>Show</code>，会员分成 <code>FreeMember</code> 和 <code>Subscriber</code>，订阅又有 <code>standard</code>、<code>premium</code> 两档。基本规则很直白：订阅者能看非早鸟剧集、非付费点播电影；免费会员只能看免费内容。复杂的是三条时间规则：奥斯卡提名影片在颁奖礼前一个月可租可买；premium 会员提前 24 小时看早鸟剧集；儿童档案在就寝时段禁止观看。</p>
+<p>这些规则依赖实验性的 <code>datetime</code> 扩展。请求上下文带 <code>now.datetime</code> 和 <code>now.localTimeOffset</code>，策略用 <code>datetime(...)</code>、<code>duration(...)</code>、<code>offset()</code>、<code>toTime()</code> 比较：</p>
+<pre><code class="language-cedar">@id(&quot;early-access-show&quot;)
+permit (
+  principal is Subscriber,
+  action == Action::&quot;watch&quot;,
+  resource is Show
+)
+when
+{
+  resource.isEarlyAccess &amp;&amp;
+  principal.subscription.tier == &quot;premium&quot; &amp;&amp;
+  context.now.datetime &gt;= resource.releaseDate.offset(duration(&quot;-24h&quot;))
+};
+</code></pre>
+<p>就寝规则是一条 <code>forbid</code>，在 6:00 到 21:00 之外拒绝儿童档案观看。它和早鸟 <code>permit</code> 同时命中时仍然拒绝，因为 <code>forbid</code> 优先。时间不是普通资源属性，必须由应用在请求时注入，并明确时区和本地偏移；策略只负责比较。</p>
+<p>值得学的是：把当前时间放进 context，让决策可重放、可测试；用 <code>is</code> 限定主体和资源类型，避免不同会员共享策略时属性缺失；促销、早鸟、宵禁等临时规则用带 <code>@id</code> 的独立策略，结束后单独删除。</p>
+<h2 id="六个用例的共同模式">六个用例的共同模式</h2>
+<p>六个例子排成一条从静态到动态的光谱：文档云和 GitHub 用固定策略读实体属性；酒店把授权放进用户 map 或模板链接；标签角色按角色生成策略；税务把同意放进 context 并用 <code>forbid</code> 守住；流媒体进一步把时间变成 context。</p>
+<p>它们都把关系放进实体图，把规则放进策略，把当下的事实放进 context。关系可以用属性、组或模板表达：属性适合读多写少、需要整体快照；模板适合频繁授予和精确撤销；动态生成策略适合标签维度多、结构稳定。</p>
+<p>接下来读 <a href="../06-security/01-security.html">安全模型与最佳实践</a>，看这些建模方式在安全上要注意什么；也可以回到 <a href="01-tinytodo.html">TinyTodo 教程</a>，把策略片段放进可运行的请求链路。六个目录里的 <code>ALLOW/</code>、<code>DENY/</code> 夹具，则是下一章测试方法的现成素材。</p>
+</article><nav class="pager"><a class="prev" href="./01-tinytodo.html">← TinyTodo 教程：从命令到授权决策</a><a class="next" href="../06-security/01-security.html">安全模型与最佳实践 →</a></nav></main></body></html>

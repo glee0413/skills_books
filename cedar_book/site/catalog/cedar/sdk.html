@@ -1,0 +1,68 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>cedar-policy Rust API · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../cedar-docs/data-types.html">数据类型</a></li><li><a href="../cedar-docs/operators.html">操作符</a></li><li><a href="../cedar-docs/validation.html">策略验证</a></li><li><a href="../cedar-docs/templates.html">策略模板</a></li><li><a href="../cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../cedar-docs/schema.html">Schema 概览</a></li><li><a href="../cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../cedar-docs/security.html">安全模型</a></li><li><a href="../cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="./readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="./sdk.html">cedar-policy Rust API</a></li><li><a href="./cli.html">Cedar CLI</a></li><li><a href="./wasm.html">Cedar WASM</a></li><li><a href="./symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar · <code>cedar-policy/README.md</code> · v4.3.0-782-gd5fb0422 · commit <code>d5fb042</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar/blob/d5fb0422e6edb8617b595428530224663e122668/cedar-policy/README.md">查看原仓库</a> · <a href="../../source-snapshots/cedar/cedar-policy/README.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="cedar-policy-rust-api">cedar-policy Rust API</h1>
+<p><code>cedar-policy</code> 是应用侧最主要依赖的 crate：它把策略文本解析成 <code>PolicySet</code>，把一次访问请求封装成 <code>Request</code>，再由 <code>Authorizer</code> 结合实体数据给出 <code>Allow</code> 或 <code>Deny</code>。这个 README 用一个不到 30 行的程序展示了完整闭环，正好适合当作集成时的骨架。</p>
+<h2 id="依赖与最小程序">依赖与最小程序</h2>
+<p>先加依赖：</p>
+<pre><code class="language-sh">cargo add cedar-policy
+</code></pre>
+<p>README 给出的示例只有一条策略，却精确地只允许一个请求：</p>
+<pre><code class="language-cedar">permit(principal == User::&quot;alice&quot;, action == Action::&quot;view&quot;, resource == File::&quot;93&quot;);
+</code></pre>
+<p>注意这里是 <code>resource == File::&quot;93&quot;</code>，不是 <code>in</code>。等号只匹配这一个实体，所以除了“<code>alice</code> 查看文件 <code>93</code>”之外，其他任何请求都会被隐式拒绝。把这个策略嵌进 Rust：</p>
+<pre><code class="language-rust">use cedar_policy::*;
+
+fn main() {
+    const POLICY_SRC: &amp;str = r#&quot;
+permit(principal == User::&quot;alice&quot;, action == Action::&quot;view&quot;, resource == File::&quot;93&quot;);
+&quot;#;
+    let policy: PolicySet = POLICY_SRC.parse().unwrap();
+
+    let action = r#&quot;Action::&quot;view&quot;&quot;#.parse().unwrap();
+    let alice = r#&quot;User::&quot;alice&quot;&quot;#.parse().unwrap();
+    let file = r#&quot;File::&quot;93&quot;&quot;#.parse().unwrap();
+    let request = Request::new(alice, action, file, Context::empty(), None).unwrap();
+
+    let entities = Entities::empty();
+    let authorizer = Authorizer::new();
+    let answer = authorizer.is_authorized(&amp;request, &amp;policy, &amp;entities);
+
+    // Should output `Allow`
+    println!(&quot;{:?}&quot;, answer.decision());
+
+    let action = r#&quot;Action::&quot;view&quot;&quot;#.parse().unwrap();
+    let bob = r#&quot;User::&quot;bob&quot;&quot;#.parse().unwrap();
+    let file = r#&quot;File::&quot;93&quot;&quot;#.parse().unwrap();
+    let request = Request::new(bob, action, file, Context::empty(), None).unwrap();
+
+    let answer = authorizer.is_authorized(&amp;request, &amp;policy, &amp;entities);
+
+    // Should output `Deny`
+    println!(&quot;{:?}&quot;, answer.decision());
+}
+</code></pre>
+<h2 id="代码走读五步完成一次判定">代码走读：五步完成一次判定</h2>
+<p>这段代码可以拆成固定的五步，任何集成方式都绕不开：</p>
+<ol>
+<li><strong>解析策略</strong>。<code>POLICY_SRC.parse()</code> 借 <code>FromStr</code> 得到 <code>PolicySet</code>。真实项目通常从文件或配置中心读取字符串，再一次性解析，避免每次请求都重新解析。</li>
+<li><strong>构造实体 UID</strong>。<code>r#&quot;User::&quot;alice&quot;&quot;#.parse()</code> 把 Cedar 语法中的 UID 转成 <code>EntityUid</code>。这里用原始字符串 <code>r#&quot;...&quot;#</code>，是为了让内部的 <code>&quot;</code> 不必转义。</li>
+<li><strong>组装请求</strong>。<code>Request::new(principal, action, resource, context, schema)</code> 的五个参数依次是主体、动作、资源、上下文和可选 schema。示例传 <code>Context::empty()</code> 与 <code>None</code>，表示没有额外运行时信息、也不做请求级 schema 校验。</li>
+<li><strong>准备实体数据</strong>。<code>Entities::empty()</code> 说明这条策略不需要任何属性或层级——判断只靠 UID 相等。一旦策略里出现 <code>resource.owner</code> 或 <code>principal in Team::&quot;x&quot;</code>，就必须传入真实实体，否则求值会出错或得不到预期结果。</li>
+<li><strong>调用授权器</strong>。<code>Authorizer::new()</code> 创建无状态授权器，<code>is_authorized(&amp;request, &amp;policy, &amp;entities)</code> 返回响应；<code>answer.decision()</code> 取出 <code>Allow</code> 或 <code>Deny</code>。</li>
+</ol>
+<p>值得强调的是第 3 步和第 4 步的分离：请求描述“谁想做什么”，实体集合描述“世界是什么样”。Cedar 的判定只依赖这两者加策略，因此同一份策略可以在测试里配假实体、在生产里配真实数据。</p>
+<h2 id="第二次请求与默认拒绝">第二次请求与默认拒绝</h2>
+<p>程序随后把主体换成 <code>bob</code>，其余不变，再次判定，输出 <code>Deny</code>。这不是因为存在某条拒绝策略，而是因为唯一那条 <code>permit</code> 的主体条件要求 <code>principal == User::&quot;alice&quot;</code>，<code>bob</code> 不满足，于是没有策略命中，按默认拒绝处理。</p>
+<p>这段对照是理解 Cedar 语义的最小实验：<strong>允许必须显式，拒绝可以隐式</strong>。写策略时因此要反复问“还有哪些请求会意外命中这条 permit”，而不是只盯着想放行的那个。</p>
+<h2 id="与-cli示例的衔接">与 CLI、示例的衔接</h2>
+<p>README 把更进一步的内容指向三处：</p>
+<ul>
+<li>CLI：把同样的策略、实体和请求放到命令行里跑，便于快速验证。见本书 CLI 一页。</li>
+<li>文档：docs.cedarpolicy.com 覆盖语法、schema、验证与安全实践；Rust API 细节看 docs.rs 上的 <code>cedar_policy</code>。</li>
+<li>示例：<code>cedar-examples</code> 仓库里的 TinyTodo 是功能最完整的集成样例，展示 HTTP 请求如何被翻译成 Cedar 请求并强制执行。</li>
+</ul>
+<p>如果准备上生产，README 明确提醒先读安全最佳实践——尤其是不要把客户端传来的 UID 或属性直接当可信输入，以及确保实体数据与真实状态一致。</p>
+<h2 id="集成时的检查清单">集成时的检查清单</h2>
+<p>把示例搬进项目时，可以先确认四件事：策略是否只解析一次并复用；<code>Request::new</code> 的 schema 参数是否传入（传入后能提前发现类型错误）；实体集合是否覆盖策略引用到的所有属性与父关系；<code>Deny</code> 分支是否真的阻断了业务操作，而不是只记一条日志。这四点决定了 Cedar 是“真正在把关”，还是变成了装饰性的判定调用。</p>
+</article></main></body></html>

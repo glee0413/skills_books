@@ -8,10 +8,11 @@
 
 - `opensrc/gstack/`：只读来源，`https://github.com/garrytan/gstack`，固定 commit `8d9501373b55897447ae30f1d281c4dbc8a1369e`，版本 `v1.91.226.0`。
 - `opensrc/mattpocock_skills/`：只读来源，`https://github.com/mattpocock/skills`，固定 commit `5beb35b040e3de97e54fa9e386d7e42d15c295c2`，`git describe` 为 `v1.3.1-47-g5beb35b`。
-- `light_skills/`：本书的全部产物，包括 Markdown 书稿、英文快照、生成的 HTML、构建脚本和来源清单。
+- `light_skills/`：Skills Book 的全部产物，包括 Markdown 书稿、英文快照、生成的 HTML、构建脚本和来源清单。
+- `cedar_book/`：Cedar 授权策略学习书，来源为 `opensrc/cedar-docs`、`opensrc/cedar`、`opensrc/cedar-examples`。
 - `skills/`：本项目自己的可复用技能，和书稿分开。
 
-`opensrc/` 下的两个上游仓库是独立 git 仓库，已被 `.gitignore` 排除，不要把它们加入本仓库索引，也不要在里面提交改动。
+`opensrc/` 下的上游仓库是独立 git 仓库，已被 `.gitignore` 排除，不要把它们加入本仓库索引，也不要在里面提交改动。
 
 ## 先读什么
 
@@ -35,6 +36,12 @@ npm run check:sources  # 校验英文快照；加 -- --upstream 对比同级上�
 npm run build          # 重新生成 site/
 npm run stats          # 查看各项目和状态的篇数
 npm run serve          # 本地预览，默认 127.0.0.1:4173
+
+cd cedar_book
+npm ci
+npm run build
+npm run check
+npm run serve -- --port 4174
 ```
 
 ## 写译文的规则

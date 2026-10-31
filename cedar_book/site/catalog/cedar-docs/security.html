@@ -1,0 +1,61 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>安全模型 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="./terminology.html">术语与核心概念</a></li><li><a href="./scenario.html">PhotoFlash 示例场景</a></li><li><a href="./authorization.html">授权如何工作</a></li><li><a href="./policy-syntax.html">策略语法基础</a></li><li><a href="./entities.html">实体与实体层级</a></li><li><a href="./data-types.html">数据类型</a></li><li><a href="./operators.html">操作符</a></li><li><a href="./validation.html">策略验证</a></li><li><a href="./templates.html">策略模板</a></li><li><a href="./json-format.html">JSON 策略格式</a></li><li><a href="./schema.html">Schema 概览</a></li><li><a href="./schema-format.html">Cedar Schema 格式</a></li><li><a href="./schema-linking.html">Schema 链接</a></li><li><a href="./security.html">安全模型</a></li><li><a href="./best-practices.html">最佳实践概览</a></li><li><a href="./auth-patterns.html">授权模式</a></li><li><a href="./policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-docs · <code>docs/collections/_other/security.md</code> · a0b2849 · commit <code>a0b2849</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-docs/blob/a0b28494644671804c60301fee4d59f5fc4fbd99/docs/collections/_other/security.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-docs/docs/collections/_other/security.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="安全模型">安全模型</h1>
+<p>Cedar 的安全是<strong>共同责任</strong>：Cedar 负责正确地求值策略、得出授权决定；使用者负责把授权模型正确写成策略，并把决策所需的全部数据交给 Cedar。Cedar 提供验证器等工具，但策略写得对不对，最终仍由使用者承担。</p>
+<h2 id="cedar-自己保证了什么">Cedar 自己保证了什么</h2>
+<p>Cedar 团队用三件产物来保证语言实现的正确性与安全性：</p>
+<ol>
+<li><strong>Lean 形式化模型</strong>。Lean 是开源的编程语言兼定理证明器。模型里有 Cedar 各组件的可执行定义，即语义，也有关于这些组件的性质；Lean 证明这些性质成立，从而让人相信“基准定义”本身是对的。</li>
+<li><strong>Rust 生产引擎</strong>。只使用 Rust 的安全子集，获得内存安全、类型安全和数据竞争安全。另外用基于性质的测试（property-based testing）检查那些在 Lean 里难以证明的性质，例如策略解析与格式化能否往返一致。</li>
+<li><strong>差分测试引擎</strong>。自动比对形式模型与生产实现，确认两者语义相同，于是模型上证明过的性质对生产实现同样成立。</li>
+</ol>
+<p>这条链条的意义是：形式化给出可信的规范，工程实现追求性能与安全，差分测试把两者钉在一起。</p>
+<h2 id="应用侧必须理解的三条语义">应用侧必须理解的三条语义</h2>
+<p>写策略前必须先理解单条策略结果如何合并成最终决定：</p>
+<ul>
+<li><strong>default deny</strong>：除非某条 <code>permit</code> 求值为 <code>true</code>，否则查询结果为 <code>Deny</code>。</li>
+<li><strong>forbid overrides permit</strong>：只要有一条 <code>forbid</code> 求值为 <code>true</code>，结果就是 <code>Deny</code>。</li>
+<li><strong>skip on error</strong>：策略求值出错时，该策略在本次决策中被忽略。</li>
+</ul>
+<p>第三条尤其容易被忽视：它意味着错误不会让请求“更安全”，而是让本该生效的规则悄悄消失。详见<a href="./authorization.html">授权如何工作</a>。</p>
+<h2 id="用-schema-验证策略">用 schema 验证策略</h2>
+<p>Schema 描述请求中实体的预期结构与类型：有哪些实体类型、各自作为动作/主体/资源如何使用、如何组成层级、有哪些属性。策略入库前先验证，通过验证的策略在符合 schema 的实体与请求上运行时就不会出现运行时错误。</p>
+<p>验证器能发现的典型问题包括：</p>
+<ul>
+<li>无法识别的实体类型与动作，例如把 <code>Album</code> 拼成 <code>Albom</code>；</li>
+<li>动作被用在不受支持的主体或资源上，例如让 <code>Photo</code> 去 <code>View</code> 一个 <code>User</code>；</li>
+<li><code>in</code> 或 <code>==</code> 使用不当，例如 <code>principal in Album::&quot;trip&quot;</code>，而主体不可能是 <code>Photo</code>；</li>
+<li>无法识别的属性，例如把 <code>jobLevel</code> 写成 <code>jobbLevel</code>；</li>
+<li>属性类型不匹配，例如 <code>principal.hireDate + 3</code>；</li>
+<li>可选属性未做存在性检查就被引用，例如直接写 <code>principal.optionalValue &lt; 100</code>，而不是先 <code>principal has optionalValue</code>；</li>
+<li>扩展类型构造参数非法，例如 <code>IP(&quot;3.45.1111.43&quot;)</code> 不是合法 IP。</li>
+</ul>
+<p>写对 schema 是使用者的责任，保证验证器正确是 Cedar 的责任。Cedar 还提供<strong>实体验证</strong>与<strong>请求验证</strong>，用于检查数据是否符合 schema；验证算法同样在 Lean 中建模并证明，再用差分测试保证生产实现与模型一致。具体流程见<a href="./validation.html">策略验证</a>。</p>
+<h2 id="输入规模必须自己设限">输入规模必须自己设限</h2>
+<p>Cedar 规范<strong>不限制</strong>策略、schema 或请求的大小。接受任意 Cedar 输入的服务必须自行设置上限，以防内存耗尽。Cedar 提供的解析器在有界输入上是安全的，也是推荐的输入校验方式。有界大小的 Cedar 策略保证会终止，且没有副作用。</p>
+<h2 id="应用侧的最佳实践">应用侧的最佳实践</h2>
+<p>原文给出的清单可以归纳为四组。</p>
+<p><strong>权限最小化与集中化。</strong> 策略应遵循最小权限，只授予完成任务所需的权限；所有授权逻辑都放在 Cedar 策略里，不要散落在应用各处；能用模板就复用模板，避免重复逻辑并保留单一修改点。</p>
+<p><strong>谨慎对待可修改策略的人。</strong> Cedar 没有 I/O 能力，策略无法读文件或访问网络；一条策略的求值不会影响另一条；所有策略都会终止，但恶意用户仍可提交超长策略消耗存储或性能，因此要设长度上限。另外，Cedar 只做<strong>授权</strong>，不做<strong>认证</strong>——应用必须自己完成身份验证，只对认证成功的主体做授权。</p>
+<p><strong>不要用字符串拼接生成策略。</strong> 拼接容易出错，且当攻击者控制输入时会导致 Cedar 代码注入。原文的例子：</p>
+<pre><code>let src = &quot;permit (&quot; + input + &quot;, action == Action::\&quot;view\&quot;, resource) when { principal.level &gt; 3 }&quot;;
+let policy = parse(src);
+addToPolicySet(policy);
+</code></pre>
+<p>正常输入 <code>principal == User::&quot;alice&quot;</code> 会得到预期策略；但攻击者若把 <code>input</code> 设为：</p>
+<pre><code class="language-cedar">&quot;principal,action,resource); //&quot;
+</code></pre>
+<p>拼出的策略就变成：</p>
+<pre><code class="language-cedar">permit (principal,action,resource); //, action == ,Action::&quot;view&quot;, resource) when { principal.level &gt; 3 };
+</code></pre>
+<p>这等于允许任何人对任何资源执行任何动作。这里的“代码注入”指注入 Cedar 代码，不是任意代码执行；防止任意代码注入是 Cedar 库的责任，但避免拼接是应用的责任。正确做法是用策略模板。</p>
+<p><strong>标识符要唯一、不可变、不可回收。</strong> 用户名或组名这类可变标识很危险：如果 Alice 离职后又有一个 Alice 入职并复用 <code>alice</code> 这个用户名，她就会继承所有尚未清理的策略所授予的权限。因此策略只能引用<strong>唯一、规范化、不可变、不可回收</strong>的标识符，推荐 UUID，或序列号、URN 等等价方案：</p>
+<pre><code class="language-cedar">permit (
+    principal == User::&quot;2dad2883-cba1-4a1e-b212-a6c0a5290dad&quot;, // &quot;Alice&quot;
+    action in ...,
+    resource in ...
+);
+</code></pre>
+<p>最后两条同样重要：用于决策的策略、实体和上下文数据不能被潜在攻击者读取或篡改；调用授权 API 之前要先规范化输入数据。相关建模建议见<a href="./best-practices.html">最佳实践概览</a>。</p>
+</article></main></body></html>

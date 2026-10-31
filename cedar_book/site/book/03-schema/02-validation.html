@@ -1,0 +1,89 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>策略验证与 level validation · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="./01-schema.html">用 Schema 建模授权世界</a></li><li><a class="active" href="./02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../../catalog/cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../../catalog/cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../../catalog/cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../../catalog/cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../../catalog/cedar-docs/data-types.html">数据类型</a></li><li><a href="../../catalog/cedar-docs/operators.html">操作符</a></li><li><a href="../../catalog/cedar-docs/validation.html">策略验证</a></li><li><a href="../../catalog/cedar-docs/templates.html">策略模板</a></li><li><a href="../../catalog/cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../../catalog/cedar-docs/schema.html">Schema 概览</a></li><li><a href="../../catalog/cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../../catalog/cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../../catalog/cedar-docs/security.html">安全模型</a></li><li><a href="../../catalog/cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../../catalog/cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../../catalog/cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../../catalog/cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../../catalog/cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../../catalog/cedar/cli.html">Cedar CLI</a></li><li><a href="../../catalog/cedar/wasm.html">Cedar WASM</a></li><li><a href="../../catalog/cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../../catalog/cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../../catalog/cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../../catalog/cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../../catalog/cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="策略验证与-level-validation">策略验证与 level validation</h1>
+<p>一段策略可以通过语法解析，却在语义上全错。下面这段来自官方文档的例子把 <code>User</code> 拼成 <code>Uzer</code>、动作写成 <code>ReadFile</code>，还访问了不存在的 <code>isAcctive</code>，并把字符串和数字比较：</p>
+<pre><code class="language-cedar">permit (
+    principal == ExampleCo::Uzer::&quot;12345&quot;,   // should be &quot;User&quot;, not &quot;Uzer&quot;
+    action == ExampleCo::Action::&quot;ReadFile&quot;, // should be &quot;readFile&quot;, not &quot;ReadFile&quot;
+    resource == ExampleCo::User::&quot;67890&quot;     // &quot;readFile&quot; isn&#39;t a valid operation on a User
+)
+when {
+    principal.isAcctive           // should be &quot;isActive&quot;, not &quot;isAcctive&quot;
+      &amp;&amp;
+    principal.username &gt; 2        // comparing a string against a number
+};
+</code></pre>
+<p>解析器无法判断作者想写 <code>Uzer</code> 还是 <code>User</code>；只有把应用的结构告诉它，才能发现这些错误。这份结构就是 Schema。验证（validation）用 Schema 检查策略中的实体类型、动作、属性名、属性类型和作用域是否自洽。它发生在授权请求之外，通常在策略入库或发布前调用。概念说明见 <a href="../../catalog/cedar-docs/validation.html">策略验证</a>。</p>
+<h2 id="验证能抓到什么">验证能抓到什么</h2>
+<p>错误级问题会让策略在运行时求值失败或被忽略，包括：实体类型或动作名拼错；动作被套用到不支持的主体或资源；该用 <code>in</code> 的地方用了 <code>==</code>；访问未声明的属性；未用 <code>has</code> 保护就读取可选属性；操作符两端类型不匹配；枚举实体使用了未声明的 id。</p>
+<p>警告级问题不一定报错，但通常不是作者本意：条件恒为 false，例如主体永远不可能是某个类型却写 <code>principal is Admin</code>；字符串混用多种 Unicode 文字系统；包含双向文本控制字符；实体 id 中出现不可打印字符。警告值得当错误处理，尤其在安全相关的策略里。</p>
+<p>下面这段策略配合 <code>ExampleCo::Personnel</code> 的 Schema，会得到两个错误和一个警告：</p>
+<pre><code class="language-cedar">permit (
+    principal,
+    action == ExampleCo::Personnel::Action::&quot;remoteAccess&quot;,
+    resource
+)
+when {
+    principal.numberOfLatpops &lt; 5 &amp;&amp;        // (1)
+    principal.name &gt; 3 &amp;&amp;                   // (2)
+    principal.jobLevel == &quot;somethingelse&quot;   // (3)
+};
+</code></pre>
+<p>(1) 属性名拼错，Schema 中没有 <code>numberOfLatpops</code>；(2) <code>name</code> 是 <code>String</code>，而 <code>&gt;</code> 只接受 <code>Long</code>，运行时必然出错；(3) <code>jobLevel</code> 是 <code>Long</code>，与 <code>String</code> 比较永远为 false，因此只是警告。</p>
+<h2 id="验证工作流">验证工作流</h2>
+<p>验证器需要两个输入：已解析的 Schema，以及一个 <code>PolicySet</code>。在 Rust 中通常先解析 Schema，再创建 <code>Validator</code>，最后对策略集调用 <code>validate</code>：</p>
+<pre><code class="language-rust">let schema_text = r#&quot;
+entity UserGroup;
+entity User in [UserGroup] = {
+  &quot;age&quot;: Long
+};
+entity Album;
+action view appliesTo {
+  principal: [User],
+  resource: [Album]
+};
+&quot;#;
+let (schema, warnings) = Schema::from_cedarschema_str(schema_text).unwrap();
+assert_eq!(warnings.count(), 0);
+let validator = Validator::new(schema);
+
+let result = Validator::validate(&amp;validator, &amp;p, ValidationMode::default());
+if ValidationResult::validation_passed(&amp;result) {
+    println!(&quot;Validation Passed&quot;);
+} else {
+    println!(&quot;Validation Failed.&quot;);
+    let e = ValidationResult::validation_errors(&amp;result);
+    for err in e {
+        println!(&quot;{}&quot;, err);
+    }
+}
+</code></pre>
+<p>用 CLI 更直接：</p>
+<pre><code class="language-bash">cedar validate --schema photoflash.cedarschema --policies policies.cedar
+cedar validate --schema photoflash.cedarschema --policies policies.cedar --level 1
+</code></pre>
+<p><code>--level</code> 会同时执行分级验证；<code>--deny-warnings</code> 可让警告也导致失败，适合 CI。</p>
+<h2 id="schema-链接拆分大型模型">Schema 链接：拆分大型模型</h2>
+<p>从 Cedar 4.6 起，Schema 可以先声明 <code>external entity</code> 或 <code>external action</code>，再用链接（linking）把多个文件合并。链接把每个外部声明与同名定义配对，结果与文件顺序、分组方式无关。</p>
+<pre><code class="language-cedarschema">external entity User;
+entity Document {
+    owner: User,
+};
+</code></pre>
+<p>另一个 Schema 定义 <code>User</code>：</p>
+<pre><code class="language-cedarschema">entity User;
+</code></pre>
+<p>链接后得到完整的 <code>Document</code> 与 <code>User</code>。规则有两条要特别注意：已定义实体类型的祖先集合在链接前后不能改变，否则拒绝链接；同名动作的所有声明必须给出相同祖先。链接后仍可能留下未解析的外部声明。此时可以验证已定义类型的实体、动作和针对已定义动作的请求，但不能验证策略，也不能验证外部类型的实体或外部动作的请求。细节见 <a href="../../catalog/cedar-docs/schema-linking.html">Schema 链接</a>。</p>
+<h2 id="level-validation限制解引用深度">level validation：限制解引用深度</h2>
+<p>普通验证保证类型安全，却不限制策略沿着实体属性走多远。level validation 在普通验证之后运行，规定策略中实体解引用链的长度不得超过层级 <code>n</code>。它限制三类操作：属性访问 <code>.</code> 与 <code>has</code>、标签 <code>getTag</code> 与 <code>hasTag</code>、以及层级判断 <code>in</code> 的第一个操作数；record 的字段访问不受限。</p>
+<p>level 0 不允许任何实体解引用，但仍可比较实体、检查类型、读取 context：</p>
+<pre><code class="language-cedar">principal is User
+action == Action::&quot;view&quot;
+context.is_authenticated
+</code></pre>
+<p>level 1 允许直接读取请求中根实体的数据，例如 <code>principal.is_admin</code>、<code>action in Action::&quot;read_only&quot;</code>，也允许先 <code>has</code> 再访问一层属性；但不能写 <code>resource.owner.is_admin</code> 这样的二级链。level 2 起可以逐层组合。无论哪一级，都不能对实体字面量做解引用，例如 <code>User::&quot;alice&quot;.is_admin</code>，因为切片过程无法从请求出发找到这个字面量对应的数据。</p>
+<h2 id="数据切片只取相关实体">数据切片：只取相关实体</h2>
+<p>有了层级上限，就可以做 level-based slicing：从请求中的 <code>principal</code>、<code>action</code>、<code>resource</code> 以及 context 里引用的实体出发，迭代 <code>n</code> 次，每次查出当前工作集中实体的数据放进切片，并把它属性或标签中引用的实体加入下一轮工作集。最终切片包含策略可能访问的全部数据；用切片数据授权与用全量数据授权结果相同。</p>
+<p>Cedar 库不提供切片实现，因为实体通常存在数据库里。应用应把每一轮变成按 UID 批量查询，而不是把全库加载进内存。若所有策略都在 level 0 通过，切片为空；若都在 level 1 通过，只需取请求直接引用的实体。</p>
+<h2 id="验证的边界">验证的边界</h2>
+<p>验证可靠性（validation soundness）保证：通过验证的策略，在请求符合 Schema 的前提下不会出现大多数运行时错误。但有三类问题它管不了：<code>Long</code> 相加溢出；请求中缺少策略引用的实体；非严格模式下把非字面量字符串传给扩展类型构造函数。请求校验和基于 Schema 的 JSON 解析能减少后两类问题，但不会确认实体一定存在。</p>
+<p>因此，验证不是一次性的。Schema 改动后，旧策略可能失效，必须重新验证；请求数据也必须符合 Schema，否则“已验证”的策略仍可能在运行时被忽略。把这些检查放进 CI，并与 <a href="../04-sdk/01-rust-sdk.html">Rust SDK</a> 的启动流程结合，才能让验证真正发挥作用。</p>
+</article><nav class="pager"><a class="prev" href="./01-schema.html">← 用 Schema 建模授权世界</a><a class="next" href="../04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用 →</a></nav></main></body></html>

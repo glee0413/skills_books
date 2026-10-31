@@ -1,0 +1,66 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Cedar WASM · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../cedar-docs/data-types.html">数据类型</a></li><li><a href="../cedar-docs/operators.html">操作符</a></li><li><a href="../cedar-docs/validation.html">策略验证</a></li><li><a href="../cedar-docs/templates.html">策略模板</a></li><li><a href="../cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../cedar-docs/schema.html">Schema 概览</a></li><li><a href="../cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../cedar-docs/security.html">安全模型</a></li><li><a href="../cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="./readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="./sdk.html">cedar-policy Rust API</a></li><li><a href="./cli.html">Cedar CLI</a></li><li><a href="./wasm.html">Cedar WASM</a></li><li><a href="./symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar · <code>cedar-wasm/README.md</code> · v4.3.0-782-gd5fb0422 · commit <code>d5fb042</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar/blob/d5fb0422e6edb8617b595428530224663e122668/cedar-wasm/README.md">查看原仓库</a> · <a href="../../source-snapshots/cedar/cedar-wasm/README.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="cedar-wasm">Cedar WASM</h1>
+<p><code>cedar-wasm</code> 把 Cedar 的能力编译成 WebAssembly，让 TypeScript/JavaScript 应用也能在本地完成策略解析、验证和授权判定。README 的核心判断是：<strong>安装很简单，加载很难</strong>——难在 wasm 文件如何进入运行时，而这取决于打包器和部署环境。</p>
+<h2 id="安装与三个子包">安装与三个子包</h2>
+<pre><code class="language-sh">npm i @cedar-policy/cedar-wasm --save
+</code></pre>
+<p>包名相同，但通过 <code>exports</code> 暴露三种加载策略：</p>
+<ul>
+<li><strong>es modules（默认）</strong>，即 <code>@cedar-policy/cedar-wasm</code>。用动态导入时 wasm 会被打进单独文件，用静态导入时则嵌入主 bundle。</li>
+<li><strong>commonjs（Node）</strong>，即 <code>@cedar-policy/cedar-wasm/nodejs</code>。通过 Node 的 <code>fs</code> 同步读取 wasm，不面向打包或浏览器分发。</li>
+<li><strong>web</strong>，即 <code>@cedar-policy/cedar-wasm/web</code>。暴露 <code>initSync</code>，适合完全自定义加载流程的场景。</li>
+</ul>
+<p>选错子包的典型症状是：在浏览器里报 <code>fs</code> 找不到，或在 Node 里 wasm 初始化时机不对。先确认运行时，再选入口。</p>
+<h2 id="裸-noderequire-或动态-import">裸 Node：require 或动态 import</h2>
+<p>Node 默认走 CommonJS，所以要么 <code>require</code>，要么用动态 <code>import()</code>：</p>
+<pre><code>const cedar = require(&#39;@cedar-policy/cedar-wasm/nodejs&#39;);
+console.log(cedar.getCedarVersion());
+</code></pre>
+<p>用 ESM 异步导入则写：</p>
+<pre><code>import(&#39;@cedar-policy/cedar-wasm/nodejs&#39;)
+  .then(cedar =&gt; console.log(cedar.getCedarVersion()));
+</code></pre>
+<p><code>getCedarVersion()</code> 是最小的连通性检查：能打印出版本号，说明 wasm 已正确实例化，可以继续调用解析与授权函数。</p>
+<h2 id="webpack-5打开-asyncwebassembly">webpack 5：打开 asyncWebAssembly</h2>
+<p>webpack 需要显式允许异步 wasm。README 给了一份最小 <code>package.json</code>，依赖 <code>@cedar-policy/cedar-wasm</code>，开发依赖包括 <code>ts-loader</code>、<code>typescript</code>、<code>webpack</code>、<code>webpack-cli</code>、<code>webpack-dev-server</code> 和 <code>html-webpack-plugin</code>。<code>tsconfig.json</code> 的关键项是 <code>&quot;module&quot;: &quot;es2020&quot;</code>、<code>&quot;moduleResolution&quot;: &quot;node&quot;</code> 和 <code>&quot;allowJs&quot;: true</code>。</p>
+<p><code>webpack.config.js</code> 的要点只有一处：</p>
+<pre><code>  experiments: {
+    asyncWebAssembly: true, // enables wasm support in webpack
+  },
+</code></pre>
+<p>配合 <code>entry: &#39;./src/index.ts&#39;</code>、<code>ts-loader</code> 规则和 <code>HtmlWebpackPlugin</code>，最后在入口文件里动态导入：</p>
+<pre><code>import(&#39;@cedar-policy/cedar-wasm&#39;).then(mod =&gt; {
+  // cache it globally here or invoke functions like mod.getCedarVersion();
+});
+</code></pre>
+<p>注释里的建议值得照做：把 <code>mod</code> 缓存到全局，避免每次判定都重新触发加载。Cedar 的授权调用本身很快，重复初始化 wasm 往往才是瓶颈。</p>
+<h2 id="vite-5两个插件">Vite 5：两个插件</h2>
+<p>从 Vite 的 TypeScript 模板起步，先装两个开发依赖：</p>
+<pre><code>npm i --save-dev vite-plugin-top-level-await vite-plugin-wasm
+</code></pre>
+<p>然后在 <code>vite.config.js</code> 里注册：</p>
+<pre><code>import wasm from &#39;vite-plugin-wasm&#39;;
+import topLevelAwait from &#39;vite-plugin-top-level-await&#39;;
+import { defineConfig } from &#39;vite&#39;;
+
+export default defineConfig({
+  plugins: [
+    wasm(),
+    topLevelAwait()
+  ]
+});
+</code></pre>
+<p>加载代码与 webpack 一致，仍是 <code>import(&#39;@cedar-policy/cedar-wasm&#39;).then(...)</code>。两个插件分别解决 wasm 模块解析和顶层 await 的兼容问题，缺一个就可能在构建期或运行期报错。</p>
+<h2 id="备用加载策略与-initsync">备用加载策略与 initSync</h2>
+<p>如果不能用 ES modules，就走 <code>web</code> 或 <code>nodejs</code> 子包。<code>nodejs</code> 已在上文出现；<code>web</code> 适合需要自己掌控 wasm 二进制获取时机的场景，例如测试环境：</p>
+<pre><code>const wasmBuffer = ... // `fetch` it or use `fs` to read it from `node_modules` in jest setupTests
+import * as cedarJsBindings from &#39;@cedar-policy/cedar-wasm/web&#39;;
+cedarJsBindings.initSync(wasmBuffer);
+</code></pre>
+<p>注释点明了两个常见来源：浏览器里用 <code>fetch</code> 拿二进制，Jest 的 <code>setupTests</code> 里用 <code>fs</code> 从 <code>node_modules</code> 读。某些 Jest 配置也必须用这种方式，因为默认子包依赖的动态导入在测试环境中不一定可用。</p>
+<h2 id="选型小结">选型小结</h2>
+<p>浏览器应用优先默认子包加动态导入；Node 服务端脚本用 <code>nodejs</code> 子包；打包器不兼容或测试环境受限时用 <code>web</code> 加 <code>initSync</code>。三条路径导出的是同一组 Cedar 能力：版本查询、策略解析与验证、实体构造、授权判定。差别只在 wasm 二进制如何被找到和实例化，因此业务代码可以先按默认子包写，等到部署环境暴露问题再替换入口。</p>
+<p>无论哪条路径，都建议在启动时做一次版本检查并缓存模块实例，把加载失败与授权拒绝区分开——前者是部署问题，后者才是策略问题。另一个容易忽略的点是构建产物：wasm 文件必须随前端资源一起发布，若服务器只托管 JS 而漏掉 <code>.wasm</code>，本地开发正常、线上却初始化失败。上线前用生产构建跑一次最小判定，比在开发服务器上反复刷新更可靠。</p>
+</article></main></body></html>

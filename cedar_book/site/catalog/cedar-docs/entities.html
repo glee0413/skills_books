@@ -1,0 +1,53 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>实体与实体层级 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="./terminology.html">术语与核心概念</a></li><li><a href="./scenario.html">PhotoFlash 示例场景</a></li><li><a href="./authorization.html">授权如何工作</a></li><li><a href="./policy-syntax.html">策略语法基础</a></li><li><a href="./entities.html">实体与实体层级</a></li><li><a href="./data-types.html">数据类型</a></li><li><a href="./operators.html">操作符</a></li><li><a href="./validation.html">策略验证</a></li><li><a href="./templates.html">策略模板</a></li><li><a href="./json-format.html">JSON 策略格式</a></li><li><a href="./schema.html">Schema 概览</a></li><li><a href="./schema-format.html">Cedar Schema 格式</a></li><li><a href="./schema-linking.html">Schema 链接</a></li><li><a href="./security.html">安全模型</a></li><li><a href="./best-practices.html">最佳实践概览</a></li><li><a href="./auth-patterns.html">授权模式</a></li><li><a href="./policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-docs · <code>docs/collections/_policies/syntax-entity.md</code> · a0b2849 · commit <code>a0b2849</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-docs/blob/a0b28494644671804c60301fee4d59f5fc4fbd99/docs/collections/_policies/syntax-entity.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-docs/docs/collections/_policies/syntax-entity.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="实体与实体层级">实体与实体层级</h1>
+<p>在 Cedar 里，主体、动作、资源都是<strong>实体（entity）</strong>——一种被存储的对象，用统一的结构表示应用中的各类参与者与数据。</p>
+<h2 id="实体由什么组成">实体由什么组成</h2>
+<ul>
+<li><strong>实体类型</strong>：决定该类型支持或要求哪些属性，例如 <code>User</code>、<code>Photo</code>、<code>Album</code>、<code>Group</code>、<code>Account</code>。类型在 schema 中定义。<code>Action</code> 有特殊含义：请求中的 <code>action</code> 必须是 <code>Action</code> 类型，动作实体不允许有属性和标签。<code>__cedar</code> 是保留类型，凡包含该标识的类型名都不能使用。</li>
+<li><strong>实体标识符（EID）</strong>：让你在策略里指向某个具体实体。类型 + EID 唯一确定一个对象。</li>
+<li><strong>属性</strong>：零个或多个，值可以是 Cedar 支持的任意数据类型。例如 <code>Photo</code> 可以有 <code>name</code>、<code>createdDate</code>、<code>location</code>（Decimal 集合表示的坐标）、<code>photographer</code>（指向另一个实体的引用）。</li>
+<li><strong>标签</strong>：零个或多个，类似属性，但键名在运行时才确定，写策略和 schema 时并不知道。</li>
+</ul>
+<p>EID 的安全提醒与策略页相同：生产环境必须用 UUID 一类不可复用的值，否则 <code>jane</code> 这个名字被新人接手后会继承旧权限。</p>
+<h2 id="层级parent">层级：parent</h2>
+<p>给实体指定 <code>parent</code> 属性，就把它归入某个组。层级按场景需要任意组织：<code>Photo</code> 可以放进一个或多个 <code>Album</code>。一个实体可以有多个父实体，层级也可以嵌套——相册 <code>trips</code> 是 <code>vacations</code> 的父级，<code>vacations</code> 又是一批照片的父级，而其中一张照片同时还可以属于 <code>picturesOfBob</code>，只要再加一个 <code>parent</code> 指向那个相册。</p>
+<p>组也能嵌套组，因此可以表达多级组织架构。除了主体侧的 <code>User</code> 属于 <code>UserGroup</code>，同样的机制可用于资源（文件属于文件夹，文件夹再属于上层文件夹）和动作（<code>viewPhoto</code> 属于 <code>readOnly</code> 动作组）。</p>
+<h2 id="实体支持的操作符">实体支持的操作符</h2>
+<ul>
+<li><strong>相等 <code>==</code></strong>：判断两个实体是否字面相同、UID 相同。</li>
+<li><strong>层级/成员 <code>in</code></strong>：判断一个实体是否在另一个实体的层级之下。</li>
+<li><strong>属性存在 <code>has</code></strong>：在取值前确认属性存在；访问不存在的属性会报错。</li>
+<li><strong>属性访问 <code>.</code></strong>：<code>entityName.attributeName</code>。</li>
+<li><strong>标签存在 <code>.hasTag()</code></strong>：取值前确认标签存在。</li>
+<li><strong>标签取值 <code>.getTag()</code></strong>：返回类型由 schema 中的 <code>tags</code> 声明决定。</li>
+</ul>
+<p><code>in</code> 是传递且自反的：<code>A in B</code>、<code>B in C</code> 蕴含 <code>A in C</code>，且 <code>A in A</code> 恒为真。详见<a href="./operators.html">操作符</a>。</p>
+<h2 id="命名空间">命名空间</h2>
+<p>实体可以带命名空间前缀，用 <code>::</code> 分隔，用来推断类型之间的逻辑层次。例如 <code>PhotoFlash::Groups::Album::&quot;vacation&quot;</code> 表示 EID 为 <code>&quot;vacation&quot;</code>、类型为 <code>PhotoFlash::Groups::Album</code> 的实体。这种层次只存在于设计者的约定中，语言层面没有真实结构。含保留标识 <code>__cedar</code> 的命名空间全部不可用，所以 <code>__cedar::Album::&quot;vacation&quot;</code> 非法。</p>
+<h2 id="同一实体可以扮演多个角色">同一实体可以扮演多个角色</h2>
+<p>这种统一结构让同一类型的实体既能当主体又能当资源。用户目录（如 LDAP）就是典型：任何用户都能读自己的数据，HR 部门的用户可以改别人的信息。此时主体和资源是同一类型，甚至就是同一个用户。</p>
+<pre><code class="language-cedar">// Allow every user to read their own data in the user directory
+permit (
+    principal,
+    action == Action::&quot;readUser&quot;,
+    resource
+)
+when {
+    principal == resource // The same entity
+};
+</code></pre>
+<p>除动作实体外，没有额外信息时无法判断一个实体究竟是主体还是资源。这个约束交给 schema：它可以限定某类型只能出现在 principal 还是 resource 位置。</p>
+<h2 id="属性访问的两种写法">属性访问的两种写法</h2>
+<p>属性用点号访问，也可以用索引写法，两者等价：</p>
+<pre><code class="language-cedar">SomeUser.name                  // SomeUser is an entity of type user
+SomeEmployee.department        // SomeEmployee is an entity of type employee
+SomePhoto.description          // SomePhoto is an entity of type photo.
+</code></pre>
+<pre><code class="language-cedar">SomeUser[&quot;name&quot;]
+SomeEmployee[&quot;department&quot;]
+SomePhoto[&quot;description&quot;]
+</code></pre>
+<p>属性解析出的值可以是任意受支持的数据类型，因此只要该类型合法，属性就能出现在任何表达式位置。类型清单见<a href="./data-types.html">数据类型</a>。</p>
+</article></main></body></html>

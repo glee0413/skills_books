@@ -1,0 +1,189 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>术语表与阅读路线 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a class="active" href="./01-glossary.html">术语表与阅读路线</a></li><li><a href="./02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../../catalog/cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../../catalog/cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../../catalog/cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../../catalog/cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../../catalog/cedar-docs/data-types.html">数据类型</a></li><li><a href="../../catalog/cedar-docs/operators.html">操作符</a></li><li><a href="../../catalog/cedar-docs/validation.html">策略验证</a></li><li><a href="../../catalog/cedar-docs/templates.html">策略模板</a></li><li><a href="../../catalog/cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../../catalog/cedar-docs/schema.html">Schema 概览</a></li><li><a href="../../catalog/cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../../catalog/cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../../catalog/cedar-docs/security.html">安全模型</a></li><li><a href="../../catalog/cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../../catalog/cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../../catalog/cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../../catalog/cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../../catalog/cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../../catalog/cedar/cli.html">Cedar CLI</a></li><li><a href="../../catalog/cedar/wasm.html">Cedar WASM</a></li><li><a href="../../catalog/cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../../catalog/cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../../catalog/cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../../catalog/cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../../catalog/cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="术语表与阅读路线">术语表与阅读路线</h1>
+<p>这份附录把全书反复出现的术语压缩成一张速查表，并给出三条阅读路线。术语的中文写法与 <code>GLOSSARY.md</code> 保持一致；需要看官方原文时，点每个概念后面的知识库条目。</p>
+<h2 id="授权与请求">授权与请求</h2>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+<th>对应条目</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>认证（authentication）</td>
+<td>验证“你是谁”，由应用完成，Cedar 不负责</td>
+<td><a href="../../catalog/cedar-docs/terminology.html">术语与核心概念</a></td>
+</tr>
+<tr>
+<td>授权（authorization）</td>
+<td>判断已认证主体能否对资源执行动作</td>
+<td><a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a></td>
+</tr>
+<tr>
+<td>主体（principal）</td>
+<td>发起请求的用户、服务或角色</td>
+<td><a href="../01-model/01-parc.html">授权请求与 PARC</a></td>
+</tr>
+<tr>
+<td>动作（action）</td>
+<td>主体想执行的操作，通常映射一个 API</td>
+<td><a href="../../catalog/cedar-docs/policy-syntax.html">策略语法基础</a></td>
+</tr>
+<tr>
+<td>资源（resource）</td>
+<td>动作作用的对象，如文档、仓库、剧集</td>
+<td><a href="../../catalog/cedar-docs/entities.html">实体与实体层级</a></td>
+</tr>
+<tr>
+<td>上下文（context）</td>
+<td>请求时的瞬时事实，如 IP、时间、MFA、同意记录</td>
+<td><a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a></td>
+</tr>
+<tr>
+<td>PARC</td>
+<td>Principal、Action、Resource、Context 四元组</td>
+<td><a href="../01-model/01-parc.html">授权请求与 PARC</a></td>
+</tr>
+</tbody></table>
+<h2 id="策略与实体">策略与实体</h2>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+<th>对应条目</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>实体（entity）</td>
+<td>有类型、id、属性和父级的对象</td>
+<td><a href="../../catalog/cedar-docs/entities.html">实体与实体层级</a></td>
+</tr>
+<tr>
+<td>UID</td>
+<td>实体唯一标识，写作 <code>Type::&quot;id&quot;</code></td>
+<td><a href="../../catalog/cedar-docs/terminology.html">术语与核心概念</a></td>
+</tr>
+<tr>
+<td>permit</td>
+<td>允许策略；至少一条命中且无 forbid 时才 Allow</td>
+<td><a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a></td>
+</tr>
+<tr>
+<td>forbid</td>
+<td>拒绝策略；任意一条命中即 Deny</td>
+<td><a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a></td>
+</tr>
+<tr>
+<td>作用域（scope）</td>
+<td>principal、action、resource 的匹配范围</td>
+<td><a href="../../catalog/cedar-docs/policy-syntax.html">策略语法基础</a></td>
+</tr>
+<tr>
+<td>条件（condition）</td>
+<td><code>when</code> 或 <code>unless</code> 子句</td>
+<td><a href="../02-policy/02-data-and-operators.html">数据类型与操作符</a></td>
+</tr>
+<tr>
+<td>模板（template）</td>
+<td>带 <code>?principal</code>、<code>?resource</code> 等占位符的可复用策略</td>
+<td><a href="../../catalog/cedar-docs/templates.html">策略模板</a></td>
+</tr>
+<tr>
+<td>模板链接策略</td>
+<td>用具体值填充模板后形成的独立策略</td>
+<td><a href="../02-policy/03-templates-json.html">模板与 JSON 策略</a></td>
+</tr>
+<tr>
+<td>命名空间（namespace）</td>
+<td>用 <code>::</code> 分隔的类型前缀，如 <code>Taxpreparer::</code></td>
+<td><a href="../../catalog/cedar-docs/schema-format.html">Cedar Schema 格式</a></td>
+</tr>
+</tbody></table>
+<h2 id="模型验证与工程">模型、验证与工程</h2>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+<th>对应条目</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>schema</td>
+<td>声明实体类型、属性、父级和动作签名</td>
+<td><a href="../../catalog/cedar-docs/schema.html">Schema 概览</a></td>
+</tr>
+<tr>
+<td>validation</td>
+<td>用 schema 检查策略的类型、属性和动作引用</td>
+<td><a href="../../catalog/cedar-docs/validation.html">策略验证</a></td>
+</tr>
+<tr>
+<td>level validation</td>
+<td>按请求所需的数据切片验证策略，而不是要求全部实体</td>
+<td><a href="../03-schema/02-validation.html">策略验证与 level validation</a></td>
+</tr>
+<tr>
+<td>RBAC</td>
+<td>基于角色的访问控制，用组/角色授予权限</td>
+<td><a href="../../catalog/cedar-docs/auth-patterns.html">授权模式</a></td>
+</tr>
+<tr>
+<td>ABAC</td>
+<td>基于主体、资源、上下文属性的访问控制</td>
+<td><a href="../../catalog/cedar-docs/auth-patterns.html">授权模式</a></td>
+</tr>
+<tr>
+<td>default deny</td>
+<td>没有 permit 命中时默认拒绝</td>
+<td><a href="../../catalog/cedar-docs/security.html">安全模型</a></td>
+</tr>
+<tr>
+<td>forbid overrides permit</td>
+<td>任一 forbid 命中即拒绝，优先级高于 permit</td>
+<td><a href="../../catalog/cedar-docs/security.html">安全模型</a></td>
+</tr>
+<tr>
+<td>symcc</td>
+<td>把策略编译成 SMT 约束并做形式化验证的工具</td>
+<td><a href="../../catalog/cedar/symcc.html">符号验证 symcc</a></td>
+</tr>
+</tbody></table>
+<h2 id="阅读路线初学者">阅读路线：初学者</h2>
+<p>目标是从零建立“请求—实体—策略—决策”的直觉，不急着写生产策略。</p>
+<ol>
+<li><a href="../00-intro/01-why-cedar.html">为什么需要 Cedar</a>：先理解把授权从业务代码里拆出来的动机。</li>
+<li><a href="../01-model/01-parc.html">授权请求与 PARC</a> 和 <a href="../01-model/02-entities.html">实体、属性、组与层级</a>：掌握四个输入和实体图。</li>
+<li><a href="../01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a>：用一个照片分享应用串起概念。</li>
+<li><a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a>：亲手写第一条策略。</li>
+<li><a href="../04-sdk/02-cli.html">CLI 快速上手</a> 和 <a href="../05-practice/01-tinytodo.html">TinyTodo 教程</a>：把策略跑起来，看真实请求怎样得到 ALLOW/DENY。</li>
+</ol>
+<p>遇到不熟的词，回到本页表格；想读官方定义，点“对应条目”里的链接。</p>
+<h2 id="阅读路线应用开发者">阅读路线：应用开发者</h2>
+<p>目标是把 Cedar 接进服务，并让策略可测试、可发布。</p>
+<ol>
+<li><a href="../03-schema/01-schema.html">用 Schema 建模授权世界</a>：先定实体和动作，不要先写策略。</li>
+<li><a href="../03-schema/02-validation.html">策略验证与 level validation</a>：让错误在 CI 暴露。</li>
+<li><a href="../04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a>：掌握 <code>Request</code>、<code>Entities</code>、<code>Authorizer</code> 的调用顺序。</li>
+<li><a href="../02-policy/03-templates-json.html">模板与 JSON 策略</a>：需要动态授权时用模板，不要拼接字符串。</li>
+<li><a href="../../catalog/cedar-docs/auth-patterns.html">授权模式</a>：把 HTTP 端点映射到单资源、创建、列表、批量等模式，决定实体切片怎么取。</li>
+<li><a href="../05-practice/02-use-cases.html">六个真实用例</a>：看别人怎样处理租户、角色、层级和同意。</li>
+<li><a href="../06-security/02-testing-versioning.html">测试、版本与生态</a>：上线前补齐夹具、CLI 回归和迁移方案。</li>
+</ol>
+<h2 id="阅读路线安全审查者">阅读路线：安全审查者</h2>
+<p>目标是判断“这套策略在最坏情况下会不会放行不该放行的请求”。</p>
+<ol>
+<li><a href="../06-security/01-security.html">安全模型与最佳实践</a>：共享责任、默认拒绝、输入边界、策略存储。</li>
+<li><a href="../../catalog/cedar-docs/validation.html">策略验证</a>：确认验证覆盖了哪些错误，哪些仍需人工判断。</li>
+<li><a href="../../catalog/cedar-docs/security.html">安全模型</a>：对照官方的责任划分和攻击面说明。</li>
+<li><a href="../../catalog/cedar-docs/policy-examples.html">策略示例</a>：用官方例子检查自己的写法是否偏离惯例。</li>
+<li><a href="../05-practice/02-use-cases.html">六个真实用例</a>：重点看 <code>forbid</code> 护栏、屏蔽列表、同意记录和 context 注入。</li>
+<li><a href="../06-security/02-testing-versioning.html">测试、版本与生态</a>：检查 DENY 夹具、symcc 不变量和回滚路径。</li>
+<li><a href="../../catalog/cedar/symcc.html">符号验证 symcc</a>：需要证明而非抽样时，读完全部性质和反例用法。</li>
+</ol>
+<p>审查时建议固定问：有没有默认放行的路径；<code>forbid</code> 出错被跳过会怎样；实体 id 是否可复用；策略库谁能改；context 是否来自可信服务端；迁移期间旧策略是否仍然生效。</p>
+<h2 id="怎么用知识库">怎么用知识库</h2>
+<p><code>catalog/</code> 是按来源组织的精读条目，和本书章节互相引用。每个条目顶部标注了来源 commit、原路径和许可证；<code>source-snapshots/</code> 保存同一 commit 的英文原文，适合对照代码和术语。若只想知道某个 API 或语法点，直接看对应条目；若想系统学习，按上面的路线读章节，再回到条目查细节。</p>
+<p>书中所有相对链接都以 <code>book/</code> 下的章节为起点；在生成的 HTML 中，它们会自动指向对应页面。</p>
+</article><nav class="pager"><a class="prev" href="../06-security/02-testing-versioning.html">← 测试、版本与生态</a><a class="next" href="./02-sources.html">来源、许可证与版本 →</a></nav></main></body></html>

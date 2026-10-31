@@ -1,0 +1,88 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PhotoFlash：贯穿全书的例子 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="./01-parc.html">授权请求与 PARC</a></li><li><a href="./02-entities.html">实体、属性、组与层级</a></li><li><a class="active" href="./03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../../catalog/cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../../catalog/cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../../catalog/cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../../catalog/cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../../catalog/cedar-docs/data-types.html">数据类型</a></li><li><a href="../../catalog/cedar-docs/operators.html">操作符</a></li><li><a href="../../catalog/cedar-docs/validation.html">策略验证</a></li><li><a href="../../catalog/cedar-docs/templates.html">策略模板</a></li><li><a href="../../catalog/cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../../catalog/cedar-docs/schema.html">Schema 概览</a></li><li><a href="../../catalog/cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../../catalog/cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../../catalog/cedar-docs/security.html">安全模型</a></li><li><a href="../../catalog/cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../../catalog/cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../../catalog/cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../../catalog/cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../../catalog/cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../../catalog/cedar/cli.html">Cedar CLI</a></li><li><a href="../../catalog/cedar/wasm.html">Cedar WASM</a></li><li><a href="../../catalog/cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../../catalog/cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../../catalog/cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../../catalog/cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../../catalog/cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="photoflash贯穿全书的例子">PhotoFlash：贯穿全书的例子</h1>
+<p>模型讲完了，接下来需要一个具体的世界，把抽象概念落在地上。Cedar 官方文档造了一个照片分享应用，叫 <strong>PhotoFlash</strong>。本书后面几乎所有策略都围绕它展开——同一套实体、同一批用户、同一批相册，这样你每读一章，都能看到新语法作用在熟悉的对象上，而不是每章换一个玩具例子。</p>
+<h2 id="一个虚构的照片应用">一个虚构的照片应用</h2>
+<p>PhotoFlash 让用户存储、整理和分享照片。用户可以上传照片到自己的账户，再把照片组织进相册。相册可以嵌套，一张照片也可以同时属于多个相册。照片还能打标签，比如 <code>private</code>、<code>work</code>、<code>fun</code>，也可以记录可见人物这类自定义元数据，之后按标签或拍摄时间、地点搜索。</p>
+<p>分享是核心功能。用户可以把照片和相册分享给其他用户，也可以分享给<strong>用户组</strong>。组和相册一样灵活：组可以嵌套，一个人可以同时属于多个组。这正是授权模型要处理的东西——不是一张静态的权限表，而是一张会生长、会嵌套的关系网。</p>
+<h2 id="类型名与标识符的写法">类型名与标识符的写法</h2>
+<p>在进入细节之前，先记住文档的命名约定，本书沿用：</p>
+<ul>
+<li><strong>实体类型</strong>用 PascalCase：<code>User</code>、<code>UserGroup</code>、<code>Album</code>、<code>Photo</code>、<code>Account</code>；</li>
+<li><strong>实体标识符和属性名</strong>用 camelCase：<code>janeFriends</code>、<code>createdDate</code>、<code>sharedWith</code>。</li>
+</ul>
+<p>类型首字母大写、标识符首字母小写，这条约定让策略一眼能分清 <code>Group::&quot;janeFriends&quot;</code> 里哪部分是类型、哪部分是 ID。它不是语法要求，但在一个几十条策略的文件里，可读性就是可维护性。</p>
+<h2 id="jane-的相册照片和三个组">Jane 的相册、照片和三个组</h2>
+<p>主角叫 jane。她有一个账户，账户里放着她的相册和照片。她建了三个组来代表人脉：</p>
+<ul>
+<li><code>janeFamily</code>：家人；</li>
+<li><code>janeFriends</code>：朋友；</li>
+<li><code>janeCoworkers</code>：同事。</li>
+</ul>
+<p>这些组可以互相嵌套：<code>collegeFriends</code> 可以是 <code>janeFriends</code> 的成员，项目组也可以并进 <code>janeCoworkers</code>。她的相册同样嵌套：<code>janeTrips</code> 是旅行总相册，里面套着 <code>janeVacation</code>（度假）和 <code>conference</code>（会议）。照片放在最内层。</p>
+<p>画成实体数据，大致是这样几条关系：</p>
+<pre><code class="language-json">{ &quot;uid&quot;: { &quot;type&quot;: &quot;User&quot;, &quot;id&quot;: &quot;bob&quot; },
+  &quot;attrs&quot;: {},
+  &quot;parents&quot;: [{ &quot;type&quot;: &quot;Group&quot;, &quot;id&quot;: &quot;janeFriends&quot; }] }
+</code></pre>
+<pre><code class="language-json">{ &quot;uid&quot;: { &quot;type&quot;: &quot;Photo&quot;, &quot;id&quot;: &quot;vacation.jpg&quot; },
+  &quot;attrs&quot;: { &quot;tags&quot;: [&quot;private&quot;] },
+  &quot;parents&quot;: [{ &quot;type&quot;: &quot;Album&quot;, &quot;id&quot;: &quot;janeVacation&quot; }] }
+</code></pre>
+<p><code>bob</code> 的 <code>parents</code> 说明他是 <code>janeFriends</code> 的成员；<code>vacation.jpg</code> 的 <code>parents</code> 只有 <code>janeVacation</code>，没有 <code>janeTrips</code>。后者不需要写——<code>janeVacation</code> 自己的 <code>parents</code> 指向 <code>janeTrips</code>，<code>in</code> 的传递性会把这条链补全。层级只需记录直接父级，这是它能保持简洁的原因。</p>
+<p>照片的所有者和 jane 的账户也是属性，分别指向 <code>User::&quot;jane&quot;</code> 和 <code>Account::&quot;jane&quot;</code>，上面为了篇幅省略了。还要注意组类型的名字：官方文档有时写 <code>Group</code>，有时写 <code>UserGroup</code>，这不是两个类型，而是示例之间的命名差异；真实系统里由你的 Schema 定一个，然后全文统一。</p>
+<h2 id="三条起步策略">三条起步策略</h2>
+<p>Jane 想让朋友们看她旅行相册里的照片，还能评论：</p>
+<pre><code class="language-cedar">// Jane&#39;s friends can view all photos in her janeTrips album
+
+permit (
+    principal in Group::&quot;janeFriends&quot;,
+    action in [Action::&quot;view&quot;, Action::&quot;comment&quot;],
+    resource in Album::&quot;janeTrips&quot;
+);
+</code></pre>
+<p>一条策略同时用了三个 <code>in</code>：主体在组里、动作在动作集合里、资源在相册层级里。因为 <code>in</code> 传递，<code>janeVacation</code> 和 <code>conference</code> 里的照片自动被覆盖，将来新建的子相册也自动生效。这就是“按关系授权”相对“按清单授权”的优势。</p>
+<p>第二条是护栏：带 <code>private</code> 标签的资源，只有账户主人能碰。</p>
+<pre><code class="language-cedar">// Only the owner can access any resource tagged &quot;private&quot;
+
+forbid ( principal, action, resource )
+when { resource.tags.contains(&quot;private&quot;) }    // assumes that resource has &quot;tags&quot;
+unless { resource in principal.account };     // assumes that principal has &quot;account&quot;
+</code></pre>
+<p>这条策略没有限定任何主体、动作或资源，它对全部请求生效。<code>when</code> 判断资源是否带私密标签，<code>unless</code> 给账户主人留了例外：只要资源在请求者的账户层级里，就不触发拒绝。</p>
+<p>第三条把修改标签的权限收紧到照片所有者：</p>
+<pre><code class="language-cedar">// Only the photo&#39;s owner can change its tags
+permit (
+    principal,
+    action == Action::&quot;updateTags&quot;,
+    resource
+)
+when { principal == resource.owner };
+</code></pre>
+<p>三条策略覆盖了三种典型形态：基于组和层级的授权、全局护栏、基于所有权的属性判断。后面的章节会把它们逐步改写成模板、加上 Schema 约束、用 CLI 跑出决策。</p>
+<h2 id="forbid-只拒绝不授予">forbid 只拒绝，不授予</h2>
+<p>上面那条 <code>forbid</code> 有一个容易误解的地方。它写的是“除账户主人外，谁都不能访问私密资源”。很多人读完会以为账户主人因此获得了访问权。<strong>并没有。</strong></p>
+<p><code>unless</code> 只是让这条 <code>forbid</code> 不命中，它不产生任何 <code>Allow</code>。账户主人要真正访问自己的私密照片，还需要一条 <code>permit</code> 明确授予：</p>
+<pre><code class="language-cedar">// The account owner may do anything inside their own account
+permit (
+    principal,
+    action,
+    resource
+)
+when { resource in principal.account };
+</code></pre>
+<p>这是 Cedar 默认拒绝的直接后果：<strong>豁免不等于授权</strong>。<code>forbid</code> 的例外只是“不拦”，放行必须另有出处。设计策略时，先想清楚每条 <code>forbid</code> 豁免了谁，再确认这些人在别处确实有 <code>permit</code>——否则你会得到一个安全但不可用的系统，而且很难查出少写了哪一条。</p>
+<h2 id="两个容易踩的细节">两个容易踩的细节</h2>
+<p><strong>第一，例子里的 ID 不能照搬到生产。</strong> <code>jane</code>、<code>bob</code> 是为了好读。真实系统必须用 UUID 这类永不复用的值，否则前员工离职、新人复用用户名时，旧策略会把权限自动交给新人。资源 ID 同理。写 UUID 时在后面加注释标明是谁：</p>
+<pre><code class="language-cedar">principal == User::&quot;a1b2c3d4-e5f6-a1b2-c3d4-EXAMPLE11111&quot;, // alice
+</code></pre>
+<p><strong>第二，<code>when</code> 和 <code>unless</code> 的顺序会影响你看到哪个错误。</strong> 引擎按书写顺序求值条件，遇到错误就停。上面那条 <code>forbid</code> 里，<code>when</code> 读 <code>resource.tags</code>，<code>unless</code> 读 <code>principal.account</code>。如果某个资源没有 <code>tags</code>、某个主体没有 <code>account</code>，两个子句都会出错，但你只会看到先求值的那个。排查线上问题时，这个细节决定了你第一眼看到的是什么。</p>
+<h2 id="接下来读什么">接下来读什么</h2>
+<p>这一章只搭了舞台。后面的路线是：</p>
+<ul>
+<li>想弄清策略的语法骨架，读<a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a>；</li>
+<li>想理解条件里能写哪些表达式，读<a href="../02-policy/02-data-and-operators.html">数据类型与操作符</a>；</li>
+<li>想让 PhotoFlash 的实体有正式定义，读<a href="../03-schema/01-schema.html">用 Schema 建模授权世界</a>；</li>
+<li>想马上跑一次授权，读 <a href="../04-sdk/02-cli.html">CLI 快速上手</a>；</li>
+<li>想看一个完整应用的端到端实现，读 <a href="../05-practice/01-tinytodo.html">TinyTodo 教程</a>。</li>
+</ul>
+<p>PhotoFlash 的原文描述、图示和完整注意事项在<a href="../../catalog/cedar-docs/scenario.html">示例场景</a>。读的时候不妨留意：文档用同一批实体讲了整本手册，这个选择本身就是一堂课——好的授权模型是稳定的，语法和工具会变，实体和关系不该跟着变。</p>
+</article><nav class="pager"><a class="prev" href="./02-entities.html">← 实体、属性、组与层级</a><a class="next" href="../02-policy/01-structure.html">策略结构与 permit/forbid →</a></nav></main></body></html>

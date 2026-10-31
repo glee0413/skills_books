@@ -1,0 +1,239 @@
+{
+  "title": "Cedar 授权策略实战",
+  "subtitle": "从策略语言到 Rust SDK 与真实用例",
+  "unitsLabel": "知识条目",
+  "catalogLabel": "知识全库",
+  "parts": [
+    {
+      "id": "00-intro",
+      "title": "导读",
+      "chapters": [
+        {
+          "id": "why-cedar",
+          "title": "为什么需要 Cedar",
+          "path": "book/00-intro/01-why-cedar.md",
+          "sources": []
+        }
+      ]
+    },
+    {
+      "id": "01-model",
+      "title": "第一部分 基础模型",
+      "chapters": [
+        {
+          "id": "parc",
+          "title": "授权请求与 PARC",
+          "path": "book/01-model/01-parc.md",
+          "sources": [
+            "cedar-docs/authorization",
+            "cedar-docs/terminology"
+          ]
+        },
+        {
+          "id": "entities",
+          "title": "实体、属性、组与层级",
+          "path": "book/01-model/02-entities.md",
+          "sources": [
+            "cedar-docs/entities",
+            "cedar-docs/terminology"
+          ]
+        },
+        {
+          "id": "scenario",
+          "title": "PhotoFlash：贯穿全书的例子",
+          "path": "book/01-model/03-scenario.md",
+          "sources": [
+            "cedar-docs/scenario"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "02-policy",
+      "title": "第二部分 策略语言",
+      "chapters": [
+        {
+          "id": "policy-structure",
+          "title": "策略结构与 permit/forbid",
+          "path": "book/02-policy/01-structure.md",
+          "sources": [
+            "cedar-docs/policy-syntax"
+          ]
+        },
+        {
+          "id": "data-operators",
+          "title": "数据类型与操作符",
+          "path": "book/02-policy/02-data-and-operators.md",
+          "sources": [
+            "cedar-docs/data-types",
+            "cedar-docs/operators"
+          ]
+        },
+        {
+          "id": "templates-json",
+          "title": "模板与 JSON 策略",
+          "path": "book/02-policy/03-templates-json.md",
+          "sources": [
+            "cedar-docs/templates",
+            "cedar-docs/json-format"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "03-schema",
+      "title": "第三部分 Schema 与验证",
+      "chapters": [
+        {
+          "id": "schema-model",
+          "title": "用 Schema 建模授权世界",
+          "path": "book/03-schema/01-schema.md",
+          "sources": [
+            "cedar-docs/schema",
+            "cedar-docs/schema-format"
+          ]
+        },
+        {
+          "id": "validation",
+          "title": "策略验证与 level validation",
+          "path": "book/03-schema/02-validation.md",
+          "sources": [
+            "cedar-docs/validation",
+            "cedar-docs/schema-linking"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "04-sdk",
+      "title": "第四部分 SDK 与工具",
+      "chapters": [
+        {
+          "id": "rust-sdk",
+          "title": "Rust SDK：把 Cedar 集成进应用",
+          "path": "book/04-sdk/01-rust-sdk.md",
+          "sources": [
+            "cedar/sdk",
+            "cedar/readme"
+          ]
+        },
+        {
+          "id": "cli",
+          "title": "CLI 快速上手",
+          "path": "book/04-sdk/02-cli.md",
+          "sources": [
+            "cedar/cli"
+          ]
+        },
+        {
+          "id": "wasm-symcc",
+          "title": "WASM、语言服务器与符号验证",
+          "path": "book/04-sdk/03-wasm-symcc.md",
+          "sources": [
+            "cedar/wasm",
+            "cedar/symcc"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "05-practice",
+      "title": "第五部分 实战",
+      "chapters": [
+        {
+          "id": "tinytodo",
+          "title": "TinyTodo 教程：从命令到授权决策",
+          "path": "book/05-practice/01-tinytodo.md",
+          "sources": [
+            "cedar-examples/tinytodo-tutorial"
+          ]
+        },
+        {
+          "id": "use-cases",
+          "title": "六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体",
+          "path": "book/05-practice/02-use-cases.md",
+          "sources": [
+            "cedar-examples/use-cases"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "06-security",
+      "title": "第六部分 安全与工程化",
+      "chapters": [
+        {
+          "id": "security",
+          "title": "安全模型与最佳实践",
+          "path": "book/06-security/01-security.md",
+          "sources": [
+            "cedar-docs/security",
+            "cedar-docs/best-practices",
+            "cedar-docs/auth-patterns"
+          ]
+        },
+        {
+          "id": "testing-versioning",
+          "title": "测试、版本与生态",
+          "path": "book/06-security/02-testing-versioning.md",
+          "sources": [
+            "cedar/symcc",
+            "cedar/readme"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "07-appendix",
+      "title": "附录",
+      "chapters": [
+        {
+          "id": "glossary",
+          "title": "术语表与阅读路线",
+          "path": "book/07-appendix/01-glossary.md",
+          "sources": []
+        },
+        {
+          "id": "sources",
+          "title": "来源、许可证与版本",
+          "path": "book/07-appendix/02-sources.md",
+          "sources": []
+        }
+      ]
+    }
+  ],
+  "catalog": {
+    "cedar-docs": [
+      "cedar-docs/terminology",
+      "cedar-docs/scenario",
+      "cedar-docs/authorization",
+      "cedar-docs/policy-syntax",
+      "cedar-docs/entities",
+      "cedar-docs/data-types",
+      "cedar-docs/operators",
+      "cedar-docs/validation",
+      "cedar-docs/templates",
+      "cedar-docs/json-format",
+      "cedar-docs/schema",
+      "cedar-docs/schema-format",
+      "cedar-docs/schema-linking",
+      "cedar-docs/security",
+      "cedar-docs/best-practices",
+      "cedar-docs/auth-patterns",
+      "cedar-docs/policy-examples"
+    ],
+    "cedar": [
+      "cedar/readme",
+      "cedar/sdk",
+      "cedar/cli",
+      "cedar/wasm",
+      "cedar/symcc"
+    ],
+    "cedar-examples": [
+      "cedar-examples/readme",
+      "cedar-examples/tinytodo-tutorial",
+      "cedar-examples/use-cases",
+      "cedar-examples/rust-hello-world"
+    ]
+  }
+}

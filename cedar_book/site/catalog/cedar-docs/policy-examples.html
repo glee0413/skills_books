@@ -1,0 +1,91 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>策略示例 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="./terminology.html">术语与核心概念</a></li><li><a href="./scenario.html">PhotoFlash 示例场景</a></li><li><a href="./authorization.html">授权如何工作</a></li><li><a href="./policy-syntax.html">策略语法基础</a></li><li><a href="./entities.html">实体与实体层级</a></li><li><a href="./data-types.html">数据类型</a></li><li><a href="./operators.html">操作符</a></li><li><a href="./validation.html">策略验证</a></li><li><a href="./templates.html">策略模板</a></li><li><a href="./json-format.html">JSON 策略格式</a></li><li><a href="./schema.html">Schema 概览</a></li><li><a href="./schema-format.html">Cedar Schema 格式</a></li><li><a href="./schema-linking.html">Schema 链接</a></li><li><a href="./security.html">安全模型</a></li><li><a href="./best-practices.html">最佳实践概览</a></li><li><a href="./auth-patterns.html">授权模式</a></li><li><a href="./policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-docs · <code>docs/collections/_policies/policy-examples.md</code> · a0b2849 · commit <code>a0b2849</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-docs/blob/a0b28494644671804c60301fee4d59f5fc4fbd99/docs/collections/_policies/policy-examples.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-docs/docs/collections/_policies/policy-examples.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="策略示例">策略示例</h1>
+<p>这些示例基于 PhotoFlash 应用的 schema，覆盖从最窄到最宽的作用域，以及属性和上下文条件。示例场景见<a href="./scenario.html">PhotoFlash 示例场景</a>，schema 写法见 <a href="./schema-format.html">Cedar Schema 格式</a>。</p>
+<h2 id="授权到单个实体">授权到单个实体</h2>
+<p>允许 <code>alice</code> 查看照片 <code>VacationPhoto94.jpg</code>：</p>
+<pre><code class="language-Cedar">permit(
+  principal == User::&quot;alice&quot;, 
+  action == Action::&quot;view&quot;, 
+  resource == Photo::&quot;VacationPhoto94.jpg&quot;
+);
+</code></pre>
+<p>三个作用域都用 <code>==</code> 锁定到具体实体，这是范围最小的写法，适合处理例外授权。作用域越具体，策略越好读，验证时也越容易判断其影响范围。</p>
+<h2 id="组容器与动作组">组、容器与动作组</h2>
+<p>把主体换成组成员，就能一次授权整组人：</p>
+<pre><code class="language-Cedar">permit(
+  principal in Group::&quot;alice_friends&quot;, 
+  action == Action::&quot;view&quot;, 
+  resource == Photo::&quot;VacationPhoto94.jpg&quot;
+);
+</code></pre>
+<p>资源侧用 <code>in</code> 可以覆盖整个容器。下面的策略允许 <code>alice</code> 查看相册 <code>alice_vacation</code> 中的任意照片：</p>
+<pre><code class="language-Cedar">permit(
+  principal == User::&quot;alice&quot;, 
+  action == Action::&quot;view&quot;, 
+  resource in Album::&quot;alice_vacation&quot;
+);
+</code></pre>
+<p>动作也可以列成集合，或引用 schema 中定义的动作组。<code>action in [Action::&quot;viewer_actions&quot;, Action::&quot;edit&quot;]</code> 这种写法把动作组和单个动作混在一个列表里；<code>action in Action::&quot;admin_actions&quot;</code> 则完全依赖动作组，组内新增的动作会自动被这条策略覆盖。这正是“动作映射到业务领域”带来的可维护性。</p>
+<h2 id="放开某一维">放开某一维</h2>
+<p>把某一维写成裸关键字，表示该维不加约束。下面的策略允许任何主体查看 <code>alice_vacation</code> 相册：</p>
+<pre><code class="language-Cedar">permit(
+  principal,
+  action == Action::&quot;view&quot;, 
+  resource in Album::&quot;alice_vacation&quot;
+);
+</code></pre>
+<p>裸写 <code>principal</code> 并不意味着“任何未认证用户”——Cedar 只做授权，请求中的主体已经过应用认证。若三项全裸写，就得到一条允许一切的策略，实践中几乎总是配合条件使用。</p>
+<h2 id="基于属性的访问控制">基于属性的访问控制</h2>
+<p>ABAC 把判断建立在主体、资源或上下文的属性上。下面的策略要求主体属于 <code>HardwareEngineering</code> 部门且职级不低于 5：</p>
+<pre><code class="language-Cedar">permit(
+  principal,
+  action in [Action::&quot;listPhotos&quot;, Action::&quot;view&quot;],
+  resource in Album::&quot;device_prototypes&quot;
+)
+when {
+  principal.department == &quot;HardwareEngineering&quot; &amp;&amp;
+  principal.jobLevel &gt;= 5
+};
+</code></pre>
+<p>属性也可以用来表达归属关系：</p>
+<pre><code class="language-Cedar">permit(
+  principal,
+  action,
+  resource
+)
+when {
+  principal == resource.owner
+};
+</code></pre>
+<p>这条策略允许所有主体对自己拥有的资源执行任意动作，是“每个资源都有 owner”这一建模习惯的直接回报。同理，<code>principal.department == resource.owner.department</code> 可以把可见性扩展到同部门。</p>
+<p>需要注意原文的提醒：<strong>若实体缺少条件中引用的属性，该策略在此次决策中被忽略</strong>，因为求值失败。例如没有 <code>department</code> 属性的主体，永远无法通过上面那条同部门策略获得访问权。这不是报错中断，而是静默跳过，设计 schema 时要把属性设为必填或先用 <code>has</code> 检查。</p>
+<h2 id="使用-context">使用 context</h2>
+<p>Context 承载随请求变化的信息，其可用字段由动作的 <code>appliesTo</code> 定义：</p>
+<pre><code class="language-Cedar">permit(
+  principal == User::&quot;alice&quot;,
+  action in Action::&quot;delete&quot;,
+  resource
+) when { 
+    context has authentication.usedMFA &amp;&amp;
+    context.authentication.usedMFA
+};
+</code></pre>
+<p>这里先用 <code>has</code> 检查嵌套路径是否存在，再取值，避免上下文缺字段导致策略被跳过。若某类信息在所有请求中都一致，例如“只读动作”，更好的做法是建动作组，而不是塞进 context。</p>
+<h2 id="用-forbid-收紧权限">用 forbid 收紧权限</h2>
+<p><code>forbid</code> 不授予权限，只约束权限；<code>permit</code> 与 <code>forbid</code> 同时命中时 <code>forbid</code> 优先。下面的策略拒绝访问所有带 <code>private</code> 属性的资源，除非主体就是资源所有者：</p>
+<pre><code class="language-Cedar">forbid (
+  principal,
+  action,
+  resource
+)
+when {
+  resource.private
+}
+unless {
+  principal == resource.owner
+};
+</code></pre>
+<p>原文还给出一个反例，说明 <code>forbid</code> 的强度：把“允许 alice 使用只读动作组”改写为“除非动作属于只读组，否则拒绝 alice”，语义并不等价——由于 <code>forbid</code> 覆盖 <code>permit</code>，alice 将永远无法执行其他任何动作。这类改写必须非常小心，判断顺序见<a href="./authorization.html">授权如何工作</a>。</p>
+</article></main></body></html>

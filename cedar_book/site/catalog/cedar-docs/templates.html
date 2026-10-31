@@ -1,0 +1,41 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>策略模板 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="./terminology.html">术语与核心概念</a></li><li><a href="./scenario.html">PhotoFlash 示例场景</a></li><li><a href="./authorization.html">授权如何工作</a></li><li><a href="./policy-syntax.html">策略语法基础</a></li><li><a href="./entities.html">实体与实体层级</a></li><li><a href="./data-types.html">数据类型</a></li><li><a href="./operators.html">操作符</a></li><li><a href="./validation.html">策略验证</a></li><li><a href="./templates.html">策略模板</a></li><li><a href="./json-format.html">JSON 策略格式</a></li><li><a href="./schema.html">Schema 概览</a></li><li><a href="./schema-format.html">Cedar Schema 格式</a></li><li><a href="./schema-linking.html">Schema 链接</a></li><li><a href="./security.html">安全模型</a></li><li><a href="./best-practices.html">最佳实践概览</a></li><li><a href="./auth-patterns.html">授权模式</a></li><li><a href="./policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-docs · <code>docs/collections/_policies/templates.md</code> · a0b2849 · commit <code>a0b2849</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-docs/blob/a0b28494644671804c60301fee4d59f5fc4fbd99/docs/collections/_policies/templates.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-docs/docs/collections/_policies/templates.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="策略模板">策略模板</h1>
+<p><strong>策略模板（policy template）<strong>是带</strong>占位符</strong>的策略。占位符只能代表主体和资源；之后用具体值填充它，就得到一条<strong>模板链接策略（template-linked policy）</strong>。链接策略是动态的：它始终连着模板，模板一改，所有链接策略立刻采用新语句。</p>
+<h2 id="占位符与位置限制">占位符与位置限制</h2>
+<p>模板里只有两个占位符可用：</p>
+<ul>
+<li>主体：<code>?principal</code></li>
+<li>资源：<code>?resource</code></li>
+</ul>
+<p>可以只用其中一个，也可以两个都用。但它们<strong>只能</strong>出现在策略作用域中 <code>==</code> 或 <code>in</code> 运算符的右侧——包括与 <code>is</code> 连用的 <code>in</code>，不包括单独的 <code>is</code>。换句话说，占位符替代的是“和谁相等”“属于谁”，而不能拿到条件里当普通变量使用。</p>
+<h2 id="模板不能直接参与决策">模板不能直接参与决策</h2>
+<p>模板本身不是一个可执行的策略：它带着未填的洞，Cedar 不会拿它去匹配请求。必须先链接，即给每个占位符补上具体实体，得到的链接策略才能像静态策略一样参与求值。这也意味着策略库中模板与链接策略是两类对象，API 分别管理，链接时缺少任一占位符的值都会失败。</p>
+<h2 id="从模板到链接策略">从模板到链接策略</h2>
+<p>设想一个常见需求：允许某些组查看和评论未标为 <code>private</code> 的照片，界面上对应一个 <strong>Share</strong> 按钮。模板可以写成：</p>
+<pre><code class="language-cedar">permit (
+  principal in ?principal,
+  action in [Action::&quot;view&quot;, Action::&quot;comment&quot;], 
+  resource in ?resource
+)
+unless {
+  resource.tag ==&quot;private&quot;
+};
+</code></pre>
+<p>用户点击 Share，把 <code>vacationTrip</code> 相册分享给 <code>friendsAndFamilies</code> 组，应用就用 <code>UserGroup::&quot;friendsAndFamily&quot;</code> 和 <code>Album::&quot;vacationTrip&quot;</code> 实例化模板。这条链接策略的行为，与下面这条静态策略完全一致：</p>
+<pre><code class="language-cedar">permit (
+  principal in UserGroup::&quot;friendsAndFamily&quot;,
+  action in [Action::&quot;view&quot;, Action::&quot;comment&quot;], 
+  resource in Album::&quot;vacationTrip&quot;
+)
+unless {
+  resource.tag ==&quot;private&quot;
+};
+</code></pre>
+<p>区别在于，链接策略并没有真的生成这段文本，而是保留了对模板的引用和两个占位符值。日后若给模板的 <code>unless</code> 再加一个条件，所有由它派生的链接策略会立即按新语句做决策。</p>
+<h2 id="生命周期成本">生命周期成本</h2>
+<p>模板把策略库和用户的<strong>生命周期管理</strong>绑在了一起。新人入职并分配角色时，你得为他创建链接策略；转岗时，要找到旧策略、归档、再建新策略；离职时，同样要归档该用户的策略。如果直接删除而不是归档，就丢失了“谁曾被允许做什么”的历史记录，取证时可能正需要它。</p>
+<p>角色越复杂，这个成本越明显：简单角色的权限一条策略就能表达，分配只需建一条链接策略；复杂角色往往需要多条策略，分配与回收就变成批量操作，容易出错。因此，模板适合“同一套访问模式套用到大量主体或资源”的场景；规则固定、很少变动的权限，用静态策略反而更省心。</p>
+<p>模板语法与静态策略一致，只是多了占位符；策略各部分的含义见<a href="./policy-syntax.html">策略语法基础</a>，占位符值本身的实体结构见<a href="./entities.html">实体与实体层级</a>。</p>
+</article></main></body></html>

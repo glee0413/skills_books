@@ -1,0 +1,98 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>实体、属性、组与层级 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="./01-parc.html">授权请求与 PARC</a></li><li><a class="active" href="./02-entities.html">实体、属性、组与层级</a></li><li><a href="./03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../../catalog/cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../../catalog/cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../../catalog/cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../../catalog/cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../../catalog/cedar-docs/data-types.html">数据类型</a></li><li><a href="../../catalog/cedar-docs/operators.html">操作符</a></li><li><a href="../../catalog/cedar-docs/validation.html">策略验证</a></li><li><a href="../../catalog/cedar-docs/templates.html">策略模板</a></li><li><a href="../../catalog/cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../../catalog/cedar-docs/schema.html">Schema 概览</a></li><li><a href="../../catalog/cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../../catalog/cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../../catalog/cedar-docs/security.html">安全模型</a></li><li><a href="../../catalog/cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../../catalog/cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../../catalog/cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../../catalog/cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../../catalog/cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../../catalog/cedar/cli.html">Cedar CLI</a></li><li><a href="../../catalog/cedar/wasm.html">Cedar WASM</a></li><li><a href="../../catalog/cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../../catalog/cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../../catalog/cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../../catalog/cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../../catalog/cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="实体属性组与层级">实体、属性、组与层级</h1>
+<p>上一篇里，请求由主体、动作、资源组成，策略靠比较这些值来决定放行。但 <code>User::&quot;jane&quot;</code> 到底是什么？<code>resource in Album::&quot;janeTrips&quot;</code> 里的“在……里”又是怎么判断的？答案都在实体（entity）这套模型里。Cedar 的实体不只是三个特殊变量，它是一套通用的对象系统：有类型、有标识符、有属性，还能组成层级。</p>
+<h2 id="实体是授权世界的建模单位">实体是授权世界的建模单位</h2>
+<p>一个实体由两部分唯一确定：<strong>实体类型</strong>和<strong>实体标识符</strong>（EID）。两者合起来叫实体唯一标识（UID），写法是 <code>类型::&quot;标识符&quot;</code>：</p>
+<pre><code class="language-cedar">User::&quot;jane&quot;                 // 类型 User，标识符 jane
+Action::&quot;ViewPhoto&quot;          // 类型 Action，标识符 ViewPhoto
+UserGroup::&quot;kevinFriends&quot;    // 类型 UserGroup，标识符 kevinFriends
+</code></pre>
+<p>主体、动作、资源都是实体，但它们的类型不必互不相同。用户目录就是典型例子：读自己的资料时，主体和资源是同一个用户。Cedar 允许这样写：</p>
+<pre><code class="language-cedar">// Allow every user to read their own data in the user directory
+permit (
+    principal,
+    action == Action::&quot;readUser&quot;,
+    resource
+)
+when {
+    principal == resource // The same entity
+};
+</code></pre>
+<p>除了 <code>Action</code> 这个保留类型——动作必须用它，且动作实体不允许有属性和标签——语言层面并不区分一个实体“应该”当主体还是资源。这个约束交给 Schema 去表达。另一个保留字是 <code>__cedar</code>，任何包含它的类型名都不能使用。</p>
+<h2 id="属性与标签">属性与标签</h2>
+<p>属性是实体的附加信息：用户有部门，照片有拍摄时间，相册有所有者。策略里用点号读取：</p>
+<pre><code class="language-cedar">SomeUser.name
+SomeEmployee.department
+SomePhoto.description
+</code></pre>
+<p>也可以用下标写法，两者等价：<code>SomeUser[&quot;name&quot;]</code>。</p>
+<p>读属性有两个陷阱。第一，<strong>属性不存在会报错</strong>，不是返回 <code>false</code>。所以在读可选属性之前，先用 <code>has</code> 确认：</p>
+<pre><code class="language-cedar">when {
+    principal has jobLevel &amp;&amp; principal.jobLevel &gt;= 5
+}
+</code></pre>
+<p>第二，<strong>类型必须匹配</strong>。Schema 里声明 <code>age</code> 是 <code>Long</code>，写成 <code>principal.age &gt; &quot;21&quot;</code> 就会验证失败——带引号的 <code>21</code> 是字符串，<code>&gt;</code> 不接受字符串。这类错误在验证阶段就能抓出来，不用等到线上。</p>
+<p>标签（tag）和属性很像，区别在于<strong>键名是运行时才知道的</strong>。属性名在写策略和 Schema 时就固定了，标签的键则可以由用户自定义。因此读标签要用专门的方法：<code>.hasTag()</code> 判断存在，<code>.getTag()</code> 取值。标签适合“用户自己打的标记”，属性适合“系统建模时就确定的字段”。把用户自定义的键塞进属性，Schema 会变得无法描述。</p>
+<h2 id="实体数据长什么样">实体数据长什么样</h2>
+<p>实体不是 Cedar 凭空知道的，应用要在请求里把它们送进来。官方 README 的最小例子是一段 JSON：</p>
+<pre><code class="language-json">[
+    {
+        &quot;uid&quot;: { &quot;type&quot;: &quot;User&quot;, &quot;id&quot;: &quot;alice&quot;} ,
+        &quot;attrs&quot;: {&quot;age&quot;: 18},
+        &quot;parents&quot;: []
+    },
+    {
+        &quot;uid&quot;: { &quot;type&quot;: &quot;Photo&quot;, &quot;id&quot;: &quot;VacationPhoto94.jpg&quot;},
+        &quot;attrs&quot;: {},
+        &quot;parents&quot;: [{ &quot;type&quot;: &quot;Album&quot;, &quot;id&quot;: &quot;jane_vacation&quot; }]
+    },
+    {
+        &quot;uid&quot;: { &quot;type&quot;: &quot;Photo&quot;, &quot;id&quot;: &quot;SecretPhoto94.jpg&quot;},
+        &quot;attrs&quot;: {},
+        &quot;parents&quot;: [{ &quot;type&quot;: &quot;Album&quot;, &quot;id&quot;: &quot;jane_secrets&quot; }]
+    }
+]
+</code></pre>
+<p>三个字段各司其职：<code>uid</code> 是身份，<code>attrs</code> 是属性，<code>parents</code> 是它属于哪些组或容器。第一张照片的 <code>parents</code> 指向 <code>Album::&quot;jane_vacation&quot;</code>，第二张指向 <code>Album::&quot;jane_secrets&quot;</code>。只改这一个字段，同一批策略对两张照片的判断就完全不同——层级关系是数据，不是代码。JSON 的完整格式见<a href="../../catalog/cedar-docs/json-format.html">实体 JSON 格式</a>。</p>
+<h2 id="组与层级">组与层级</h2>
+<p>Cedar 没有专门的“组”类型。所谓组，就是一个被其他实体写进 <code>parents</code> 的实体。如果 A 的 <code>parents</code> 里有 B，我们就说 A 是 B 的成员。</p>
+<p>这个定义的好处是它不限于“用户属于组”。你可以用它表达：</p>
+<ul>
+<li><strong>组的嵌套</strong>：<code>collegeFriends</code> 可以是 <code>janeFriends</code> 的成员，组里有组，形成多层结构；</li>
+<li><strong>资源容器</strong>：相册套相册，照片放进最内层，和外层文件夹天然连通；</li>
+<li><strong>动作分组</strong>：把 <code>viewPhoto</code>、<code>listPhotos</code> 归入 <code>readOnly</code> 动作组，策略里写 <code>action in Action::&quot;readOnly&quot;</code> 就能一次覆盖一组动作。</li>
+</ul>
+<p>一个实体可以有<strong>多个</strong> parent。一张照片既在 <code>Vacations</code> 相册里，也可以同时在 <code>picturesOfBob</code> 里，只要在 <code>parents</code> 数组里多写一项。这让“同时属于多个集合”不需要任何额外机制。</p>
+<h2 id="in-判断的是后代关系"><code>in</code> 判断的是后代关系</h2>
+<p>层级建好之后，策略用 <code>in</code> 来查询：</p>
+<pre><code class="language-cedar">// Jane&#39;s friends can view all photos in her janeTrips album
+permit (
+    principal in Group::&quot;janeFriends&quot;,
+    action in [Action::&quot;view&quot;, Action::&quot;comment&quot;], 
+    resource in Album::&quot;janeTrips&quot;
+);
+</code></pre>
+<p>理解 <code>in</code> 需要记住四条性质：</p>
+<ul>
+<li><strong>传递</strong>：A 在 B 里，B 在 C 里，则 A 在 C 里。所以 <code>janeTrips</code> 里嵌套的 <code>janeVacation</code> 和 <code>conference</code> 也自动被这条策略覆盖，不需要为每个子相册再写一条。</li>
+<li><strong>自反</strong>：实体总在自己的层级里，<code>principal in User::&quot;bob&quot;</code> 在主体就是 bob 时为真。这意味着 <code>resource in Album::&quot;janeTrips&quot;</code> 在资源就是那个相册本身时也成立。</li>
+<li><strong>不对称</strong>：<code>Group::&quot;all&quot; in User::&quot;bob&quot;</code> 为假。方向反了就是另一个问题。</li>
+<li><strong>右侧可以是集合</strong>：<code>principal in [Group::&quot;a&quot;, Group::&quot;b&quot;]</code> 表示属于其中任意一个。</li>
+</ul>
+<p>另外，<code>in</code> 的左侧必须是实体。<code>1 in Group::&quot;janeFriends&quot;</code> 会同时导致求值错误和验证错误。层级是实体之间的关系，不是值之间的关系。</p>
+<h2 id="命名空间给类型加前缀">命名空间：给类型加前缀</h2>
+<p>当一个策略库里同时存在多个产品时，类型名会撞车。厂商既提供托管数据库，又提供家具设计服务，那么 <code>Action::&quot;createTable&quot;</code> 到底是建表还是做桌子？<code>Table::&quot;0d6169ca-b246-43a7-94b9-8a68a9e8f8b3&quot;</code> 是数据库表还是家具？</p>
+<p>解法是命名空间：给类型加一个用 <code>::</code> 分隔的前缀。</p>
+<pre><code class="language-cedar">Database::Action::&quot;createTable&quot;
+Database::Table::&quot;c7b981f1-97e4-436b-9af9-21054a3b30f1&quot;
+Furniture::Action::&quot;createTable&quot;
+Furniture::Table::&quot;c7b981f1-97e4-436b-9af9-21054a3b30f1&quot;
+</code></pre>
+<p>命名空间可以任意嵌套，<code>ExampleCo::Database::Table::&quot;…&quot;</code> 也是合法 UID。要注意的是，这种层级只是名字上的约定，语言并不赋予它结构含义，也不会自动产生父子关系。真正的关系仍然由 <code>parents</code> 决定。命名空间在 Schema 中声明，详见<a href="../03-schema/01-schema.html">用 Schema 建模</a>。</p>
+<h2 id="标识符会变权限不会">标识符会变，权限不会</h2>
+<p>最后是一条安全警告，值得单独成节。</p>
+<p>本书的例子用 <code>jane</code>、<code>bob</code> 这样的短标识符，是为了好读。<strong>生产环境绝不能这样</strong>。假设员工 jane 离职，账号被删除，半年后公司招了一个新 jane，复用了同一个用户名。所有写着 <code>User::&quot;jane&quot;</code> 的策略会立刻把前员工的全部权限授予新人，而 Cedar 无法分辨这两个人——对它来说，UID 相同就是同一个实体。</p>
+<p>规则是：<strong>标识符必须唯一且永不复用</strong>。实践上用 UUID，并在后面加注释写清是谁：</p>
+<pre><code class="language-cedar">principal == User::&quot;a1b2c3d4-e5f6-a1b2-c3d4-EXAMPLE11111&quot;, // alice
+</code></pre>
+<p>这条规则对主体和资源同样适用。资源 ID 被回收同样危险：删掉的相册 ID 分配给了别人的相册，旧策略就会把访问权交给错误的对象。标识符是策略与数据之间唯一的连接点，连接点一旦可复用，整套授权模型就失去了确定性。这也是<a href="../../catalog/cedar-docs/security.html">安全模型</a>反复强调的一条工程约束。</p>
+</article><nav class="pager"><a class="prev" href="./01-parc.html">← 授权请求与 PARC</a><a class="next" href="./03-scenario.html">PhotoFlash：贯穿全书的例子 →</a></nav></main></body></html>

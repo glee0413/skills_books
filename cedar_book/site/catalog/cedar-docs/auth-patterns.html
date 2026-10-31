@@ -1,0 +1,75 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>授权模式 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="./terminology.html">术语与核心概念</a></li><li><a href="./scenario.html">PhotoFlash 示例场景</a></li><li><a href="./authorization.html">授权如何工作</a></li><li><a href="./policy-syntax.html">策略语法基础</a></li><li><a href="./entities.html">实体与实体层级</a></li><li><a href="./data-types.html">数据类型</a></li><li><a href="./operators.html">操作符</a></li><li><a href="./validation.html">策略验证</a></li><li><a href="./templates.html">策略模板</a></li><li><a href="./json-format.html">JSON 策略格式</a></li><li><a href="./schema.html">Schema 概览</a></li><li><a href="./schema-format.html">Cedar Schema 格式</a></li><li><a href="./schema-linking.html">Schema 链接</a></li><li><a href="./security.html">安全模型</a></li><li><a href="./best-practices.html">最佳实践概览</a></li><li><a href="./auth-patterns.html">授权模式</a></li><li><a href="./policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-docs · <code>docs/collections/_bestpractices/bp-authorization-patterns.md</code> · a0b2849 · commit <code>a0b2849</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-docs/blob/a0b28494644671804c60301fee4d59f5fc4fbd99/docs/collections/_bestpractices/bp-authorization-patterns.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-docs/docs/collections/_bestpractices/bp-authorization-patterns.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="授权模式">授权模式</h1>
+<p>应用里的每个 API 端点都能归入少数几种授权模式。先判断端点属于哪一种，就能确定每次调用授权时主体、动作、资源分别取什么，以及要构造哪些实体。这是<a href="./best-practices.html">最佳实践概览</a>中“识别你的授权模式”的展开。</p>
+<h2 id="六种模式">六种模式</h2>
+<p><strong>单资源读、改、删。</strong> 主体对某个已存在的具体资源执行动作，例如 <code>GetPhoto</code>、<code>DeleteDocument</code>。这是最直接的模式，主体、动作、资源都能从请求直观映射：</p>
+<pre><code>principal = App::User::&quot;alice&quot;
+action    = App::Action::&quot;GetPhoto&quot;
+resource  = App::Photo::&quot;photo-123&quot;
+</code></pre>
+<p><strong>资源创建。</strong> 主体要创建尚不存在的资源，例如 <code>UploadPhoto</code>、<code>CreateEmailCampaign</code>。资源还不存在，无法对它授权；请求里的资源应取新资源将归属的<strong>容器</strong>，可能是租户、文件夹/相册/项目，或单租户场景下的应用本身。若应用同时建模文件夹与相册，容器及其父级都要进入实体切片。</p>
+<pre><code>principal = App::User::&quot;alice&quot;
+action    = App::Action::&quot;UploadPhoto&quot;
+resource  = App::Folder::&quot;alice-vacation-2024&quot;
+</code></pre>
+<p><strong>资源列表。</strong> 主体列出某类资源，例如 <code>ListPhotos</code>。与创建类似，授权对象是容器；额外要考虑动作名是否应固化容器层级。相比泛化的 <code>ListPhotos</code>，<code>ListPhotosForAccount</code> 或 <code>ListPhotosForFolder</code> 更精确，因为它写明了查的是哪一级容器。常见做法是把列表权限当作容器级的全有全无，但让列表接口只返回元数据；需要完整内容时再对每个资源单独调用 <code>Get</code> 授权。</p>
+<pre><code>principal = App::User::&quot;alice&quot;
+action    = App::Action::&quot;ListPhotosForFolder&quot;
+resource  = App::Folder::&quot;alice-vacation-2024&quot;
+</code></pre>
+<p><strong>批量读、改、删。</strong> 主体一次对多个资源执行同一动作，例如老师批量提交考勤，或用户在表格里多选后删除。这需要<strong>复合授权</strong>：对批次中的每个资源各做一次单资源授权。在 Cedar 搭配 Amazon Verified Permissions 时用 <code>BatchIsAuthorized</code>。移动文件也是复合场景——源容器与目标容器都要授权：从源移除、向目标添加。</p>
+<p><strong>开放端点。</strong> 动作不针对任何具体资源，例如 <code>Login</code>、<code>Signup</code>、<code>ResetPassword</code>。此时主体身份并不可信，调用方可能未认证或持有未验证的凭据。资源取<strong>应用</strong>（或服务）实体。这个模式适合让策略控制应用整体入口，例如限制登录只对状态正常的账户开放，或限制注册只接受特定邮箱域。</p>
+<p><strong>隐式作用域端点。</strong> 资源由主体自身隐含推出，例如 <code>GetDashboardData</code>、<code>GetMyProfile</code>、<code>ListMyNotifications</code>。请求里不带资源标识，业务逻辑从 JWT 取出用户并返回该用户范围内的数据。由于资源隐含于主体，动作的资源类型同样建模为<strong>应用</strong>实体，与开放端点一致。此时要回答的问题是“这个主体能否使用该功能”，而不是“能否访问某个具体资源”。</p>
+<h2 id="实体切片">实体切片</h2>
+<p>每次 <code>IsAuthorized</code> 都需要一个实体切片：授权引擎求值所需的实体列表，含属性与父子关系。切片由可复用的部分拼成：</p>
+<ul>
+<li><strong>主体切片</strong>：主体及其父级（角色、组、租户）。它相对稳定——用户的角色和组不常变，租户永不变——因此可以取一次并缓存。更重要的是，取某个用户主体切片的<strong>代码</strong>是固定的：查用户、查角色、查租户，再转成 Cedar 实体格式。</li>
+<li><strong>资源切片</strong>：资源及其父级（容器、租户）。它随资源类型和具体资源变化。若目标资源就是 <code>Tenant</code>，可能无需查库；若是 <code>EmailMessage</code>，则要查出所属 <code>EmailCampaign</code> 及其租户。</li>
+</ul>
+<p>完整切片 = 主体切片 + 资源切片，授权模式决定资源切片长什么样。</p>
+<h2 id="构造切片的步骤">构造切片的步骤</h2>
+<ol>
+<li>把 HTTP 请求映射为 Cedar 动作；</li>
+<li>由动作和主体类型确定资源类型——按“动作映射到业务领域”的做法，每个动作应只对应一种资源类型；</li>
+<li>取主体切片（可缓存）；</li>
+<li>取该资源类型与具体资源的资源切片；</li>
+<li>合并后调用 <code>IsAuthorized</code>。</li>
+</ol>
+<p>每个切片构造器都能独立使用和测试。资源切片构造器的数量取决于 schema 中不同资源类型的数量及其访问方式，通常远少于端点数量。</p>
+<h2 id="案例邮件营销平台">案例：邮件营销平台</h2>
+<p>原文用一个含 <code>Tenant</code>、<code>Role</code>、<code>User</code>、<code>EmailCampaign</code>、<code>EmailMessage</code>、<code>Application</code> 的 schema 走完全部端点。以租户 <code>acme</code> 中属于 <code>admin</code> 角色的用户 <code>alice</code> 为例，主体切片是：</p>
+<pre><code class="language-json">[
+    {
+        &quot;uid&quot;: { &quot;type&quot;: &quot;EmailApp::User&quot;, &quot;id&quot;: &quot;alice&quot; },
+        &quot;attrs&quot;: { &quot;email&quot;: &quot;alice@acme.com&quot;, &quot;displayName&quot;: &quot;Alice&quot; },
+        &quot;parents&quot;: [
+            { &quot;type&quot;: &quot;EmailApp::Role&quot;, &quot;id&quot;: &quot;admin&quot; },
+            { &quot;type&quot;: &quot;EmailApp::Tenant&quot;, &quot;id&quot;: &quot;acme&quot; }
+        ]
+    },
+    {
+        &quot;uid&quot;: { &quot;type&quot;: &quot;EmailApp::Role&quot;, &quot;id&quot;: &quot;admin&quot; },
+        &quot;attrs&quot;: {},
+        &quot;parents&quot;: []
+    },
+    {
+        &quot;uid&quot;: { &quot;type&quot;: &quot;EmailApp::Tenant&quot;, &quot;id&quot;: &quot;acme&quot; },
+        &quot;attrs&quot;: { &quot;planTier&quot;: &quot;enterprise&quot;, &quot;maxUsers&quot;: 100 },
+        &quot;parents&quot;: []
+    }
+]
+</code></pre>
+<p>这份切片可被 <code>alice</code> 的多次请求复用，缓存策略视应用需要而定。<code>login</code>、<code>signup</code>、<code>getDashboardData</code> 的资源切片只有一个合成出来的应用实体，不需要查库：</p>
+<pre><code class="language-json">[
+    {
+        &quot;uid&quot;: { &quot;type&quot;: &quot;EmailApp::Application&quot;, &quot;id&quot;: &quot;emailApp&quot; },
+        &quot;attrs&quot;: {},
+        &quot;parents&quot;: []
+    }
+]
+</code></pre>
+<p>创建或列出活动时，资源是租户；<code>get/update/deleteEmailCampaign</code> 的资源是活动及其父租户；创建或列出消息时资源是所属活动；消息的单资源操作则要带上消息、活动、租户三层。<code>deleteEmailMessage</code> 看似一个动作，实际对应批量端点，因此对每条消息各查一次，逐条决定允许删除哪些。</p>
+<p>把这些端点归类后，13 个 HTTP 端点只需要 5 个切片构造器：<code>principalSlice</code>（用户、角色、租户）、<code>applicationSlice</code>（代码中合成，不查库）、<code>tenantSlice</code>、<code>emailCampaignSlice</code>（活动加父租户，可复用 <code>tenantSlice</code>）、<code>emailMessageSlice</code>（消息、父活动、租户，可复用 <code>emailCampaignSlice</code>）。每个授权请求都是主体切片加某个资源切片。模式识别带来的收益就在这里：端点会增长，切片构造器不会同比例增长。</p>
+</article></main></body></html>

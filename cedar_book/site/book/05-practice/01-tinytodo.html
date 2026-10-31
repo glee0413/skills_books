@@ -1,0 +1,217 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>TinyTodo 教程：从命令到授权决策 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a class="active" href="./01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="./02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../../catalog/cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../../catalog/cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../../catalog/cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../../catalog/cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../../catalog/cedar-docs/data-types.html">数据类型</a></li><li><a href="../../catalog/cedar-docs/operators.html">操作符</a></li><li><a href="../../catalog/cedar-docs/validation.html">策略验证</a></li><li><a href="../../catalog/cedar-docs/templates.html">策略模板</a></li><li><a href="../../catalog/cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../../catalog/cedar-docs/schema.html">Schema 概览</a></li><li><a href="../../catalog/cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../../catalog/cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../../catalog/cedar-docs/security.html">安全模型</a></li><li><a href="../../catalog/cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../../catalog/cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../../catalog/cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../../catalog/cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../../catalog/cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../../catalog/cedar/cli.html">Cedar CLI</a></li><li><a href="../../catalog/cedar/wasm.html">Cedar WASM</a></li><li><a href="../../catalog/cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../../catalog/cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../../catalog/cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../../catalog/cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../../catalog/cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="tinytodo-教程从命令到授权决策">TinyTodo 教程：从命令到授权决策</h1>
+<p>TinyTodo 是 Cedar 官方教程应用：用户创建任务列表，并把列表以 reader 或 editor 身份分享给其他用户或团队。它把“谁能做什么”全部写进 Cedar 策略，业务代码只负责在每条命令前问一次授权引擎。这一章沿着一条真实命令，走完从 HTTP 请求到 <code>Allow</code>/<code>Deny</code> 的整条链路。原文见 <a href="../../catalog/cedar-examples/tinytodo-tutorial.html">TinyTodo 教程精读</a>。</p>
+<h2 id="架构客户端发命令服务器做决定">架构：客户端发命令，服务器做决定</h2>
+<p>TinyTodo 由两部分组成：Rust 写的服务器，用 Warp 提供 HTTP 接口；Python 写的 CLI，用交互式命令调用服务器。列表、团队、用户和策略都放在服务器内存里，进程退出就消失。关键约束是：客户端不做任何强制执行，所有访问控制都在服务器端完成。</p>
+<p>服务器收到命令后，先把请求翻译成 Cedar 的 <code>Request</code>，连同策略和实体一起交给授权引擎。引擎返回 <code>Allow</code> 才继续执行业务逻辑，返回 <code>Deny</code> 就直接把“未授权”错误发回客户端。</p>
+<p>构建需要 Rust 和 Python 3：</p>
+<pre><code class="language-bash">git clone https://github.com/cedar-policy/cedar-examples
+cd cedar-examples/tinytodo
+pip3 install -r requirements.txt
+cargo build --release
+</code></pre>
+<p>随后进入交互模式，启动服务器并以 <code>andrew</code> 身份创建列表、添加任务：</p>
+<pre><code class="language-shell">&gt; python -i tinytodo.py
+&gt;&gt;&gt; start_server()
+TinyTodo server started on port 8080
+&gt;&gt;&gt; set_user(andrew)
+User is now andrew
+&gt;&gt;&gt; create_list(&quot;Cedar blog post&quot;)
+Created list ID 0
+&gt;&gt;&gt; create_task(0,&quot;Draft the post&quot;)
+Created task on list ID 0
+&gt;&gt;&gt; toggle_task(0,1)
+Toggled task on list ID 0
+</code></pre>
+<p>创建列表由策略 0 授权；添加任务和切换完成状态则由“所有者可以对其列表做任何事”的策略 1 授权。</p>
+<h2 id="实体模型userteamlist-与-application">实体模型：User、Team、List 与 Application</h2>
+<p>TinyTodo 的实体类型有 <code>User</code>、<code>Team</code>、<code>List</code> 和 <code>Application</code>。<code>User</code> 有 <code>location</code> 和 <code>joblevel</code> 属性；<code>Team</code> 没有属性；<code>List</code> 有 <code>name</code>、<code>owner</code>、<code>readers</code>、<code>editors</code> 和 <code>tasks</code>，其中 <code>tasks</code> 是记录集合，每条记录含 <code>id</code>、<code>name</code>、<code>state</code>。当请求没有具体列表可作为资源时，例如“创建列表”，就用 <code>Application::&quot;TinyTodo&quot;</code> 充当资源。</p>
+<p>用户和团队的初始定义写在 <code>entities.json</code>，服务器启动时读取；TinyTodo 没有创建或删除用户、团队的命令，共享只会改动它们的父关系：</p>
+<pre><code class="language-json">&quot;User::\&quot;aaron\&quot;&quot;: {
+    &quot;euid&quot;: &quot;User::\&quot;aaron\&quot;&quot;,
+    &quot;location&quot;: &quot;ABC17&quot;,
+    &quot;joblevel&quot;: 5,
+    &quot;parents&quot;: [
+        &quot;Team::\&quot;interns\&quot;&quot;,
+        &quot;Application::\&quot;TinyTodo\&quot;&quot;
+    ]
+},
+&quot;Team::\&quot;interns\&quot;&quot;: {
+    &quot;uid&quot;: &quot;Team::\&quot;interns\&quot;&quot;,
+    &quot;parents&quot;: [
+        &quot;Application::\&quot;TinyTodo\&quot;&quot;,
+        &quot;Team::\&quot;temp\&quot;&quot;
+    ]
+}
+</code></pre>
+<p>用户对象的标识字段叫 <code>euid</code>，团队叫 <code>uid</code>，这只是两个原生结构体的字段命名不同，最后都会被转成 <code>EntityUid</code>。</p>
+<p>实体层级是有向无环图，<code>in</code> 判断的是可达性。因为 <code>aaron</code> 的父实体包含 <code>interns</code>，而 <code>interns</code> 的父实体包含 <code>temp</code>，所以 <code>User::&quot;aaron&quot; in Team::&quot;interns&quot;</code> 和 <code>User::&quot;aaron&quot; in Team::&quot;temp&quot;</code> 都成立；反向不成立。这一点直接决定了共享和越权测试的结果。</p>
+<p>运行期的列表用 Rust 原生结构保存，再通过 <code>EntityStore::as_entities</code> 转成 Cedar 实体。原生 <code>List</code> 的字段刻意与实体属性一一对应，只是把引用换成 UID：</p>
+<pre><code class="language-rust">pub struct List {
+    uid: ListUid,
+    owner: UserUid,
+    name: String,
+    tasks: Vec&lt;Task&gt;, // Invariant, `tasks` must be sorted
+    readers: TeamUid,
+    editors: TeamUid,
+}
+</code></pre>
+<h2 id="四条策略默认拒绝与拒绝优先">四条策略：默认拒绝与拒绝优先</h2>
+<p><code>policies.cedar</code> 的核心只有四条：</p>
+<pre><code>// Policy 0: Any User can create a list and see what lists they own
+permit (
+    principal,
+    action in [Action::&quot;CreateList&quot;, Action::&quot;GetLists&quot;],
+    resource == Application::&quot;TinyTodo&quot;
+);
+
+// Policy 1: A User can perform any action on a List they own 
+permit (principal, action, resource)
+when {
+    resource is List &amp;&amp;
+    resource.owner == principal
+};
+
+// Policy 2: A User can see a List and its tasks if they are either a reader or editor
+permit (
+    principal,
+    action == Action::&quot;GetList&quot;,
+    resource
+)
+when {
+    principal in resource.readers ||
+    principal in resource.editors
+};
+
+// Policy 3: A User can update a List and its tasks if they are an editor
+permit (
+    principal,
+    action in [
+        Action::&quot;UpdateList&quot;,
+        Action::&quot;CreateTask&quot;,
+        Action::&quot;UpdateTask&quot;,
+        Action::&quot;DeleteTask&quot;
+    ],
+    resource
+)
+when { principal in resource.editors };
+</code></pre>
+<p>策略 0 让任何用户创建列表、列出自己拥有的列表；策略 1 把列表上的全部动作交给所有者；策略 2 只允许 reader 和 editor 读取；策略 3 只允许 editor 写入。reader 与 editor 的差别就落在这里：reader 能通过策略 2，却过不了策略 3。</p>
+<p>Cedar 默认拒绝，没有 <code>permit</code> 命中就是 <code>Deny</code>。<code>forbid</code> 则优先于任何 <code>permit</code>，而且策略顺序不影响结果。教程后面新增的 <code>admin-omnipotence</code> 和“实习生不得创建列表”就是利用这两个性质，在不改服务器代码的情况下改变行为。</p>
+<h2 id="一次-createtask-的授权流程">一次 CreateTask 的授权流程</h2>
+<p>以“用户想往列表里加任务”为例。HTTP 请求先被解析成 <code>CreateTask</code>，其中包含发起人、目标列表和任务名：</p>
+<pre><code class="language-rust">pub struct CreateTask {
+    pub uid: UserUid,
+    pub list: ListUid,
+    pub name: String,
+}
+</code></pre>
+<p>处理器第一行就调用授权，通过后才修改数据：</p>
+<pre><code class="language-rust">fn create_task(&amp;mut self, r: CreateTask) -&gt; Result&lt;AppResponse&gt; {
+    self.is_authorized(&amp;r.uid, &amp;*ACTION_CREATE_TASK, &amp;r.list)?;
+    let list = self.entities.get_list_mut(&amp;r.list)?;
+    let task_id = list.create_task(r.name);
+    Ok(AppResponse::TaskId(task_id))
+}
+</code></pre>
+<p><code>is_authorized</code> 把三个 UID 组装成 <code>Request</code>，上下文为空，并附带 schema 做请求校验：</p>
+<pre><code class="language-rust">pub fn is_authorized(
+    &amp;self,
+    principal: impl AsRef&lt;EntityUid&gt;,
+    action: impl AsRef&lt;EntityUid&gt;,
+    resource: impl AsRef&lt;EntityUid&gt;,
+) -&gt; Result&lt;()&gt; {
+    let es = self.entities.as_entities(&amp;self.schema);
+    let q = Request::new(
+        Some(principal.as_ref().clone().into()),
+        Some(action.as_ref().clone().into()),
+        Some(resource.as_ref().clone().into()),
+        Context::empty(),
+        Some(&amp;self.schema),
+    )
+    .map_err(|e| Error::Request(e.to_string()))?;
+    info!(
+        &quot;is_authorized request: principal: {}, action: {}, resource: {}&quot;,
+        principal.as_ref(),
+        action.as_ref(),
+        resource.as_ref()
+    );
+    let response = self.authorizer.is_authorized(&amp;q, &amp;self.policies, &amp;es);
+    info!(&quot;Auth response: {:?}&quot;, response);
+    match response.decision() {
+        Decision::Allow =&gt; Ok(()),
+        Decision::Deny =&gt; Err(Error::AuthDenied(response.diagnostics().clone())),
+    }
+}
+</code></pre>
+<p>假设 <code>kesha</code> 想给 <code>andrew</code> 的 <code>List::&quot;0&quot;</code> 加任务。策略 0 的动作不匹配；策略 1 要求 <code>owner == principal</code>，不成立；策略 2 只匹配 <code>GetList</code>；策略 3 虽然包含 <code>CreateTask</code>，但 <code>kesha</code> 不在 <code>editors</code> 里。四条全部为假，请求被拒绝。把主体换成 <code>andrew</code>，策略 1 立即命中。设置 <code>RUST_LOG=info</code> 可以看到每次请求和响应，诊断里的 <code>reason</code> 会列出真正生效的策略 ID。</p>
+<h2 id="共享列表reader-与-editor-的差别">共享列表：reader 与 editor 的差别</h2>
+<p><code>andrew</code> 把列表共享给 <code>interns</code> 团队，只读：</p>
+<pre><code class="language-shell">&gt;&gt;&gt; share_list(0,interns,read_only=True)
+Shared list ID 0 with interns as reader
+&gt;&gt;&gt; set_user(aaron)
+User is now aaron
+&gt;&gt;&gt; get_list(0)
+=== Cedar blog post ===
+List ID: 0
+Owner: User::&quot;andrew&quot;
+Tasks:
+1. [X] Draft the post
+2. [ ] Revise and polish
+&gt;&gt;&gt; toggle_task(0,2)
+Access denied. User aaron is not authorized to Toggle Task on [0, 2]
+&gt;&gt;&gt; set_user(kesha)
+User is now kesha
+&gt;&gt;&gt; get_list(0)
+Access denied. User kesha is not authorized to Get List on [0]
+</code></pre>
+<p><code>aaron</code> 能读，因为他是 <code>interns</code> 成员，而 <code>interns</code> 是列表的 reader；他不能改，因为修改要求 editor。<code>kesha</code> 属于 <code>temp</code>，<code>interns</code> 属于 <code>temp</code>，但方向反过来不成立，所以 <code>kesha in interns</code> 为假。</p>
+<p>共享的实现不是改策略，而是改实体层级：</p>
+<pre><code class="language-rust">fn add_share(&amp;mut self, r: AddShare) -&gt; Result&lt;AppResponse&gt; {
+    self.is_authorized(&amp;r.uid, &amp;*ACTION_EDIT_SHARE, &amp;r.list)?;
+    let list = self.entities.get_list(&amp;r.list)?;
+    let team_uid = list.get_team(r.role).clone();
+    let target_entity = self.entities.get_user_or_team_mut(&amp;r.share_with)?;
+    target_entity.insert_parent(team_uid);
+    Ok(AppResponse::Unit(()))
+}
+</code></pre>
+<p>每个列表创建时会生成自己的 <code>readers</code> 和 <code>editors</code> 团队。共享就是把目标用户或团队挂到对应团队下面，于是 <code>principal in resource.readers</code> 通过传递性成立。撤销共享则移除这条父关系，授权立即失效，不需要重新加载策略。</p>
+<h2 id="schema-校验与测试">Schema 校验与测试</h2>
+<p><code>tinytodo.cedarschema</code> 描述实体属性和每个动作允许的主体、资源类型。<code>List</code> 的声明同时给出了父实体类型和属性形状：</p>
+<pre><code class="language-json">type Task = {
+    &quot;id&quot;: Long,
+    &quot;name&quot;: String,
+    &quot;state&quot;: String,
+};
+
+type Tasks = Set&lt;Task&gt;;
+entity List in [Application] = {
+  &quot;editors&quot;: Team,
+  &quot;name&quot;: String,
+  &quot;owner&quot;: User,
+  &quot;readers&quot;: Team,
+  &quot;tasks&quot;: Tasks,
+};
+</code></pre>
+<p>动作声明则把每个动作绑定到合法的请求形状。下面是创建列表、列举列表和编辑共享三个动作的片段：</p>
+<pre><code class="language-json">action CreateList, GetLists appliesTo {
+  principal: [User],
+  resource: [Application]
+};
+action EditShare appliesTo {
+  principal: [User],
+  resource: [List]
+};
+</code></pre>
+<p><code>appliesTo</code> 同时服务于策略验证和请求校验：验证器据此知道 <code>Action::&quot;CreateList&quot;</code> 的 <code>principal</code> 一定是 <code>User</code>、<code>resource</code> 一定是 <code>Application</code>，于是可以判断策略里的属性访问和实体引用是否可能成立；<code>Request::new</code> 带上 schema 时，运行期也会拒绝不符合这些类型假设的请求。服务器在反序列化时还要保证请求对象的 UID 类型正确，否则验证通过并不等于运行期安全。</p>
+<p>在改代码前先用 CLI 验证策略与 schema 是否一致：</p>
+<pre><code class="language-bash">cedar validate \
+  --schema tinytodo.cedarschema \
+  --policies policies.cedar
+</code></pre>
+<p>服务器启动时也会做同样的验证。把策略 2 里的 <code>readers</code> 改成 <code>Readers</code>，或者把 <code>Action::&quot;CreateTask&quot;</code> 拼成 <code>Action::&quot;CrateTask&quot;</code>，验证会分别报“未知属性”和“未知动作”，服务器直接拒绝启动。schema 的写法见 <a href="../../catalog/cedar-docs/schema.html">Schema 概览</a>，验证机制见 <a href="../../catalog/cedar-docs/validation.html">策略验证</a>。</p>
+<p>最后跑一遍仓库自带的单元测试，覆盖所有者读写、未授权访问、撤销共享、只读共享和可编辑共享：</p>
+<pre><code class="language-bash">python -m unittest test_tinytodo.py
+</code></pre>
+<p>测试会自己启动和停止服务器，因此运行前要确保 8080 端口没有残留实例。把这些场景与上面的策略逐条对照，就能理解 TinyTodo 为什么能在不改业务代码的前提下调整权限。</p>
+</article><nav class="pager"><a class="prev" href="../04-sdk/03-wasm-symcc.html">← WASM、语言服务器与符号验证</a><a class="next" href="./02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体 →</a></nav></main></body></html>

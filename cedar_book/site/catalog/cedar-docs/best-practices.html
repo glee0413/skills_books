@@ -1,0 +1,39 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>最佳实践概览 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="./terminology.html">术语与核心概念</a></li><li><a href="./scenario.html">PhotoFlash 示例场景</a></li><li><a href="./authorization.html">授权如何工作</a></li><li><a href="./policy-syntax.html">策略语法基础</a></li><li><a href="./entities.html">实体与实体层级</a></li><li><a href="./data-types.html">数据类型</a></li><li><a href="./operators.html">操作符</a></li><li><a href="./validation.html">策略验证</a></li><li><a href="./templates.html">策略模板</a></li><li><a href="./json-format.html">JSON 策略格式</a></li><li><a href="./schema.html">Schema 概览</a></li><li><a href="./schema-format.html">Cedar Schema 格式</a></li><li><a href="./schema-linking.html">Schema 链接</a></li><li><a href="./security.html">安全模型</a></li><li><a href="./best-practices.html">最佳实践概览</a></li><li><a href="./auth-patterns.html">授权模式</a></li><li><a href="./policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-docs · <code>docs/collections/_bestpractices/bp-overview.md</code> · a0b2849 · commit <code>a0b2849</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-docs/blob/a0b28494644671804c60301fee4d59f5fc4fbd99/docs/collections/_bestpractices/bp-overview.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-docs/docs/collections/_bestpractices/bp-overview.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="最佳实践概览">最佳实践概览</h1>
+<p>这是 Cedar 官方最佳实践的入口页，内容是一份持续更新的建议清单，目标是让 Cedar 作为授权引擎发挥最大价值。原文只有一段导语和 17 条链接，没有展开论证；下面按主题重新组织，便于按建模顺序阅读。</p>
+<h2 id="清单的结构">清单的结构</h2>
+<p>原文的 17 条建议依次是：</p>
+<ul>
+<li>定义并使用命名规范</li>
+<li>识别你的授权模式</li>
+<li>把动作映射到业务领域</li>
+<li>在 Cedar 中建模所有权限</li>
+<li>填充策略作用域</li>
+<li>利用用户组</li>
+<li>复合授权是常态</li>
+<li>模型中用细粒度权限，界面上聚合权限</li>
+<li>用属性或模板表达关系</li>
+<li>每个资源都生活在容器里</li>
+<li>把主体与资源容器分开</li>
+<li>调用授权 API 前规范化输入数据</li>
+<li>不要用 context 存放主体、动作、资源的信息</li>
+<li>把元权限实现为策略</li>
+<li>避免策略中的可变标识符</li>
+<li>把 RBAC 作为授权策略的一部分</li>
+<li>考虑其他需要查询授权的理由</li>
+</ul>
+<p>这些条目不是彼此独立的技巧，而是一条从命名、建模到请求构造的流水线。下面按四组说明它们各自解决什么问题。</p>
+<h2 id="命名动作与授权模式">命名、动作与授权模式</h2>
+<p>前三条规定了“怎么称呼”和“怎么切分”。命名规范让实体类型、动作名和属性名在 schema、策略与代码中保持一致，减少拼写类和映射类错误。动作要映射到业务领域，即一个动作对应业务上真实发生的一件事，而不是数据库的 CRUD 原语；这样策略才读得懂，也更容易复用。识别授权模式则是为每个 API 端点确定它属于单资源读写、资源创建、列表、批量、开放端点还是隐式作用域，从而决定请求里的主体、动作、资源和实体切片。六种模式的完整拆解见<a href="./auth-patterns.html">授权模式</a>。</p>
+<h2 id="权限建模">权限建模</h2>
+<p>“在 Cedar 中建模所有权限”强调不要留一半逻辑在应用代码里：只要涉及“谁能做什么”，就应写进策略，否则审计和变更都会出现盲区。填充策略作用域指的是尽量把 <code>principal</code>、<code>action</code>、<code>resource</code> 写具体，而不是一律留空后靠 <code>when</code> 兜底，具体作用域能让策略更易读、验证更有力，写法可参考<a href="./policy-examples.html">策略示例</a>。</p>
+<p>用户组和 RBAC 解决规模化问题：把权限授予角色或组，再让用户成为组成员，比给每个人单独写策略稳定得多。复合授权是常态，因为一次业务操作往往对应多个资源的多次判断，不能假设一次 <code>IsAuthorized</code> 就能覆盖整个请求。细粒度与聚合的分工则是：模型中保留最小粒度的权限，界面再把它们打包成用户看得懂的选项。</p>
+<h2 id="资源关系与上下文">资源、关系与上下文</h2>
+<p>“每个资源都生活在容器里”和“把主体与资源容器分开”是层级建模的两条骨架规则：资源通过 <code>in</code> 挂在租户、账户、文件夹、相册等容器下，主体则不要塞进资源容器层级，否则权限会沿错误的路径继承。关系可以用属性表达，也可以用模板表达，选择取决于关系是否稳定、是否需要频繁变更；实体与层级的基础见<a href="./entities.html">实体与实体层级</a>，模板见<a href="./templates.html">策略模板</a>。</p>
+<p>Context 只放随请求变化的信息，例如 IP、时间、MFA 状态；主体、动作、资源本身的属性应放在实体上，否则同一事实会有两个来源，策略难以验证。输入数据要在调用授权 API 前规范化，避免大小写、空白或编码差异让匹配失效——这也是<a href="./security.html">安全模型</a>中的一条硬要求。</p>
+<h2 id="标识元权限与其他查询">标识、元权限与其他查询</h2>
+<p>元权限指“谁可以管理权限”这类权限，例如谁可以修改某相册的共享设置。它同样应写成策略，而不是藏在管理后台的代码分支里。标识符必须唯一、不可变、不可回收，用户名和组名这类会变的值不适合直接进策略。把 RBAC 纳入整体策略，而不是二选一：角色适合稳定授权，属性适合细粒度判断，两者通常并存。</p>
+<p>最后一条提醒：授权查询不只为“拦截请求”。列表过滤、UI 渲染、审计和离线分析都可能需要问 Cedar，因此实体切片的构造应做成可复用构件，而不是散落在各个端点里。这也是<a href="./auth-patterns.html">授权模式</a>用“切片构造器”组织代码的原因。</p>
+</article></main></body></html>

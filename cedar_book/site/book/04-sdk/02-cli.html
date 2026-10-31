@@ -1,0 +1,125 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CLI 快速上手 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="./01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a class="active" href="./02-cli.html">CLI 快速上手</a></li><li><a href="./03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../../catalog/cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../../catalog/cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../../catalog/cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../../catalog/cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../../catalog/cedar-docs/data-types.html">数据类型</a></li><li><a href="../../catalog/cedar-docs/operators.html">操作符</a></li><li><a href="../../catalog/cedar-docs/validation.html">策略验证</a></li><li><a href="../../catalog/cedar-docs/templates.html">策略模板</a></li><li><a href="../../catalog/cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../../catalog/cedar-docs/schema.html">Schema 概览</a></li><li><a href="../../catalog/cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../../catalog/cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../../catalog/cedar-docs/security.html">安全模型</a></li><li><a href="../../catalog/cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../../catalog/cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../../catalog/cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../../catalog/cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../../catalog/cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../../catalog/cedar/cli.html">Cedar CLI</a></li><li><a href="../../catalog/cedar/wasm.html">Cedar WASM</a></li><li><a href="../../catalog/cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../../catalog/cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../../catalog/cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../../catalog/cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../../catalog/cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="cli-快速上手">CLI 快速上手</h1>
+<p>Cedar CLI 是验证策略直觉最快的工具。不用写一行 Rust，就能完成“解析策略、装载实体、发起请求、读诊断”的闭环；同一套策略文件随后可以原样交给应用里的 SDK。这一章先用一个最小例子跑通 <code>authorize</code>，再看 <code>validate</code> 和 <code>format</code> 如何把策略纳入日常检查。CLI 的完整说明见 <a href="../../catalog/cedar/cli.html">Cedar CLI 精读</a>。</p>
+<h2 id="安装与构建">安装与构建</h2>
+<p>每个 GitHub Release 都附带 <code>cedar-policy-cli-v*</code> 标签的预编译二进制，覆盖 Linux 的 <code>x86_64</code>/<code>aarch64</code>、macOS 的 Intel/Apple Silicon，以及 Windows 的 <code>x86_64-msvc</code>。压缩包里有 <code>cedar</code>、许可证和 sha256 校验值，也可以用发布页的一行安装脚本。</p>
+<p>默认构建不包含 <code>tpe</code> 和 <code>symcc</code>。需要符号验证时，要下载并行的 <code>cedar-policy-cli-experimental-&lt;target&gt;</code> 包，它在同名 <code>cedar</code> 二进制里启用 <code>tpe</code> 与 <code>analyze</code>，运行时还需要另装 cvc5。实验特性的接口可能随版本变化，追求稳定就用默认包。</p>
+<p>从源码安装更适合追新或改代码：</p>
+<pre><code class="language-bash">cargo install cedar-policy-cli
+# 或者在 cedar 仓库内构建
+cargo build --release
+cargo run -- --help
+</code></pre>
+<p><code>cargo run -- --help</code> 会列出 <code>authorize</code>、<code>evaluate</code>、<code>validate</code>、<code>format</code>、<code>link</code>、<code>translate-policy</code>、<code>translate-schema</code>、<code>new</code> 等子命令。日常最常用的是前四个。</p>
+<p>CLI 的输入都是文件或字符串，不依赖某种语言运行时；同一组策略、实体和 schema 可以反复用于本地调试、CI 和线上问题复现。预编译包与源码构建的授权行为一致，差别只在是否启用了实验子命令。</p>
+<h2 id="最小走查策略实体与请求">最小走查：策略、实体与请求</h2>
+<p>先写一条允许、一条拒绝，保存为 <code>policy.cedar</code>：</p>
+<pre><code>permit (
+    principal in UserGroup::&quot;jane_friends&quot;,
+    action == Action::&quot;view&quot;,
+    resource == Photo::&quot;VacationPhoto94.jpg&quot;
+);
+
+forbid (
+    principal == User::&quot;tim&quot;,
+    action,
+    resource == Photo::&quot;VacationPhoto94.jpg&quot;
+);
+</code></pre>
+<p><code>permit</code> 表示 <code>jane_friends</code> 组成员可以查看这张照片；<code>forbid</code> 单独封死 <code>tim</code>，即使他也在组里。接着准备 <code>entities.json</code>，把用户、组和照片的层级告诉引擎：</p>
+<pre><code class="language-json">[
+  {
+    &quot;uid&quot;: { &quot;type&quot;: &quot;User&quot;, &quot;id&quot;: &quot;alice&quot; },
+    &quot;attrs&quot;: {},
+    &quot;parents&quot;: [{ &quot;type&quot;: &quot;UserGroup&quot;, &quot;id&quot;: &quot;jane_friends&quot; }]
+  },
+  {
+    &quot;uid&quot;: { &quot;type&quot;: &quot;User&quot;, &quot;id&quot;: &quot;tim&quot; },
+    &quot;attrs&quot;: {},
+    &quot;parents&quot;: [{ &quot;type&quot;: &quot;UserGroup&quot;, &quot;id&quot;: &quot;jane_friends&quot; }]
+  },
+  {
+    &quot;uid&quot;: { &quot;type&quot;: &quot;UserGroup&quot;, &quot;id&quot;: &quot;jane_friends&quot; },
+    &quot;attrs&quot;: {},
+    &quot;parents&quot;: []
+  },
+  {
+    &quot;uid&quot;: { &quot;type&quot;: &quot;Photo&quot;, &quot;id&quot;: &quot;VacationPhoto94.jpg&quot; },
+    &quot;attrs&quot;: {},
+    &quot;parents&quot;: []
+  }
+]
+</code></pre>
+<p>现在发起请求。把主体换成 <code>alice</code>、<code>tim</code> 和一个不在组里的 <code>bob</code>，观察三次结果：</p>
+<pre><code class="language-bash">cedar authorize \
+  --principal &#39;User::&quot;alice&quot;&#39; \
+  --action &#39;Action::&quot;view&quot;&#39; \
+  --resource &#39;Photo::&quot;VacationPhoto94.jpg&quot;&#39; \
+  --policies policy.cedar \
+  --entities entities.json
+</code></pre>
+<p><code>alice</code> 输出 <code>ALLOW</code>；<code>tim</code> 输出 <code>DENY</code>，因为 <code>forbid</code> 覆盖 <code>permit</code>；<code>bob</code> 也输出 <code>DENY</code>，因为没有任何 <code>permit</code> 匹配，Cedar 默认拒绝。请求的四个部分就是主体、动作、资源和上下文；这里没有上下文，所以省略 <code>--context</code>。不提供 schema 时，CLI 按无类型模式解析实体和上下文；加上 schema 后，属性类型和转义写法会被严格检查。</p>
+<h2 id="读懂-allowdeny-与诊断">读懂 ALLOW、DENY 与诊断</h2>
+<p><code>cedar authorize</code> 在标准输出打印一行 <code>ALLOW</code> 或 <code>DENY</code>，前面还有一个空行。退出码同样有含义：允许是 <code>0</code>，拒绝是 <code>2</code>，策略或输入解析失败是 <code>1</code>。因此 CI 里可以直接用退出码判断，而不必解析文字。把“业务拒绝”和“工具失败”分开很重要：前者是正常结论，后者说明策略没读进来，混在一起会把配置错误误判成安全拒绝。</p>
+<p>加 <code>--verbose</code> 能看到是哪些策略起了作用：</p>
+<pre><code class="language-bash">cedar authorize \
+  --principal &#39;User::&quot;alice&quot;&#39; \
+  --action &#39;Action::&quot;view&quot;&#39; \
+  --resource &#39;Photo::&quot;VacationPhoto94.jpg&quot;&#39; \
+  --policies policy.cedar \
+  --entities entities.json \
+  --verbose
+</code></pre>
+<p>输出会多出一段 <code>note: this decision was due to the following policies:</code>，下面列出策略 ID。没有策略命中时则提示 <code>note: no policies applied to this request</code>。默认策略 ID 是 <code>policy0</code>、<code>policy1</code>，按文件中的顺序编号；也可以在策略上加 <code>@id(&quot;...&quot;)</code> 注解改名。</p>
+<p>如果某条策略在求值时出错，例如访问了不存在的属性，CLI 会在决策之后打印错误，但整个请求仍可能因为其它策略得出允许或拒绝。看到 <code>ALLOW</code> 不代表没有诊断，脚本化时应同时检查错误输出。<code>--timing</code> 会额外报告授权耗时，<code>--request-json</code> 可以把主体、动作、资源和上下文放进一个 JSON 文件。</p>
+<p>想单独验证一个表达式时用 <code>evaluate</code>，它不跑策略，只对表达式求值，适合排查属性读取和集合运算：</p>
+<pre><code class="language-bash">cedar evaluate \
+  --principal &#39;User::&quot;alice&quot;&#39; \
+  --action &#39;Action::&quot;view&quot;&#39; \
+  --resource &#39;Photo::&quot;VacationPhoto94.jpg&quot;&#39; \
+  --entities entities.json \
+  &#39;principal in UserGroup::&quot;jane_friends&quot;&#39;
+</code></pre>
+<h2 id="cedar-validate先让策略通过-schema">cedar validate：先让策略通过 Schema</h2>
+<p><code>authorize</code> 只检查语法和运行时求值，不检查策略是否符合应用的数据模型。<code>validate</code> 用 schema 做类型检查。准备 <code>schema.cedarschema</code>：</p>
+<pre><code>entity User in [UserGroup];
+entity UserGroup;
+entity Photo;
+
+action view appliesTo {
+  principal: [User],
+  resource: [Photo]
+};
+</code></pre>
+<p>然后运行：</p>
+<pre><code class="language-bash">cedar validate \
+  --schema schema.cedarschema \
+  --policies policy.cedar
+</code></pre>
+<p>通过时报告 <code>policy set validation passed</code>，并附上 <code>no errors or warnings</code>，退出码为 <code>0</code>。把策略里的 <code>UserGroup</code> 改成拼错的 <code>UsrGroup</code>，验证会失败并指出未识别的实体类型，退出码为 <code>3</code>。<code>validate</code> 不执行请求，因此不需要 entities；它只读 schema 和策略。schema 默认按 Cedar 格式解析，如果手头是 JSON schema，加 <code>--schema-format json</code>。<code>--deny-warnings</code> 会把非致命警告也当作失败，适合发布门禁；<code>--level</code> 用于分级验证；<code>--validation-mode permissive</code> 和 <code>partial</code> 属于实验特性，需要专门构建。验证规则本身见 <a href="../../catalog/cedar-docs/validation.html">策略验证</a>。</p>
+<h2 id="cedar-format-与常用组合">cedar format 与常用组合</h2>
+<p><code>cedar format</code> 从文件或标准输入读取策略，把结果打印到标准输出；不传 <code>--policies</code> 就从标准输入读，适合接在管道后面：</p>
+<pre><code class="language-bash">cedar format --policies policy.cedar
+</code></pre>
+<p><code>--write</code> 原地写回，<code>--check</code> 只检查格式是否已经规范，不修改文件；如果格式需要变化就以非零退出。<code>--line-width</code> 和 <code>--indent-width</code> 可以调整换行与缩进。格式化和验证都不会改变策略语义，把它们放进 pre-commit，既能减少纯格式 diff，也能在实体名或动作名拼错时尽早失败。一个实用的提交前顺序是：</p>
+<pre><code class="language-bash">cedar format --check --policies policy.cedar
+cedar validate --schema schema.cedarschema --policies policy.cedar
+cedar authorize \
+  --principal &#39;User::&quot;alice&quot;&#39; \
+  --action &#39;Action::&quot;view&quot;&#39; \
+  --resource &#39;Photo::&quot;VacationPhoto94.jpg&quot;&#39; \
+  --policies policy.cedar \
+  --entities entities.json \
+  --verbose
+</code></pre>
+<h2 id="用官方-sample-data-继续练">用官方 sample-data 继续练</h2>
+<p>CLI 仓库自带 <code>sample-data</code> 目录。<code>sandbox_a</code> 是纯 RBAC 的 PhotoFlash 例子，覆盖组、<code>forbid</code> 覆盖和动作列表；<code>sandbox_b</code> 加入属性、可选字段、IP 地址和请求上下文；<code>sandbox_c</code> 演示模板与模板链接。每个目录都有自己的 <code>README.md</code> 和可直接运行的命令。</p>
+<pre><code class="language-bash">cd cedar-policy-cli/sample-data/sandbox_a
+cedar authorize \
+  --principal &#39;User::&quot;alice&quot;&#39; \
+  --action &#39;Action::&quot;view&quot;&#39; \
+  --resource &#39;Photo::&quot;VacationPhoto94.jpg&quot;&#39; \
+  --policies policies_1.cedar \
+  --entities entities.json
+</code></pre>
+<p>把主体依次换成 <code>tim</code> 和 <code>bob</code>，就能复现“显式拒绝”和“默认拒绝”两种不同原因。跑完这些例子，再进入 <a href="01-rust-sdk.html">Rust SDK</a> 看同样的 <code>Request</code>、<code>PolicySet</code>、<code>Entities</code> 如何进入应用代码。</p>
+</article><nav class="pager"><a class="prev" href="./01-rust-sdk.html">← Rust SDK：把 Cedar 集成进应用</a><a class="next" href="./03-wasm-symcc.html">WASM、语言服务器与符号验证 →</a></nav></main></body></html>

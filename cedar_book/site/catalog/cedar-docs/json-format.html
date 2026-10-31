@@ -1,0 +1,88 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JSON 策略格式 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="./terminology.html">术语与核心概念</a></li><li><a href="./scenario.html">PhotoFlash 示例场景</a></li><li><a href="./authorization.html">授权如何工作</a></li><li><a href="./policy-syntax.html">策略语法基础</a></li><li><a href="./entities.html">实体与实体层级</a></li><li><a href="./data-types.html">数据类型</a></li><li><a href="./operators.html">操作符</a></li><li><a href="./validation.html">策略验证</a></li><li><a href="./templates.html">策略模板</a></li><li><a href="./json-format.html">JSON 策略格式</a></li><li><a href="./schema.html">Schema 概览</a></li><li><a href="./schema-format.html">Cedar Schema 格式</a></li><li><a href="./schema-linking.html">Schema 链接</a></li><li><a href="./security.html">安全模型</a></li><li><a href="./best-practices.html">最佳实践概览</a></li><li><a href="./auth-patterns.html">授权模式</a></li><li><a href="./policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-docs · <code>docs/collections/_policies/json-format.md</code> · a0b2849 · commit <code>a0b2849</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-docs/blob/a0b28494644671804c60301fee4d59f5fc4fbd99/docs/collections/_policies/json-format.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-docs/docs/collections/_policies/json-format.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="json-策略格式">JSON 策略格式</h1>
+<p>Cedar 除了文本策略语言，还定义了等价的 JSON 表示，用于程序化地构造和解析策略。此处的“策略”同时涵盖静态策略和策略模板；JSON 表示<strong>不保留</strong>注释、空白和换行，因此它适合传输与存储，不适合作为人写策略的载体。文本写法与语义请对照<a href="./policy-syntax.html">策略语法基础</a>。</p>
+<h2 id="单条策略的顶层结构">单条策略的顶层结构</h2>
+<p>一条策略的 JSON 对象有六个键：<code>effect</code>、<code>principal</code>、<code>action</code>、<code>resource</code>、<code>conditions</code>、<code>annotations</code>。前五个必填，<code>annotations</code> 可选。<code>effect</code> 只能是字符串 <code>permit</code> 或 <code>forbid</code>。下面是一条文本策略及其完整 JSON 形式：</p>
+<pre><code class="language-cedar">permit (
+    principal == User::&quot;12UA45&quot;,
+    action == Action::&quot;view&quot;,
+    resource in Folder::&quot;abc&quot;
+) when {
+    context.tls_version == &quot;1.3&quot;
+};
+</code></pre>
+<pre><code class="language-json">{
+    &quot;effect&quot;: &quot;permit&quot;,
+    &quot;principal&quot;: {
+        &quot;op&quot;: &quot;==&quot;,
+        &quot;entity&quot;: { &quot;type&quot;: &quot;User&quot;, &quot;id&quot;: &quot;12UA45&quot; }
+    },
+    &quot;action&quot;: {
+        &quot;op&quot;: &quot;==&quot;,
+        &quot;entity&quot;: { &quot;type&quot;: &quot;Action&quot;, &quot;id&quot;: &quot;view&quot; }
+    },
+    &quot;resource&quot;: {
+        &quot;op&quot;: &quot;in&quot;,
+        &quot;entity&quot;: { &quot;type&quot;: &quot;Folder&quot;, &quot;id&quot;: &quot;abc&quot; }
+    },
+    &quot;conditions&quot;: [
+        {
+            &quot;kind&quot;: &quot;when&quot;,
+            &quot;body&quot;: {
+                &quot;==&quot;: {
+                    &quot;left&quot;: {
+                        &quot;.&quot;: {
+                            &quot;left&quot;: {
+                                &quot;Var&quot;: &quot;context&quot;
+                            },
+                            &quot;attr&quot;: &quot;tls_version&quot;
+                        }
+                    },
+                    &quot;right&quot;: {
+                        &quot;Value&quot;: &quot;1.3&quot;
+                    }
+                }
+            }
+        }
+    ]
+}
+</code></pre>
+<h2 id="作用域的三种写法">作用域的三种写法</h2>
+<p><code>principal</code>、<code>action</code>、<code>resource</code> 三个对象都必须带 <code>op</code> 键。<code>op</code> 取 <code>All</code> 表示原策略里只写了关键字、没有任何约束；取 <code>==</code> 或 <code>in</code> 时再附上 <code>entity</code> 或 <code>slot</code>；取 <code>is</code> 时必须附 <code>entity_type</code>，并可选带 <code>in</code>。</p>
+<p>差异在于：<code>action</code> 的 <code>==</code> 只能接 <code>entity</code>，而 <code>in</code> 除单个实体外还可以接 <code>entities</code> 数组，用来表示动作组，例如 <code>action in [Action::&quot;view&quot;, Action::&quot;edit&quot;]</code>。<code>principal</code> 与 <code>resource</code> 则支持模板占位符 <code>slot</code>，取值只能是 <code>?principal</code> 或 <code>?resource</code>，且必须出现在对应的作用域里。</p>
+<p>实体引用写成 <code>{ &quot;type&quot;: &quot;User&quot;, &quot;id&quot;: &quot;12UA45&quot; }</code>，<code>type</code> 要包含命名空间（如 <code>Namespace::Type</code>）。Cedar 也接受等价转义形式 <code>{ &quot;__entity&quot;: { &quot;type&quot;: ..., &quot;id&quot;: ... } }</code>，后者在 <code>Value</code> 里表示实体字面量时更常见。</p>
+<h2 id="条件表达式-jsonexpr">条件表达式 JsonExpr</h2>
+<p><code>conditions</code> 是数组，每个元素恰好含 <code>kind</code> 与 <code>body</code> 两个键，<code>kind</code> 为 <code>when</code> 或 <code>unless</code>，<code>body</code> 是一个 JsonExpr。JsonExpr 的判定规则很统一：<strong>只有单个键的对象</strong>。键可以是：</p>
+<ul>
+<li><code>Value</code>：Cedar 值，语法与实体属性值相同，可含实体引用、集合、记录；</li>
+<li><code>Var</code>：<code>principal</code>、<code>action</code>、<code>resource</code> 或 <code>context</code>；</li>
+<li><code>Slot</code>：<code>?principal</code> 或 <code>?resource</code>；</li>
+<li>一元运算 <code>!</code>、<code>neg</code>、<code>isEmpty</code>，其值含单个 <code>arg</code>；</li>
+<li>二元运算 <code>==</code>、<code>!=</code>、<code>in</code>、<code>&lt;</code>、<code>&lt;=</code>、<code>&gt;</code>、<code>&gt;=</code>、<code>&amp;&amp;</code>、<code>||</code>、<code>+</code>、<code>-</code>、<code>*</code>、<code>contains</code>、<code>containsAll</code>、<code>containsAny</code>、<code>hasTag</code>、<code>getTag</code>，其值含 <code>left</code> 与 <code>right</code>；</li>
+<li><code>.</code>（成员访问）与 <code>has</code>，值含 <code>left</code> 和 <code>attr</code>；<code>has</code> 的 <code>attr</code> 还可以是非空标识符列表，用于 <code>context has something.nested</code>；</li>
+<li><code>is</code>：含 <code>left</code>、<code>entity_type</code>，可选 <code>in</code>；</li>
+<li><code>like</code>：含 <code>left</code> 与 <code>pattern</code>；</li>
+<li><code>if-then-else</code>：含 <code>if</code>、<code>then</code>、<code>else</code>；</li>
+<li><code>Set</code>、<code>Record</code>；</li>
+<li>其他任意键：视为扩展函数或方法名，值为参数数组，方法调用的接收者是第一个参数。</li>
+</ul>
+<p><code>like</code> 的模式数组由字符串 <code>Wildcard</code> 和 <code>{ &quot;Literal&quot;: &quot;...&quot; }</code> 组成。模式 <code>/home/alice/docs/*.txt</code> 写作：</p>
+<pre><code class="language-json">&quot;pattern&quot;: [
+  {
+    &quot;Literal&quot;: &quot;/home/alice/docs/&quot;
+  },
+  &quot;Wildcard&quot;,
+  {
+    &quot;Literal&quot;: &quot;.txt&quot;
+  }
+]
+</code></pre>
+<p>字面量允许拆到每个字符一个 <code>Literal</code>，语义不变。</p>
+<h2 id="策略集与模板链接">策略集与模板链接</h2>
+<p>策略集的 JSON 有三个键：<code>staticPolicies</code>、<code>templates</code>、<code>templateLinks</code>。前两者都是从策略 ID 到策略内容的映射；<code>staticPolicies</code> 只能放静态策略，放模板会报错。<code>templateLinks</code> 是数组，每项含 <code>templateId</code>、<code>newId</code> 和 <code>values</code>，<code>values</code> 把 <code>?principal</code> 或 <code>?resource</code> 映射到具体实体。也就是说，模板本身放在 <code>templates</code>，实例化结果由链接记录表达，而不是把展开后的策略再存一份。展开规则见<a href="./templates.html">策略模板</a>。</p>
+<p><code>annotations</code> 若存在必须是对象，键为字符串，值为字符串或 <code>null</code>；<code>null</code> 对应没有值的注解（如 <code>@shadow_mode</code>），等价于空字符串。</p>
+<h2 id="实践提示">实践提示</h2>
+<p>JSON 格式适合由服务端生成策略，但拼接字符串生成 JSON 同样有注入风险，应使用序列化库。官方还给出 Java 的转换路径：先 <code>parseStaticPolicy</code> 得到策略对象，再 <code>toJson</code> 得到 JSON 字符串，最后用 gson 之类的库处理。若要把已有文本策略转成 JSON，务必以解析器结果为准，不要手写映射。</p>
+</article></main></body></html>

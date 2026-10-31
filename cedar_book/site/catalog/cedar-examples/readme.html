@@ -1,0 +1,74 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>示例仓库总览 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../cedar-docs/data-types.html">数据类型</a></li><li><a href="../cedar-docs/operators.html">操作符</a></li><li><a href="../cedar-docs/validation.html">策略验证</a></li><li><a href="../cedar-docs/templates.html">策略模板</a></li><li><a href="../cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../cedar-docs/schema.html">Schema 概览</a></li><li><a href="../cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../cedar-docs/security.html">安全模型</a></li><li><a href="../cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="./readme.html">示例仓库总览</a></li><li><a href="./tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="./use-cases.html">六个真实用例</a></li><li><a href="./rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-examples · <code>README.md</code> · f4d2dbb · commit <code>f4d2dbb</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-examples/blob/f4d2dbbab361a38372e6d6fcfc7b777eb1b30c37/README.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-examples/README.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="示例仓库总览">示例仓库总览</h1>
+<p><code>cedar-examples</code> 收集了演示 Cedar 用法的应用与策略集。顶层 README 只做一件事：用一张表告诉你每个示例用什么语言、演示哪套 API，然后让你进入子目录看各自的操作说明。它适合当索引用，不适合当教程读。</p>
+<h2 id="九个示例一览">九个示例一览</h2>
+<table>
+<thead>
+<tr>
+<th>示例</th>
+<th>语言</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="./tinytodo-tutorial.html"><code>tinytodo</code></a></td>
+<td>Rust, Python</td>
+<td>任务清单应用，用 Cedar 做授权，演示 <a href="https://docs.rs/cedar-policy/latest/cedar_policy">Cedar Rust APIs</a> 的用法</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cedar-policy/cedar-examples/tree/f4d2dbbab361a38372e6d6fcfc7b777eb1b30c37/tinytodo-go"><code>tinytodo-go</code></a></td>
+<td>Go, Python</td>
+<td>同一类任务清单应用，演示 <a href="https://github.com/cedar-policy/cedar-go">Cedar Go APIs</a> 的用法</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cedar-policy/cedar-examples/tree/f4d2dbbab361a38372e6d6fcfc7b777eb1b30c37/cedar-java-hello-world"><code>cedar-java-hello-world</code></a></td>
+<td>Java</td>
+<td>演示 <a href="https://github.com/cedar-policy/cedar-java">Cedar Java APIs</a> 的最小应用</td>
+</tr>
+<tr>
+<td><a href="./rust-hello-world.html"><code>cedar-rust-hello-world</code></a></td>
+<td>Rust</td>
+<td>演示 <a href="https://docs.rs/cedar-policy/latest/cedar_policy">Cedar Rust APIs</a> 的最小应用</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cedar-policy/cedar-examples/tree/f4d2dbbab361a38372e6d6fcfc7b777eb1b30c37/cedar-wasm-example"><code>cedar-wasm-example</code></a></td>
+<td>TypeScript</td>
+<td>演示 <a href="https://github.com/cedar-policy/cedar/tree/main/cedar-wasm">Cedar Wasm APIs</a> 的最小应用</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cedar-policy/cedar-examples/tree/f4d2dbbab361a38372e6d6fcfc7b777eb1b30c37/cedar-policy-language-in-action"><code>cedar-policy-language-in-action</code></a></td>
+<td>Cedar</td>
+<td>配套“Cedar policy language in action”工作坊的策略与 schema</td>
+</tr>
+<tr>
+<td><a href="./use-cases.html"><code>cedar-example-use-cases</code></a></td>
+<td>Cedar</td>
+<td>两个示例应用的策略与 schema（目录内现已扩展为六个用例）</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cedar-policy/cedar-examples/tree/f4d2dbbab361a38372e6d6fcfc7b777eb1b30c37/oopsla2024-benchmarks"><code>oopsla2024-benchmarks</code></a></td>
+<td>多种</td>
+<td>OOPSLA2024 Cedar 论文的性能评测策略、schema、基准代码与脚本</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cedar-policy/cedar-examples/tree/f4d2dbbab361a38372e6d6fcfc7b777eb1b30c37/cedar-java-partial-evaluation"><code>cedar-java-partial-evaluation</code></a></td>
+<td>Java</td>
+<td>演示 <a href="https://github.com/cedar-policy/cedar-java">Cedar Java APIs</a> 的偏求值（partial evaluation）能力</td>
+</tr>
+</tbody></table>
+<h2 id="怎么选起点">怎么选起点</h2>
+<p><strong>想学 SDK 集成</strong>，按语言选 hello world：Rust 看 <code>cedar-rust-hello-world</code>，Java 看 <code>cedar-java-hello-world</code>，TypeScript 看 <code>cedar-wasm-example</code>。三者结构相似——解析策略、构造请求、带实体判定、按 schema 验证——先读一个，再对照其他语言看 API 形状的差异。</p>
+<p><strong>想看完整应用</strong>，选 <code>tinytodo</code>。它有 HTTP 服务端、Python CLI、内存实体存储、策略文件和 schema，覆盖从请求解析到授权再到业务执行的整条链路。<code>tinytodo-go</code> 是同一思路的 Go 版本，适合做跨语言对照。</p>
+<p><strong>想学策略建模</strong>，选 <code>cedar-example-use-cases</code>。它不含应用代码，只有策略、schema、实体和成组的允许/拒绝请求，最适合拿来练“读策略、猜结果、再验证”。</p>
+<p><strong>想做性能或学术复现</strong>，看 <code>oopsla2024-benchmarks</code>；<strong>想研究新特性</strong>，看 <code>cedar-java-partial-evaluation</code>。这两个偏专门用途，初学可以跳过。</p>
+<h2 id="仓库的共同约定">仓库的共同约定</h2>
+<p>所有示例都遵循同一套输入形态：策略写在 <code>.cedar</code> 文件，schema 用 <code>.cedarschema</code> 或 <code>.cedarschema.json</code>，实体存储是 <code>entities.json</code>，授权请求可以写成 JSON。这套约定让 <code>cedar</code> CLI 能直接对任意示例执行 <code>validate</code> 和 <code>authorize</code>，不必为每个项目写适配层。</p>
+<p>语言绑定方面，Rust 对应 <code>cedar-policy</code> crate，Go 对应 <code>cedar-go</code>，Java 对应 <code>cedar-java</code>，TypeScript 对应 <code>cedar-wasm</code>。四套 API 的语义一致，差异主要在类型系统和错误处理风格。表里的 API 链接正是指向这些绑定：读某个示例前先点开对应链接，能少走很多“这个类型从哪来”的弯路。</p>
+<p>各子目录对环境的假设并不统一：Rust Hello World 明确要求把 <code>cedar</code> 仓库克隆到同级目录并使用路径依赖，TinyTodo 则由 <code>cargo build</code> 从 crates.io 拉取 Cedar 包。因此构建前必须读子目录的 <code>README.md</code>，不能照搬另一个示例的步骤。版本要求也要留意，旧 SDK 跑新示例往往在编译期就失败。</p>
+<h2 id="阅读顺序建议">阅读顺序建议</h2>
+<p>如果跟着本书读，建议顺序是：先读 Rust Hello World 建立 API 骨架，再读 TinyTodo 看工程化落地，最后读六个真实用例练策略建模。其余示例按需查阅——它们是同一批概念的横向展开，不必逐个通读。</p>
+<h2 id="许可与贡献">许可与贡献</h2>
+<p>仓库使用 Apache-2.0 许可证。安全问题的报告方式写在 <code>CONTRIBUTING.md</code> 的 security issue notifications 一节，不走公开 issue。各子目录的 <code>README.md</code> 才是构建与运行的准确说明，顶层表格只保证“这个示例存在、大致讲什么”。</p>
+</article></main></body></html>

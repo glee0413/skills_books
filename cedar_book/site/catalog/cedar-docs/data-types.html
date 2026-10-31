@@ -1,0 +1,79 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>数据类型 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="./terminology.html">术语与核心概念</a></li><li><a href="./scenario.html">PhotoFlash 示例场景</a></li><li><a href="./authorization.html">授权如何工作</a></li><li><a href="./policy-syntax.html">策略语法基础</a></li><li><a href="./entities.html">实体与实体层级</a></li><li><a href="./data-types.html">数据类型</a></li><li><a href="./operators.html">操作符</a></li><li><a href="./validation.html">策略验证</a></li><li><a href="./templates.html">策略模板</a></li><li><a href="./json-format.html">JSON 策略格式</a></li><li><a href="./schema.html">Schema 概览</a></li><li><a href="./schema-format.html">Cedar Schema 格式</a></li><li><a href="./schema-linking.html">Schema 链接</a></li><li><a href="./security.html">安全模型</a></li><li><a href="./best-practices.html">最佳实践概览</a></li><li><a href="./auth-patterns.html">授权模式</a></li><li><a href="./policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-docs · <code>docs/collections/_policies/syntax-datatypes.md</code> · a0b2849 · commit <code>a0b2849</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-docs/blob/a0b28494644671804c60301fee4d59f5fc4fbd99/docs/collections/_policies/syntax-datatypes.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-docs/docs/collections/_policies/syntax-datatypes.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="数据类型">数据类型</h1>
+<p>Cedar 的值和表达式有若干种数据类型。理解它们的关键，是分清<strong>求值（evaluate）<strong>与</strong>验证（validate）</strong>：验证器比求值器更严格，能求值的表达式不一定能通过验证。</p>
+<h2 id="标量类型">标量类型</h2>
+<p><strong>Bool</strong>：<code>true</code> 或 <code>false</code>。</p>
+<p><strong>String</strong>：由字母、数字或符号组成的字符序列。</p>
+<p><strong>Long</strong>：不带小数的整数，范围 −9223372036854775808 到 9223372036854775807。用算术运算符越界会产生溢出错误；出错的策略被忽略，于是 <code>permit</code> 可能意外不生效，<code>forbid</code> 也可能意外拦不住。</p>
+<h2 id="集合与记录">集合与记录</h2>
+<p><strong>Set</strong>：元素可以同类型也可以不同类型的集合，用 <code>[ ]</code> 构造、逗号分隔：</p>
+<pre><code class="language-cedar">// a set of three elements, two of type long, and one of type string
+[2, 4, &quot;hello&quot;]
+
+// a set of a single type long
+[-1]
+
+// an empty set
+[ ]
+
+// a set with a Bool expression, a nested set, and a Bool value
+[3&lt;5, [&quot;nested&quot;, &quot;set&quot;], true]
+</code></pre>
+<p>四者都能<strong>求值</strong>，但只有第二个能<strong>验证</strong>。验证器只接受满足两个条件的集合字面量：非空，且所有元素同类型。空集合可以出现在实体和 <code>context</code> 记录里，限制只针对策略中的字面量。</p>
+<p><strong>Record</strong>：一组属性，每个属性有名字和值，名字是简单字符串，值可为任意类型。访问方式有两种，若属性名含字母、数字、下划线以外的字符，必须用索引写法：</p>
+<pre><code class="language-json">{&quot;key&quot;: &quot;some value&quot;, id: &quot;another value&quot;}
+</code></pre>
+<p><code>record[&quot;key&quot;]</code> 与 <code>record.key</code> 都得到 <code>&quot;some value&quot;</code>。记录可以嵌套，三种访问风格等价：<code>record[&quot;some&quot;][&quot;nested&quot;][&quot;attribute&quot;]</code>、<code>record.some.nested.attribute</code>、<code>record[&quot;some&quot;].nested[&quot;attribute&quot;]</code>。更多例子：</p>
+<pre><code class="language-json">{}
+{&quot;foo&quot;: 2, bar: [3, 4, -47], ham: &quot;eggs&quot;, &quot;hello&quot;: true }
+</code></pre>
+<p>记录是请求上下文 <code>context</code> 的类型，也是实体属性值的常见形态；属性名带空格等特殊字符时，索引写法是唯一选择。</p>
+<h2 id="实体">实体</h2>
+<p><strong>Entity</strong> 表示主体、动作或资源，写法是类型（含命名空间）加 <code>::</code> 加唯一标识符：</p>
+<pre><code class="language-cedar">// A resource of type File
+File::&quot;myfile.txt&quot;
+
+// An action to allow reading a resource of type File
+Action::&quot;ReadFile&quot;
+
+// A principal of type User with a full UUID as 
+// the entity identifier and its friendly name in comments
+User::&quot;a1b2c3d4-e5f6-a1b2-c3d4-EXAMPLE11111&quot;
+
+// A principal of type User in a Namespace PhotoFlash
+PhotoFlash::User::&quot;alice&quot;
+
+// A principal of type File in a nested namespace
+Nested::Namespace::App::File::&quot;myFile.txt&quot;
+</code></pre>
+<p>同样地，生产环境的实体标识符应当唯一且永不复用，建议用 UUID 并在注释里写友好名。</p>
+<h2 id="扩展类型">扩展类型</h2>
+<p>其余类型以<strong>扩展类型</strong>的形式提供：用接收字符串的<strong>构造函数</strong>创建值，除相等比较用 <code>==</code> 外，其余操作都用函数或方法调用。当前有四种：<code>datetime</code>、<code>decimal</code>、<code>duration</code>、<code>ipaddr</code>。</p>
+<p>验证器只验证参数是<strong>合法字符串字面量</strong>的构造与操作调用。像 <code>ip(context.addr)</code> 这样的写法在 <code>context.addr</code> 格式正确时能求值，但不会通过验证；默认的 strict 模式会直接拒绝非字面量参数。</p>
+<p><strong>datetime</strong>：毫秒精度的时间点。</p>
+<pre><code class="language-cedar">datetime(&quot;2024-10-15&quot;)                   // a date only
+datetime(&quot;2024-10-15T11:35:00Z&quot;)         // a UTC datetime
+datetime(&quot;2024-10-15T11:35:00.000Z&quot;)     // a UTC datetime with millisecond precision
+datetime(&quot;2024-10-15T11:35:00+0100&quot;)     // a datetime with timezone offset
+datetime(&quot;2024-10-15T11:35:00.000+0100&quot;) // a datetime with timezone offset and millisecond precision
+</code></pre>
+<p>内部用 <code>long</code> 存 Unix 纪元以来的毫秒数，但字符串格式限制了可直接构造的范围：最早 <code>datetime(&quot;0000-01-01T00:00:00+2359&quot;)</code>，最晚 <code>datetime(&quot;9999-12-31T23:59:59-2359&quot;)</code>；超出的值只能通过 <code>offset</code> 之类的运算得到。<code>datetime</code> 是独立类型，不能当 <code>long</code> 用。</p>
+<p><strong>decimal</strong>：带整数部分、小数部分不超过四位的值，只能用函数构造，不能写字面量：</p>
+<pre><code class="language-cedar">decimal(&quot;12345.1234&quot;)
+</code></pre>
+<p>范围是 −922337203685477.5808 到 922337203685477.5807。</p>
+<p><strong>duration</strong>：毫秒精度的时间长度。</p>
+<pre><code class="language-cedar">duration(&quot;2h30m&quot;)
+duration(&quot;-1d12h&quot;)
+duration(&quot;1h30m45s&quot;)
+</code></pre>
+<p>内部同样以 <code>long</code> 毫秒存储，范围从 <code>duration(&quot;-9223372036854775808ms&quot;)</code> 到 <code>duration(&quot;9223372036854775807ms&quot;)</code>，也不能当 <code>long</code> 用。</p>
+<p><strong>ipaddr</strong>：IPv4 或 IPv6 地址，可表示单个地址，也可加 CIDR 后缀表示网段：</p>
+<pre><code class="language-cedar">ip(&quot;192.168.1.100&quot;)    // a single IPv4 address
+ip(&quot;10.50.0.0/24&quot;)     // an IPv4 range with a 24-bit subnet mask (255.255.255.0)
+ip(&quot;1:2:3:4::/48&quot;)     // an IPv6 range with a 48-bit subnet mask
+</code></pre>
+<p>四种扩展类型一旦构造或运算越界，都会产生溢出错误，同样导致策略被跳过。各类型的可用操作见<a href="./operators.html">操作符</a>；验证为何如此严格，见<a href="./validation.html">策略验证</a>。</p>
+</article></main></body></html>

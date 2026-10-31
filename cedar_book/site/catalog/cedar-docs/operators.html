@@ -1,0 +1,59 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>操作符 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../../book/01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../../book/01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../../book/01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../../book/02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../../book/02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../../book/02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../../book/03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../../book/03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a href="../../book/04-sdk/01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="../../book/04-sdk/02-cli.html">CLI 快速上手</a></li><li><a href="../../book/04-sdk/03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../../book/05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../../book/05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../../book/06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../../book/06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../../book/07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="./terminology.html">术语与核心概念</a></li><li><a href="./scenario.html">PhotoFlash 示例场景</a></li><li><a href="./authorization.html">授权如何工作</a></li><li><a href="./policy-syntax.html">策略语法基础</a></li><li><a href="./entities.html">实体与实体层级</a></li><li><a href="./data-types.html">数据类型</a></li><li><a href="./operators.html">操作符</a></li><li><a href="./validation.html">策略验证</a></li><li><a href="./templates.html">策略模板</a></li><li><a href="./json-format.html">JSON 策略格式</a></li><li><a href="./schema.html">Schema 概览</a></li><li><a href="./schema-format.html">Cedar Schema 格式</a></li><li><a href="./schema-linking.html">Schema 链接</a></li><li><a href="./security.html">安全模型</a></li><li><a href="./best-practices.html">最佳实践概览</a></li><li><a href="./auth-patterns.html">授权模式</a></li><li><a href="./policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../cedar/cli.html">Cedar CLI</a></li><li><a href="../cedar/wasm.html">Cedar WASM</a></li><li><a href="../cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：cedar-docs · <code>docs/collections/_policies/syntax-operators.md</code> · a0b2849 · commit <code>a0b2849</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/cedar-policy/cedar-docs/blob/a0b28494644671804c60301fee4d59f5fc4fbd99/docs/collections/_policies/syntax-operators.md">查看原仓库</a> · <a href="../../source-snapshots/cedar-docs/docs/collections/_policies/syntax-operators.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="操作符">操作符</h1>
+<p>Cedar 的表达式由内置操作符和函数构成。它们有四种写法：一元（<code>!a</code>）、二元（<code>a == b</code>、<code>c in d</code>）、构造式（<code>ip(&quot;127.0.0.1&quot;)</code>）和方法式（<code>a.containsAny([b, c])</code>）。</p>
+<p>再次强调：能<strong>求值</strong>不代表能<strong>验证</strong>。验证是可选的，未通过验证的策略仍可求值；但通过验证的策略基本不会在求值时出错。</p>
+<h2 id="字符串与类型转换">字符串与类型转换</h2>
+<p><code>like</code> 用右侧的模式串匹配左侧字符串，模式中的 <code>*</code> 匹配任意个字符，<code>\*</code> 表示字面星号。</p>
+<pre><code class="language-cedar">&quot;eggs&quot; like &quot;ham*&quot;                                             //false
+&quot;ham and eggs&quot; like &quot;*ham*&quot;                                    //true
+&quot;ham&quot; like &quot;*h*a*m*&quot;                                           //true
+&quot;string*with*stars&quot; like &quot;string\*with\*stars&quot;                 //true
+</code></pre>
+<p><code>datetime()</code>、<code>decimal()</code>、<code>duration()</code>、<code>ip()</code> 把字符串解析成对应的扩展类型值；字符串格式不合法会报错。</p>
+<h2 id="比较">比较</h2>
+<p><code>==</code> 只有两个操作数<strong>类型和值都相同</strong>才为真。实体可以跨类型比较：<code>User::&quot;alice&quot; == Admin::&quot;alice&quot;</code> 为 <code>false</code> 且能通过验证；<code>5 == &quot;5&quot;</code> 求值为 <code>false</code> 但验证不通过。<code>!=</code> 只能出现在 <code>when</code> 和 <code>unless</code> 子句中，验证规则与 <code>==</code> 相同。</p>
+<p><code>long</code>、<code>datetime</code>、<code>duration</code> 支持 <code>&lt;</code>、<code>&lt;=</code>、<code>&gt;</code>、<code>&gt;=</code>；<code>decimal</code> 没有这些符号，要用 <code>.lessThan()</code>、<code>.lessThanOrEqual()</code>、<code>.greaterThan()</code>、<code>.greaterThanOrEqual()</code>。</p>
+<h2 id="逻辑与短路">逻辑与短路</h2>
+<p><code>&amp;&amp;</code>、<code>||</code>、<code>!</code> 作用于布尔值，<code>if &lt;bool&gt; then &lt;T&gt; else &lt;U&gt;</code> 按条件返回两个分支之一。<code>&amp;&amp;</code> 在第一个操作数为 <code>false</code> 时不再求值第二个，<code>||</code> 在第一个为 <code>true</code> 时不再求值第二个，<code>if</code> 只求值被选中的分支。这正是安全访问可选属性的标准写法：</p>
+<pre><code class="language-cedar">permit (principal, action == Action::&quot;read&quot;, resource)
+when {
+    principal has level &amp;&amp;
+    principal.level &gt; 5
+};
+</code></pre>
+<p>验证器<strong>有时</strong>能利用短路：<code>false &amp;&amp; 3</code> 通过验证，<code>(3 == 4) &amp;&amp; 3</code> 不通过，因为它不追踪 <code>3 == 4</code> 的结果。<code>if</code> 是 <code>&amp;&amp;</code>/<code>||</code> 的严格推广，两个分支通常要求同类型。</p>
+<h2 id="算术">算术</h2>
+<p>算术只支持 <code>long</code>，只有 <code>+</code>、<code>-</code>（二元减法与一元取负）、<code>*</code>，<strong>没有除法</strong>，<code>decimal</code> 不能参与。溢出是求值错误，但验证器不检测。</p>
+<pre><code class="language-cedar">11 + 0                              //11
+-3                              //-3
+10 * 20                          //200
+9223372036854775807 + 1             //error - overflow //Validates
+&quot;lamp&quot; + &quot;la&quot;                       //error - operands not `long` //Doesn&#39;t validate
+</code></pre>
+<h2 id="层级与集合">层级与集合</h2>
+<p><code>in</code> 判断左侧实体是否在右侧实体的层级之下，它是<strong>传递</strong>的（A in B、B in C 则 A in C）、<strong>自反</strong>的（A in A 恒真，即使该实体不在请求数据中），但<strong>不对称</strong>。右侧也可以是实体集合，此时左侧在任一元素之下即为真；注意集合形式<strong>不短路</strong>，集合里混入非实体会直接报错。</p>
+<pre><code class="language-cedar">principal in User::&quot;bob&quot;             //true by reflexivity
+principal in Group::&quot;all&quot;            //true by transitivity
+Group::&quot;all&quot; in User::&quot;bob&quot;          //false -- in is not symmetric
+User::&quot;bob&quot; in [Group::&quot;janefriends&quot;, 1]
+</code></pre>
+<p><code>has</code> 检查实体或记录是否有某属性，右侧还可以是点分的访问路径（<code>principal has contactInfo.address.zip</code>）。嵌套的可选属性必须逐层检查：</p>
+<pre><code class="language-cedar">principal has custom &amp;&amp; principal.custom has project &amp;&amp; principal.custom.project == &quot;greenzone&quot;
+</code></pre>
+<p>属性名不是合法标识符时，用字符串字面量配合 <code>[]</code> 取值：</p>
+<pre><code class="language-cedar">context has &quot;owner info&quot; &amp;&amp; context[&quot;owner info&quot;].name == &quot;Alice&quot;    //true
+</code></pre>
+<p><code>.hasTag()</code> / <code>.getTag()</code> 用于标签，标签名可以是任意字符串表达式而不必是字面量；对没有 <code>tags</code> 声明的类型调用 <code>.hasTag()</code> 返回 <code>false</code> 且不报验证错，但 <code>.getTag()</code> 会验证失败。</p>
+<p><code>is</code> 判断实体类型，可写成 <code>resource is Photo</code>，也可与 <code>in</code> 连用：<code>principal is User in Group::&quot;friends&quot;</code> 等价于两个条件的合取。配合 <code>&amp;&amp;</code> 短路，可以安全访问类型特有的属性：</p>
+<pre><code class="language-cedar">permit(principal, action == Action::&quot;view&quot;, resource)
+when {
+  resource is Photo &amp;&amp; resource.owner == principal
+};
+</code></pre>
+<p><code>contains</code>、<code>containsAll</code>、<code>containsAny</code>、<code>isEmpty</code> 只作用于集合；字符串包含要用 <code>like</code>，记录键存在要用 <code>has</code>。验证器要求接收者与参数是同类型的同质集合，且不接受策略中的空集合字面量 <code>[]</code>。</p>
+<h2 id="ip-与时间">IP 与时间</h2>
+<p><code>ipaddr</code> 提供 <code>.isIpv4()</code>、<code>.isIpv6()</code>、<code>.isLoopback()</code>、<code>.isMulticast()</code>、<code>.isInRange()</code>；<code>datetime</code> 提供 <code>.offset()</code>、<code>.durationSince()</code>、<code>.toDate()</code>、<code>.toTime()</code>；<code>duration</code> 提供 <code>.toMilliseconds()</code>、<code>.toSeconds()</code>、<code>.toMinutes()</code>、<code>.toHours()</code>、<code>.toDays()</code>。它们都要求接收者类型正确，否则求值与验证都报错。</p>
+<p>类型本身的取值范围见<a href="./data-types.html">数据类型</a>，验证器如何利用类型信息见<a href="./validation.html">策略验证</a>。</p>
+</article></main></body></html>

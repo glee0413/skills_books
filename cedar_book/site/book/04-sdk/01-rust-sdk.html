@@ -1,0 +1,134 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rust SDK：把 Cedar 集成进应用 · Cedar 授权策略实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Cedar 授权策略实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-why-cedar.html">为什么需要 Cedar</a></li></ul></section><section><h2>第一部分 基础模型</h2><ul><li><a href="../01-model/01-parc.html">授权请求与 PARC</a></li><li><a href="../01-model/02-entities.html">实体、属性、组与层级</a></li><li><a href="../01-model/03-scenario.html">PhotoFlash：贯穿全书的例子</a></li></ul></section><section><h2>第二部分 策略语言</h2><ul><li><a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a></li><li><a href="../02-policy/02-data-and-operators.html">数据类型与操作符</a></li><li><a href="../02-policy/03-templates-json.html">模板与 JSON 策略</a></li></ul></section><section><h2>第三部分 Schema 与验证</h2><ul><li><a href="../03-schema/01-schema.html">用 Schema 建模授权世界</a></li><li><a href="../03-schema/02-validation.html">策略验证与 level validation</a></li></ul></section><section><h2>第四部分 SDK 与工具</h2><ul><li><a class="active" href="./01-rust-sdk.html">Rust SDK：把 Cedar 集成进应用</a></li><li><a href="./02-cli.html">CLI 快速上手</a></li><li><a href="./03-wasm-symcc.html">WASM、语言服务器与符号验证</a></li></ul></section><section><h2>第五部分 实战</h2><ul><li><a href="../05-practice/01-tinytodo.html">TinyTodo 教程：从命令到授权决策</a></li><li><a href="../05-practice/02-use-cases.html">六个真实用例：文档云、GitHub、酒店、标签角色、税务、流媒体</a></li></ul></section><section><h2>第六部分 安全与工程化</h2><ul><li><a href="../06-security/01-security.html">安全模型与最佳实践</a></li><li><a href="../06-security/02-testing-versioning.html">测试、版本与生态</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../07-appendix/01-glossary.html">术语表与阅读路线</a></li><li><a href="../07-appendix/02-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>cedar-docs</h2><ul><li><a href="../../catalog/cedar-docs/terminology.html">术语与核心概念</a></li><li><a href="../../catalog/cedar-docs/scenario.html">PhotoFlash 示例场景</a></li><li><a href="../../catalog/cedar-docs/authorization.html">授权如何工作</a></li><li><a href="../../catalog/cedar-docs/policy-syntax.html">策略语法基础</a></li><li><a href="../../catalog/cedar-docs/entities.html">实体与实体层级</a></li><li><a href="../../catalog/cedar-docs/data-types.html">数据类型</a></li><li><a href="../../catalog/cedar-docs/operators.html">操作符</a></li><li><a href="../../catalog/cedar-docs/validation.html">策略验证</a></li><li><a href="../../catalog/cedar-docs/templates.html">策略模板</a></li><li><a href="../../catalog/cedar-docs/json-format.html">JSON 策略格式</a></li><li><a href="../../catalog/cedar-docs/schema.html">Schema 概览</a></li><li><a href="../../catalog/cedar-docs/schema-format.html">Cedar Schema 格式</a></li><li><a href="../../catalog/cedar-docs/schema-linking.html">Schema 链接</a></li><li><a href="../../catalog/cedar-docs/security.html">安全模型</a></li><li><a href="../../catalog/cedar-docs/best-practices.html">最佳实践概览</a></li><li><a href="../../catalog/cedar-docs/auth-patterns.html">授权模式</a></li><li><a href="../../catalog/cedar-docs/policy-examples.html">策略示例</a></li></ul></section><section><h2>cedar</h2><ul><li><a href="../../catalog/cedar/readme.html">Cedar 仓库与 SDK 总览</a></li><li><a href="../../catalog/cedar/sdk.html">cedar-policy Rust API</a></li><li><a href="../../catalog/cedar/cli.html">Cedar CLI</a></li><li><a href="../../catalog/cedar/wasm.html">Cedar WASM</a></li><li><a href="../../catalog/cedar/symcc.html">符号验证 symcc</a></li></ul></section><section><h2>cedar-examples</h2><ul><li><a href="../../catalog/cedar-examples/readme.html">示例仓库总览</a></li><li><a href="../../catalog/cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a></li><li><a href="../../catalog/cedar-examples/use-cases.html">六个真实用例</a></li><li><a href="../../catalog/cedar-examples/rust-hello-world.html">Rust Hello World</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="rust-sdk把-cedar-集成进应用">Rust SDK：把 Cedar 集成进应用</h1>
+<p>Rust 侧的核心 crate 是 <code>cedar-policy</code>。它把策略解析、实体构造、请求校验、授权决策、诊断和 Schema 验证都收在同一个 API 里。最小集成可以分成五步：解析策略、准备实体、构造请求、调用授权器、读取决策与诊断。下面按这条链路逐步展开。完整 API 索引见 <a href="../../catalog/cedar/sdk.html">cedar-policy Rust API</a>，可运行的示例见 <a href="../../catalog/cedar-examples/rust-hello-world.html">Rust Hello World</a>。</p>
+<h2 id="添加依赖与最小流程">添加依赖与最小流程</h2>
+<pre><code class="language-bash">cargo add cedar-policy
+</code></pre>
+<p>官方 README 的最小例子把策略文本解析成 <code>PolicySet</code>，用实体 UID 构造 <code>Request</code>，再交给 <code>Authorizer</code>：</p>
+<pre><code class="language-rust">use cedar_policy::*;
+
+fn main() {
+    const POLICY_SRC: &amp;str = r#&quot;
+permit(principal == User::&quot;alice&quot;, action == Action::&quot;view&quot;, resource == File::&quot;93&quot;);
+&quot;#;
+    let policy: PolicySet = POLICY_SRC.parse().unwrap();
+
+    let action = r#&quot;Action::&quot;view&quot;&quot;#.parse().unwrap();
+    let alice = r#&quot;User::&quot;alice&quot;&quot;#.parse().unwrap();
+    let file = r#&quot;File::&quot;93&quot;&quot;#.parse().unwrap();
+    let request = Request::new(alice, action, file, Context::empty(), None).unwrap();
+
+    let entities = Entities::empty();
+    let authorizer = Authorizer::new();
+    let answer = authorizer.is_authorized(&amp;request, &amp;policy, &amp;entities);
+
+    // Should output `Allow`
+    println!(&quot;{:?}&quot;, answer.decision());
+
+    let action = r#&quot;Action::&quot;view&quot;&quot;#.parse().unwrap();
+    let bob = r#&quot;User::&quot;bob&quot;&quot;#.parse().unwrap();
+    let file = r#&quot;File::&quot;93&quot;&quot;#.parse().unwrap();
+    let request = Request::new(bob, action, file, Context::empty(), None).unwrap();
+
+    let answer = authorizer.is_authorized(&amp;request, &amp;policy, &amp;entities);
+
+    // Should output `Deny`
+    println!(&quot;{:?}&quot;, answer.decision());
+}
+</code></pre>
+<p><code>Request::new</code> 的最后一个参数是可选的 Schema 引用，传 <code>None</code> 表示不做请求级校验。策略中没有匹配的 permit 时结果是 <code>Deny</code>；只要有一个 forbid 匹配，结果也是 <code>Deny</code>，与 permit 数量无关。这个例子不读文件、不连数据库，适合先跑通链路，再逐步换成真实策略和实体。策略语言细节见 <a href="../02-policy/01-structure.html">策略结构与 permit/forbid</a>。</p>
+<h2 id="解析策略与-policyset">解析策略与 PolicySet</h2>
+<p><code>POLICY_SRC.parse::&lt;PolicySet&gt;()</code> 同时接受静态策略和模板。解析成功只说明语法正确，不说明类型正确；类型检查要靠下一节的 Schema 验证。解析失败时返回带源码位置的错误，生产代码不应 <code>unwrap()</code>，而应把错误上报到策略管理界面。</p>
+<p><code>PolicySet</code> 支持按 <code>PolicyId</code> 取回单条策略。默认 id 依次是 <code>policy0</code>、<code>policy1</code>；也可以用 <code>@id(&quot;...&quot;)</code> 注解指定，但注解语义由应用自己解释。需要逐条展示或审计策略时，遍历策略集并读取注解即可。除了 <code>PolicySet</code>，也可以单独解析一条 <code>Policy</code>，再调用 <code>add</code> 放进集合；模板则用 <code>Template::parse</code> 解析、用 <code>link</code> 绑定占位符。无论走哪条路径，都应该在服务启动时完成解析并缓存结果，避免在每个请求里重复做词法和语法分析。</p>
+<h2 id="构造实体与上下文">构造实体与上下文</h2>
+<p>真实请求几乎总需要实体数据。最方便的来源是 JSON：</p>
+<pre><code class="language-rust">let e = r#&quot;[
+    {
+        &quot;uid&quot;: {&quot;type&quot;:&quot;User&quot;,&quot;id&quot;:&quot;alice&quot;},
+        &quot;attrs&quot;: {
+            &quot;age&quot;:17,
+            &quot;ip_addr&quot;:{&quot;__extn&quot;:{&quot;fn&quot;:&quot;ip&quot;, &quot;arg&quot;:&quot;10.0.1.101&quot;}}
+        },
+        &quot;parents&quot;: []
+    },
+    {
+        &quot;uid&quot;:{&quot;type&quot;:&quot;Action&quot;,&quot;id&quot;:&quot;view&quot;},
+        &quot;attrs&quot;: {},
+        &quot;parents&quot;: []
+    },
+    {
+        &quot;uid&quot;: {&quot;__entity&quot;:{&quot;type&quot;:&quot;Album&quot;,&quot;id&quot;:&quot;trip&quot;}},
+        &quot;attrs&quot;: {},
+        &quot;parents&quot;: []
+    }
+]&quot;#;
+let entities = Entities::from_json_str(e, None).expect(&quot;entity error&quot;);
+</code></pre>
+<p><code>uid</code> 有 <code>{&quot;type&quot;: ..., &quot;id&quot;: ...}</code> 和 <code>{&quot;__entity&quot;: ...}</code> 两种写法；扩展类型用 <code>__extn</code> 包住构造函数名和参数。<code>parents</code> 是父实体 UID 列表，用于 <code>in</code> 判断。第二参数同样是可选的 Schema；传入 <code>Some(&amp;schema)</code> 会按 Schema 校验属性名和类型，能在进入授权器前发现脏数据。如果实体来自代码而不是 JSON，可以用 <code>EntityUid::from_type_name_and_id</code> 构造 UID，用 <code>RestrictedExpression</code> 表示属性值，再通过 <code>Entity::new</code> 和 <code>Entities::from_entities</code> 组装。两条路径最终得到同一种 <code>Entities</code>，选哪条取决于数据源。</p>
+<p>上下文是请求特有的数据，不属于实体存储。可以从 JSON 构造：</p>
+<pre><code class="language-rust">let v: serde_json::value::Value = serde_json::json!(
+        {
+             &quot;vendor&quot;:{
+               &quot;groups&quot;:[&quot;finance&quot;],
+                &quot;ip_address&quot;:{&quot;__extn&quot;:{&quot;fn&quot;:&quot;ip&quot;, &quot;arg&quot;:&quot;10.0.1.101&quot;}}
+            }
+        }
+);
+
+let c = Context::from_json_value(v, None).unwrap();
+</code></pre>
+<p>没有上下文时用 <code>Context::empty()</code>。构造请求：</p>
+<pre><code class="language-rust">let request = Request::new(alice, action, file, c, None).unwrap();
+</code></pre>
+<p>这里的 <code>None</code> 换成 <code>Some(&amp;schema)</code> 后，<code>Request::new</code> 会检查 principal、action、resource 的类型以及 context 的形状是否匹配 Schema。请求校验是可选步骤，但对不可信输入建议开启。</p>
+<h2 id="读取决策与诊断">读取决策与诊断</h2>
+<p><code>is_authorized</code> 返回 <code>Response</code>。<code>decision()</code> 只给出 <code>Allow</code> 或 <code>Deny</code>；解释“为什么”要看诊断：</p>
+<pre><code class="language-rust">match ans.decision() {
+    Decision::Allow =&gt; println!(&quot;ALLOW&quot;),
+    Decision::Deny =&gt; println!(&quot;DENY&quot;),
+}
+
+for err in ans.diagnostics().errors() {
+    println!(&quot;{}&quot;, err);
+}
+
+for reason in ans.diagnostics().reason() {
+    println!(&quot;  {}&quot;, reason);
+}
+</code></pre>
+<p><code>reason()</code> 列出促成 Allow 的 permit 策略 id；<code>errors()</code> 列出求值期间被忽略的策略及其原因，例如缺少实体、属性类型不符、整数溢出。出错策略不参与决策，所以“Deny”不一定代表没有 permit，也可能是 permit 求值失败。生产环境应记录策略 id 和错误类别，但避免把实体属性原样写进日志。</p>
+<p>还有一点容易忽略：诊断是给运维和策略作者看的，不应该直接暴露给终端用户。对外只需返回允许或拒绝，对内保留完整的策略 id、错误原因和请求追踪号，方便复盘。若决策是 Deny，<code>reason()</code> 可能为空，也可能列出触发拒绝的 forbid；不要把它当成“没有匹配任何策略”的证据。</p>
+<h2 id="用-schema-验证策略">用 Schema 验证策略</h2>
+<p>把 Schema 文本解析成 <code>Schema</code>，再交给 <code>Validator</code>，就能在启动时或 CI 中检查策略：</p>
+<pre><code class="language-rust">let schema_text = r#&quot;
+entity UserGroup;
+entity User in [UserGroup] = {
+  &quot;age&quot;: Long
+};
+entity Album;
+action view appliesTo {
+  principal: [User],
+  resource: [Album]
+};
+&quot;#;
+// the schema can be parsed in rust:
+let (schema, warnings) = Schema::from_cedarschema_str(schema_text).unwrap();
+assert_eq!(warnings.count(), 0);
+let validator = Validator::new(schema);
+
+let result = Validator::validate(&amp;validator, &amp;p, ValidationMode::default());
+if ValidationResult::validation_passed(&amp;result) {
+    println!(&quot;Validation Passed&quot;);
+} else {
+    println!(&quot;Validation Failed.&quot;);
+    let e = ValidationResult::validation_errors(&amp;result);
+    for err in e {
+        println!(&quot;{}&quot;, err);
+    }
+}
+</code></pre>
+<p><code>Validator::new</code> 会拿走 <code>Schema</code> 的所有权；如果之后还要用它校验实体或请求，应先完成 <code>Entities::from_json_str(..., Some(&amp;schema))</code>，或者克隆 Schema。验证模式默认是 strict；permissive 和 partial 属于实验特性，除非明确需要，不要在生产打开。验证能抓什么、level validation 怎么用，见 <a href="../03-schema/02-validation.html">策略验证与 level validation</a>。</p>
+<h2 id="生产集成的几个要点">生产集成的几个要点</h2>
+<p>第一，解析和验证放在启动或发布阶段，授权热路径只做 <code>is_authorized</code>；<code>Authorizer</code> 可以复用，<code>PolicySet</code> 和 <code>Schema</code> 应缓存。第二，不要 <code>unwrap()</code>：策略文件、实体 JSON、请求 JSON 都可能来自外部，错误要转成业务错误并带上策略 id。第三，Schema 变更后重新验证所有策略，并同步更新实体数据的产生方；旧策略在新 Schema 下可能失效。第四，确保传入的实体集合完整，缺失实体导致的错误会让策略被静默忽略。第五，先用 <a href="./02-cli.html">CLI 快速上手</a> 复现问题，再回到代码；<a href="../../catalog/cedar-examples/tinytodo-tutorial.html">TinyTodo 教程</a> 展示了完整的服务端集成方式。</p>
+<p>还有一条原则：授权服务不可用时应当拒绝，而不是放行。解析失败、实体加载失败、Schema 不匹配都属于“无法证明允许”，按 fail closed 处理；只有明确的 <code>Allow</code> 才继续业务流程。把这条原则写进封装层，比在每个调用点判断更可靠。</p>
+<p>需要更细的 API 说明时，查 <a href="../../catalog/cedar/sdk.html">Rust SDK 文档</a> 和 <a href="../../catalog/cedar/readme.html">Cedar 仓库总览</a>。</p>
+</article><nav class="pager"><a class="prev" href="../03-schema/02-validation.html">← 策略验证与 level validation</a><a class="next" href="./02-cli.html">CLI 快速上手 →</a></nav></main></body></html>
