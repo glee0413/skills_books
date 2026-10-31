@@ -2,19 +2,27 @@
   <strong>来源</strong>：microduck · <code>duck-ipc-proto/src/lib.rs</code> · daemon-dev-main · commit <code>b2b0d21</code><br>
   <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/pollen-robotics/microduck/blob/b2b0d213a402caeac492dd662ea891faa17f67c0/duck-ipc-proto/src/lib.rs">查看原仓库</a> · <a href="../../source-snapshots/microduck/duck-ipc-proto/src/lib.rs">查看英文快照</a>
 </section><article class="markdown-body"><h1 id="ipc-契约">IPC 契约</h1>
-<p><code>duck-ipc-proto</code> 是机器人所有服务与客户端之间的 wire contract。它只依赖 <code>serde</code>、<code>serde_json</code> 和 <code>semver</code>，不引入 HTTP、tar、crypto 或 async runtime，因此连恢复路径上的 <code>btd</code>/<code>updaterd</code> 也能安全依赖它。</p>
-<h2 id="传输">传输</h2>
-<p>每个服务拥有一个 Unix socket，协议是 <strong>JSON-RPC 2.0，一行一个 JSON 对象（NDJSON）</strong>。请求/响应用标准 <code>id</code> 关联；进度和事件用没有 <code>id</code> 的 notification 推送。一个连接可以持续接收订阅流，例如 <code>robot.state</code>、<code>update.progress</code>。</p>
+<p><code>duck-ipc-proto</code> 是机器人服务与客户端之间的线缆契约。它有两个命名空间：<code>update.*</code> 是 <code>updaterd</code> 的 API，由 <code>robotctl</code>（以及后来的 <code>btd</code>）说；<code>robot.*</code> 是 <code>robotd</code> 的 API，<strong>故意很小</strong>——它就是 <code>updaterd</code> 判断一次更新是否安全、是否成功所需要的东西。</p>
+<p>线上格式是 <strong>JSON-RPC 2.0、一行一个对象（NDJSON）、走 unix socket</strong>，分帧就是一个换行。进度以<strong>没有 <code>id</code> 的通知</strong>推送，所以中途重连的客户端重新订阅就能继续收到：</p>
 <pre><code class="language-text">→ {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;method&quot;:&quot;update.apply&quot;,&quot;params&quot;:{...}}
+← {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;update.progress&quot;,&quot;params&quot;:{...}}   (no id)
 ← {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;update.progress&quot;,&quot;params&quot;:{...}}
 ← {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:{...}}
 </code></pre>
-<h2 id="类型">类型</h2>
-<p><code>Call</code> 枚举把方法与参数绑定在一起，避免“方法 A 配上方法 B 的参数”这种错误。<code>Request::call</code> 构造请求，<code>Request::as_call</code> 读取请求。<code>Request</code>、<code>Response</code>、<code>Error</code>、<code>HelloParams</code>/<code>HelloResult</code> 以及各命名空间的 <code>*Params</code>/<code>*Result</code> 都在这个 crate 里。</p>
-<p>命名空间按守护进程划分：<code>robot.*</code>（robotd）、<code>update.*</code>/<code>policy.*</code>/<code>account.*</code>（updaterd）、<code>net.*</code>/<code>system.*</code>/<code>pad.*</code>（configd）、<code>media.*</code>（mediad）、<code>tof.*</code>（tofd）。所有服务说同一套类型，客户端不需要为每个 daemon 写不同协议。</p>
-<h2 id="版本规则">版本规则</h2>
-<p><code>API_VERSION</code> 是整数（当前 47）。版本号变化<strong>不代表任何方向的兼容承诺</strong>，它只说明两个 peer 不是同一个 release 构建的。旧版本不会被握手拒绝；真正拒绝的是缺失的 route（<code>METHOD_NOT_FOUND</code>）或未知参数（<code>INVALID_PARAMS</code>），而且只拒绝那一个调用。这样一次更新不会因为握手版本不一致而让所有调用都失败。</p>
-<p>新增方法/命名空间通常仍会 bump，例如 v5 的 <code>pad.*</code>、v9 的 skill intents、v10 的 <code>robot.sound</code>、v11 的 <code>tof.stream</code>、v14 的 chorale、v15 的 <code>setMode</code>、v16 的 <code>update.show</code>、v23 的 <code>account.*</code>。规则是：bump 记录“这两个 peer 不是一起构建的”，不是“你熟悉的东西没变”。</p>
-<h2 id="鉴权">鉴权</h2>
-<p>Unix socket 的权限就是第一层授权；服务还会用 <code>SO_PEERCRED</code> 读取调用方 uid/gid/pid，用于审计和 <code>allow_uids</code> 检查。BLE 客户端还需要先通过 <code>system.authenticate</code>。</p>
+<p>依赖封在 serde、serde_json 与 semver：恢复路径上的每个服务都说这些类型，所以这里不能拉进 http、tar、crypto 或异步运行时。</p>
+<h2 id="call-把方法与参数焊在一起">Call 把方法与参数焊在一起</h2>
+<p>方法与参数<strong>永远</strong>成对出现在 <code>Call</code> 里：用 <code>Request::call</code> 构造，用 <code>Request::as_call</code> 读回，因此不存在把某方法配上另一方法参数的可能——这正是这个 crate 要防的漂移。<code>Request</code> 在线上保留原始的 <code>method</code> 与 <code>params</code>，让服务端能区分“未知方法”和“参数解析不了”，再各自具名拒绝。</p>
+<p><code>API_VERSION</code> 现在是 47，任何不兼容改动都加一。规则写在常量旁边，而且只有一处：<strong>加一不承诺任何方向的兼容</strong>——v5 是加法、v4 不是，常量本身不区分；<strong>没有任何守护进程因为版本号不同而拒绝调用</strong>，真正让不匹配对端出问题的是达不到的路由或移了位的参数形状，它们各自在唯一服务不了的那次调用上具名拒绝；版本差异只被<strong>报告</strong>（<code>updaterd</code> 的 journal 与 <code>HelloResult::api_version</code>）。所以每次加一都有一段说明：v4 让 <code>system.authenticate</code> 成为 BLE 客户端的前置条件，v8 加了 <code>pad.input</code>，v40 是面板的 RGB 手电，v46 是 RAUC 的 A/B 系统更新，v47 是匿名使用数据的开关。</p>
+<h2 id="socket-与身份">socket 与身份</h2>
+<p>默认 socket 就是出厂单元的默认值，但每个守护进程都接受 <code>--socket</code> 覆盖（<code>updaterd</code> 另有 <code>robot_socket</code>）：<code>/run/updaterd.sock</code>、<code>/run/robotd.sock</code>、<code>/run/configd.sock</code>，以及各自独占一条流的 <code>/run/padd/pad.sock</code>、<code>/run/tofd/tof.sock</code>，和本地专用的 <code>/run/mediad/media.sock</code>。这些路径住在这里，是因为不止一个客户端要连，各抄一份迟早会各走各的。</p>
+<p>每个守护进程把自己在跑什么写到 <code>/run/&lt;service&gt;/identity.json</code>。一个服务一个目录而不是共用一个，是两条理由逼出来的：<code>btd</code>、<code>padd</code> 跑在 <code>ProtectSystem=strict</code> 下，文件系统对它们只读，<code>RuntimeDirectory=</code> 是 systemd 给的那份授权；而 systemd 在单元停止时删掉该目录，所以停掉的守护进程不可能留下一份自称在跑的陈旧身份。<code>DUCK_RUNTIME_DIR</code> 只为一件事存在：让测试和笔记本上手工运行的守护进程能发布身份（那里 <code>/run</code> 属于 root，macOS 上根本没有）。</p>
+<h2 id="service-与-lane">Service 与 Lane</h2>
+<p><code>Call::destination()</code> 回答“谁拥有这个调用的答案、占用连接多久”，<code>Service</code> 是 <code>Updater</code>、<code>Robot</code>、<code>Config</code>、<code>Pad</code>、<code>Tof</code>，<strong>一个服务一条 socket 直连、没有 broker</strong>。<code>Lane</code> 分四档：<code>Prompt</code>（守护进程查一下就好）、<code>Slow</code>（秒级，要联网或扫射频）、<code>Operation</code>（要多久都行，而且它改变机器人：更新、入网、配对）、<code>Stream</code>（从不回答，一直写通知）。</p>
+<p>分档不是洁癖，是因为<strong>每个服务一条连接一次只服务一个请求</strong>。一条连接每服务，就会让所有调用排在最慢的东西后面，而客户端最先想到的两种顺序都会坏：<code>update.apply</code> 后接 <code>update.status</code>，状态行会等在守护进程几分钟内不会读的 socket 里；<code>update.subscribe</code> 后接 <code>update.apply</code> 更糟——订阅一直占着连接且不再读请求，apply 被写进没人读的 socket，从不运行、从不回复、也从不报错。按“占用多久”分组、每组一条连接同时解决两者；每服务每会话最多四条 socket，代价为零。反过来“每次调用一条连接”要求适配器知道调用何时结束，也就是要解析回复，而它<strong>故意从不解析</strong>。</p>
+<h2 id="授权错误码与意图">授权、错误码与意图</h2>
+<p><code>Call::is_mutating()</code> 就是 <code>updaterd</code> 授权的那一组：更新、入网、改名、重启、关机、配对手柄、装策略/检测器、装 OS、登录与登出账号。只读调用一律不设门，支持人员因此能检查一台无权改的机器人。<code>vetbook.share</code> 不在其中：它不改机器人上的任何东西，用 <code>robot</code> 组就能读的 token 去挡它只会在分享按钮前加一道 <code>sudo</code>。</p>
+<p>错误码区分得让客户端能行动：<code>BUSY</code> 表示重试，<code>METHOD_NOT_FOUND</code> 与 <code>INVALID_PARAMS</code> 由解码器具名给出，<code>ROLLBACK_FAILED</code> 是更新失败<strong>且</strong>回滚失败（最严重的结局要立刻被看到），<code>NOT_SUPPORTED</code> 是“这块板子根本做不了这件事（比如没有 A/B 槽位的 <code>os.*</code>）”，与“没有这条路由”不同。<code>PROTOCOL_MISMATCH</code> 已退役但常量留着、编号不复用，因为跑着 0.5.1 及更早 <code>updaterd</code> 的板子还会用它回答 <code>hello</code>。</p>
+<p>意图分两类，而 JSON-RPC 的两种消息族正好对上：<strong>连续</strong>意图（<code>robot.move</code>、<code>robot.head</code>）以<strong>通知</strong>发送，20–50 Hz、后写者胜、会过期，因此速率上没有回复流量，将来走 WebRTC 时也该走不可靠通道（重传一个 80 ms 前的摇杆位置比没有更糟）；<strong>离散</strong>意图（<code>robot.stop</code>、<code>robot.enable</code>）以<strong>请求</strong>发送并得到回答，因为调用者需要知道是否被接受、以及为什么没有。<code>robot.state</code> 是唯一的观测流，取代了原型里五条各自为政的通道——加一个字段从“改四处、还可能悄悄不一致”变成“改一个结构体，旧客户端忽略它不认识的东西”。</p>
+<p>关节顺序也是协议：<code>JOINT_NAMES</code> 是左腿 5、颈/头/嘴 5、右腿 5，<code>JOINT_IDS</code> 对应 20–24、30–34、10–14；<code>RobotState::joints</code> 与 <code>targets</code> 是裸数字数组，叫不出 3 号位的客户端显示不了它，而 <code>BusHealth::missing</code> 带的是舵机上印着的 ID。<code>duck-control</code> 重导出这两张表，于是线上顺序与驱动顺序是同一份列表。</p>
+<p>控制核心如何使用这些类型见<a href="./control.html">控制核心</a>，服务切分见<a href="./architecture.html">系统架构</a>，BLE 侧的路由子集见 <a href="./btd.html">BLE 守护进程</a>。</p>
 </article></main></body></html>

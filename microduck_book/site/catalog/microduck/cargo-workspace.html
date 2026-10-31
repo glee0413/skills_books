@@ -2,15 +2,24 @@
   <strong>来源</strong>：microduck · <code>Cargo.toml</code> · daemon-dev-main · commit <code>b2b0d21</code><br>
   <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/pollen-robotics/microduck/blob/b2b0d213a402caeac492dd662ea891faa17f67c0/Cargo.toml">查看原仓库</a> · <a href="../../source-snapshots/microduck/Cargo.toml">查看英文快照</a>
 </section><article class="markdown-body"><h1 id="cargo-workspace">Cargo workspace</h1>
-<p>Microduck 的根 <code>Cargo.toml</code> 是一个 workspace：26 个 crate 共享版本、依赖和 profile，但每个服务仍是一个独立可编译单元。当前 workspace 版本是 <code>0.18.3</code>，Rust 版本下限和上限都是 <code>1.89</code>，因为 Yocto 镜像用 OpenEmbedded 自带的 Rust 构建，不能要求更新。</p>
-<h2 id="三类-crate">三类 crate</h2>
+<p>根 <code>Cargo.toml</code> 是机器人守护进程的 workspace：<strong>一个 crate 对应一个服务或工具</strong>，与 <code>docs/design/architecture.md</code> §1 的服务切分一致，<code>robotd</code>、<code>btd</code>、<code>mediad</code> 如今是平级的兄弟。</p>
+<h2 id="成员与-default-members">成员与 default-members</h2>
+<p><code>members</code> 列出 25 个 crate：<code>btd</code>、<code>configd</code>、<code>duck-ble</code>、<code>duck-control</code>、<code>duck-detect</code>、<code>duck-ether</code>、<code>duck-ipc-proto</code>、<code>duckctl</code>、<code>kinematics</code>、<code>mediad</code>、<code>netpadd</code>、<code>nfc</code>、<code>odometry</code>、<code>pad-imu</code>、<code>pad-map</code>、<code>padd</code>、<code>pet-detect</code>、<code>sounds</code>、<code>tof</code>、<code>updater</code>、<code>robotctl</code>、<code>robotd</code>、<code>robotd-params</code>、<code>test-support</code>、<code>uyvy</code>、<code>xtask</code>。<code>resolver = &quot;3&quot;</code>。</p>
+<p><code>default-members</code> 与 <code>members</code> 只差一项，而这一项就是该键存在的全部理由：<code>duckctl</code> 不在其中。<code>cargo board --bins</code>（<code>dev-push.sh</code> 与发布工作流都用）会为 aarch64 构建每一个 default member——这对机器人的守护进程是对的，对开发者在自己机器上跑的客户端是错的：它会在发布路径上为一块<strong>永远不该看见蓝牙栈</strong>的板子交叉编译一整套蓝牙栈，毫无收益。替代方案是在每个 <code>--bins</code> 调用点显式点名二进制，但那样有两处要手工保持同步，正是这个仓库反复写下的那类失败；放一个列表在这里，新守护进程被两处同时接住，没人需要记得。<code>--workspace</code> 不受影响，所以 CI 照旧 lint 并测试 <code>duckctl</code>。</p>
+<h2 id="四条外部版本-pin">四条外部版本 pin</h2>
+<p><code>[workspace.metadata.*]</code> 里的四个版本各自只有一处真相，理由完全一致：安装脚本是<strong>用 curl 单独取得</strong>的，读不到这个文件，所以脚本里带一个字面量，再由测试断言两者一致。两份版本漂移过一次的后果，就是一块板子上的 ONNX Runtime 是 1.20.1，而 <code>ort</code> 在低于 1.23 时会 panic。</p>
 <ul>
-<li><strong>守护进程</strong>：<code>robotd</code>、<code>updater</code>/<code>updaterd</code>、<code>configd</code>、<code>btd</code>、<code>padd</code>、<code>mediad</code>、<code>tof</code>、<code>nfc</code>。每个服务一个 crate、一个 systemd unit，但一起打进同一个 release。</li>
-<li><strong>库</strong>：<code>duck-ipc-proto</code>（wire contract）、<code>duck-control</code>（控制核心）、<code>kinematics</code>、<code>odometry</code>、<code>sounds</code>、<code>pet-detect</code>、<code>robotd-params</code>。它们没有 socket、没有 tokio runtime、没有 systemd，只被守护进程驱动。</li>
-<li><strong>工具</strong>：<code>robotctl</code> 随机器人发布；<code>duckctl</code> 在笔记本上运行，<code>xtask</code> 负责打包/签名/晋升，<code>test-support</code> 提供测试夹具。</li>
+<li><code>onnxruntime</code>：<code>floor = &quot;1.23&quot;</code> 是 <code>ort</code> 接受的最低值（随 <code>ort</code> 依赖一起提），<code>target = &quot;1.28.0&quot;</code> 是板子低于下限时装的那个。<code>xtask package</code> 把它们烤进 release 的 preinstall 钩子，测试断言 <code>scripts/setup-board.sh</code> 与之相符。</li>
+<li><code>rknpu</code>：<code>runtime = &quot;v2.3.2&quot;</code> 是 Rockchip <code>rknn-toolkit2</code> 仓库里的 tag（<code>.so</code> 在那里）。它必须至少和转换器产出的模型一样新，因为比模型旧的运行时会在 <code>rknn_init</code> 处带着一个数字失败。</li>
+<li><code>policies</code>：<code>pollen-robotics/microduck-policies</code>，<code>version = &quot;v8&quot;</code>，且它是<strong>下限</strong>——新 provision 的板子装的那套，也是本守护进程默认值所能加载的最旧官方集合；低于它的板子被 post-install 钩子抬上来，高于它的不动。越过它用 <code>robotctl policy update</code>，不需要发守护进程版本；而升这个 pin 需要，因为它随 release 走，且只在某个槽位的默认文件名只有新集合才有时才升。</li>
+<li><code>detector</code>：<code>pollen-robotics/microduck-duck-detector</code>，<code>version = &quot;duck-v1&quot;</code>，同样由 <code>scripts/seed-detector.sh</code> 播种、由 <code>robotctl duck-detector update</code> 抬升。注意模型仓库与<strong>数据集</strong>仓库同名，而机器人只寻址模型（<code>huggingface.co/&lt;repo&gt;/resolve/…</code>、<code>api/models/&lt;repo&gt;</code>），数据集在 <code>datasets/</code> 下，共享的名字在线上无法混淆。</li>
+<li><code>gst-plugins</code>：<code>pollen-robotics/microduck-gst-plugins</code>，<code>version = &quot;v3&quot;</code>，即 <code>mpph264enc</code> 与 <code>webrtcsink</code>/<code>webrtcsrc</code> 的预编译插件——两者都不存在于任何 Debian 套件；同样由 <code>setup-gstreamer.sh</code> 的字面量加测试对齐。</li>
 </ul>
-<h2 id="几个关键约束">几个关键约束</h2>
-<p><code>default-members</code> 故意排除了 <code>duckctl</code>：<code>cargo board --bins</code> 要为 aarch64 构建所有默认成员，而 <code>duckctl</code> 是开发机上的 BLE 客户端，不该被交叉编译到板子上；<code>--workspace</code> 仍会 lint/test 它。</p>
-<p><code>[workspace.metadata]</code> 固定了四个外部运行时/资产版本：ONNX Runtime（floor 1.23，target 1.28.0）、Rockchip NPU runtime（v2.3.2）、官方策略集（<code>pollen-robotics/microduck-policies</code> v8）、duck detector（<code>duck-v1</code>）和 GStreamer 插件（v3）。这些值同时出现在 <code>scripts/</code> 的独立脚本里，测试会断言两处一致，防止板子上出现版本漂移。</p>
-<p>release profile 没有做激进的 <code>strip</code>/<code>lto</code> 优化：机器人出问题时需要 journald 里的 panic backtrace，去掉符号表会让诊断变成裸地址。</p>
+<h2 id="工具链的上下限">工具链的上下限</h2>
+<p><code>[workspace.package]</code> 是 <code>version = &quot;0.18.3&quot;</code>、<code>edition = &quot;2024&quot;</code>、<code>rust-version = &quot;1.89&quot;</code>。1.89 是为了 <code>std::fs::File::try_lock</code>——单飞更新锁靠它实现而不必加依赖；edition 2024 需要 1.85，所以这个数字覆盖两者。声明出来是为了让用旧工具链的同事看到“requires rustc 1.89”，而不是一个“方法不存在”的错误。</p>
+<p>它同时是<strong>上限</strong>：Yocto 镜像用其 OE 发行版自带的 Rust 从源码构建每个 release（wrynose 上是 1.94.1），所以这里不能要求更新的东西。0.15.1 曾把下限抬到 1.99 以用原子量的 <code>try_update</code>，结果构建不进镜像；<code>mediad</code> 现在把那几处写成 compare-exchange 循环。这条规则写在 <code>CONTRIBUTING.md</code> 里。</p>
+<h2 id="依赖与-release-配置">依赖与 release 配置</h2>
+<p><code>[workspace.dependencies]</code> 统一了 <code>serde</code>、<code>serde_json</code>、<code>semver</code>（带 <code>serde</code>）、<code>thiserror</code> 2、<code>tokio</code> 1、<code>socket2</code> 0.6、<code>clap</code> 4（derive）、<code>hound</code>、<code>tracing</code>、<code>tracing-subscriber</code>、<code>tokio-util</code>、<code>async-trait</code>、<code>url</code> 的版本，成员按需 <code>workspace = true</code> 引用。</p>
+<p><strong>没有自定义 <code>[profile.release]</code>，这是决定而不是疏忽。</strong> 二进制大小不值得优化——模型产物会让几 MB 的二进制相形见绌；而调优的代价大于收益，尤其 <code>strip = true</code> 会去掉符号表，把 journald 里的一次 panic 回溯变成一串裸地址，而那正是你诊断一块无法挂调试器的机器人时最需要的东西；<code>lto</code> 与 <code>codegen-units</code> 只是让构建更久。</p>
+<p>工作区如何切分服务、<code>duck-ipc-proto</code> 为什么只依赖 serde，见<a href="./ipc.html">IPC 契约</a>；控制核心为什么是库而不是守护进程，见<a href="./control.html">控制核心</a>；这些 pin 怎样进入产物，见<a href="./xtask.html">构建工具 xtask</a>。</p>
 </article></main></body></html>
