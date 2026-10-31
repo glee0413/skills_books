@@ -1,0 +1,72 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>模拟机器人 · Microduck 机器人系统实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Microduck 机器人系统实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-what-is-microduck.html">Microduck 是什么：硬件、目标与代码地图</a></li></ul></section><section><h2>第一部分 系统架构</h2><ul><li><a href="../../book/01-architecture/01-architecture.html">七个 daemon 与一个机器人</a></li><li><a href="../../book/01-architecture/02-ipc.html">IPC 契约：JSON-RPC、意图与状态</a></li></ul></section><section><h2>第二部分 控制与感知</h2><ul><li><a href="../../book/02-control/01-robotd.html">robotd：50 Hz 控制回路</a></li><li><a href="../../book/02-control/02-control-core.html">控制核心：模型、观测、策略与安全</a></li><li><a href="../../book/02-control/03-kinematics.html">运动学、里程计与 IMU</a></li><li><a href="../../book/02-control/04-perception.html">感知与媒体：camera、ToF、检测器</a></li></ul></section><section><h2>第三部分 交互与更新</h2><ul><li><a href="../../book/03-interaction/01-input.html">手柄、BLE、duckctl 与声音</a></li><li><a href="../../book/03-interaction/02-updater.html">更新系统：签名、原子切换、健康门禁与回滚</a></li><li><a href="../../book/03-interaction/03-remote.html">远程访问：WebRTC、账号与中继</a></li></ul></section><section><h2>第四部分 开发与运维</h2><ul><li><a href="../../book/04-development/01-build-test.html">构建、测试与 CI</a></li><li><a href="../../book/04-development/02-dev-sim.html">开发板、开发推送与仿真</a></li><li><a href="../../book/04-development/03-project-history.html">设计决策与故障史</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/05-appendix/01-reading-map.html">代码地图与阅读路线</a></li><li><a href="../../book/05-appendix/02-glossary.html">术语表</a></li><li><a href="../../book/05-appendix/03-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>microduck</h2><ul><li><a href="./readme.html">Microduck 是什么</a></li><li><a href="./contributing.html">开发与测试约定</a></li><li><a href="./docs-index.html">文档地图</a></li><li><a href="./architecture.html">系统架构</a></li><li><a href="./robotd-design.html">robotd 控制回路设计</a></li><li><a href="./updater-design.html">更新系统设计</a></li><li><a href="./policy-channel.html">策略通道</a></li><li><a href="./restart-order.html">重启顺序</a></li><li><a href="./app-path.html">手机 BLE 配置路径</a></li><li><a href="./remote-webrtc.html">远程 WebRTC</a></li><li><a href="./remote-access.html">外网访问与账号</a></li><li><a href="./boot-recovery.html">启动恢复网络</a></li><li><a href="./sim-design.html">仿真设计</a></li><li><a href="./cheatsheet.html">robotctl 速查</a></li><li><a href="./cheatsheet-dev.html">开发板速查</a></li><li><a href="./dev-push.html">开发推送</a></li><li><a href="./duckctl.html">duckctl 使用</a></li><li><a href="./install-dev.html">开发板安装</a></li><li><a href="./pair-gamepad.html">配对手柄</a></li><li><a href="./simulation.html">模拟机器人</a></li><li><a href="./telemetry.html">遥测与隐私</a></li><li><a href="./udp-pad.html">UDP 手柄</a></li><li><a href="./faq.html">常见问题</a></li><li><a href="./recurrent-policies.html">循环策略</a></li><li><a href="./policy-manifest.html">策略清单</a></li><li><a href="./roadmap.html">路线图</a></li><li><a href="./install-path-gap.html">安装路径故障</a></li><li><a href="./media-bringup.html">媒体启动</a></li><li><a href="./npu-bringup.html">NPU 启动</a></li><li><a href="./update-over-ble.html">BLE 更新</a></li><li><a href="./idle-cpu.html">空闲 CPU</a></li><li><a href="./tof-on-demand.html">按需 ToF</a></li><li><a href="./deploy.html">部署配置</a></li><li><a href="./cargo-workspace.html">Cargo workspace</a></li><li><a href="./ipc.html">IPC 契约</a></li><li><a href="./control.html">控制核心</a></li><li><a href="./robotd-control.html">robotd control.rs</a></li><li><a href="./robotd-main.html">robotd main.rs</a></li><li><a href="./kinematics.html">运动学</a></li><li><a href="./odometry.html">里程计</a></li><li><a href="./mediad.html">媒体守护进程</a></li><li><a href="./updater.html">更新引擎</a></li><li><a href="./padd.html">手柄守护进程</a></li><li><a href="./btd.html">BLE 守护进程</a></li><li><a href="./tof.html">ToF 守护进程</a></li><li><a href="./sounds.html">声音与合唱</a></li><li><a href="./duckctl-code.html">duckctl 客户端</a></li><li><a href="./xtask.html">构建工具 xtask</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：microduck · <code>docs/robot/simulation.md</code> · daemon-dev-main · commit <code>b2b0d21</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/pollen-robotics/microduck/blob/b2b0d213a402caeac492dd662ea891faa17f67c0/docs/robot/simulation.md">查看原仓库</a> · <a href="../../source-snapshots/microduck/docs/robot/simulation.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="模拟机器人">模拟机器人</h1>
+<p>MuJoCo 里的鸭子，由真实 daemon 驱动。开发和对着桌上的机器人完全一样：同一个 <code>robotd</code>、同一批策略、同一个 50 Hz 回路、同一个 <code>robotctl</code>、同一个控制台，只有身体不同。为什么这样造、孪生覆盖到哪里，见<a href="sim-design.html">仿真设计</a>。</p>
+<h2 id="一条命令得到一只鸭">一条命令得到一只鸭</h2>
+<pre><code class="language-sh">scripts/duck-sim
+scripts/duck-sim status
+scripts/duck-sim drive
+scripts/duck-sim monitor
+scripts/duck-sim log
+scripts/duck-sim down
+</code></pre>
+<p>不带参数时脚本从当前分支构建 daemon，写一份指向本仓库策略的 params，在 <code>~/.cache/duck-sim</code> 下启动 <code>duck-body</code>、<code>tofd --sim</code> 与 <code>robotd --sim</code>，并启用站立策略。<code>drive</code> 前进 8 秒（参数 <code>vx vyaw</code>，默认 <code>0.15 0</code>），<code>monitor</code> 是 <code>robotctl monitor</code>。<code>ctl</code> 就是把 <code>robotctl</code> 指向这只鸭的 socket——与真机唯一的不同是 socket 在状态目录而非 <code>/run</code>。自己的工具可直连 <code>~/.cache/duck-sim/duck-a.sock</code>、<code>duck-a-tof.sock</code> 与 TCP 7801；<code>duck.sock</code> 是指向当前 <code>ctl</code> 目标的链接。</p>
+<h2 id="up-与-boot-的差别">up 与 boot 的差别</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>scripts/duck-sim</code></th>
+<th><code>scripts/duck-sim boot N</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>daemon 以什么运行</td>
+<td>普通进程、你的用户、各自 pidfile</td>
+<td>每只鸭一个 <code>systemd-nspawn</code> 容器里的 systemd 服务，用真实 unit</td>
+</tr>
+<tr>
+<td>需要</td>
+<td>仓库与 <code>microduck_rl</code></td>
+<td><code>sudo</code>、一次性 Debian rootfs</td>
+</tr>
+<tr>
+<td>身份</td>
+<td>笔记本的；多鸭共一个进程树</td>
+<td>每鸭独立 machine-id、声音与 socket，之间有 <code>duck-ether</code></td>
+</tr>
+<tr>
+<td>覆盖</td>
+<td>控制回路、策略、IPC、<code>robotctl</code>、控制台</td>
+<td>再加 <code>User=</code>/组/<code>RuntimeDirectory=</code>/加固、updater 的 apply、健康门禁、回滚、重启顺序、<code>journalctl</code></td>
+</tr>
+</tbody></table>
+<p>经验法则：改控制回路、策略、IPC 或客户端用 <code>up</code>；碰 systemd、updater、provisioning，或要让多只鸭互相说话用 <code>boot</code>。<code>up</code> 看不到“unit 的用户不存在所以服务起不来”这类 bug，而它已经抓到过两次。</p>
+<h2 id="多鸭房间与相机">多鸭、房间与相机</h2>
+<pre><code class="language-sh">scripts/duck-sim boot 4
+scripts/duck-sim shell duck-c
+duck-a # journalctl -u robotd -f
+DUCK_SIM_SCENE=apartment DUCK_SIM_CAMERAS=a scripts/duck-sim boot 2
+</code></pre>
+<p><code>boot</code> 给每只鸭一个容器，共用一个 Debian 13 rootfs（首次约三分钟，建在状态目录）加每鸭 overlay；鸭子叫 <code>duck-a</code>、<code>duck-b</code>……各有 machine-id 与声音，因为它的话音由序列号生成。多于一只时脚本还会起 <code>duck-ether</code>，一只<strong>故意很坏</strong>的假电台，在容器间传合唱的 BLE 信标：完美链路会掩盖真链路的 bug。每只鸭都是 systemd 单元，所以 <code>down</code> 是 <code>systemctl stop</code>，从不是某个组合键。</p>
+<p>默认世界是裸地板，<code>apartment</code> 是 7×6 m 的六房间，门洞故意偏心，好在 45° 前视里认出位姿；带斜杠的值是自定义场景路径。相机按鸭开启（<code>a</code>、<code>a,c</code>、<code>all</code>）：渲染一帧约 12 ms，而四只鸭的物理只要 0.3 ms，一台相机就是三分之一核。带相机的鸭各有一个 <code>mediad</code>，控制台按序号在 <code>http://127.0.0.1:8080</code> 起。</p>
+<h2 id="从任意网络访问">从任意网络访问</h2>
+<pre><code class="language-bash">DUCK_SIM_CAMERAS=a scripts/duck-sim
+scripts/duck-sim ctl account login
+</code></pre>
+<p>模拟鸭用真实账号登录 Hugging Face，出现在该账号的机器人列表里，控制台、App 或 Space 可经 WebRTC 从外网到达。打开 <code>hf.co/oauth/device</code> 输入它打印的码，几秒内就列出；<code>ctl account status</code> 显示归属，<code>ctl system info</code> 打印序列号与 <code>body MuJoCo</code>。列表里带 <code>simulated</code> 标记，名字由序列号派生（如 <code>duck-eb55</code>），不会读成架子上那只。两条规则来自 rendezvous 按 token 索引：<strong>一个账号同时只列一只鸭</strong>，第二只想被列出就用第二个账号；消费它的 Space 需要自己的 token。</p>
+<h2 id="旋钮与实时性">旋钮与实时性</h2>
+<p>全部可选环境变量：<code>DUCK_SIM_RL</code>（<code>duck-body</code>、场景与 ONNX Runtime 的位置）、<code>DUCK_SIM_STATE</code>（socket、日志、rootfs，路径故意短，因为 unix socket 上限约 108 字节）、<code>DUCK_SIM_DUCKS</code>、<code>DUCK_SIM_SCENE</code>、<code>DUCK_SIM_CAMERAS</code>、<code>DUCK_SIM_DUCK</code>、<code>DUCK_SIM_KEYFRAME</code>（默认 <code>SIT</code>，站立策略从折叠姿态起身）、<code>DUCK_SIM_VIEWER</code>、<code>DUCK_SIM_PORT</code>（7801 起，每鸭 +1）、<code>DUCK_SIM_FRAME_PORT</code>（7901 起）。</p>
+<p><strong>实时性很重要</strong>：daemon 的回路按墙上时钟，低于 1.0× 时策略驱动的机器人比它以为的走得少，于是站不住。<code>scripts/duck-sim realtime</code> 报倍率。鸭子太多或相机太多不会变慢，而是在 45 Hz 门禁上变 <em>unhealthy</em>，容器形态下 updater 还会开始回滚；依次减少鸭子、减少相机、<code>DUCK_SIM_VIEWER=0</code> 无头运行。鸭子不能热加入：MuJoCo 编译模型，改数量就重启模拟器；<code>RemoteIo</code> 在下一 tick 重连，身体短暂消失的鸭报不健康而不是死掉。</p>
+<p><strong><code>--sim</code> 不是 <code>--fake</code></strong>：<code>robotd --fake</code> 是没有物理的空机器人，位置完美回显、什么都不会倒，用于单测；<code>--sim</code> 是孪生，两个标志互斥。脚本还会给每只鸭设 <code>DUCK_IDENTITY</code>，否则同机多鸭共享硬件序列号，声音和合唱身份会撞。</p>
+<h2 id="手工起两半">手工起两半</h2>
+<pre><code class="language-sh">duck-body --ducks 1 --port 7801 --keyframe SIT
+target/debug/tofd --sim 127.0.0.1:7801 --socket /tmp/d/duck-a-tof.sock
+target/debug/configd --socket /tmp/d/duck-a-config.sock --state-dir /tmp/d/duck-a \
+    --simulated sim-duck-a --fake-net --fake-pads
+target/debug/mediad --sim-camera 127.0.0.1:7901 --config /tmp/d/mediad.toml \
+    --robot-socket /tmp/d/duck-a.sock --tof-socket /tmp/d/duck-a-tof.sock
+</code></pre>
+<p><code>updaterd</code> 与 <code>mediad</code> 的 <code>--token</code> 必须指向同一个文件，否则鸭子登录了却永不注册；相机几何两边要一致（<code>[media] quality</code> 的 <code>360p30</code> 是 640×360），帧是裸的、没有握手，尺寸不对会被拒。非 Linux 上 <code>mediad</code> 要用 <code>cargo build -p mediad --features gstreamer</code> 构建，否则启动后说明并退出。<code>scripts/duck-sim</code> 是其余参数的记录，改之前先读。</p>
+</article></main></body></html>

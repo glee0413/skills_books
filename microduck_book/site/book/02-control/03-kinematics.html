@@ -1,0 +1,72 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>运动学、里程计与 IMU · Microduck 机器人系统实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Microduck 机器人系统实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-what-is-microduck.html">Microduck 是什么：硬件、目标与代码地图</a></li></ul></section><section><h2>第一部分 系统架构</h2><ul><li><a href="../01-architecture/01-architecture.html">七个 daemon 与一个机器人</a></li><li><a href="../01-architecture/02-ipc.html">IPC 契约：JSON-RPC、意图与状态</a></li></ul></section><section><h2>第二部分 控制与感知</h2><ul><li><a href="./01-robotd.html">robotd：50 Hz 控制回路</a></li><li><a href="./02-control-core.html">控制核心：模型、观测、策略与安全</a></li><li><a class="active" href="./03-kinematics.html">运动学、里程计与 IMU</a></li><li><a href="./04-perception.html">感知与媒体：camera、ToF、检测器</a></li></ul></section><section><h2>第三部分 交互与更新</h2><ul><li><a href="../03-interaction/01-input.html">手柄、BLE、duckctl 与声音</a></li><li><a href="../03-interaction/02-updater.html">更新系统：签名、原子切换、健康门禁与回滚</a></li><li><a href="../03-interaction/03-remote.html">远程访问：WebRTC、账号与中继</a></li></ul></section><section><h2>第四部分 开发与运维</h2><ul><li><a href="../04-development/01-build-test.html">构建、测试与 CI</a></li><li><a href="../04-development/02-dev-sim.html">开发板、开发推送与仿真</a></li><li><a href="../04-development/03-project-history.html">设计决策与故障史</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../05-appendix/01-reading-map.html">代码地图与阅读路线</a></li><li><a href="../05-appendix/02-glossary.html">术语表</a></li><li><a href="../05-appendix/03-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>microduck</h2><ul><li><a href="../../catalog/microduck/readme.html">Microduck 是什么</a></li><li><a href="../../catalog/microduck/contributing.html">开发与测试约定</a></li><li><a href="../../catalog/microduck/docs-index.html">文档地图</a></li><li><a href="../../catalog/microduck/architecture.html">系统架构</a></li><li><a href="../../catalog/microduck/robotd-design.html">robotd 控制回路设计</a></li><li><a href="../../catalog/microduck/updater-design.html">更新系统设计</a></li><li><a href="../../catalog/microduck/policy-channel.html">策略通道</a></li><li><a href="../../catalog/microduck/restart-order.html">重启顺序</a></li><li><a href="../../catalog/microduck/app-path.html">手机 BLE 配置路径</a></li><li><a href="../../catalog/microduck/remote-webrtc.html">远程 WebRTC</a></li><li><a href="../../catalog/microduck/remote-access.html">外网访问与账号</a></li><li><a href="../../catalog/microduck/boot-recovery.html">启动恢复网络</a></li><li><a href="../../catalog/microduck/sim-design.html">仿真设计</a></li><li><a href="../../catalog/microduck/cheatsheet.html">robotctl 速查</a></li><li><a href="../../catalog/microduck/cheatsheet-dev.html">开发板速查</a></li><li><a href="../../catalog/microduck/dev-push.html">开发推送</a></li><li><a href="../../catalog/microduck/duckctl.html">duckctl 使用</a></li><li><a href="../../catalog/microduck/install-dev.html">开发板安装</a></li><li><a href="../../catalog/microduck/pair-gamepad.html">配对手柄</a></li><li><a href="../../catalog/microduck/simulation.html">模拟机器人</a></li><li><a href="../../catalog/microduck/telemetry.html">遥测与隐私</a></li><li><a href="../../catalog/microduck/udp-pad.html">UDP 手柄</a></li><li><a href="../../catalog/microduck/faq.html">常见问题</a></li><li><a href="../../catalog/microduck/recurrent-policies.html">循环策略</a></li><li><a href="../../catalog/microduck/policy-manifest.html">策略清单</a></li><li><a href="../../catalog/microduck/roadmap.html">路线图</a></li><li><a href="../../catalog/microduck/install-path-gap.html">安装路径故障</a></li><li><a href="../../catalog/microduck/media-bringup.html">媒体启动</a></li><li><a href="../../catalog/microduck/npu-bringup.html">NPU 启动</a></li><li><a href="../../catalog/microduck/update-over-ble.html">BLE 更新</a></li><li><a href="../../catalog/microduck/idle-cpu.html">空闲 CPU</a></li><li><a href="../../catalog/microduck/tof-on-demand.html">按需 ToF</a></li><li><a href="../../catalog/microduck/deploy.html">部署配置</a></li><li><a href="../../catalog/microduck/cargo-workspace.html">Cargo workspace</a></li><li><a href="../../catalog/microduck/ipc.html">IPC 契约</a></li><li><a href="../../catalog/microduck/control.html">控制核心</a></li><li><a href="../../catalog/microduck/robotd-control.html">robotd control.rs</a></li><li><a href="../../catalog/microduck/robotd-main.html">robotd main.rs</a></li><li><a href="../../catalog/microduck/kinematics.html">运动学</a></li><li><a href="../../catalog/microduck/odometry.html">里程计</a></li><li><a href="../../catalog/microduck/mediad.html">媒体守护进程</a></li><li><a href="../../catalog/microduck/updater.html">更新引擎</a></li><li><a href="../../catalog/microduck/padd.html">手柄守护进程</a></li><li><a href="../../catalog/microduck/btd.html">BLE 守护进程</a></li><li><a href="../../catalog/microduck/tof.html">ToF 守护进程</a></li><li><a href="../../catalog/microduck/sounds.html">声音与合唱</a></li><li><a href="../../catalog/microduck/duckctl-code.html">duckctl 客户端</a></li><li><a href="../../catalog/microduck/xtask.html">构建工具 xtask</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="运动学里程计与头部-imu">运动学、里程计与头部 IMU</h1>
+<p>控制回路每 tick 都拿到一串关节角和一块 IMU 四元数。要把它们变成“相机在哪、脚踩在哪、机器人走到哪”，需要三样东西：一份从训练场景里拿来的运动学模型、一个把足端接触钉在世界里的里程计，以及头部那颗独立 IMU。它们都不是守护进程，而是 <code>robotd</code> 驱动的库——没有自己的 tokio、socket 或 systemd。精读见 <a href="../../catalog/microduck/kinematics.html">运动学</a> 与 <a href="../../catalog/microduck/odometry.html">里程计</a>。</p>
+<h2 id="把-mjcf-编译成一次折叠">把 MJCF 编译成一次折叠</h2>
+<p><code>kinematics</code> 直接解析训练用的 MJCF（<code>assets/alpha/robot_walk.xml</code>，从 <code>mjlab_microduck</code> 场景裁出来），但不在每次查询时走树。加载时做一次“编译”：名字解析成索引，每个 site 预生成一条从根到自己的扁平链：</p>
+<pre><code class="language-rust">struct Link {
+    rest: Pose,                       // 进入该 body 坐标系的固定变换
+    joint: Option&lt;(usize, [f64; 3])&gt;, // 铰链在角度切片里的下标 + 轴
+}
+</code></pre>
+<p>查询 <code>site_pose(site, &amp;angles)</code> 就是沿这条链折叠：乘固定变换，遇到铰链就乘一个绕轴旋转。没有 hash、没有分配，也不会算与该 site 无关的 body。原型用 <code>HashMap&lt;String, f64&gt;</code> 传关节角、每次查询重算整棵树并新分配一个 <code>Vec</code>；bench 节奏下没问题，50 Hz 每 tick 问两只脚就浪费了。角度切片按模型关节顺序索引，<code>joint_index</code> 只在 setup 时解析一次。模型用 <code>LazyLock</code> 解析一次，嵌入资源由 MuJoCo 对拍测试兜底，所以运行时不会失败。正确性钉在两处：对 64 个随机姿态逐 site 与 MuJoCo 的 <code>mj_kinematics</code> 比较；以及头部符号约定的 pin 测试。</p>
+<p>同一份编译结果还给出整副骨架：<code>body_poses</code> 按树序一趟算出每个 body 在躯干系的位姿，父节点总在子节点之前；<code>body_parents</code> 给出骨架的边。它还给出每个关节的 MJCF 行程 <code>joint_range</code>（IK 必须夹住它，舵机机械上就只到那里），以及训练场景里躯干的站立高度 <code>trunk_height_m</code>——地板滤波器的偏移来自资产，而不是另一个常量。</p>
+<h2 id="头部链相机tof-与头部-imu-的位姿">头部链：相机、ToF 与头部 IMU 的位姿</h2>
+<p><code>head::HeadFk</code> 把四个头关节（<code>neck_pitch</code>、<code>head_pitch</code>、<code>head_yaw</code>、<code>head_roll</code>）解析成索引，然后提供三种查询：<code>camera_in_trunk_cv2</code> 给视觉栈的 cv2 轴（+x 右、+y 下、+z 前），<code>tof_in_trunk</code> 给传感器自己的轴（+x 前、+y 左、+z 上），<code>head_imu_in_trunk</code> 给 HAT 上 BMI088 的安装姿态。两个常量四元数是“翻译层”，从原型带过来并在真机图像上校过；pin 测试防止一次 MJCF 更新让机器人点头点反。ToF 优先用 MJCF 自己的 <code>tof</code> site，没有才退回相机位置——两者只差几厘米，但“几厘米”正是重投影误差的来源。</p>
+<p>链上还有一个真实的耦合：<code>head_pitch</code> 在 <code>head_yaw</code> <strong>上游</strong>，所以俯仰会倾斜偏航所扫过的平面；偏航接近 ±90° 时，俯仰轴与相机前向对齐，单轴更新会卡住。因此 <code>look_at</code> 解的是 2×2 系统：对真实 FK 做阻尼高斯-牛顿，雅可比用有限差分，FK 约 50 ns，整个解算几微秒。每步都把关节夹进 MJCF 行程，返回值里的 <code>clamped</code> 表示“这已经是它能看向的最近方向”，而不是锁定。</p>
+<h2 id="hand-模块不是一条手链">hand 模块不是一条手链</h2>
+<p><code>CONTRIBUTING.md</code> 把 <code>kinematics</code> 描述成“头部与手部链”，但在这个 commit 里，<code>kinematics::hand</code> 并不是机械臂的正运动学，而是 <strong>ToF 特雷门琴的“手”检测器</strong>：它在 8×8 深度帧里找最近的可演奏回波，判断哪些状态字节可信，用低分位数抵抗飞点，并用 250 ms 的 hold 桥接闪烁。放在 <code>kinematics</code> 是因为它和 <code>tof</code> 的网格常量同处一个 crate，不是因为它是一条运动链。</p>
+<p>所以本章按实际代码讲：真正的链是头、ToF 和腿；<code>hand</code> 是感知启发式。若后续版本真的加入手部链，这一节应改名重写。</p>
+<h2 id="里程计把一只脚钉在地上">里程计：把一只脚钉在地上</h2>
+<p><code>odometry</code> 的想法只有一句：任何时刻，某只脚的一个角是机器人与地面的接触点。把这个点锚在世界里（平地上 z = 0，x/y 取它成为锚点时的值），躯干朝向由 IMU 给出，躯干的世界位置就由正运动学反推出来。当另一只脚的某个角落到锚点以下——一步落地——锚点移过去，并且<strong>保留该角当前的世界 x/y</strong>，所以估计不会跳。</p>
+<pre><code class="language-text">anchor_xy 固定 ──► contact_in_trunk = FK(脚, 锚点局部坐标)
+                ──► contact_world = R_imu · contact_in_trunk
+                ──► trunk = anchor_xy − contact_world.xy
+                    trunk.z = −contact_world.z
+</code></pre>
+<p>候选点是脚底网格上的采样，<code>ALPHA16</code> 是覆盖整只鞋底的 4×4 网格。切换要满足两个条件：角落低于 <code>−0.010 m</code>，并连续保持 2 个 tick（40 ms）——一次 FK 抖动不能偷走锚点，一次真实的落地必须能。<code>ALPHA16</code> 在 MuJoCo 双胞胎上走 3.2 m 漂移 9 mm，旧的 v1.5 包围盒漂 17 mm、平底四角漂 16 mm，而且站高更准，代价只是多约半微秒。</p>
+<p>朝向是 IMU 积分出来的偏航，没有磁力计，所以世界系就是“开机时机器人看向的方向”，没有任何东西修正漂移。这是<strong>相对运动</strong>，每个消费者都必须这样对待它。它每 tick 只多算两次链（原型每个角重走整条腿，9 次），不增加总线流量，所以直接跑在 50 Hz 循环里，而不是原型单独的 100 Hz。</p>
+<h2 id="头部-imu板子不同读者不同">头部 IMU：板子不同，读者不同</h2>
+<p>头部 IMU 不是“一个传感器”，而是两块板上的两颗芯片，读者也不同：</p>
+<table>
+<thead>
+<tr>
+<th>板子</th>
+<th>芯片</th>
+<th>谁读</th>
+<th>为什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>beta</code></td>
+<td>LSM6DSV16X</td>
+<td><code>robotd</code></td>
+<td>ToF 在 SPI，IMU 有独立 I²C，芯片自己做 SFLP 融合</td>
+</tr>
+<tr>
+<td><code>zero3</code></td>
+<td>BMI088</td>
+<td><code>tofd</code></td>
+<td>与 ToF 共用 HAT 的 I²C 总线</td>
+</tr>
+</tbody></table>
+<p><code>beta</code> 上，芯片以 60 Hz 把陀螺、加速度和 game rotation 四元数批量塞进 FIFO，读线程每秒只醒 15 次，一次 burst 读走约四个 7 字节记录——两次事务换四个样本。相比 BMI088 每样本两次 I²C 事务加每秒 100 次唤醒（约占 4% 一个核），这就是它能默认开着的原因。帧走 <code>head_imu.stream</code> 的独立广播（缓冲 128，约 2 s），落后就丢帧、不反压；<code>seq</code> 里的缺口就是答案。</p>
+<p>它不经过控制回路，所以不在 <code>robot.state</code> 的 <code>imu</code> 字段里；它的位姿由 <code>HeadFk::head_imu_in_trunk</code> 给出，出现在 <code>robot.state.frames.head_imu</code> 和 <code>robot.model</code> 的零位几何里。消费方拿到的是“芯片自身轴下的样本 + 它在躯干系里的安装姿态”，拼接由客户端完成。</p>
+<h2 id="pad-map手柄怎样变成意图">pad-map：手柄怎样变成意图</h2>
+<p><code>pad-map</code> 是纯函数库：一帧手柄状态进，意图出。它被抽出来，是因为 <code>padd</code>（蓝牙）和 <code>netpadd</code>（UDP）必须用<strong>同一份</strong>映射，而不是各抄一份然后漂移。它没有 socket、没有自己的时钟、不背着你读配置。</p>
+<p>映射是模态的，因为两个摇杆表达不了九个自由度：D-pad 左=行走，上=只动头，右=边走边看，下=身体+头。每个模式对 <code>drive</code>、<code>head</code>、<code>head_drive</code>、<code>body_pose</code> 分别选逻辑轴（<code>left_x</code>、<code>left_y</code>、<code>right_x</code>、<code>right_y</code>、<code>none</code>），每个绑定有 <code>source</code>、<code>invert</code> 和非负 <code>gain</code>；低于 <code>deadzone</code> 的值归零但<strong>不重新缩放剩余行程</strong>，然后反相、乘增益、夹到 ±1，再按物理上限缩放。上限在 <code>[pad_drive]</code>、<code>[pad_roller]</code>、<code>[pad_head]</code>、<code>[pad_body]</code> 里，是“请求的命令”，不是执行器限位，也不保证策略能到。</p>
+<p><code>[pad_imu_head_control]</code> 打开且手柄有 IMU 时，<code>head_drive</code> 模式用<strong>手柄的倾角</strong>驱动头部，摇杆保留完整的行走映射。姿态来自 <code>pad-imu</code> 的互补滤波：陀螺积分，加速度计只在读数接近 1 g 时把结果拉回重力——手在晃的时候加速度计测的是手，不是重力。符号是在真机上校出来的：手柄抬头是正 <code>head_pitch</code>，向左偏航是正 <code>head_yaw</code>，向右滚是负 <code>head_roll</code>。</p>
+<p><code>pad-map</code> 在 <code>robotd</code> 之外，所以它的输出不是关节目标，而是 <code>robot.move</code> / <code>robot.head</code> 意图，经 socket 进入 intent 槽。它是普通客户端，没有特权；手柄掉了，deadman 自己会让机器人停下，而不是由 <code>padd</code> 发一个零命令，把“断线”伪装成“决定停”。</p>
+<h2 id="它们怎样汇入-robotd">它们怎样汇入 robotd</h2>
+<pre><code class="language-text">        MJCF ──► kinematics::Model（编译一次）
+                    │                    │
+        足端 site ──┘                    └── HeadFk ──► frames / robot.model
+             │
+ 关节角 + IMU 四元数 ──► Odometry ──► robot.state.odom
+             │
+ 同一份 fresh 样本 ──► Safety / Observation ──► 策略 ──► targets
+
+ 头部 IMU（beta）──► head_imu.stream        （旁路，不进回路）
+ 手柄 ──► pad-map ──► padd / netpadd ──► 意图 ──► robotd intent 槽
+</code></pre>
+<p>两条纪律值得记住。第一，里程计只在<strong>新鲜</strong>样本上更新：滑行 tick 重放旧样本等于告诉估计器“机器人停住了”，而它没有；IMU 还没收敛时也不喂，否则世界原点会被种在一个从未到过的位置。第二，所有几何只有一份来源：<code>robot.state</code> 里的相机/ToF/头部 IMU 位姿、<code>robot.model</code> 的静态几何、里程计的腿链，全部来自同一个 <code>kinematics</code> 模型。客户端<strong>问</strong>机器人，而不是自己抄一份常量——抄的那份迟早会漂移。</p>
+<p>回到 <a href="./01-robotd.html">robotd</a> 看这些数字怎样进入 50 Hz 的 tick，或去 <a href="./02-control-core.html">控制核心</a> 看它们怎样变成策略输入。</p>
+</article><nav class="pager"><a class="prev" href="./02-control-core.html">← 控制核心：模型、观测、策略与安全</a><a class="next" href="./04-perception.html">感知与媒体：camera、ToF、检测器 →</a></nav></main></body></html>

@@ -1,0 +1,57 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>遥测与隐私 · Microduck 机器人系统实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Microduck 机器人系统实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-what-is-microduck.html">Microduck 是什么：硬件、目标与代码地图</a></li></ul></section><section><h2>第一部分 系统架构</h2><ul><li><a href="../../book/01-architecture/01-architecture.html">七个 daemon 与一个机器人</a></li><li><a href="../../book/01-architecture/02-ipc.html">IPC 契约：JSON-RPC、意图与状态</a></li></ul></section><section><h2>第二部分 控制与感知</h2><ul><li><a href="../../book/02-control/01-robotd.html">robotd：50 Hz 控制回路</a></li><li><a href="../../book/02-control/02-control-core.html">控制核心：模型、观测、策略与安全</a></li><li><a href="../../book/02-control/03-kinematics.html">运动学、里程计与 IMU</a></li><li><a href="../../book/02-control/04-perception.html">感知与媒体：camera、ToF、检测器</a></li></ul></section><section><h2>第三部分 交互与更新</h2><ul><li><a href="../../book/03-interaction/01-input.html">手柄、BLE、duckctl 与声音</a></li><li><a href="../../book/03-interaction/02-updater.html">更新系统：签名、原子切换、健康门禁与回滚</a></li><li><a href="../../book/03-interaction/03-remote.html">远程访问：WebRTC、账号与中继</a></li></ul></section><section><h2>第四部分 开发与运维</h2><ul><li><a href="../../book/04-development/01-build-test.html">构建、测试与 CI</a></li><li><a href="../../book/04-development/02-dev-sim.html">开发板、开发推送与仿真</a></li><li><a href="../../book/04-development/03-project-history.html">设计决策与故障史</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/05-appendix/01-reading-map.html">代码地图与阅读路线</a></li><li><a href="../../book/05-appendix/02-glossary.html">术语表</a></li><li><a href="../../book/05-appendix/03-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>microduck</h2><ul><li><a href="./readme.html">Microduck 是什么</a></li><li><a href="./contributing.html">开发与测试约定</a></li><li><a href="./docs-index.html">文档地图</a></li><li><a href="./architecture.html">系统架构</a></li><li><a href="./robotd-design.html">robotd 控制回路设计</a></li><li><a href="./updater-design.html">更新系统设计</a></li><li><a href="./policy-channel.html">策略通道</a></li><li><a href="./restart-order.html">重启顺序</a></li><li><a href="./app-path.html">手机 BLE 配置路径</a></li><li><a href="./remote-webrtc.html">远程 WebRTC</a></li><li><a href="./remote-access.html">外网访问与账号</a></li><li><a href="./boot-recovery.html">启动恢复网络</a></li><li><a href="./sim-design.html">仿真设计</a></li><li><a href="./cheatsheet.html">robotctl 速查</a></li><li><a href="./cheatsheet-dev.html">开发板速查</a></li><li><a href="./dev-push.html">开发推送</a></li><li><a href="./duckctl.html">duckctl 使用</a></li><li><a href="./install-dev.html">开发板安装</a></li><li><a href="./pair-gamepad.html">配对手柄</a></li><li><a href="./simulation.html">模拟机器人</a></li><li><a href="./telemetry.html">遥测与隐私</a></li><li><a href="./udp-pad.html">UDP 手柄</a></li><li><a href="./faq.html">常见问题</a></li><li><a href="./recurrent-policies.html">循环策略</a></li><li><a href="./policy-manifest.html">策略清单</a></li><li><a href="./roadmap.html">路线图</a></li><li><a href="./install-path-gap.html">安装路径故障</a></li><li><a href="./media-bringup.html">媒体启动</a></li><li><a href="./npu-bringup.html">NPU 启动</a></li><li><a href="./update-over-ble.html">BLE 更新</a></li><li><a href="./idle-cpu.html">空闲 CPU</a></li><li><a href="./tof-on-demand.html">按需 ToF</a></li><li><a href="./deploy.html">部署配置</a></li><li><a href="./cargo-workspace.html">Cargo workspace</a></li><li><a href="./ipc.html">IPC 契约</a></li><li><a href="./control.html">控制核心</a></li><li><a href="./robotd-control.html">robotd control.rs</a></li><li><a href="./robotd-main.html">robotd main.rs</a></li><li><a href="./kinematics.html">运动学</a></li><li><a href="./odometry.html">里程计</a></li><li><a href="./mediad.html">媒体守护进程</a></li><li><a href="./updater.html">更新引擎</a></li><li><a href="./padd.html">手柄守护进程</a></li><li><a href="./btd.html">BLE 守护进程</a></li><li><a href="./tof.html">ToF 守护进程</a></li><li><a href="./sounds.html">声音与合唱</a></li><li><a href="./duckctl-code.html">duckctl 客户端</a></li><li><a href="./xtask.html">构建工具 xtask</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：microduck · <code>docs/robot/telemetry.md</code> · daemon-dev-main · commit <code>b2b0d21</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/pollen-robotics/microduck/blob/b2b0d213a402caeac492dd662ea891faa17f67c0/docs/robot/telemetry.md">查看原仓库</a> · <a href="../../source-snapshots/microduck/docs/robot/telemetry.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="遥测与隐私">遥测与隐私</h1>
+<p>Microduck 会向官方发送匿名使用数据，用来了解鸭子怎么被使用、在哪里坏。它<strong>默认开启</strong>，随时可关；设计与 Reachy Mini 的 daemon 相同。</p>
+<h2 id="发送什么">发送什么</h2>
+<p>每个事件都带：开启遥测时创建、关闭时删除的随机 robot id；板型（<code>zero3</code>、<code>beta</code> 或 <code>unknown</code>）与 CPU 架构；daemon 版本；OS 镜像的 <code>ID VERSION_ID</code> 与 <code>BUILD_ID</code>，取自 <code>/etc/os-release</code>。</p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>时机</th>
+<th>额外数据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>daemon_started</code></td>
+<td><code>updaterd</code> 启动：每次开机与每次 daemon 更新</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>update_result</code></td>
+<td>新 daemon 版本第一次启动</td>
+<td>旧版本与新版本</td>
+</tr>
+<tr>
+<td><code>daily_heartbeat</code></td>
+<td>每天一次</td>
+<td><code>updaterd</code> 的 uptime</td>
+</tr>
+<tr>
+<td><code>policies</code></td>
+<td>每次运行一次，<code>robotd</code> 首次应答时</td>
+<td>模式，以及每个已填槽位的 <code>policy_&lt;slot&gt;</code></td>
+</tr>
+<tr>
+<td><code>policy_loaded</code></td>
+<td>某槽位策略变化（每分钟检查）</td>
+<td>槽位、模式、来源、策略</td>
+</tr>
+</tbody></table>
+<p>策略若来自 Hugging Face Hub（官方集合或 <code>policy.fetch</code>，两者都不带 token 下载，说明机器人拿到时仓库是公开的），记作 <code>org/name@revision/file</code>；手工放上机器的文件只记 <code>local</code>，路径不外发。</p>
+<h2 id="绝不发送什么">绝不发送什么</h2>
+<p>IP 地址、位置、Wi-Fi 名称、机器人名字、Hugging Face 账号或 token、SoC 序列号或任何硬件 id、日志、相机图像与音频。</p>
+<h2 id="发到哪里什么时候">发到哪里、什么时候</h2>
+<p>PostHog EU Cloud，服务器在欧盟，基于 IP 的定位已关闭，也不建个人档案。事件自身不带时间戳：板子的 RTC 没有电池，硬断电后复位，NTP 同步前时钟是错的，所以由 PostHog 在到达时打戳。离线或尚未同步时事件留在内存，最多 500 条——在此之前 TLS 也无法验证证书。</p>
+<h2 id="关掉它">关掉它</h2>
+<p>控制台抽屉里的 <strong>share anonymous usage data</strong> 开关。同一个开关也在 API 上，所以手机经 BLE、<code>duckctl</code>、经 WebRTC 的控制台都能改，写法是两条 JSON-RPC：</p>
+<pre><code class="language-json">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;method&quot;:&quot;telemetry.set&quot;,&quot;params&quot;:{&quot;enabled&quot;:false}}
+{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:2,&quot;method&quot;:&quot;telemetry.status&quot;}
+</code></pre>
+<p>立即生效，并跨重启与更新保留。关闭会丢弃队列并删除 robot id；再打开会生成新 id，与旧 id 无任何关联，这是“关掉”真正的含义。</p>
+<p><code>telemetry.status</code> 回答两个不同的字段：<code>enabled</code> 是存下的选择，<code>active</code> 是此刻是否真的在发。<code>updaterd</code> 环境里的 <code>MICRODUCK_TELEMETRY=0</code> 或 <code>DO_NOT_TRACK=1</code> 会强制关闭，不论用户选了什么；<code>scripts/duck-sim</code> 与 <code>scripts/systemd-test.sh</code> 都设了前者，所以模拟或容器里的鸭子什么都不发。</p>
+<h2 id="状态文件与排障">状态文件与排障</h2>
+<p>选择存在 <code>/var/lib/robot/updater/telemetry.json</code>；文件读不出来按关闭处理，这样损坏的配置只会少发数据，不会误发。实现见 <code>updater/src/telemetry.rs</code>。</p>
+<p>排查时先分清三件事：<code>enabled</code> 是用户的选择，<code>active</code> 是此刻真的在发，而 <code>MICRODUCK_TELEMETRY=0</code> 或 <code>DO_NOT_TRACK=1</code> 会在读取选择之后把 <code>active</code> 压成假。所以“开关是开的但没数据”可能只是环境变量在起作用，也可能是机器人还没连上网、队列还停在内存里（上限 500 条）。反过来，从“<code>updaterd</code> 进程在跑”推断“正在上报”是不成立的：这个 daemon 负责更新、账号和遥测，前两件事与是否上报无关。要一份可核对的答案，直接问 <code>telemetry.status</code>，不要从日志里猜。</p>
+</article></main></body></html>

@@ -10,6 +10,7 @@
 - `opensrc/mattpocock_skills/`：只读来源，`https://github.com/mattpocock/skills`，固定 commit `5beb35b040e3de97e54fa9e386d7e42d15c295c2`，`git describe` 为 `v1.3.1-47-g5beb35b`。
 - `light_skills/`：Skills Book 的全部产物，包括 Markdown 书稿、英文快照、生成的 HTML、构建脚本和来源清单。
 - `cedar_book/`：Cedar 授权策略学习书，来源为 `opensrc/cedar-docs`、`opensrc/cedar`、`opensrc/cedar-examples`。
+- `microduck_book/`：Microduck 机器人系统学习书，来源为 `opensrc/microduck`。
 - `skills/`：本项目自己的可复用技能，和书稿分开。
 
 `opensrc/` 下的上游仓库是独立 git 仓库，已被 `.gitignore` 排除，不要把它们加入本仓库索引，也不要在里面提交改动。
@@ -42,6 +43,12 @@ npm ci
 npm run build
 npm run check
 npm run serve -- --port 4174
+
+cd microduck_book
+npm ci
+npm run build
+npm run check
+npm run serve -- --port 4175
 ```
 
 ## 写译文的规则

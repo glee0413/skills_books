@@ -1,0 +1,107 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>来源、许可证与版本 · Microduck 机器人系统实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Microduck 机器人系统实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-what-is-microduck.html">Microduck 是什么：硬件、目标与代码地图</a></li></ul></section><section><h2>第一部分 系统架构</h2><ul><li><a href="../01-architecture/01-architecture.html">七个 daemon 与一个机器人</a></li><li><a href="../01-architecture/02-ipc.html">IPC 契约：JSON-RPC、意图与状态</a></li></ul></section><section><h2>第二部分 控制与感知</h2><ul><li><a href="../02-control/01-robotd.html">robotd：50 Hz 控制回路</a></li><li><a href="../02-control/02-control-core.html">控制核心：模型、观测、策略与安全</a></li><li><a href="../02-control/03-kinematics.html">运动学、里程计与 IMU</a></li><li><a href="../02-control/04-perception.html">感知与媒体：camera、ToF、检测器</a></li></ul></section><section><h2>第三部分 交互与更新</h2><ul><li><a href="../03-interaction/01-input.html">手柄、BLE、duckctl 与声音</a></li><li><a href="../03-interaction/02-updater.html">更新系统：签名、原子切换、健康门禁与回滚</a></li><li><a href="../03-interaction/03-remote.html">远程访问：WebRTC、账号与中继</a></li></ul></section><section><h2>第四部分 开发与运维</h2><ul><li><a href="../04-development/01-build-test.html">构建、测试与 CI</a></li><li><a href="../04-development/02-dev-sim.html">开发板、开发推送与仿真</a></li><li><a href="../04-development/03-project-history.html">设计决策与故障史</a></li></ul></section><section><h2>附录</h2><ul><li><a href="./01-reading-map.html">代码地图与阅读路线</a></li><li><a href="./02-glossary.html">术语表</a></li><li><a class="active" href="./03-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>microduck</h2><ul><li><a href="../../catalog/microduck/readme.html">Microduck 是什么</a></li><li><a href="../../catalog/microduck/contributing.html">开发与测试约定</a></li><li><a href="../../catalog/microduck/docs-index.html">文档地图</a></li><li><a href="../../catalog/microduck/architecture.html">系统架构</a></li><li><a href="../../catalog/microduck/robotd-design.html">robotd 控制回路设计</a></li><li><a href="../../catalog/microduck/updater-design.html">更新系统设计</a></li><li><a href="../../catalog/microduck/policy-channel.html">策略通道</a></li><li><a href="../../catalog/microduck/restart-order.html">重启顺序</a></li><li><a href="../../catalog/microduck/app-path.html">手机 BLE 配置路径</a></li><li><a href="../../catalog/microduck/remote-webrtc.html">远程 WebRTC</a></li><li><a href="../../catalog/microduck/remote-access.html">外网访问与账号</a></li><li><a href="../../catalog/microduck/boot-recovery.html">启动恢复网络</a></li><li><a href="../../catalog/microduck/sim-design.html">仿真设计</a></li><li><a href="../../catalog/microduck/cheatsheet.html">robotctl 速查</a></li><li><a href="../../catalog/microduck/cheatsheet-dev.html">开发板速查</a></li><li><a href="../../catalog/microduck/dev-push.html">开发推送</a></li><li><a href="../../catalog/microduck/duckctl.html">duckctl 使用</a></li><li><a href="../../catalog/microduck/install-dev.html">开发板安装</a></li><li><a href="../../catalog/microduck/pair-gamepad.html">配对手柄</a></li><li><a href="../../catalog/microduck/simulation.html">模拟机器人</a></li><li><a href="../../catalog/microduck/telemetry.html">遥测与隐私</a></li><li><a href="../../catalog/microduck/udp-pad.html">UDP 手柄</a></li><li><a href="../../catalog/microduck/faq.html">常见问题</a></li><li><a href="../../catalog/microduck/recurrent-policies.html">循环策略</a></li><li><a href="../../catalog/microduck/policy-manifest.html">策略清单</a></li><li><a href="../../catalog/microduck/roadmap.html">路线图</a></li><li><a href="../../catalog/microduck/install-path-gap.html">安装路径故障</a></li><li><a href="../../catalog/microduck/media-bringup.html">媒体启动</a></li><li><a href="../../catalog/microduck/npu-bringup.html">NPU 启动</a></li><li><a href="../../catalog/microduck/update-over-ble.html">BLE 更新</a></li><li><a href="../../catalog/microduck/idle-cpu.html">空闲 CPU</a></li><li><a href="../../catalog/microduck/tof-on-demand.html">按需 ToF</a></li><li><a href="../../catalog/microduck/deploy.html">部署配置</a></li><li><a href="../../catalog/microduck/cargo-workspace.html">Cargo workspace</a></li><li><a href="../../catalog/microduck/ipc.html">IPC 契约</a></li><li><a href="../../catalog/microduck/control.html">控制核心</a></li><li><a href="../../catalog/microduck/robotd-control.html">robotd control.rs</a></li><li><a href="../../catalog/microduck/robotd-main.html">robotd main.rs</a></li><li><a href="../../catalog/microduck/kinematics.html">运动学</a></li><li><a href="../../catalog/microduck/odometry.html">里程计</a></li><li><a href="../../catalog/microduck/mediad.html">媒体守护进程</a></li><li><a href="../../catalog/microduck/updater.html">更新引擎</a></li><li><a href="../../catalog/microduck/padd.html">手柄守护进程</a></li><li><a href="../../catalog/microduck/btd.html">BLE 守护进程</a></li><li><a href="../../catalog/microduck/tof.html">ToF 守护进程</a></li><li><a href="../../catalog/microduck/sounds.html">声音与合唱</a></li><li><a href="../../catalog/microduck/duckctl-code.html">duckctl 客户端</a></li><li><a href="../../catalog/microduck/xtask.html">构建工具 xtask</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="来源许可证与版本">来源、许可证与版本</h1>
+<p>这本书不是 Pollen Robotics 的官方中文文档，而是围绕一个固定 commit 写成的学习性衍生作品。所有引用的设计文档、使用文档和源码片段都登记在 <code>sources.json</code> 的 48 个条目里，每条带 <code>sourcePath</code>、<code>sourceSha256</code> 和 <code>sourceUrl</code>；英文原文按同样的相对路径放在 <code>source-snapshots/</code> 下，离线也能核对。完整的归属声明见 <code>NOTICE.md</code>，许可证全文见 <code>third-party/microduck-LICENSE</code>。</p>
+<h2 id="上游仓库与固定版本">上游仓库与固定版本</h2>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>仓库</td>
+<td><a href="https://github.com/pollen-robotics/microduck">https://github.com/pollen-robotics/microduck</a></td>
+</tr>
+<tr>
+<td>固定 commit</td>
+<td><code>b2b0d213a402caeac492dd662ea891faa17f67c0</code></td>
+</tr>
+<tr>
+<td>引用（ref）</td>
+<td><code>daemon-dev-main</code></td>
+</tr>
+<tr>
+<td>workspace 版本</td>
+<td><code>0.18.3</code>，edition 2024，Rust 下限 1.89</td>
+</tr>
+<tr>
+<td>许可证</td>
+<td>Apache-2.0</td>
+</tr>
+</tbody></table>
+<p>上游仓库是 <code>opensrc/</code> 下的独立 git 仓库，已被本书仓库的 <code>.gitignore</code> 排除。不要把它加入本书索引，也不要在里面提交改动；本书只读固定 commit。</p>
+<h2 id="收录了什么">收录了什么</h2>
+<p>48 个条目全部是 <code>extract</code>：只取与主题相关的部分，不做整仓镜像。</p>
+<ul>
+<li><strong>设计文档 10 篇</strong>：<code>architecture.md</code>、<code>robotd-design.md</code>、<code>updater-design.md</code>、<code>policy-channel-design.md</code>、<code>restart-order.md</code>、<code>app-path-design.md</code>、<code>remote-webrtc.md</code>、<code>remote-access-design.md</code>、<code>boot-recovery-net.md</code>、<code>simulation.md</code>。</li>
+<li><strong>使用文档 9 篇</strong>：<code>cheatsheet.md</code>、<code>cheatsheet-dev.md</code>、<code>dev-push.md</code>、<code>duckctl.md</code>、<code>install-dev.md</code>、<code>pair-a-gamepad.md</code>、<code>simulation.md</code>、<code>telemetry.md</code>、<code>udp-pad.md</code>。</li>
+<li><strong>项目记录 7 篇</strong>：<code>roadmap.md</code>、<code>install-path-gap.md</code>、<code>media-bringup.md</code>、<code>npu-bringup.md</code>、<code>update-over-ble.md</code>、<code>idle-cpu.md</code>、<code>tof-on-demand.md</code>。</li>
+<li><strong>仓级文档 8 项</strong>：<code>README.md</code>、<code>CONTRIBUTING.md</code>、<code>docs/README.md</code>、<code>faq.md</code>、<code>recurrent-policies.md</code>、<code>policy-manifest.md</code>、<code>Cargo.toml</code>、<code>deploy/README.md</code>。</li>
+<li><strong>源码片段 14 个</strong>：<code>duck-ipc-proto</code>、<code>duck-control</code>、<code>robotd/src/{main,control}.rs</code>、<code>kinematics</code>、<code>odometry</code>、<code>mediad</code>、<code>updater</code>、<code>padd</code>、<code>btd</code>、<code>tof</code>、<code>sounds</code>、<code>duckctl</code>、<code>xtask</code>。</li>
+</ul>
+<h2 id="没有收录什么">没有收录什么</h2>
+<ul>
+<li><strong>同名不同仓库的部分</strong>：手机 app 在 <code>microduck-app</code>，策略训练在 <code>microduck_rl</code>，系统镜像在 <code>microduck_yocto</code>，另外还有 <code>microduck-policies</code>、<code>microduck-duck-detector</code>、<code>microduck-gst-plugins</code>。本书只用主仓库里的文档解释它们，不引它们的源码。</li>
+<li><strong>未收录的文档</strong>：<code>design/mobile-app.md</code>、<code>design/webrtc-console.md</code>、<code>robot/install-by-hand.md</code>、<code>project/ci-setup.md</code>、<code>project/slice-2-bringup.md</code>、<code>project/pad-minimal-pairing.md</code>、<code>ideas/autonomous_behavior.md</code>。它们要么描述本书不覆盖的外部组件，要么是一次性记录。</li>
+<li><strong>仓库运维文件</strong>：<code>.github/</code> 下的 workflow、<code>AGENTS.md</code> 与 <code>CLAUDE.md</code>、<code>spaces/</code>，以及 README 里的图片和视频（它们是 GitHub attachments，不是仓库文件）。</li>
+<li><strong>二进制与权重</strong>：模型 <code>.onnx</code> 放在 Hugging Face Hub，不随仓库发布；本书也不保存任何构建产物。</li>
+<li><strong>完整测试套件</strong>：只通过 <code>CONTRIBUTING.md</code> 和设计文档描述它，不逐文件摘录。</li>
+</ul>
+<h2 id="许可证与归属">许可证与归属</h2>
+<p>上游使用 Apache-2.0。翻译、改写、章节导读和术语表是本书新增内容；引用本书时请同时保留项目名、commit 与 Apache-2.0 归属。书稿自身的内容许可证尚未决定，这一点写在 <code>NOTICE.md</code> 里，不要在别处替它宣布一个。</p>
+<h2 id="如何重新同步">如何重新同步</h2>
+<p>目标是“换 commit，但不丢可追溯性”。一次只升这一个仓库：</p>
+<pre><code class="language-bash">#1. 在只读来源里切到新 commit
+cd opensrc/microduck
+git fetch origin
+git checkout &lt;new-commit&gt;
+git rev-parse HEAD
+
+#2. 按原相对路径复制到快照目录
+cp docs/design/architecture.md \
+   ../../microduck_book/source-snapshots/microduck/docs/design/architecture.md
+
+#3. 重新计算哈希，回填 sources.json 的 commit、ref、sourceSha256
+cd ../../microduck_book
+sha256sum source-snapshots/microduck/docs/design/architecture.md
+npm run build &amp;&amp; npm run check
+</code></pre>
+<p>四个要点。内容变了的条目要把 <code>translationStatus</code> 重置为 <code>todo</code>、<code>translatedAt</code> 置空，翻完再标；只换 commit 没改内容也要更新 <code>sourceSha256</code>，否则 <code>npm run check</code> 会报哈希不一致。行为变了就重跑章节里的命令和夹具，不能只改版本号。最后在 <code>CHANGELOG.md</code> 记下来源、原因和验证命令。</p>
+<h2 id="docsdesign-与-docsproject-的分工"><code>docs/design</code> 与 <code>docs/project</code> 的分工</h2>
+<p>上游把文档分成四个目录，这个划分本身是这本书的一层结构：</p>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>时态</th>
+<th>用途</th>
+<th>冲突时</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>docs/design/</code></td>
+<td>现在时</td>
+<td>机制怎么工作、为什么这样设计；一页只拥有一个机制，其它页指过去</td>
+<td>行为与文档不一致，文档是 bug</td>
+</tr>
+<tr>
+<td><code>docs/project/</code></td>
+<td>过去时</td>
+<td>带日期的记录：某块板子上发生了什么、哪个 bug 怎么被关掉</td>
+<td>会故意过期，结论要回填到 design</td>
+</tr>
+<tr>
+<td><code>docs/robot/</code></td>
+<td>祈使句</td>
+<td>你手上有一台机器人时照着做</td>
+<td>以能跑通的命令为准</td>
+</tr>
+<tr>
+<td><code>docs/ideas/</code></td>
+<td>将来时</td>
+<td>还没设计的东西，先写下来免得被当成决定</td>
+<td>不是承诺</td>
+</tr>
+</tbody></table>
+<p>所以读法也不同：想理解“为什么”，去 <code>design/</code>；想理解“曾经踩过什么坑”，去 <code>project/</code>，例如 <code>install-path-gap.md</code> 讲的四个安装路径 bug，结论最后落在 <code>updater-design.md</code> §9.1 的一条规则上。本书保留这个区分，是因为机器人系统里最贵的知识往往不是接口，而是那些只有出过事才写得出来的约束。</p>
+</article><nav class="pager"><a class="prev" href="./02-glossary.html">← 术语表</a><a class="next" href="#"></a></nav></main></body></html>

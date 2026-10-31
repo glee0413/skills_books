@@ -1,0 +1,255 @@
+{
+  "title": "Microduck 机器人系统实战",
+  "subtitle": "从 50 Hz 控制回路到签名更新与远程访问",
+  "unitsLabel": "知识条目",
+  "catalogLabel": "知识全库",
+  "parts": [
+    {
+      "id": "00-intro",
+      "title": "导读",
+      "chapters": [
+        {
+          "id": "what-is-microduck",
+          "title": "Microduck 是什么：硬件、目标与代码地图",
+          "path": "book/00-intro/01-what-is-microduck.md",
+          "sources": [
+            "microduck/readme",
+            "microduck/cargo-workspace"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "01-architecture",
+      "title": "第一部分 系统架构",
+      "chapters": [
+        {
+          "id": "architecture",
+          "title": "七个 daemon 与一个机器人",
+          "path": "book/01-architecture/01-architecture.md",
+          "sources": [
+            "microduck/architecture"
+          ]
+        },
+        {
+          "id": "ipc",
+          "title": "IPC 契约：JSON-RPC、意图与状态",
+          "path": "book/01-architecture/02-ipc.md",
+          "sources": [
+            "microduck/ipc",
+            "microduck/architecture"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "02-control",
+      "title": "第二部分 控制与感知",
+      "chapters": [
+        {
+          "id": "robotd",
+          "title": "robotd：50 Hz 控制回路",
+          "path": "book/02-control/01-robotd.md",
+          "sources": [
+            "microduck/robotd-design",
+            "microduck/robotd-control",
+            "microduck/robotd-main"
+          ]
+        },
+        {
+          "id": "control-core",
+          "title": "控制核心：模型、观测、策略与安全",
+          "path": "book/02-control/02-control-core.md",
+          "sources": [
+            "microduck/control",
+            "microduck/robotd-design",
+            "microduck/recurrent-policies"
+          ]
+        },
+        {
+          "id": "kinematics",
+          "title": "运动学、里程计与 IMU",
+          "path": "book/02-control/03-kinematics.md",
+          "sources": [
+            "microduck/kinematics",
+            "microduck/odometry",
+            "microduck/robotd-design"
+          ]
+        },
+        {
+          "id": "perception",
+          "title": "感知与媒体：camera、ToF、检测器",
+          "path": "book/02-control/04-perception.md",
+          "sources": [
+            "microduck/mediad",
+            "microduck/tof",
+            "microduck/media-bringup",
+            "microduck/npu-bringup"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "03-interaction",
+      "title": "第三部分 交互与更新",
+      "chapters": [
+        {
+          "id": "input",
+          "title": "手柄、BLE、duckctl 与声音",
+          "path": "book/03-interaction/01-input.md",
+          "sources": [
+            "microduck/padd",
+            "microduck/btd",
+            "microduck/duckctl",
+            "microduck/cheatsheet",
+            "microduck/udp-pad",
+            "microduck/sounds"
+          ]
+        },
+        {
+          "id": "updater",
+          "title": "更新系统：签名、原子切换、健康门禁与回滚",
+          "path": "book/03-interaction/02-updater.md",
+          "sources": [
+            "microduck/updater-design",
+            "microduck/updater",
+            "microduck/restart-order",
+            "microduck/boot-recovery",
+            "microduck/install-path-gap"
+          ]
+        },
+        {
+          "id": "remote",
+          "title": "远程访问：WebRTC、账号与中继",
+          "path": "book/03-interaction/03-remote.md",
+          "sources": [
+            "microduck/remote-webrtc",
+            "microduck/remote-access",
+            "microduck/app-path"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "04-development",
+      "title": "第四部分 开发与运维",
+      "chapters": [
+        {
+          "id": "build-test",
+          "title": "构建、测试与 CI",
+          "path": "book/04-development/01-build-test.md",
+          "sources": [
+            "microduck/contributing",
+            "microduck/xtask",
+            "microduck/cargo-workspace"
+          ]
+        },
+        {
+          "id": "dev-sim",
+          "title": "开发板、开发推送与仿真",
+          "path": "book/04-development/02-dev-sim.md",
+          "sources": [
+            "microduck/install-dev",
+            "microduck/dev-push",
+            "microduck/simulation",
+            "microduck/sim-design",
+            "microduck/cheatsheet-dev"
+          ]
+        },
+        {
+          "id": "project-history",
+          "title": "设计决策与故障史",
+          "path": "book/04-development/03-project-history.md",
+          "sources": [
+            "microduck/roadmap",
+            "microduck/install-path-gap",
+            "microduck/update-over-ble",
+            "microduck/idle-cpu",
+            "microduck/tof-on-demand"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "05-appendix",
+      "title": "附录",
+      "chapters": [
+        {
+          "id": "reading-map",
+          "title": "代码地图与阅读路线",
+          "path": "book/05-appendix/01-reading-map.md",
+          "sources": [
+            "microduck/docs-index",
+            "microduck/contributing"
+          ]
+        },
+        {
+          "id": "glossary",
+          "title": "术语表",
+          "path": "book/05-appendix/02-glossary.md",
+          "sources": []
+        },
+        {
+          "id": "sources",
+          "title": "来源、许可证与版本",
+          "path": "book/05-appendix/03-sources.md",
+          "sources": [
+            "microduck/readme"
+          ]
+        }
+      ]
+    }
+  ],
+  "catalog": {
+    "microduck": [
+      "microduck/readme",
+      "microduck/contributing",
+      "microduck/docs-index",
+      "microduck/architecture",
+      "microduck/robotd-design",
+      "microduck/updater-design",
+      "microduck/policy-channel",
+      "microduck/restart-order",
+      "microduck/app-path",
+      "microduck/remote-webrtc",
+      "microduck/remote-access",
+      "microduck/boot-recovery",
+      "microduck/sim-design",
+      "microduck/cheatsheet",
+      "microduck/cheatsheet-dev",
+      "microduck/dev-push",
+      "microduck/duckctl",
+      "microduck/install-dev",
+      "microduck/pair-gamepad",
+      "microduck/simulation",
+      "microduck/telemetry",
+      "microduck/udp-pad",
+      "microduck/faq",
+      "microduck/recurrent-policies",
+      "microduck/policy-manifest",
+      "microduck/roadmap",
+      "microduck/install-path-gap",
+      "microduck/media-bringup",
+      "microduck/npu-bringup",
+      "microduck/update-over-ble",
+      "microduck/idle-cpu",
+      "microduck/tof-on-demand",
+      "microduck/deploy",
+      "microduck/cargo-workspace",
+      "microduck/ipc",
+      "microduck/control",
+      "microduck/robotd-control",
+      "microduck/robotd-main",
+      "microduck/kinematics",
+      "microduck/odometry",
+      "microduck/mediad",
+      "microduck/updater",
+      "microduck/padd",
+      "microduck/btd",
+      "microduck/tof",
+      "microduck/sounds",
+      "microduck/duckctl-code",
+      "microduck/xtask"
+    ]
+  }
+}

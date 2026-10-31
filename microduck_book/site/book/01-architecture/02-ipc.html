@@ -1,0 +1,78 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>IPC 契约：JSON-RPC、意图与状态 · Microduck 机器人系统实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Microduck 机器人系统实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-what-is-microduck.html">Microduck 是什么：硬件、目标与代码地图</a></li></ul></section><section><h2>第一部分 系统架构</h2><ul><li><a href="./01-architecture.html">七个 daemon 与一个机器人</a></li><li><a class="active" href="./02-ipc.html">IPC 契约：JSON-RPC、意图与状态</a></li></ul></section><section><h2>第二部分 控制与感知</h2><ul><li><a href="../02-control/01-robotd.html">robotd：50 Hz 控制回路</a></li><li><a href="../02-control/02-control-core.html">控制核心：模型、观测、策略与安全</a></li><li><a href="../02-control/03-kinematics.html">运动学、里程计与 IMU</a></li><li><a href="../02-control/04-perception.html">感知与媒体：camera、ToF、检测器</a></li></ul></section><section><h2>第三部分 交互与更新</h2><ul><li><a href="../03-interaction/01-input.html">手柄、BLE、duckctl 与声音</a></li><li><a href="../03-interaction/02-updater.html">更新系统：签名、原子切换、健康门禁与回滚</a></li><li><a href="../03-interaction/03-remote.html">远程访问：WebRTC、账号与中继</a></li></ul></section><section><h2>第四部分 开发与运维</h2><ul><li><a href="../04-development/01-build-test.html">构建、测试与 CI</a></li><li><a href="../04-development/02-dev-sim.html">开发板、开发推送与仿真</a></li><li><a href="../04-development/03-project-history.html">设计决策与故障史</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../05-appendix/01-reading-map.html">代码地图与阅读路线</a></li><li><a href="../05-appendix/02-glossary.html">术语表</a></li><li><a href="../05-appendix/03-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>microduck</h2><ul><li><a href="../../catalog/microduck/readme.html">Microduck 是什么</a></li><li><a href="../../catalog/microduck/contributing.html">开发与测试约定</a></li><li><a href="../../catalog/microduck/docs-index.html">文档地图</a></li><li><a href="../../catalog/microduck/architecture.html">系统架构</a></li><li><a href="../../catalog/microduck/robotd-design.html">robotd 控制回路设计</a></li><li><a href="../../catalog/microduck/updater-design.html">更新系统设计</a></li><li><a href="../../catalog/microduck/policy-channel.html">策略通道</a></li><li><a href="../../catalog/microduck/restart-order.html">重启顺序</a></li><li><a href="../../catalog/microduck/app-path.html">手机 BLE 配置路径</a></li><li><a href="../../catalog/microduck/remote-webrtc.html">远程 WebRTC</a></li><li><a href="../../catalog/microduck/remote-access.html">外网访问与账号</a></li><li><a href="../../catalog/microduck/boot-recovery.html">启动恢复网络</a></li><li><a href="../../catalog/microduck/sim-design.html">仿真设计</a></li><li><a href="../../catalog/microduck/cheatsheet.html">robotctl 速查</a></li><li><a href="../../catalog/microduck/cheatsheet-dev.html">开发板速查</a></li><li><a href="../../catalog/microduck/dev-push.html">开发推送</a></li><li><a href="../../catalog/microduck/duckctl.html">duckctl 使用</a></li><li><a href="../../catalog/microduck/install-dev.html">开发板安装</a></li><li><a href="../../catalog/microduck/pair-gamepad.html">配对手柄</a></li><li><a href="../../catalog/microduck/simulation.html">模拟机器人</a></li><li><a href="../../catalog/microduck/telemetry.html">遥测与隐私</a></li><li><a href="../../catalog/microduck/udp-pad.html">UDP 手柄</a></li><li><a href="../../catalog/microduck/faq.html">常见问题</a></li><li><a href="../../catalog/microduck/recurrent-policies.html">循环策略</a></li><li><a href="../../catalog/microduck/policy-manifest.html">策略清单</a></li><li><a href="../../catalog/microduck/roadmap.html">路线图</a></li><li><a href="../../catalog/microduck/install-path-gap.html">安装路径故障</a></li><li><a href="../../catalog/microduck/media-bringup.html">媒体启动</a></li><li><a href="../../catalog/microduck/npu-bringup.html">NPU 启动</a></li><li><a href="../../catalog/microduck/update-over-ble.html">BLE 更新</a></li><li><a href="../../catalog/microduck/idle-cpu.html">空闲 CPU</a></li><li><a href="../../catalog/microduck/tof-on-demand.html">按需 ToF</a></li><li><a href="../../catalog/microduck/deploy.html">部署配置</a></li><li><a href="../../catalog/microduck/cargo-workspace.html">Cargo workspace</a></li><li><a href="../../catalog/microduck/ipc.html">IPC 契约</a></li><li><a href="../../catalog/microduck/control.html">控制核心</a></li><li><a href="../../catalog/microduck/robotd-control.html">robotd control.rs</a></li><li><a href="../../catalog/microduck/robotd-main.html">robotd main.rs</a></li><li><a href="../../catalog/microduck/kinematics.html">运动学</a></li><li><a href="../../catalog/microduck/odometry.html">里程计</a></li><li><a href="../../catalog/microduck/mediad.html">媒体守护进程</a></li><li><a href="../../catalog/microduck/updater.html">更新引擎</a></li><li><a href="../../catalog/microduck/padd.html">手柄守护进程</a></li><li><a href="../../catalog/microduck/btd.html">BLE 守护进程</a></li><li><a href="../../catalog/microduck/tof.html">ToF 守护进程</a></li><li><a href="../../catalog/microduck/sounds.html">声音与合唱</a></li><li><a href="../../catalog/microduck/duckctl-code.html">duckctl 客户端</a></li><li><a href="../../catalog/microduck/xtask.html">构建工具 xtask</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="ipc-契约json-rpc意图与状态">IPC 契约：JSON-RPC、意图与状态</h1>
+<p>七个进程之间没有共享内存，也没有中心总线。手机从 BLE、<code>robotctl</code> 从 ssh、浏览器从 WebRTC 数据通道发来的请求，最后都变成同一组 JSON-RPC 调用，落到某个服务的 Unix socket 上。这一章看传输为什么是 Unix socket、消息为什么长这样，以及意图与状态为什么用两种消息表达。类型定义的精读在 <a href="../../catalog/microduck/ipc.html">IPC 源码</a>。</p>
+<h2 id="为什么是-unix-socket而不是本机端口">为什么是 Unix socket，而不是本机端口</h2>
+<p>每个服务拥有一个 Unix socket，客户端直接连接。服务只有个位数，加一个 broker 只会多一个会失败、又会和恢复路径冲突的组件。不用 <code>127.0.0.1</code> 上的 HTTP，关键不在性能，而在访问控制和故障方式：</p>
+<ul>
+<li><strong>文件系统权限就是免费的授权。</strong> socket 设成 0660、归一个专用组，只有组内进程能连；换成 TCP 端口，板上每个用户都能连，得另建一层认证才能回到同等安全。</li>
+<li><strong><code>SO_PEERCRED</code> 能拿到对端的 uid、gid、pid。</strong> 它同时用于审计（“谁触发了这次回滚”）和强制执行：socket 的组决定谁能<em>说话</em>，<code>allow_uids</code> / <code>allow_gids</code> 决定谁能<em>改动机器人</em>，且只管变更类调用。只读调用故意不设门禁，支持人员必须能检查一只他无权修改的机器人。</li>
+<li><strong>“绑错接口”这一整类 bug 不再存在。</strong> 把服务绑到 <code>0.0.0.0</code> 等于把固件更新控制暴露到网络；在 Unix socket 上这个错误无法表达。</li>
+</ul>
+<p>没用 D-Bus，是因为同一套消息类型还要走 BLE 和 WebRTC，普通 serde 结构能过去，D-Bus 类型不能；D-Bus 只用在操作系统强制要求的地方，比如 BlueZ 和 NetworkManager。也没选 HTTP/WebSocket：协议需要服务端主动推进度，用 HTTP 就得“POST 调用 + WebSocket/SSE 通知”两套机制，全放 WebSocket 又多了握手且丢掉 <code>curl</code>。</p>
+<h2 id="线上格式一行一个-json-对象">线上格式：一行一个 JSON 对象</h2>
+<p>传输是 JSON-RPC 2.0，一行一个对象（NDJSON），framing 用 <code>tokio_util::codec::LinesCodec</code>，消息体是普通 serde 结构。一次调用和它的推送长这样：</p>
+<pre><code class="language-text">→ {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;method&quot;:&quot;update.apply&quot;,&quot;params&quot;:{&quot;component&quot;:&quot;daemon&quot;}}
+← {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;update.progress&quot;,&quot;params&quot;:{&quot;component&quot;:&quot;daemon&quot;,&quot;phase&quot;:&quot;verifying&quot;}}
+← {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;update.progress&quot;,&quot;params&quot;:{&quot;component&quot;:&quot;daemon&quot;,&quot;phase&quot;:&quot;health_gate&quot;}}
+← {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:{...}}
+</code></pre>
+<p>没有 <code>id</code> 的消息是通知，不期待回复。标准协议带来现成的请求/响应关联、错误对象，以及形状刚好合适的通知——进度和事件流本来就该是通知。</p>
+<p>所有跨进程调用都异步、都带超时，没有例外。对端可能已经死了；socket 关闭或沉默是正常答案。只有一处例外：<code>media.frame</code> 在本地 socket 上回答一个 JSON 头，紧接着跟原始像素字节。一帧约 1.8 MiB，它故意不进 WebRTC 控制通道，也不进任何路由。</p>
+<h3 id="一个服务一个-socket">一个服务一个 socket</h3>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>socket</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>updaterd</code></td>
+<td><code>/run/updaterd.sock</code></td>
+</tr>
+<tr>
+<td><code>robotd</code></td>
+<td><code>/run/robotd.sock</code></td>
+</tr>
+<tr>
+<td><code>configd</code></td>
+<td><code>/run/configd.sock</code></td>
+</tr>
+<tr>
+<td><code>padd</code></td>
+<td><code>/run/padd/pad.sock</code></td>
+</tr>
+<tr>
+<td><code>tofd</code></td>
+<td><code>/run/tofd/tof.sock</code></td>
+</tr>
+<tr>
+<td><code>mediad</code></td>
+<td><code>/run/mediad/media.sock</code>（另有 <code>:8080</code>、<code>:8443</code>）</td>
+</tr>
+</tbody></table>
+<p>这些路径写在 <code>duck_ipc_proto::socket</code> 里，因为 <code>robotctl</code> 和 <code>btd</code> 都要连其中好几个，路径各写一份一定会漂移。<code>padd</code> 和 <code>tofd</code> 的 socket 放在 <code>/run/padd/</code>、<code>/run/tofd/</code> 下，因为那是各自 unit 的 <code>RuntimeDirectory=</code>——在 <code>ProtectSystem=strict</code> 下，这是进程唯一被允许创建文件的地方；unit 停止时 systemd 会删掉目录，残留的 socket 不可能活得更久。每个 daemon 还在 <code>/run/&lt;service&gt;/identity.json</code> 发布自己实际在跑的版本。</p>
+<h2 id="意图连续与离散">意图：连续与离散</h2>
+<p>客户端发意图，不发关节命令。意图分两类，JSON-RPC 的两种消息族刚好对上：</p>
+<ul>
+<li><strong>连续意图</strong>：<code>robot.move</code>、<code>robot.head</code>、<code>robot.pose</code>、<code>robot.mouth</code>。以通知发送，20–50 Hz，最后写入者获胜，并且会过期。每次回复都是浪费：20 毫秒后就被覆盖的值没什么可说。以后走 WebRTC 时，它们属于不可靠通道——重传一个 80 毫秒前的摇杆位置比没有更糟。</li>
+<li><strong>离散意图</strong>：<code>robot.stop</code>、<code>robot.enable</code>、<code>robot.init</code>、<code>robot.relax</code>、<code>robot.do</code>、<code>robot.look</code>。以请求发送并等待回答，因为“被拒绝了，原因是……”是调用方必须知道的事。</li>
+</ul>
+<p>单位只声明一次：弧度与弧度每秒，机体坐标系，右手系，x 向前、y 向左、z 向上，正 <code>vyaw</code> 左转。原型曾经让每个新消费者靠 <code>--imu-z-rotation-deg</code> 一类开关自己试出方向；把约定写进协议，等于删掉了整类参数。</p>
+<p><code>robot.enable</code> 的 <code>toggle</code> 字段是个小例子：手柄 Start 让机器人自己翻转状态。若由客户端维护“开/关”信念，它会在 <code>robot.relax</code>、关机流程或任何一侧重启后漂移，Start 就会每隔一次按不动。</p>
+<h2 id="状态一次订阅之后只有通知">状态：一次订阅，之后只有通知</h2>
+<p>状态走反方向。客户端发 <code>robot.subscribe</code>（可带 <code>hz</code>），得到确认，然后持续收到 <code>robot.state</code> 通知直到断开。确认里放的是<strong>进程生命周期内不变</strong>的东西：走路与站立策略文件名、技能列表、<code>unavailable</code> 说明为什么没有策略在驱动；这些每秒重复五十次没有意义。</p>
+<p>抽帧在服务端按订阅者做：仪表盘要 10 Hz，数字孪生要 50 Hz，各自付成本，谁也拖不慢控制回路——回路只往有界缓冲发布，从不等待。这一条流取代了原型五个私有通道（二进制帧、JPEG、UDP 命令、maploc、<code>/state.json</code>）；过去加字段要改四处，现在是一个结构体，旧客户端忽略不认识的字段。</p>
+<p>同一瞬间的相机帧、关节角和深度格点要能对上，所以 <code>robot.state</code> 和 <code>tof.frame</code> 都带 <code>t_ns</code>，同一个 <code>CLOCK_MONOTONIC</code>、纳秒。相机与 ToF 在机体坐标系里的位姿由 <code>robot.state.frames</code> 给出，完整骨架由 <code>skeleton</code> 给出，客户端不必自己背一份运动学。</p>
+<h2 id="连接会等多久lane">连接会等多久：Lane</h2>
+<p>每个服务在一条连接上一次只服务一个请求。若每个服务只开一条连接，两个最自然的顺序都会坏：<code>update.apply</code> 后问 <code>update.status</code>，状态请求排在一条几分钟没人读的 socket 后面，客户端超时而机器人没事；先 <code>update.subscribe</code> 再 <code>update.apply</code> 更糟，订阅一直占着连接不读请求，apply 被写进没人读的 socket——不执行、不回复、不报错。</p>
+<p>解法是按“会占住连接多久”分组，每组一条：<code>Prompt</code>（查表即答）、<code>Slow</code>（秒级，走网络或扫射频）、<code>Operation</code>（要多久就多久，且会改变机器人）、<code>Stream</code>（永不回答，只写通知）。每个服务每个会话最多四条连接，有界且便宜。调用归哪个服务、走哪条 lane 是调用的属性，不是传输的属性，所以写在 <code>Call::destination()</code> 里。</p>
+<h2 id="版本一个整数但不在握手处拒绝">版本：一个整数，但不在握手处拒绝</h2>
+<p><code>API_VERSION</code> 当前是 47，任何不兼容改动或纯新增都会递增；从 v5 的 <code>pad.*</code> 到 v47 的遥测开关，清单一直写在它的文档注释里。规则很直白：<strong>递增不承诺任何方向的兼容</strong>，只说明“这两个对端不是一起构建的”。安装路径保证一块板上的二进制来自同一个发布，这才是兼容性的真正来源。</p>
+<p>关键决定是：<strong>没有 daemon 因为版本号不同而拒绝调用</strong>。<code>updaterd</code> 曾经在 <code>hello</code> 上做精确比较并拒绝，理由（递增不承诺兼容）成立，结论却不成立：真正弄坏对端的是<em>一条它没有的路由</em>或<em>一个挪了位置的参数</em>，两者都会在具体调用上具名拒绝。握手门禁却对所有调用开火，包括本来能服务的调用，以及用来结束版本不齐的 <code>update apply</code>。</p>
+<p>现在拒绝的是更窄的东西：这个方法这一版没有，返回 <code>METHOD_NOT_FOUND</code> 并点出方法名；<code>params</code> 里有这一版不认识的成员，返回 <code>INVALID_PARAMS</code> 并点出成员名——所有参数类型都 <code>deny_unknown_fields</code>。后者不是洁癖：旧 daemon 静默忽略 v7 的 <code>ApplyOptions::from_dir</code>，会让操作者以为在旁加载目录、daemon 却从配置的源安装——沉默比拒绝危险。</p>
+<p>代价要说清楚：不同发布的两个对端仍不能互换，形状变过的方法会在那个方法上失败，只是不再在握手上失败。更新后的几秒里这没有成本，因为 <code>robotctl</code> 是指进 <code>current</code> 的符号链接，会立刻跟到新发布。<code>hello</code> 仍返回 <code>api_version</code>、<code>daemon_version</code> 和编译进去的 <code>revision</code>，差异被记录、被报告，但不被拒绝。</p>
+<h2 id="duck-ipc-proto让错误无法表示">duck-ipc-proto：让错误无法表示</h2>
+<p>协议 crate 的价值不在“共享结构体”，而在把错误变成写不出来的东西。<code>Call</code> 把方法和参数绑成一对，请求只能由 <code>Request::call</code> 构造、由 <code>as_call</code> 读回，因此不可能把方法 A 和参数 B 拼在一起。<code>Response::ok</code> / <code>err</code> 负责信封，<code>code</code> 把规范错误码和应用错误码分开：<code>BUSY</code> 该重试，<code>NOT_SUPPORTED</code> 是板子根本做不了，<code>PERMISSION_DENIED</code> 是“去找管理员”，对客户端意味着不同的动作。</p>
+<p>同一个 crate 里还有那些“属于协议而不是实现”的常量：<code>JOINT_NAMES</code> 与 <code>JOINT_IDS</code> 决定线上向量第 3 个分量叫什么、<code>BusHealth::missing</code> 里那个 ID 对应哪条腿；<code>POLICY_OBS_LEN = 61</code>、<code>POLICY_ACTION_LEN = 14</code> 是与策略发布者的约定；<code>ROBOT_MODEL</code> 用来拒绝为别的机器人发布的策略；<code>UPDATE_MAX_SILENCE_SECONDS = 600</code> 由 <code>updaterd</code> 执行，客户端按它放大等待预算，两边读同一个数就不会互相矛盾。</p>
+<p>依赖只有 serde、serde_json 和 semver。这不是极简主义，而是恢复路径的要求：每个服务都要说这些类型，包括 <code>robotd</code> 死掉时仍须应答的那些，所以不能拉进 HTTP、tar、加密库或异步运行时。“v2 加了 revision、v4 加了 BLE 认证、v19 的策略命名空间”这些历史，也全写在 <code>API_VERSION</code> 的文档注释里——协议的唯一权威说明，和代码放在同一个文件。</p>
+</article><nav class="pager"><a class="prev" href="./01-architecture.html">← 七个 daemon 与一个机器人</a><a class="next" href="../02-control/01-robotd.html">robotd：50 Hz 控制回路 →</a></nav></main></body></html>

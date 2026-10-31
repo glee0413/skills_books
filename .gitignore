@@ -1,4 +1,5 @@
 /opensrc/
 /light_skills/node_modules/
 /cedar_book/node_modules/
+/microduck_book/node_modules/
 .DS_Store

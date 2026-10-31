@@ -1,0 +1,230 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>术语表 · Microduck 机器人系统实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Microduck 机器人系统实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-what-is-microduck.html">Microduck 是什么：硬件、目标与代码地图</a></li></ul></section><section><h2>第一部分 系统架构</h2><ul><li><a href="../01-architecture/01-architecture.html">七个 daemon 与一个机器人</a></li><li><a href="../01-architecture/02-ipc.html">IPC 契约：JSON-RPC、意图与状态</a></li></ul></section><section><h2>第二部分 控制与感知</h2><ul><li><a href="../02-control/01-robotd.html">robotd：50 Hz 控制回路</a></li><li><a href="../02-control/02-control-core.html">控制核心：模型、观测、策略与安全</a></li><li><a href="../02-control/03-kinematics.html">运动学、里程计与 IMU</a></li><li><a href="../02-control/04-perception.html">感知与媒体：camera、ToF、检测器</a></li></ul></section><section><h2>第三部分 交互与更新</h2><ul><li><a href="../03-interaction/01-input.html">手柄、BLE、duckctl 与声音</a></li><li><a href="../03-interaction/02-updater.html">更新系统：签名、原子切换、健康门禁与回滚</a></li><li><a href="../03-interaction/03-remote.html">远程访问：WebRTC、账号与中继</a></li></ul></section><section><h2>第四部分 开发与运维</h2><ul><li><a href="../04-development/01-build-test.html">构建、测试与 CI</a></li><li><a href="../04-development/02-dev-sim.html">开发板、开发推送与仿真</a></li><li><a href="../04-development/03-project-history.html">设计决策与故障史</a></li></ul></section><section><h2>附录</h2><ul><li><a href="./01-reading-map.html">代码地图与阅读路线</a></li><li><a class="active" href="./02-glossary.html">术语表</a></li><li><a href="./03-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>microduck</h2><ul><li><a href="../../catalog/microduck/readme.html">Microduck 是什么</a></li><li><a href="../../catalog/microduck/contributing.html">开发与测试约定</a></li><li><a href="../../catalog/microduck/docs-index.html">文档地图</a></li><li><a href="../../catalog/microduck/architecture.html">系统架构</a></li><li><a href="../../catalog/microduck/robotd-design.html">robotd 控制回路设计</a></li><li><a href="../../catalog/microduck/updater-design.html">更新系统设计</a></li><li><a href="../../catalog/microduck/policy-channel.html">策略通道</a></li><li><a href="../../catalog/microduck/restart-order.html">重启顺序</a></li><li><a href="../../catalog/microduck/app-path.html">手机 BLE 配置路径</a></li><li><a href="../../catalog/microduck/remote-webrtc.html">远程 WebRTC</a></li><li><a href="../../catalog/microduck/remote-access.html">外网访问与账号</a></li><li><a href="../../catalog/microduck/boot-recovery.html">启动恢复网络</a></li><li><a href="../../catalog/microduck/sim-design.html">仿真设计</a></li><li><a href="../../catalog/microduck/cheatsheet.html">robotctl 速查</a></li><li><a href="../../catalog/microduck/cheatsheet-dev.html">开发板速查</a></li><li><a href="../../catalog/microduck/dev-push.html">开发推送</a></li><li><a href="../../catalog/microduck/duckctl.html">duckctl 使用</a></li><li><a href="../../catalog/microduck/install-dev.html">开发板安装</a></li><li><a href="../../catalog/microduck/pair-gamepad.html">配对手柄</a></li><li><a href="../../catalog/microduck/simulation.html">模拟机器人</a></li><li><a href="../../catalog/microduck/telemetry.html">遥测与隐私</a></li><li><a href="../../catalog/microduck/udp-pad.html">UDP 手柄</a></li><li><a href="../../catalog/microduck/faq.html">常见问题</a></li><li><a href="../../catalog/microduck/recurrent-policies.html">循环策略</a></li><li><a href="../../catalog/microduck/policy-manifest.html">策略清单</a></li><li><a href="../../catalog/microduck/roadmap.html">路线图</a></li><li><a href="../../catalog/microduck/install-path-gap.html">安装路径故障</a></li><li><a href="../../catalog/microduck/media-bringup.html">媒体启动</a></li><li><a href="../../catalog/microduck/npu-bringup.html">NPU 启动</a></li><li><a href="../../catalog/microduck/update-over-ble.html">BLE 更新</a></li><li><a href="../../catalog/microduck/idle-cpu.html">空闲 CPU</a></li><li><a href="../../catalog/microduck/tof-on-demand.html">按需 ToF</a></li><li><a href="../../catalog/microduck/deploy.html">部署配置</a></li><li><a href="../../catalog/microduck/cargo-workspace.html">Cargo workspace</a></li><li><a href="../../catalog/microduck/ipc.html">IPC 契约</a></li><li><a href="../../catalog/microduck/control.html">控制核心</a></li><li><a href="../../catalog/microduck/robotd-control.html">robotd control.rs</a></li><li><a href="../../catalog/microduck/robotd-main.html">robotd main.rs</a></li><li><a href="../../catalog/microduck/kinematics.html">运动学</a></li><li><a href="../../catalog/microduck/odometry.html">里程计</a></li><li><a href="../../catalog/microduck/mediad.html">媒体守护进程</a></li><li><a href="../../catalog/microduck/updater.html">更新引擎</a></li><li><a href="../../catalog/microduck/padd.html">手柄守护进程</a></li><li><a href="../../catalog/microduck/btd.html">BLE 守护进程</a></li><li><a href="../../catalog/microduck/tof.html">ToF 守护进程</a></li><li><a href="../../catalog/microduck/sounds.html">声音与合唱</a></li><li><a href="../../catalog/microduck/duckctl-code.html">duckctl 客户端</a></li><li><a href="../../catalog/microduck/xtask.html">构建工具 xtask</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="术语表">术语表</h1>
+<p>这里的词按全书出现频率排，中文写法与 <code>GLOSSARY.md</code> 一致。出处列是上游路径，对应 <code>sources.json</code> 里的 <code>sourcePath</code>；同路径的英文原文都在 <code>source-snapshots/microduck/</code> 下，需要原话时直接翻快照，不要凭印象转述。想找中文精读，按条目 id（例如 <code>microduck/architecture</code>）查 <code>catalog/microduck/</code> 下的同名页面，id 与路径的对应关系以 <code>sources.json</code> 为准。</p>
+<h2 id="服务与更新">服务与更新</h2>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+<th>出处</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>robotd</td>
+<td>控制守护进程，拥有电机总线、50 Hz 回路和安全层</td>
+<td><code>docs/design/robotd-design.md</code></td>
+</tr>
+<tr>
+<td>updaterd</td>
+<td>更新守护进程：验证、切换、健康门禁、回滚</td>
+<td><code>docs/design/updater-design.md</code></td>
+</tr>
+<tr>
+<td>release</td>
+<td>一个完整的发布目录 <code>releases/&lt;version&gt;/</code>，整体替换而不是打补丁</td>
+<td><code>docs/design/updater-design.md</code></td>
+</tr>
+<tr>
+<td>current</td>
+<td>指向当前 release 的符号链接，systemd 只读它</td>
+<td>同上 §7.1</td>
+</tr>
+<tr>
+<td>golden</td>
+<td>有长期保证的黄金版本，救援脚本只认这个链接</td>
+<td><code>docs/design/boot-recovery-net.md</code></td>
+</tr>
+<tr>
+<td>健康门禁（health gate）</td>
+<td>切换后问 <code>robotd</code> 是否健康，答否则自动回滚</td>
+<td><code>docs/design/updater-design.md</code> §8</td>
+</tr>
+<tr>
+<td>启动计数（boot counter）</td>
+<td>记录“更新后是否真的起来了”，跨过一次重启才算成功</td>
+<td>同上 §8</td>
+</tr>
+<tr>
+<td>救援（rescue）</td>
+<td><code>robot-rescue</code> 把 <code>current</code> 切到 golden 并重启</td>
+<td><code>docs/design/boot-recovery-net.md</code></td>
+</tr>
+<tr>
+<td>通道（channel）</td>
+<td>一组独立版本化的东西：<code>daemon</code>，以及每个模型各一条</td>
+<td><code>docs/design/updater-design.md</code> §5.1</td>
+</tr>
+<tr>
+<td>组件（component）</td>
+<td>一次可更新的最小单元，守护进程与每个模型分开</td>
+<td>同上 §5.5</td>
+</tr>
+<tr>
+<td>安装后钩子（post-install hook）</td>
+<td>更新过程中唯一在每块板、每次更新都跑的脚本</td>
+<td>同上 §9</td>
+</tr>
+<tr>
+<td>预检（preflight）</td>
+<td>切换前的只读检查，失败不留任何副作用</td>
+<td>同上 §7.2</td>
+</tr>
+<tr>
+<td>两层配置</td>
+<td><code>/etc/robot/robotd.toml</code> 是镜像基线，<code>/var/lib/robot/robotd.toml</code> 只存这台机器改过的键，按键合并</td>
+<td><code>docs/design/architecture.md</code> §1</td>
+</tr>
+<tr>
+<td>生命周期记录（vetbook）</td>
+<td>这台机器人自己的履历，由 <code>robotd</code> 持有，更新和回滚都不动它</td>
+<td>同上</td>
+</tr>
+</tbody></table>
+<h2 id="协议与边界">协议与边界</h2>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+<th>出处</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IPC</td>
+<td>守护进程之间的 unix socket 通信</td>
+<td><code>duck-ipc-proto/src/lib.rs</code></td>
+</tr>
+<tr>
+<td>JSON-RPC / NDJSON</td>
+<td>请求、响应、通知三种报文；一行一个 JSON 对象</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>intent</td>
+<td>客户端发给 <code>robotd</code> 的高层动作请求，例如“走这么快”</td>
+<td><code>docs/design/robotd-design.md</code></td>
+</tr>
+<tr>
+<td>observation</td>
+<td>策略的输入：关节、IMU、上一条命令等</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>API 版本</td>
+<td><code>duck-ipc-proto</code> 的协议版本，客户端据此判断兼容</td>
+<td><code>duck-ipc-proto/src/lib.rs</code></td>
+</tr>
+<tr>
+<td>意图客户端</td>
+<td>只说意图、从不碰电机的进程：<code>padd</code>、<code>netpadd</code>、手机</td>
+<td><code>docs/design/architecture.md</code> §1</td>
+</tr>
+<tr>
+<td>前门（front door）</td>
+<td>只转发 API 子集的传输层：<code>btd</code>、<code>mediad</code></td>
+<td>同上</td>
+</tr>
+</tbody></table>
+<h2 id="控制与感知">控制与感知</h2>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+<th>出处</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>50 Hz 回路</td>
+<td><code>robotd</code> 的 tick，读总线、算观测、跑策略、下发目标</td>
+<td><code>robotd/src/control.rs</code></td>
+</tr>
+<tr>
+<td>安全层（safety）</td>
+<td>唯一能写电机目标的层，意图在这里被判可执行或拒绝</td>
+<td><code>duck-control/src/lib.rs</code></td>
+</tr>
+<tr>
+<td>策略（policy）</td>
+<td>这里的策略指 ONNX 步态网络，不是“方针”</td>
+<td><code>docs/recurrent-policies.md</code></td>
+</tr>
+<tr>
+<td>循环策略（recurrent policy）</td>
+<td>带隐状态的策略，观测必须带上一步的状态</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>运动学（kinematics）</td>
+<td>关节角与末端位姿之间的映射，模型用 MJCF 描述</td>
+<td><code>kinematics/src/lib.rs</code></td>
+</tr>
+<tr>
+<td>里程计（odometry）</td>
+<td>由足端接触和 IMU 估计机器人走过哪里</td>
+<td><code>odometry/src/lib.rs</code></td>
+</tr>
+<tr>
+<td>身体协议（body protocol）</td>
+<td>仿真里守护进程与 MuJoCo 身体之间的接口</td>
+<td><code>docs/design/simulation.md</code> §3</td>
+</tr>
+<tr>
+<td>假电台（fake radio）</td>
+<td><code>duck-ether</code>：让几只仿真鸭互相“听见”，还能故意把链路做坏</td>
+<td>同上 §4–5</td>
+</tr>
+<tr>
+<td>UYVY</td>
+<td>摄像头像素格式；采样与旋转统一在 <code>uyvy</code>，避免各画各的</td>
+<td><code>uyvy/src/lib.rs</code></td>
+</tr>
+<tr>
+<td>NPU / RKNN</td>
+<td>RK3566 上的推理单元，以及 Rockchip 的运行时</td>
+<td><code>docs/project/npu-bringup.md</code></td>
+</tr>
+<tr>
+<td>sim2real</td>
+<td>在仿真里训练、在真机上部署</td>
+<td><code>README.md</code></td>
+</tr>
+</tbody></table>
+<h2 id="工程与运维">工程与运维</h2>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+<th>出处</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>workspace / default-members</td>
+<td>26 个成员；<code>duckctl</code> 刻意不在默认成员里</td>
+<td><code>Cargo.toml</code></td>
+</tr>
+<tr>
+<td>交叉编译</td>
+<td>aarch64 目标；<code>cargo zigbuild</code>，或 <code>--docker</code> 在板的 userland 里构建</td>
+<td><code>CONTRIBUTING.md</code></td>
+</tr>
+<tr>
+<td>开发推送（dev push）</td>
+<td><code>scripts/dev-push.sh</code>：把本机构建当成一次受门禁的更新装到板上</td>
+<td><code>docs/robot/dev-push.md</code></td>
+</tr>
+<tr>
+<td>board-test</td>
+<td>在 Debian 13 上执行 60 条断言的板级测试，覆盖回滚与拒签</td>
+<td><code>CONTRIBUTING.md</code></td>
+</tr>
+<tr>
+<td>预置（provisioning）</td>
+<td>把镜像配置成一块具体的机器人：配置、信任锚、日志</td>
+<td><code>deploy/README.md</code></td>
+</tr>
+</tbody></table>
+<h2 id="怎么用这张表">怎么用这张表</h2>
+<p>读设计文档时先看“服务与更新”，那些词决定你读的是哪条路径；读代码时看“协议与边界”，它解释为什么一个改动要同时动两个 crate；“控制与感知”里的词最容易混淆，尤其是 intent 与 observation 的方向，别写反。译名与 <code>GLOSSARY.md</code> 冲突时以那份文件为准，这里只是补充了出处。</p>
+</article><nav class="pager"><a class="prev" href="./01-reading-map.html">← 代码地图与阅读路线</a><a class="next" href="./03-sources.html">来源、许可证与版本 →</a></nav></main></body></html>

@@ -1,0 +1,81 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Microduck 是什么：硬件、目标与代码地图 · Microduck 机器人系统实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Microduck 机器人系统实战</a></div><section><h2>导读</h2><ul><li><a class="active" href="./01-what-is-microduck.html">Microduck 是什么：硬件、目标与代码地图</a></li></ul></section><section><h2>第一部分 系统架构</h2><ul><li><a href="../01-architecture/01-architecture.html">七个 daemon 与一个机器人</a></li><li><a href="../01-architecture/02-ipc.html">IPC 契约：JSON-RPC、意图与状态</a></li></ul></section><section><h2>第二部分 控制与感知</h2><ul><li><a href="../02-control/01-robotd.html">robotd：50 Hz 控制回路</a></li><li><a href="../02-control/02-control-core.html">控制核心：模型、观测、策略与安全</a></li><li><a href="../02-control/03-kinematics.html">运动学、里程计与 IMU</a></li><li><a href="../02-control/04-perception.html">感知与媒体：camera、ToF、检测器</a></li></ul></section><section><h2>第三部分 交互与更新</h2><ul><li><a href="../03-interaction/01-input.html">手柄、BLE、duckctl 与声音</a></li><li><a href="../03-interaction/02-updater.html">更新系统：签名、原子切换、健康门禁与回滚</a></li><li><a href="../03-interaction/03-remote.html">远程访问：WebRTC、账号与中继</a></li></ul></section><section><h2>第四部分 开发与运维</h2><ul><li><a href="../04-development/01-build-test.html">构建、测试与 CI</a></li><li><a href="../04-development/02-dev-sim.html">开发板、开发推送与仿真</a></li><li><a href="../04-development/03-project-history.html">设计决策与故障史</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../05-appendix/01-reading-map.html">代码地图与阅读路线</a></li><li><a href="../05-appendix/02-glossary.html">术语表</a></li><li><a href="../05-appendix/03-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>microduck</h2><ul><li><a href="../../catalog/microduck/readme.html">Microduck 是什么</a></li><li><a href="../../catalog/microduck/contributing.html">开发与测试约定</a></li><li><a href="../../catalog/microduck/docs-index.html">文档地图</a></li><li><a href="../../catalog/microduck/architecture.html">系统架构</a></li><li><a href="../../catalog/microduck/robotd-design.html">robotd 控制回路设计</a></li><li><a href="../../catalog/microduck/updater-design.html">更新系统设计</a></li><li><a href="../../catalog/microduck/policy-channel.html">策略通道</a></li><li><a href="../../catalog/microduck/restart-order.html">重启顺序</a></li><li><a href="../../catalog/microduck/app-path.html">手机 BLE 配置路径</a></li><li><a href="../../catalog/microduck/remote-webrtc.html">远程 WebRTC</a></li><li><a href="../../catalog/microduck/remote-access.html">外网访问与账号</a></li><li><a href="../../catalog/microduck/boot-recovery.html">启动恢复网络</a></li><li><a href="../../catalog/microduck/sim-design.html">仿真设计</a></li><li><a href="../../catalog/microduck/cheatsheet.html">robotctl 速查</a></li><li><a href="../../catalog/microduck/cheatsheet-dev.html">开发板速查</a></li><li><a href="../../catalog/microduck/dev-push.html">开发推送</a></li><li><a href="../../catalog/microduck/duckctl.html">duckctl 使用</a></li><li><a href="../../catalog/microduck/install-dev.html">开发板安装</a></li><li><a href="../../catalog/microduck/pair-gamepad.html">配对手柄</a></li><li><a href="../../catalog/microduck/simulation.html">模拟机器人</a></li><li><a href="../../catalog/microduck/telemetry.html">遥测与隐私</a></li><li><a href="../../catalog/microduck/udp-pad.html">UDP 手柄</a></li><li><a href="../../catalog/microduck/faq.html">常见问题</a></li><li><a href="../../catalog/microduck/recurrent-policies.html">循环策略</a></li><li><a href="../../catalog/microduck/policy-manifest.html">策略清单</a></li><li><a href="../../catalog/microduck/roadmap.html">路线图</a></li><li><a href="../../catalog/microduck/install-path-gap.html">安装路径故障</a></li><li><a href="../../catalog/microduck/media-bringup.html">媒体启动</a></li><li><a href="../../catalog/microduck/npu-bringup.html">NPU 启动</a></li><li><a href="../../catalog/microduck/update-over-ble.html">BLE 更新</a></li><li><a href="../../catalog/microduck/idle-cpu.html">空闲 CPU</a></li><li><a href="../../catalog/microduck/tof-on-demand.html">按需 ToF</a></li><li><a href="../../catalog/microduck/deploy.html">部署配置</a></li><li><a href="../../catalog/microduck/cargo-workspace.html">Cargo workspace</a></li><li><a href="../../catalog/microduck/ipc.html">IPC 契约</a></li><li><a href="../../catalog/microduck/control.html">控制核心</a></li><li><a href="../../catalog/microduck/robotd-control.html">robotd control.rs</a></li><li><a href="../../catalog/microduck/robotd-main.html">robotd main.rs</a></li><li><a href="../../catalog/microduck/kinematics.html">运动学</a></li><li><a href="../../catalog/microduck/odometry.html">里程计</a></li><li><a href="../../catalog/microduck/mediad.html">媒体守护进程</a></li><li><a href="../../catalog/microduck/updater.html">更新引擎</a></li><li><a href="../../catalog/microduck/padd.html">手柄守护进程</a></li><li><a href="../../catalog/microduck/btd.html">BLE 守护进程</a></li><li><a href="../../catalog/microduck/tof.html">ToF 守护进程</a></li><li><a href="../../catalog/microduck/sounds.html">声音与合唱</a></li><li><a href="../../catalog/microduck/duckctl-code.html">duckctl 客户端</a></li><li><a href="../../catalog/microduck/xtask.html">构建工具 xtask</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="microduck-是什么硬件目标与代码地图">Microduck 是什么：硬件、目标与代码地图</h1>
+<p>Microduck 是 Pollen Robotics 做的一只小型双足机器人：大约 25 厘米高、800 克重，靠强化学习策略走路，也能装上轮子滚动、低头叼东西、摔倒后自己站起来，还会用属于自己的嗓音叫。这本书记录的不是“怎么训练一个策略”，而是一只这样的机器人怎样被组织成一套能长期维护的软件系统：谁拥有电机，谁负责更新，谁在控制回路挂掉时仍然能应答。读完这一章，你应该知道硬件上有什么、仓库边界在哪里，以及接下来该按什么顺序读。</p>
+<h2 id="一只-25-厘米800-克的机器人">一只 25 厘米、800 克的机器人</h2>
+<p>整只机器人的计算都在一块 Rockchip RK3566 上。它是一颗带 NPU 的 ARM SoC，跑 Linux，用 systemd 管理一组常驻服务。板子下面挂着一条 Dynamixel 串行总线，十五个舵机和一个 IMU 板共享它：左腿五个、脖子与头与嘴五个、右腿五个。这个顺序不是随手排的，<code>duck-ipc-proto</code> 里的 <code>JOINT_NAMES</code> 把它固定成协议的一部分，连每个关节的舵机 ID 也一起写死（左腿 20–24，头颈 30–34，右腿 10–14），因为支持人员最终要拿着 ID 去机器上找那颗没应答的舵机。</p>
+<p>感知与交互的硬件同样分散：一个摄像头、麦克风和扬声器、头部一块 8×8 的 ToF 深度传感器（VL53L5/8CX），以及 Wi-Fi 和低功耗蓝牙两条无线电。板型之间还有差异：Zero 3W 没有面板上那十二颗状态灯，头部 IMU 由 <code>tofd</code> 提供；beta 板的面板灯由 GPIO 扩展器驱动，头部 IMU 挂在面板板上，由 <code>robotd</code> 读取。这些差异没有变成运行时开关，而是落到了“哪个 daemon 拥有哪个设备”的划分里。</p>
+<p>策略本身是神经网络：输入 61 维观测，输出 14 个关节目标（第十五个舵机是嘴，不归策略管）。真机上由 <code>robotd</code> 通过 ONNX Runtime 加载 <code>.onnx</code> 文件执行；鸭子检测器则走 Rockchip 的 NPU 运行时。一次控制循环 50 Hz，从读总线、组观测、跑推理到写目标，全在这一个进程里完成。</p>
+<h2 id="仓库负责跑microduck_rl-负责训">仓库负责“跑”，microduck_rl 负责“训”</h2>
+<p>这是理解代码边界最重要的一条。本仓库是“鸭子的大脑”：它包含运行时、守护进程、IPC 契约、更新机制和部署脚本，但不包含训练代码。策略在隔壁的 <a href="https://github.com/pollen-robotics/microduck_rl">microduck_rl</a> 里训练：MuJoCo 物理仿真、PPO、域随机化、sim2real 配方，最后导出成本仓库加载的 ONNX。</p>
+<p>两边靠几条明确的契约连接。观测长度 61、动作长度 14、机器人型号名 <code>microduck</code> 都写在 <code>duck-ipc-proto</code> 里，而不是只写在控制库里，因为它们是“和策略发布者之间的约定”：策略仓库的清单要声明同样的数字，<code>updaterd</code> 在下载前拒绝不匹配的策略，<code>robotd</code> 在加载时再拒绝一次。官方策略集也不放在本仓库，而是发布在 Hugging Face 上（<code>pollen-robotics/microduck-policies</code>，当前最低版本 v8），这样重新训练一次步态不需要发一个 daemon 版本，修一个 daemon 缺陷也不用重发六兆字节没变过的权重。</p>
+<p>还有一层历史需要知道：文档里的 <code>microduck_runtime</code> 是早期探索性的原型，会被重写；<code>docs/design/</code> 描述的是第一个正式发布版本的目标形态，不是原型现状。读书时看到“原型曾经有五个私有通道”这类句子，说的是它留下的教训，不是当前代码。</p>
+<h2 id="七个-daemon-与一个-cli">七个 daemon 与一个 CLI</h2>
+<p>运行时的形状可以先用一张表记住，细节在<a href="../01-architecture/01-architecture.html">下一章</a>展开：</p>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>拥有什么</th>
+<th>在哪里应答</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>robotd</code></td>
+<td>电机总线、50 Hz 回路、运动学、里程计、策略、安全</td>
+<td><code>/run/robotd.sock</code></td>
+</tr>
+<tr>
+<td><code>configd</code></td>
+<td>Wi-Fi、机器人身份与名字、配对 PIN、手柄绑定、重启</td>
+<td><code>/run/configd.sock</code></td>
+</tr>
+<tr>
+<td><code>updaterd</code></td>
+<td>发布包的验证、安装、切换、健康门禁、回滚</td>
+<td><code>/run/updaterd.sock</code></td>
+</tr>
+<tr>
+<td><code>btd</code></td>
+<td>不拥有状态，只做 BLE GATT 传输</td>
+<td>BLE GATT 服务</td>
+</tr>
+<tr>
+<td><code>padd</code> / <code>netpadd</code></td>
+<td>不拥有状态，读手柄并发送意图；<code>netpadd</code> 是局域网 UDP 版本</td>
+<td><code>/run/padd/pad.sock</code> / UDP</td>
+</tr>
+<tr>
+<td><code>mediad</code></td>
+<td>摄像头与音频管线、WebRTC、远程入口</td>
+<td><code>:8080</code>、<code>:8443</code>、<code>/run/mediad/media.sock</code></td>
+</tr>
+<tr>
+<td><code>tofd</code></td>
+<td>头部 ToF，只发布深度帧</td>
+<td><code>/run/tofd/tof.sock</code></td>
+</tr>
+</tbody></table>
+<p><code>robotctl</code> 不在表里，它不是 daemon，而是必须能在一只坏掉的机器人上工作的命令行客户端。所有客户端——手机 App、手柄、你的脚本、<code>robotctl</code>——发的是同一套 JSON-RPC 调用，只是走的传输不同。</p>
+<h2 id="代码地图一个-workspace一个-crate-一件事">代码地图：一个 workspace，一个 crate 一件事</h2>
+<p>仓库是一个 Cargo workspace，26 个成员，版本 0.18.3，edition 2024。组织原则很直接：每个服务或工具一个 crate，和架构文档里的服务划分一一对应。初读时值得先认得的几个：</p>
+<ul>
+<li><code>duck-ipc-proto</code>：唯一的协议定义，方法名、参数、结果、错误码、socket 路径、关节表都在这里。它只依赖 serde、serde_json 和 semver，因为恢复路径上的服务也要用它，不能顺带拖进 HTTP、压缩、加密或异步运行时。</li>
+<li><code>duck-control</code>：控制核心，模型、观测、策略执行与安全层，唯一能写电机目标的地方。</li>
+<li><code>kinematics</code>、<code>odometry</code>：关节角与末端位姿的映射，以及靠足端接触和 IMU 估计的位姿。</li>
+<li><code>robotd-params</code>：两层配置的加载与合并，<code>/etc</code> 的基础层加 <code>/var/lib</code> 的用户层。</li>
+<li><code>updater</code>：更新引擎，签名验证、解包、原子切换、健康门禁与回滚。</li>
+<li><code>duck-detect</code>、<code>pet-detect</code>：NPU 上的鸭子检测器与宠物检测器；<code>duck-ble</code>、<code>pad-imu</code>、<code>uyvy</code> 一类则是把某一种格式或某一条链路单独拆出来的小 crate。</li>
+<li><code>xtask</code>：打包、交叉编译、生成发布目录的构建工具。</li>
+</ul>
+<p>工作区里还钉着几个版本：ONNX Runtime 最低 1.23、安装目标 1.28.0，RKNN 运行时 v2.3.2，GStreamer 插件 v3，策略集 v8，检测器 duck-v1。它们都只写一份，测试会断言那些被 <code>curl</code> 单独拉取的安装脚本和 <code>Cargo.toml</code> 保持一致——两份版本各自漂移，曾经让一块板子装上了 <code>ort</code> 会 panic 的运行时。</p>
+<h2 id="三条阅读路线">三条阅读路线</h2>
+<p>这本书按“先整体、再控制、后交付”组织，你可以按目的选一条：</p>
+<ol>
+<li><strong>建立整体图</strong>：本章之后读<a href="../01-architecture/01-architecture.html">七个 daemon 与一个机器人</a>和 <a href="../01-architecture/02-ipc.html">IPC 契约</a>，把进程边界和消息形状弄清楚。</li>
+<li><strong>理解控制</strong>：从 <a href="../02-control/01-robotd.html">robotd 的 50 Hz 回路</a>开始，接着读控制核心、运动学与里程计、感知与媒体。这条线回答“一次走路是怎么发生的”。</li>
+<li><strong>理解交付</strong>：读更新系统、远程访问、构建与测试。这条线回答“新软件怎么安全地到达一只在别人家里的机器人”。</li>
+</ol>
+<p>每一章旁边都有对应的“知识全库”精读页，例如 <a href="../../catalog/microduck/architecture.html">系统架构原文</a>、<a href="../../catalog/microduck/ipc.html">IPC 源码</a>、<a href="../../catalog/microduck/cargo-workspace.html">Cargo workspace</a>。它们是按固定 commit 做的逐段对照，适合在读完一章后核对细节；书稿负责串起因果关系，精读页负责保留原文的措辞与边界条件。</p>
+<h2 id="版本与约定">版本与约定</h2>
+<p>全书对应上游仓库 <code>b2b0d213</code>，标签 <code>daemon-v0.18.3</code>，许可证 Apache-2.0。英文快照保存在 <code>source-snapshots/</code>，翻译和写作都以快照为准，不依赖同级的上游 checkout。术语按 <code>GLOSSARY.md</code> 统一：daemon 译为“守护进程”，intent 译为“意图”，release 译为“发布”，health gate 译为“健康门禁”；<code>robotd</code>、<code>updaterd</code> 这类服务名保留英文，因为它们在命令行、日志和代码里就是那个样子。</p>
+<p>最后提醒一句：这是一套为“无法接调试器”的设备写的软件。日志、版本、健康检查之所以占了不少篇幅，不是文档啰嗦，而是因为这些是支持人员唯一能拿到的东西。读的时候不妨一直问：这个设计在机器人已经坏掉的情况下还成立吗？架构里的很多选择，答案都在这个问题上。</p>
+</article><nav class="pager"><a class="prev" href="#"></a><a class="next" href="../01-architecture/01-architecture.html">七个 daemon 与一个机器人 →</a></nav></main></body></html>

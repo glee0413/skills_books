@@ -1,0 +1,94 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>开发板、开发推送与仿真 · Microduck 机器人系统实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Microduck 机器人系统实战</a></div><section><h2>导读</h2><ul><li><a href="../00-intro/01-what-is-microduck.html">Microduck 是什么：硬件、目标与代码地图</a></li></ul></section><section><h2>第一部分 系统架构</h2><ul><li><a href="../01-architecture/01-architecture.html">七个 daemon 与一个机器人</a></li><li><a href="../01-architecture/02-ipc.html">IPC 契约：JSON-RPC、意图与状态</a></li></ul></section><section><h2>第二部分 控制与感知</h2><ul><li><a href="../02-control/01-robotd.html">robotd：50 Hz 控制回路</a></li><li><a href="../02-control/02-control-core.html">控制核心：模型、观测、策略与安全</a></li><li><a href="../02-control/03-kinematics.html">运动学、里程计与 IMU</a></li><li><a href="../02-control/04-perception.html">感知与媒体：camera、ToF、检测器</a></li></ul></section><section><h2>第三部分 交互与更新</h2><ul><li><a href="../03-interaction/01-input.html">手柄、BLE、duckctl 与声音</a></li><li><a href="../03-interaction/02-updater.html">更新系统：签名、原子切换、健康门禁与回滚</a></li><li><a href="../03-interaction/03-remote.html">远程访问：WebRTC、账号与中继</a></li></ul></section><section><h2>第四部分 开发与运维</h2><ul><li><a href="./01-build-test.html">构建、测试与 CI</a></li><li><a class="active" href="./02-dev-sim.html">开发板、开发推送与仿真</a></li><li><a href="./03-project-history.html">设计决策与故障史</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../05-appendix/01-reading-map.html">代码地图与阅读路线</a></li><li><a href="../05-appendix/02-glossary.html">术语表</a></li><li><a href="../05-appendix/03-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>microduck</h2><ul><li><a href="../../catalog/microduck/readme.html">Microduck 是什么</a></li><li><a href="../../catalog/microduck/contributing.html">开发与测试约定</a></li><li><a href="../../catalog/microduck/docs-index.html">文档地图</a></li><li><a href="../../catalog/microduck/architecture.html">系统架构</a></li><li><a href="../../catalog/microduck/robotd-design.html">robotd 控制回路设计</a></li><li><a href="../../catalog/microduck/updater-design.html">更新系统设计</a></li><li><a href="../../catalog/microduck/policy-channel.html">策略通道</a></li><li><a href="../../catalog/microduck/restart-order.html">重启顺序</a></li><li><a href="../../catalog/microduck/app-path.html">手机 BLE 配置路径</a></li><li><a href="../../catalog/microduck/remote-webrtc.html">远程 WebRTC</a></li><li><a href="../../catalog/microduck/remote-access.html">外网访问与账号</a></li><li><a href="../../catalog/microduck/boot-recovery.html">启动恢复网络</a></li><li><a href="../../catalog/microduck/sim-design.html">仿真设计</a></li><li><a href="../../catalog/microduck/cheatsheet.html">robotctl 速查</a></li><li><a href="../../catalog/microduck/cheatsheet-dev.html">开发板速查</a></li><li><a href="../../catalog/microduck/dev-push.html">开发推送</a></li><li><a href="../../catalog/microduck/duckctl.html">duckctl 使用</a></li><li><a href="../../catalog/microduck/install-dev.html">开发板安装</a></li><li><a href="../../catalog/microduck/pair-gamepad.html">配对手柄</a></li><li><a href="../../catalog/microduck/simulation.html">模拟机器人</a></li><li><a href="../../catalog/microduck/telemetry.html">遥测与隐私</a></li><li><a href="../../catalog/microduck/udp-pad.html">UDP 手柄</a></li><li><a href="../../catalog/microduck/faq.html">常见问题</a></li><li><a href="../../catalog/microduck/recurrent-policies.html">循环策略</a></li><li><a href="../../catalog/microduck/policy-manifest.html">策略清单</a></li><li><a href="../../catalog/microduck/roadmap.html">路线图</a></li><li><a href="../../catalog/microduck/install-path-gap.html">安装路径故障</a></li><li><a href="../../catalog/microduck/media-bringup.html">媒体启动</a></li><li><a href="../../catalog/microduck/npu-bringup.html">NPU 启动</a></li><li><a href="../../catalog/microduck/update-over-ble.html">BLE 更新</a></li><li><a href="../../catalog/microduck/idle-cpu.html">空闲 CPU</a></li><li><a href="../../catalog/microduck/tof-on-demand.html">按需 ToF</a></li><li><a href="../../catalog/microduck/deploy.html">部署配置</a></li><li><a href="../../catalog/microduck/cargo-workspace.html">Cargo workspace</a></li><li><a href="../../catalog/microduck/ipc.html">IPC 契约</a></li><li><a href="../../catalog/microduck/control.html">控制核心</a></li><li><a href="../../catalog/microduck/robotd-control.html">robotd control.rs</a></li><li><a href="../../catalog/microduck/robotd-main.html">robotd main.rs</a></li><li><a href="../../catalog/microduck/kinematics.html">运动学</a></li><li><a href="../../catalog/microduck/odometry.html">里程计</a></li><li><a href="../../catalog/microduck/mediad.html">媒体守护进程</a></li><li><a href="../../catalog/microduck/updater.html">更新引擎</a></li><li><a href="../../catalog/microduck/padd.html">手柄守护进程</a></li><li><a href="../../catalog/microduck/btd.html">BLE 守护进程</a></li><li><a href="../../catalog/microduck/tof.html">ToF 守护进程</a></li><li><a href="../../catalog/microduck/sounds.html">声音与合唱</a></li><li><a href="../../catalog/microduck/duckctl-code.html">duckctl 客户端</a></li><li><a href="../../catalog/microduck/xtask.html">构建工具 xtask</a></li></ul></section><p class="sidebar-footer"><a href="../../catalog/index.html">知识全库</a></p></aside><main class="content"><article class="markdown-body"><h1 id="开发板开发推送与仿真">开发板、开发推送与仿真</h1>
+<p>在 Microduck 上开发有三条从快到慢的路：在仿真里跑同一批守护进程、把本机构建直接推给一块开发板、或者等 CI 构建完再用分支标签安装。三条路共用同一套更新机制和健康门禁，区别只在“身体”和“信任的签名钥匙”。这一章按从板子到仿真的顺序走一遍，命令见 <a href="../../catalog/microduck/install-dev.html">开发板安装</a>、<a href="../../catalog/microduck/dev-push.html">开发推送</a>、<a href="../../catalog/microduck/simulation.html">模拟机器人</a>、<a href="../../catalog/microduck/sim-design.html">仿真设计</a> 和 <a href="../../catalog/microduck/cheatsheet-dev.html">开发板速查</a>。</p>
+<h2 id="开发板只是换了信任的钥匙">开发板只是换了信任的钥匙</h2>
+<p>开发板信任团队的 dev key，所以它会安装团队里任何人构建的东西；客户机器人则明确拒绝这些构建。除此之外没有任何放宽：签名、哈希、兼容性、健康门禁、自动回滚全都一样跑。唯一的差别是哪把钥匙签的，而这正是把开发构建挡在客户机器人之外的东西——对方同时有两道限制：<code>allow_dev_keys = false</code>，以及一把公钥只有文件名以 <code>.dev.pub</code> 结尾时才被归类为 dev key。</p>
+<p>这条边界值得反复说，因为“开发模式”很容易被理解成“跳过验证”。它不是。一个用 dev key 签名的本机构建，和从网络下载的正式版本走同一条验证路径，只是验证的公钥集合不同。</p>
+<h2 id="从空白板到能推分支">从空白板到能推分支</h2>
+<p>先用 Armbian imager 刷 <strong>Radxa Zero 3</strong> 的 <strong>Armbian 26.2.1 Minimal</strong>。写入前在 imager 的配置里填好 Wi-Fi 和用户名密码，板子首次启动就会入网、能直接 ssh，省掉一次串口。然后把自己的 ssh 公钥放上去，因为后续流程会重启板子并自己重连，密码提示撑不过去：</p>
+<pre><code class="language-bash">ssh-copy-id microduck@192.168.1.42
+</code></pre>
+<p>从本仓库的克隆里执行两件事：导出访问 release 资产用的 GitHub token，然后运行配置脚本。</p>
+<pre><code class="language-bash">export DUCK_TOKEN=github_pat_replace_with_your_token
+./scripts/provision-board.sh --pause-btd-on-pair --name &lt;MY_COOL_ROBOT_NAME&gt; \
+  microduck@192.168.1.42
+</code></pre>
+<p><code>--pause-btd-on-pair</code> 默认加上，是因为 aic8800 射频在 <code>btd</code> 广播时无法让手柄建立<strong>新的</strong> bond。这个标志留一个标记，<code>robotctl pad pair</code> 在配对窗口里停掉 <code>btd</code>、给适配器断电再上电，然后重新启动它；已有 bond 不受影响。板子有三种配置，靠“配一次手柄、看失败方式”来选：</p>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>板子需要</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>手柄能 bond、能驱动</td>
+<td>什么都不加</td>
+</tr>
+<tr>
+<td>手柄不 bond，SMP 最后一步不完成</td>
+<td><code>--pause-btd-on-pair</code></td>
+</tr>
+<tr>
+<td>暂停后仍不 bond</td>
+<td><code>--weird-ble</code>（隐含暂停，并加 <code>Privacy = device</code>）</td>
+</tr>
+<tr>
+<td>能 bond 但立刻闪断，报 <code>PIN or Key Missing (0x06)</code></td>
+<td><code>--weird-ble</code> 用错了：去掉它，只保留暂停</td>
+</tr>
+</tbody></table>
+<p>最后一行是陷阱：<code>Privacy = device</code> 用在只需要暂停的板子上，会得到一个立刻失效的 bond，比“干脆配不上”更难诊断。改过 <code>Privacy</code> 之后必须重新配对，因为它改变了存储密钥所依据的地址。</p>
+<p>配置脚本会送 dev key、启动 provisioning、等重启、流式打印日志，最后停在 <code>robotctl health</code>。判断板子是否真的成了开发板，有一条可检查的证据：</p>
+<pre><code class="language-bash">grep -c &#39;DEV BOARD&#39; /var/lib/robot/provision.log
+</code></pre>
+<p>输出 <code>1</code> 才是；<code>0</code> 说明钥匙没落地，之后 <code>--ref</code> 会被拒绝，错误看起来却像“发布损坏”。</p>
+<h2 id="dev-push改一行到机器人跑起来">dev-push：改一行到机器人跑起来</h2>
+<p>第一次推送前准备三样：板子是开发板、dev 私钥在 <code>~/.duck-keys/team.dev.key</code>（或用 <code>DUCK_DEV_SECRET_KEY</code> 指过去）、有一套能给板子构建的工具链。可以装 <code>cargo-zigbuild</code> 和 <code>zig</code>，也可以每次加 <code>--docker</code>，只需要一个运行中的 Docker daemon。</p>
+<pre><code class="language-bash">scripts/dev-push.sh --name duck-c51b
+export DUCK_ROBOT=duck-c51b
+scripts/dev-push.sh
+</code></pre>
+<p>名字就是 <code>duckctl scan</code> 列出的那个。脚本通过蓝牙问机器人自己的 <code>net.status</code> 要地址，然后缓存；只有缓存地址不可达时才回到射频，所以换 DHCP 租约、重刷或换网络都不用改命令。一次推送大约一分钟，输出长这样：</p>
+<pre><code class="language-text">==&gt; building 0.5.1-dev.local.1763400000.g7fc1444 for the board (zigbuild)
+==&gt; packaging
+==&gt; signing with /Users/you/.duck-keys/team.dev.key
+==&gt; copying to microduck@192.168.1.42:/home/microduck/duck-sideload
+==&gt; applying on microduck@192.168.1.42
+==&gt; checking every daemon is running it
+    [ok] robotd  [ok] configd  [ok] padd  [ok] updaterd  [ok] btd  [ok] mediad
+</code></pre>
+<p>这是一次普通更新：签名、哈希、兼容性、健康门禁、自动回滚全在。构建起不来会被回滚，板子回到原来的版本；想主动回去也是普通命令 <code>sudo robotctl update rollback daemon</code>。<code>updaterd</code> 和 <code>btd</code> 在 apply 回复五秒后才重启，所以那两行会晚一点到；<code>[--] padd published nothing</code> 不是失败，它也可能是被停用或没有摄像头的板子上 <code>mediad</code> 的样子。</p>
+<p><code>--dry-run</code> 会构建、签名、复制，并做完除切换之外的所有检查，板子继续跑原来的版本。<code>--bootstrap</code> 只用于第一次推送到低于 0.5.0 的板子，因为 <code>apply --from</code> 需要 API v7，而旧 <code>updaterd</code> 不会接受这个调用。几个常见错误：没有 dev key、没有 <code>cargo-zigbuild</code>、第一次推送找不到 <code>libudev.so.1</code>、以及把 sideload 目录指到 <code>/tmp</code>——<code>updaterd.service</code> 有 <code>PrivateTmp=yes</code>，它看到的 <code>/tmp</code> 不是你复制进去的那个。</p>
+<h2 id="仿真同一批-daemon换一个身体">仿真：同一批 daemon，换一个身体</h2>
+<p><code>robotd --sim host:port</code> 把伺服总线换成 <code>duck_control::sim::RemoteIo</code>：每个 tick，关节位置、速度和 IMU 从 TCP socket 进来，策略的目标再发回去。接缝以上——50 Hz 回路、策略、安全、跌倒检测、运动学、里程计、整个 IPC 面——全是机器人跑的代码，而且分辨不出差别。<code>tofd --sim</code> 从同一个模拟器取 8×8 深度帧，<code>mediad --sim-camera</code> 取渲染出来的头部相机图像。<code>configd</code> 和 <code>updaterd</code> 也照常运行，所以一只仿真鸭有序列号、名字和一个能从句网外到达的 Hugging Face 账号。</p>
+<p>身体那一半在 <a href="https://github.com/pollen-robotics/microduck_rl"><code>microduck_rl</code></a> 的 <code>duck-body</code> 里：一个进程、一个窗口、同一场景里 N 只鸭子，用训练时的 BAM 执行器模型。需要本仓库、一个带 venv 的 <code>microduck_rl</code> 检出，以及——如果你在非 Linux 上还要相机——两个 Homebrew formula：<code>gstreamer</code> 和 <code>libnice-gstreamer</code>。第二个容易被漏掉：Homebrew 的 <code>gstreamer</code> 把 <code>libgstnice.dylib</code> 链接进一个它并不依赖的独立 formula，缺了它，管线、相机、会合注册都正常，直到第一个消费者要 pad，会话才死在 GStreamer 线程里。</p>
+<p>最常用的命令：</p>
+<pre><code class="language-bash">scripts/duck-sim            # 打开 MuJoCo 窗口，鸭子站起来
+scripts/duck-sim status     # 健康状态，是否站立
+scripts/duck-sim drive      # 前进 8 秒（参数 vx vyaw，默认 0.15 0）
+scripts/duck-sim ctl health # 任何 robotctl 命令，指向这只鸭子
+scripts/duck-sim monitor    # 关节、IMU、ToF、摇杆
+scripts/duck-sim log        # robotd 的日志
+scripts/duck-sim down
+</code></pre>
+<p><code>up</code> 和 <code>boot</code> 的区别在守护进程跑在什么下面。<code>up</code> 是普通进程、你的用户、每只鸭子一个 pidfile，几秒起；<code>boot N</code> 把每只鸭子放进一个 <code>systemd-nspawn</code> 容器，用真实 unit 文件跑真 systemd，第一次要建 Debian 13 rootfs，约三分钟。做控制回路、策略、IPC 或客户端，用 <code>up</code>；碰 systemd、更新器、provisioning，或者要多只鸭子互相说话，用 <code>boot</code>。有两个 bug 就是 <code>boot</code> 抓到的：一个 daemon 的用户不存在，unit 根本没启动——这是 <code>up</code> 看不见的一类。</p>
+<h2 id="假身体与假无线电">假身体与假无线电</h2>
+<p><code>--sim</code> 不是 <code>--fake</code>。<code>robotd --fake</code> 是一个什么都没有的机器人：没有物理，位置完美回声，什么都不会倒，用于单元测试和完全不需要身体的本机工作；<code>--sim</code> 是数字孪生，两者互斥。</p>
+<p>多只鸭子时脚本会启动 <code>duck-ether</code>，一个在容器之间传 chorale BLE 信标的假射频。它故意是<strong>坏</strong>的：按对丢弃和延迟，因为完美射频会藏住真实射频造成的 bug——四只鸭子会瞬间、无损地互相看见，于是每次都收敛到同一个声部，而现场报告是“有时什么都不发生，有时两首不同的歌”。</p>
+<pre><code class="language-bash">duck-ether --discovery 90 --loss 0.3 --seed 3
+</code></pre>
+<p><code>--discovery</code> 是“从上线到被注意到”的延迟，按 pair 计算，因为不对称才是分裂合唱团的原因；<code>--seed</code> 让 flaky 可复现。相机是按鸭子 opt-in 的（<code>DUCK_SIM_CAMERAS=a</code> 或 <code>a,c</code>），因为渲染一帧要 12 毫秒，而步进四只鸭子的物理只要 0.3 毫秒；四路相机就是大半个核。实时系数很重要：守护进程的回路按墙钟走，低于 1.0× 不只是看着慢，策略在驱动一个比它预期移动更少的机器人，根本平衡不了；鸭子不会变慢，它们会在 45 Hz 健康门禁上变成 unhealthy，容器形态里更新器还会开始回滚。</p>
+<h2 id="速查出问题时先看哪里">速查：出问题时先看哪里</h2>
+<p><code>sudo robotctl update apply daemon</code> <strong>不带 <code>--ref</code></strong> 装的是 stable 通道的最新版，在开发板上通常是降级。它会在板子已经有一个新 daemon 的 unit 时，让旧发布的 <code>ExecStart</code> 指向一个不存在的二进制，重启失败，然后回滚——门禁是对的，但那条命令看起来像最自然的选择。要留在开发通道就用 <code>--ref main</code>。</p>
+<p>更新后如果“修复明明装了却没生效”，先看每个 daemon 实际在跑哪个 release：</p>
+<pre><code class="language-bash">robotctl health
+</code></pre>
+<p><code>units</code> 块每个 daemon 一行，标出启动它的 release；和已安装版本不一致时会警告并点名该重启谁。<code>robotd</code>、<code>configd</code>、<code>padd</code> 在更新中重启，<code>updaterd</code> 和 <code>btd</code> 在回复五秒后重启；<code>updaterd</code> 是唯一不会自己修自己的，必要时 <code>sudo systemctl restart updaterd</code>，但更该先读日志问为什么。</p>
+<p>想在本机用手柄驱动板子，<code>padd</code> 是普通客户端：先停掉板子上的那个，转发 socket，再从克隆里跑。</p>
+<pre><code class="language-bash">sudo systemctl stop padd
+ssh -L /tmp/robotd.sock:/run/robotd.sock microduck@192.168.1.42
+cargo run -p padd -- --socket /tmp/robotd.sock
+</code></pre>
+<h2 id="仿真的边界">仿真的边界</h2>
+<p>仿真对“守护进程及其客户端”几乎完全可信：IPC、<code>robotctl</code>、控制台、更新器、chorale、策略站立行走、建图。它不能告诉你任何驱动里的事：Dynamixel 总线、BLE 射频、相机 ISP、NPU、硬件编码器都不存在，也没有被建模。拿一周的真实 bug 去对照这张清单——一个 <code>videoflip</code> 让编码器丢掉零拷贝路径、损失 22 fps；3A 引擎错过 stream-start；自动曝光收敛一次就停；INT8 检测头的分数塌成两个值；伺服总线丢读——孪生一个都抓不到。这不是设计缺陷，是边界；硬件仍然是驱动唯一真实的地方。</p>
+</article><nav class="pager"><a class="prev" href="./01-build-test.html">← 构建、测试与 CI</a><a class="next" href="./03-project-history.html">设计决策与故障史 →</a></nav></main></body></html>

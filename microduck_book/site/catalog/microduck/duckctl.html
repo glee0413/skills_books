@@ -1,0 +1,64 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>duckctl 使用 · Microduck 机器人系统实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Microduck 机器人系统实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-what-is-microduck.html">Microduck 是什么：硬件、目标与代码地图</a></li></ul></section><section><h2>第一部分 系统架构</h2><ul><li><a href="../../book/01-architecture/01-architecture.html">七个 daemon 与一个机器人</a></li><li><a href="../../book/01-architecture/02-ipc.html">IPC 契约：JSON-RPC、意图与状态</a></li></ul></section><section><h2>第二部分 控制与感知</h2><ul><li><a href="../../book/02-control/01-robotd.html">robotd：50 Hz 控制回路</a></li><li><a href="../../book/02-control/02-control-core.html">控制核心：模型、观测、策略与安全</a></li><li><a href="../../book/02-control/03-kinematics.html">运动学、里程计与 IMU</a></li><li><a href="../../book/02-control/04-perception.html">感知与媒体：camera、ToF、检测器</a></li></ul></section><section><h2>第三部分 交互与更新</h2><ul><li><a href="../../book/03-interaction/01-input.html">手柄、BLE、duckctl 与声音</a></li><li><a href="../../book/03-interaction/02-updater.html">更新系统：签名、原子切换、健康门禁与回滚</a></li><li><a href="../../book/03-interaction/03-remote.html">远程访问：WebRTC、账号与中继</a></li></ul></section><section><h2>第四部分 开发与运维</h2><ul><li><a href="../../book/04-development/01-build-test.html">构建、测试与 CI</a></li><li><a href="../../book/04-development/02-dev-sim.html">开发板、开发推送与仿真</a></li><li><a href="../../book/04-development/03-project-history.html">设计决策与故障史</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/05-appendix/01-reading-map.html">代码地图与阅读路线</a></li><li><a href="../../book/05-appendix/02-glossary.html">术语表</a></li><li><a href="../../book/05-appendix/03-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>microduck</h2><ul><li><a href="./readme.html">Microduck 是什么</a></li><li><a href="./contributing.html">开发与测试约定</a></li><li><a href="./docs-index.html">文档地图</a></li><li><a href="./architecture.html">系统架构</a></li><li><a href="./robotd-design.html">robotd 控制回路设计</a></li><li><a href="./updater-design.html">更新系统设计</a></li><li><a href="./policy-channel.html">策略通道</a></li><li><a href="./restart-order.html">重启顺序</a></li><li><a href="./app-path.html">手机 BLE 配置路径</a></li><li><a href="./remote-webrtc.html">远程 WebRTC</a></li><li><a href="./remote-access.html">外网访问与账号</a></li><li><a href="./boot-recovery.html">启动恢复网络</a></li><li><a href="./sim-design.html">仿真设计</a></li><li><a href="./cheatsheet.html">robotctl 速查</a></li><li><a href="./cheatsheet-dev.html">开发板速查</a></li><li><a href="./dev-push.html">开发推送</a></li><li><a href="./duckctl.html">duckctl 使用</a></li><li><a href="./install-dev.html">开发板安装</a></li><li><a href="./pair-gamepad.html">配对手柄</a></li><li><a href="./simulation.html">模拟机器人</a></li><li><a href="./telemetry.html">遥测与隐私</a></li><li><a href="./udp-pad.html">UDP 手柄</a></li><li><a href="./faq.html">常见问题</a></li><li><a href="./recurrent-policies.html">循环策略</a></li><li><a href="./policy-manifest.html">策略清单</a></li><li><a href="./roadmap.html">路线图</a></li><li><a href="./install-path-gap.html">安装路径故障</a></li><li><a href="./media-bringup.html">媒体启动</a></li><li><a href="./npu-bringup.html">NPU 启动</a></li><li><a href="./update-over-ble.html">BLE 更新</a></li><li><a href="./idle-cpu.html">空闲 CPU</a></li><li><a href="./tof-on-demand.html">按需 ToF</a></li><li><a href="./deploy.html">部署配置</a></li><li><a href="./cargo-workspace.html">Cargo workspace</a></li><li><a href="./ipc.html">IPC 契约</a></li><li><a href="./control.html">控制核心</a></li><li><a href="./robotd-control.html">robotd control.rs</a></li><li><a href="./robotd-main.html">robotd main.rs</a></li><li><a href="./kinematics.html">运动学</a></li><li><a href="./odometry.html">里程计</a></li><li><a href="./mediad.html">媒体守护进程</a></li><li><a href="./updater.html">更新引擎</a></li><li><a href="./padd.html">手柄守护进程</a></li><li><a href="./btd.html">BLE 守护进程</a></li><li><a href="./tof.html">ToF 守护进程</a></li><li><a href="./sounds.html">声音与合唱</a></li><li><a href="./duckctl-code.html">duckctl 客户端</a></li><li><a href="./xtask.html">构建工具 xtask</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：microduck · <code>docs/robot/duckctl.md</code> · daemon-dev-main · commit <code>b2b0d21</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/pollen-robotics/microduck/blob/b2b0d213a402caeac492dd662ea891faa17f67c0/docs/robot/duckctl.md">查看原仓库</a> · <a href="../../source-snapshots/microduck/docs/robot/duckctl.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="duckctl-使用">duckctl 使用</h1>
+<p><code>duckctl</code> 让笔记本在没有网络、没有 ssh 的情况下和机器人说话，是手机 App 的替身，也是第一次接触从未连过 Wi-Fi 的机器人的办法。今天走 BLE，但名字刻意不提无线电：<code>mediad</code> 还会给机器人第二条传输，工具按“跟谁说话”命名。它<strong>永远不装在机器人上</strong>，发布版依赖的是 <code>robotctl</code>（见 <a href="cheatsheet.html">robotctl 速查</a>）。</p>
+<h2 id="安装与运行">安装与运行</h2>
+<pre><code class="language-bash">uvx duckctl --name &lt;robot-name&gt; info
+uv tool install duckctl
+brew install pierre-rouanet/tools/duckctl
+cargo install --path duckctl
+cargo run -q -p duckctl -- --name &lt;robot-name&gt; info
+</code></pre>
+<p><code>uvx</code> 跑最新发布并缓存，不编译任何东西；<code>uv tool install</code> 把它装到 PATH。分支构建用 <code>curl -fsSL https://raw.githubusercontent.com/pollen-robotics/microduck/main/scripts/install-duckctl.sh | sh</code>，装 <code>main</code> 最后构建的版本到 <code>~/.local/bin</code>，末尾加 <code>sh -s -- udp-pad</code> 换分支。macOS 浏览器下载的二进制被隔离，用 <code>xattr -d com.apple.quarantine duckctl</code> 清掉。编译不需要系统头文件，libdbus 是编进去的。</p>
+<h2 id="找到机器人">找到机器人</h2>
+<pre><code class="language-bash">duckctl scan
+duckctl ip
+duckctl ssh -- sudo robotctl pad pair
+duckctl scp report.md :/tmp/
+</code></pre>
+<p><code>scan</code> 只列广播 duck 服务的机器人，其余设备计数而不列出，<code>--verbose</code> 才展开。每只机器人广播自己的 IPv4，所以这也是 ssh 地址的来源；过程不建立连接，也不需要 PIN。<code>duckctl ip</code> 只打印地址，可直接 <code>ssh microduck@$(duckctl ip)</code>。<code>duckctl ssh</code> 找到地址后 exec 成 ssh，提示符、终端与退出码都是 ssh 自己的；账号取 <code>--user</code>、<code>DUCK_BOARD_USER</code>，否则 <code>microduck</code>，<code>--</code> 之后在机器人上执行。<code>scp</code> 里以 <code>:</code> 开头的路径在机器人上——就是省掉 host 的 <code>host:path</code>，不含 <code>:</code> 的复制在扫描前就被拒。</p>
+<p><code>ssh</code> 与 <code>scp</code> 把上次地址记在 <code>~/.cache/duckctl/addresses</code>，先试缓存，22 端口一秒内有应答就跳过扫描；不行再扫并刷新。绑定过的机器人常常不再向本机广播，<code>ip</code> 就转而连接并调 <code>net.status</code>，更慢、要 PIN，但总有答案。从未改名的机器人叫 <code>duck-</code> 加序列号派生的四个字符。</p>
+<p>名字可以放进环境，省掉每条命令的 <code>--name</code>：</p>
+<pre><code class="language-bash">export DUCK_ROBOT=duck-c51b
+export DUCK_PIN=418299
+</code></pre>
+<p><code>DUCK_PIN</code> 对应 <code>--pin</code>，改过 PIN 的机器人每条命令都需要它。单次命令 <code>--name</code> 仍优先；<code>DUCK_ROBOT= duckctl scan</code> 可临时清空默认值。完全没有名字时第一只找到的赢；有名字却两只都应答是错误，通常因为引导器留空序列号、板子按 hostname 命名，从机器人上 <code>robotctl system set-name</code> 改一只即可。</p>
+<h2 id="身份网络与健康">身份、网络与健康</h2>
+<pre><code class="language-bash">duckctl info
+duckctl quack
+duckctl name ducky
+duckctl wifi status
+duckctl wifi connect &lt;ssid&gt; --psk &lt;passphrase&gt;
+duckctl health
+duckctl reboot-motors 3 11
+duckctl version
+duckctl logs robotd -n 200
+</code></pre>
+<p><code>quack</code> 用序列号生成的声音回答，静音的机器人会明说拒绝而不是沉默。改名最多 24 字符，几秒生效，但 macOS 会继续用学到的旧名，<code>scan</code> 会滞后。<code>wifi connect</code> 会断开当前网络，最长 45 秒才应答。<code>reboot-motors</code> 是舵机硬件错误（过载、过热、电击）后唯一的出路，否则力矩一直关着；<strong>它先断所有关节的力矩</strong>，之后保持松弛，直到下次写入、按手柄 Start 或 <code>duckctl call robot.init</code>。<code>logs</code> 读本次启动的 journal，支持 <code>-n</code> 与 <code>--boot -1</code>，可读单元包括 <code>updaterd</code>、<code>robotd</code>、<code>configd</code>、<code>btd</code>、<code>padd</code>、<code>mediad</code>、<code>tofd</code>、<code>bluetooth</code>、<code>NetworkManager</code>。</p>
+<h2 id="更新与操作系统">更新与操作系统</h2>
+<pre><code class="language-bash">duckctl update check
+duckctl update apply
+duckctl update apply --ref my-branch
+duckctl update rollback
+duckctl update select 0.5.1
+duckctl update watch
+duckctl os status
+duckctl os apply --build 20261028093000
+duckctl os switch
+</code></pre>
+<p><code>update</code> 与 <code>robotctl update</code> 同词，默认 <code>--component daemon</code>。apply 打印阶段行，最后以 JSON 给出 <code>applied</code>、<code>from</code>、<code>to</code>；<strong>连接在应答后断开是更新成功</strong>，机器人重启 daemon，<code>btd</code> 约五秒后重启。<code>--dry-run</code> 验证完停在切换前，<code>--ref</code> 与 <code>--version</code> 互斥。<code>os</code> 把整个根文件系统装进没在跑的 A/B 槽，每次都重启；只有 <code>microduck_yocto</code> 镜像有槽位。移动中或有远程会话时会拒绝，<code>--interrupt-sessions</code> 解除后者。</p>
+<h2 id="策略技能与手柄">策略、技能与手柄</h2>
+<pre><code class="language-bash">duckctl policy list
+duckctl do roulade
+duckctl policy load walk /opt/robot/policies/current/alpha_walking.onnx
+duckctl policy reset walk
+duckctl policy skill polite-bow --path /var/lib/robot/policies/.../policy.onnx --duration 4
+duckctl policy unskill polite-bow
+duckctl pad bind x polite-bow
+duckctl pad reset x
+</code></pre>
+<p>技能要机器人处于驱动状态（先按手柄 Start），但不需要手柄输入：deadman 自己把速度归零，没人操纵时它就站着做动作。<code>policy load</code> 的路径在<strong>机器人上</strong>且必须绝对，它会把选择写进 <code>robotd.toml</code>，重启后仍在；一次只能动一个槽，全部还原是机器人上的 <code>robotctl policy reset</code>。<code>policy skill</code> 一次调用完成注册与 reload，<code>--command</code> 是运行时喂给网络的 twist。<code>pad bind</code> 先对照本机技能表，打错会带着真名单拒绝。</p>
+<h2 id="被拒绝的方法">被拒绝的方法</h2>
+<p><code>btd</code> 自己拒绝遥操作（<code>robot.move</code>、<code>robot.head</code>、<code>robot.look</code>、<code>robot.pose</code>、<code>robot.mouth</code>）、急停 <code>robot.stop</code>、<code>robot.relax</code>、高频 <code>robot.subscribe</code>、<code>update.pin</code>/<code>update.resetToGolden</code> 与配对 PIN 相关方法，返回错误码 14“not available over Bluetooth”。<code>robot.do</code>、<code>robot.init</code>、<code>robot.enable</code>、<code>robot.rebootMotors</code> 不在其中：它们都只发一次请求，而遥操作是每秒五十次小更新，20 字节通知预算扛不住；<code>robot.relax</code> 被拒的理由是“原本撑着自己的机器人不再撑住”。其余方法用 <code>duckctl call &lt;method&gt; &#39;&lt;json&gt;&#39;</code>，等 60 秒；更新命令等的是三分钟静默，所以更新不用 <code>call update.apply</code>。</p>
+</article></main></body></html>

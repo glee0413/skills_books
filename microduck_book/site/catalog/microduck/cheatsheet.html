@@ -1,0 +1,59 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>robotctl 速查 · Microduck 机器人系统实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Microduck 机器人系统实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-what-is-microduck.html">Microduck 是什么：硬件、目标与代码地图</a></li></ul></section><section><h2>第一部分 系统架构</h2><ul><li><a href="../../book/01-architecture/01-architecture.html">七个 daemon 与一个机器人</a></li><li><a href="../../book/01-architecture/02-ipc.html">IPC 契约：JSON-RPC、意图与状态</a></li></ul></section><section><h2>第二部分 控制与感知</h2><ul><li><a href="../../book/02-control/01-robotd.html">robotd：50 Hz 控制回路</a></li><li><a href="../../book/02-control/02-control-core.html">控制核心：模型、观测、策略与安全</a></li><li><a href="../../book/02-control/03-kinematics.html">运动学、里程计与 IMU</a></li><li><a href="../../book/02-control/04-perception.html">感知与媒体：camera、ToF、检测器</a></li></ul></section><section><h2>第三部分 交互与更新</h2><ul><li><a href="../../book/03-interaction/01-input.html">手柄、BLE、duckctl 与声音</a></li><li><a href="../../book/03-interaction/02-updater.html">更新系统：签名、原子切换、健康门禁与回滚</a></li><li><a href="../../book/03-interaction/03-remote.html">远程访问：WebRTC、账号与中继</a></li></ul></section><section><h2>第四部分 开发与运维</h2><ul><li><a href="../../book/04-development/01-build-test.html">构建、测试与 CI</a></li><li><a href="../../book/04-development/02-dev-sim.html">开发板、开发推送与仿真</a></li><li><a href="../../book/04-development/03-project-history.html">设计决策与故障史</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/05-appendix/01-reading-map.html">代码地图与阅读路线</a></li><li><a href="../../book/05-appendix/02-glossary.html">术语表</a></li><li><a href="../../book/05-appendix/03-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>microduck</h2><ul><li><a href="./readme.html">Microduck 是什么</a></li><li><a href="./contributing.html">开发与测试约定</a></li><li><a href="./docs-index.html">文档地图</a></li><li><a href="./architecture.html">系统架构</a></li><li><a href="./robotd-design.html">robotd 控制回路设计</a></li><li><a href="./updater-design.html">更新系统设计</a></li><li><a href="./policy-channel.html">策略通道</a></li><li><a href="./restart-order.html">重启顺序</a></li><li><a href="./app-path.html">手机 BLE 配置路径</a></li><li><a href="./remote-webrtc.html">远程 WebRTC</a></li><li><a href="./remote-access.html">外网访问与账号</a></li><li><a href="./boot-recovery.html">启动恢复网络</a></li><li><a href="./sim-design.html">仿真设计</a></li><li><a href="./cheatsheet.html">robotctl 速查</a></li><li><a href="./cheatsheet-dev.html">开发板速查</a></li><li><a href="./dev-push.html">开发推送</a></li><li><a href="./duckctl.html">duckctl 使用</a></li><li><a href="./install-dev.html">开发板安装</a></li><li><a href="./pair-gamepad.html">配对手柄</a></li><li><a href="./simulation.html">模拟机器人</a></li><li><a href="./telemetry.html">遥测与隐私</a></li><li><a href="./udp-pad.html">UDP 手柄</a></li><li><a href="./faq.html">常见问题</a></li><li><a href="./recurrent-policies.html">循环策略</a></li><li><a href="./policy-manifest.html">策略清单</a></li><li><a href="./roadmap.html">路线图</a></li><li><a href="./install-path-gap.html">安装路径故障</a></li><li><a href="./media-bringup.html">媒体启动</a></li><li><a href="./npu-bringup.html">NPU 启动</a></li><li><a href="./update-over-ble.html">BLE 更新</a></li><li><a href="./idle-cpu.html">空闲 CPU</a></li><li><a href="./tof-on-demand.html">按需 ToF</a></li><li><a href="./deploy.html">部署配置</a></li><li><a href="./cargo-workspace.html">Cargo workspace</a></li><li><a href="./ipc.html">IPC 契约</a></li><li><a href="./control.html">控制核心</a></li><li><a href="./robotd-control.html">robotd control.rs</a></li><li><a href="./robotd-main.html">robotd main.rs</a></li><li><a href="./kinematics.html">运动学</a></li><li><a href="./odometry.html">里程计</a></li><li><a href="./mediad.html">媒体守护进程</a></li><li><a href="./updater.html">更新引擎</a></li><li><a href="./padd.html">手柄守护进程</a></li><li><a href="./btd.html">BLE 守护进程</a></li><li><a href="./tof.html">ToF 守护进程</a></li><li><a href="./sounds.html">声音与合唱</a></li><li><a href="./duckctl-code.html">duckctl 客户端</a></li><li><a href="./xtask.html">构建工具 xtask</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：microduck · <code>docs/robot/cheatsheet.md</code> · daemon-dev-main · commit <code>b2b0d21</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/pollen-robotics/microduck/blob/b2b0d213a402caeac492dd662ea891faa17f67c0/docs/robot/cheatsheet.md">查看原仓库</a> · <a href="../../source-snapshots/microduck/docs/robot/cheatsheet.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="robotctl-速查">robotctl 速查</h1>
+<p><code>robotctl</code> 跑在机器人上，本文命令都取自随附分支的 <code>--help</code>。只读命令不需要权限；任何改变机器人的操作都要 <code>sudo</code>（或在 <code>configd</code> 的 <code>--allow-user</code>/<code>--allow-group</code>、<code>updater.toml</code> 的 <code>allow_uids</code>/<code>allow_gids</code> 里授权）。分支构建、候选版本和更新后的重启陷阱见<a href="cheatsheet-dev.html">开发板速查</a>，纯蓝牙路径见 <a href="duckctl.html">duckctl 使用</a>。</p>
+<h2 id="先跑-version-与-health">先跑 version 与 health</h2>
+<pre><code>robotctl version
+robotctl health
+</code></pre>
+<p><code>version</code> 对比每个 daemon 正在跑的与已安装的版本，不一致就告警——更新后 daemon 仍在跑旧代码，看起来和被修的 bug 一模一样。<code>health</code> 一份报告覆盖软硬件，不健康或不可达时退出码非零，可直接当脚本门禁；<code>--json</code> 出支持包，<code>--check</code> 先检查更新源。<code>monitor</code> 帧首最后一行来自每两秒轮询的 <code>robot.health</code>：电量电压与百分比、最热舵机、板温，以及 <code>unhealthy: control loop at 43.9 Hz</code>、<code>orientation frozen — 25 stale reads</code> 这类结论。</p>
+<h2 id="monitor一条流看全部">monitor：一条流看全部</h2>
+<pre><code>robotctl monitor
+</code></pre>
+<p>显示客户端请求的量与实际施加的量，不同时点名原因（如 <code>deadman — no intent arrived recently, velocity zeroed</code>）。帧上还有逐关节命令与实测、IMU 投影重力与跌倒判定、回路速率轨迹。右侧按实测关节角与重力向量画出机器人，<code>d</code> 开关、<code>[</code>/<code>]</code> 或左右方向键旋转；ToF 有帧时点云叠加进同一场景，绿为地面、黄为命中，并做深度遮挡，所以“它在看我的手还是看自己”有答案。再下面是里程计轨迹，面板不长大、世界缩小，<code>+</code> 是起点、<code>●</code> 是机器人。按键：<code>q</code> 退出、<code>u</code> 切换角度单位、<code>t</code> 开 ToF 矩阵、<code>c</code> 开相机、<code>p</code> 打开手柄原始输入。重定向时每 tick 打印一行，完整状态用：</p>
+<pre><code>robotctl monitor --json --hz 50 &gt; run.jsonl
+</code></pre>
+<h2 id="configure该改的配置文件">configure：该改的配置文件</h2>
+<pre><code>sudo robotctl configure
+robotctl configure --list
+</code></pre>
+<p>编辑器叠加在镜像的 <code>/etc/robot/robotd.toml</code> 之上，写入 <code>/var/lib/robot/robotd.toml</code>；schema、默认值与校验和 <code>robotd</code> 同源，保存前用 daemon 自己的 loader 验证并原子写，注释与其他版本的键原样保留。SPACE 切换、ENTER 输入、<code>u</code> 还原、<code>ctrl+f</code> 模糊搜索；黄色带 <code>•</code> 的键是本机偏离默认之处。保存会提示所需动作：多数键要重启，<code>[policy]</code> 只需 <code>robotd</code> reload，<code>[pad]</code> 与 <code>pad_</code> 各段一秒内由 <code>padd</code> 自己拾取。<code>media.quality</code> 可设 <code>1080p30</code>、<code>720p30</code>、<code>720p15</code>、<code>360p30</code>；<code>media.source = test</code> 推测试图（256x144@5），因为 WebRTC 控制通道骑在视频轨上，管线起不来的板子两样都丢。</p>
+<h2 id="策略技能与手柄">策略、技能与手柄</h2>
+<pre><code>robotctl policy list
+robotctl policy check
+sudo robotctl policy update
+sudo robotctl policy load walk /home/microduck/my_walking.onnx
+sudo robotctl policy reset walk
+robotctl policy search microduck
+sudo robotctl policy add polite-bow fffiloni/microduck-polite-bow-b1d864
+robotctl robot do polite-bow
+</code></pre>
+<p>槽位（slot）是默认跑的网络，技能（skill）是被点名才跑的一次性策略；两者都是 Hub 上的文件，换文件不用发版、不用重启。<code>policy load</code> 只接受 <code>obs[1,61] -&gt; actions[1,14]</code> 形状，加载失败保留原策略。社区策略要先把 <code>policy.allow_community</code> 设为 <code>true</code>，且没有任何人验证过——第一次把机器人放在支架上。技能要在驱动状态下才会执行（先按手柄 <strong>Start</strong>）。绑定按钮：</p>
+<pre><code>robotctl pad bindings
+sudo robotctl pad bind x polite-bow
+sudo robotctl pad reset
+</code></pre>
+<p>可绑 <code>a</code>、<code>b</code>、<code>x</code>、<code>y</code>、<code>lb</code>、<code>rb</code>（<code>lb</code>/<code>rb</code> 是肩键，模拟扳机是嘴和叫声），<code>padd</code> 一秒内生效，名字不对会带着真名单拒绝。</p>
+<h2 id="电机电量与整机实验">电机、电量与整机实验</h2>
+<pre><code>sudo robotctl robot init
+sudo robotctl robot relax --yes
+sudo robotctl robot reboot-motors
+robotctl vetbook
+sudo robotctl endurance
+</code></pre>
+<p><code>init</code> 给关节上电并在约两秒内爬到 home 姿态，<strong>会动每一个关节</strong>；<code>relax</code> 断电，没人扶着就会塌，所以要 <code>--yes</code>；<code>reboot-motors</code> 可带关节号，先断力矩。<code>vetbook</code> 是鸭子的一生账本：记录、逐关节寿命与日记，<code>--json</code> 给 <code>robot.vetbook</code> 的答案。<code>endurance</code> 在起点半米内随机走、站、坐直到电池耗尽，作为 <code>robotctl-endurance</code> 单元在后台跑，数据写到 <code>/var/lib/endurance/&lt;hostname&gt;-&lt;time&gt;/</code> 的 <code>samples.csv</code>、<code>events.csv</code>、<code>meta.json</code>。</p>
+<h2 id="声音合唱网络与更新">声音、合唱、网络与更新</h2>
+<pre><code>robotctl quack
+robotctl chorale
+robotctl theremin
+robotctl net status
+sudo robotctl net connect &lt;ssid&gt; --psk-stdin
+sudo robotctl account login
+robotctl update status
+sudo robotctl update apply daemon
+sudo robotctl update rollback daemon
+robotctl update log
+</code></pre>
+<p><code>quack</code> 是最快的“我连对了鸭吗”：每只鸭的声音由 SoC 序列号生成，没声音就是找错了。合唱与 theremin 都默认关闭（<code>[chorale] accept</code>、<code>[theremin] enabled</code>）；合唱没有共享时钟，指挥的节拍计数就是时基。<code>net connect</code> 会断开当前网络，ssh 会掉，那是成功；<code>--psk-stdin</code> 让口令不出现在 <code>ps</code> 里。<code>account login</code> 走 RFC 8628 设备码，令牌 30 天并自动续期。更新历史与 journal 分开存放，掉电也在；<code>update log</code> 一行一次尝试，<code>update show 42</code> 打印那一轮的完整时序。</p>
+</article></main></body></html>

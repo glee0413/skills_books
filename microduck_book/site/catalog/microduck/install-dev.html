@@ -1,0 +1,66 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>开发板安装 · Microduck 机器人系统实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Microduck 机器人系统实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-what-is-microduck.html">Microduck 是什么：硬件、目标与代码地图</a></li></ul></section><section><h2>第一部分 系统架构</h2><ul><li><a href="../../book/01-architecture/01-architecture.html">七个 daemon 与一个机器人</a></li><li><a href="../../book/01-architecture/02-ipc.html">IPC 契约：JSON-RPC、意图与状态</a></li></ul></section><section><h2>第二部分 控制与感知</h2><ul><li><a href="../../book/02-control/01-robotd.html">robotd：50 Hz 控制回路</a></li><li><a href="../../book/02-control/02-control-core.html">控制核心：模型、观测、策略与安全</a></li><li><a href="../../book/02-control/03-kinematics.html">运动学、里程计与 IMU</a></li><li><a href="../../book/02-control/04-perception.html">感知与媒体：camera、ToF、检测器</a></li></ul></section><section><h2>第三部分 交互与更新</h2><ul><li><a href="../../book/03-interaction/01-input.html">手柄、BLE、duckctl 与声音</a></li><li><a href="../../book/03-interaction/02-updater.html">更新系统：签名、原子切换、健康门禁与回滚</a></li><li><a href="../../book/03-interaction/03-remote.html">远程访问：WebRTC、账号与中继</a></li></ul></section><section><h2>第四部分 开发与运维</h2><ul><li><a href="../../book/04-development/01-build-test.html">构建、测试与 CI</a></li><li><a href="../../book/04-development/02-dev-sim.html">开发板、开发推送与仿真</a></li><li><a href="../../book/04-development/03-project-history.html">设计决策与故障史</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/05-appendix/01-reading-map.html">代码地图与阅读路线</a></li><li><a href="../../book/05-appendix/02-glossary.html">术语表</a></li><li><a href="../../book/05-appendix/03-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>microduck</h2><ul><li><a href="./readme.html">Microduck 是什么</a></li><li><a href="./contributing.html">开发与测试约定</a></li><li><a href="./docs-index.html">文档地图</a></li><li><a href="./architecture.html">系统架构</a></li><li><a href="./robotd-design.html">robotd 控制回路设计</a></li><li><a href="./updater-design.html">更新系统设计</a></li><li><a href="./policy-channel.html">策略通道</a></li><li><a href="./restart-order.html">重启顺序</a></li><li><a href="./app-path.html">手机 BLE 配置路径</a></li><li><a href="./remote-webrtc.html">远程 WebRTC</a></li><li><a href="./remote-access.html">外网访问与账号</a></li><li><a href="./boot-recovery.html">启动恢复网络</a></li><li><a href="./sim-design.html">仿真设计</a></li><li><a href="./cheatsheet.html">robotctl 速查</a></li><li><a href="./cheatsheet-dev.html">开发板速查</a></li><li><a href="./dev-push.html">开发推送</a></li><li><a href="./duckctl.html">duckctl 使用</a></li><li><a href="./install-dev.html">开发板安装</a></li><li><a href="./pair-gamepad.html">配对手柄</a></li><li><a href="./simulation.html">模拟机器人</a></li><li><a href="./telemetry.html">遥测与隐私</a></li><li><a href="./udp-pad.html">UDP 手柄</a></li><li><a href="./faq.html">常见问题</a></li><li><a href="./recurrent-policies.html">循环策略</a></li><li><a href="./policy-manifest.html">策略清单</a></li><li><a href="./roadmap.html">路线图</a></li><li><a href="./install-path-gap.html">安装路径故障</a></li><li><a href="./media-bringup.html">媒体启动</a></li><li><a href="./npu-bringup.html">NPU 启动</a></li><li><a href="./update-over-ble.html">BLE 更新</a></li><li><a href="./idle-cpu.html">空闲 CPU</a></li><li><a href="./tof-on-demand.html">按需 ToF</a></li><li><a href="./deploy.html">部署配置</a></li><li><a href="./cargo-workspace.html">Cargo workspace</a></li><li><a href="./ipc.html">IPC 契约</a></li><li><a href="./control.html">控制核心</a></li><li><a href="./robotd-control.html">robotd control.rs</a></li><li><a href="./robotd-main.html">robotd main.rs</a></li><li><a href="./kinematics.html">运动学</a></li><li><a href="./odometry.html">里程计</a></li><li><a href="./mediad.html">媒体守护进程</a></li><li><a href="./updater.html">更新引擎</a></li><li><a href="./padd.html">手柄守护进程</a></li><li><a href="./btd.html">BLE 守护进程</a></li><li><a href="./tof.html">ToF 守护进程</a></li><li><a href="./sounds.html">声音与合唱</a></li><li><a href="./duckctl-code.html">duckctl 客户端</a></li><li><a href="./xtask.html">构建工具 xtask</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：microduck · <code>docs/robot/install-dev.md</code> · daemon-dev-main · commit <code>b2b0d21</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/pollen-robotics/microduck/blob/b2b0d213a402caeac492dd662ea891faa17f67c0/docs/robot/install-dev.md">查看原仓库</a> · <a href="../../source-snapshots/microduck/docs/robot/install-dev.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="开发板安装">开发板安装</h1>
+<p>把一块裸板变成能推分支的机器人。开发板信任团队开发密钥，所以谁构建的都装；客户机器人故意拒绝这些构建。开发构建没有任何放松：同样的签名与哈希校验、健康门禁、自动回滚，区别只在签名密钥——客户机器人双重拒绝它们，<code>allow_dev_keys = false</code>，且只有文件名以 <code>.dev.pub</code> 结尾的受信密钥才算开发密钥。</p>
+<h2 id="刷机与前置条件">刷机与前置条件</h2>
+<p>用 Armbian imager 选 <strong>Radxa Zero 3</strong> 与 <strong>Armbian 26.2.1 Minimal</strong>。写入前在镜像工具里填 Wi-Fi、用户名和密码，省掉串口控制台；之后 <code>ssh-copy-id microduck@192.168.1.42</code>，因为 provisioning 会重启板子并自行重连，密码提示撑不过去。</p>
+<p>还需要：板的 IP（镜像上的 mDNS 不可靠，<code>duckctl ip</code> 可经蓝牙问，路由器租约表是后备）、ssh 密钥登录、GitHub token（仓库私有期间发布产物拿不到）、本仓库克隆（开发公钥已提交在 <code>deploy/dev-key/team.dev.pub</code>，不用向人要）。</p>
+<h2 id="一条命令完成-provisioning">一条命令完成 provisioning</h2>
+<pre><code class="language-bash">export DUCK_TOKEN=github_pat_replace_with_your_token
+./scripts/provision-board.sh --pause-btd-on-pair --name &lt;MY_COOL_ROBOT_NAME&gt; microduck@192.168.1.42
+</code></pre>
+<p>它送上开发密钥、开始 provisioning、等过重启、流式打印日志，最后跑 <code>robotctl health</code>。<code>--pause-btd-on-pair</code> 在这里是默认：aic8800 射频在 <code>btd</code> 广播时无法建立<strong>新</strong> bond，该标记让 <code>robotctl pad pair</code> 在配对窗口停掉 <code>btd</code> 并给适配器断电重启，随后再启动；已有 bond 不受影响。</p>
+<p>它是观察者而不是工人：provisioning 装了 systemd 单元，开机接着跑，Ctrl-C 不损失什么，日志可 <code>ssh -t microduck@192.168.1.42 &#39;sudo tail -f /var/lib/robot/provision.log&#39;</code> 接回。<code>--ref BRANCH</code> 用分支脚本做 bring-up 并在其上装该分支的 daemon；<code>golden</code> 仍是稳定版，因为它是启动恢复网络的兜底，用分支当 golden 会让坏分支拥有坏兜底。分支装不上或被健康门禁回滚，provisioning 即失败——开发板悄悄跑着稳定版是最难查的故障。<code>--local</code> 发送本克隆的 <code>provision.sh</code>，<code>--no-dev-key</code> 造一块只收正式版的板子。</p>
+<h2 id="配对的三种配置">配对的三种配置</h2>
+<p>先配一次手柄、读失败，再选：</p>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>板子要什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>能 bond 也能驱动</td>
+<td>不加参数</td>
+</tr>
+<tr>
+<td>无法 bond；最后一步 SMP 不完成</td>
+<td><code>--pause-btd-on-pair</code></td>
+</tr>
+<tr>
+<td>暂停 <code>btd</code> 也无法 bond</td>
+<td><code>--weird-ble</code>（隐含暂停，并设 <code>Privacy = device</code>）</td>
+</tr>
+<tr>
+<td>能 bond 但反复 <code>PIN or Key Missing (0x06)</code></td>
+<td>用错了：去掉 <code>--weird-ble</code>，只留暂停</td>
+</tr>
+</tbody></table>
+<p>最后一行最要紧：只需要暂停的板子加上 <code>Privacy = device</code>，bond 会立刻失效，比干脆配不上更难诊断；实测某地址下 <code>off</code> 加暂停稳定，<code>device</code> 在 45 秒里抖 46 次。改回只用暂停：<code>sudo sed -i &#39;s/^Privacy = device/Privacy = off/&#39; /etc/bluetooth/main.conf &amp;&amp; sudo reboot</code>。任何 <code>Privacy</code> 改动后都要重新配对，因为存储密钥依赖地址。细节见<a href="pair-gamepad.html">配对手柄</a>。</p>
+<h2 id="验证与首条分支">验证与首条分支</h2>
+<pre><code class="language-bash">robotctl health
+grep -c &#39;DEV BOARD&#39; /var/lib/robot/provision.log
+sudo robotctl update apply --ref main daemon
+</code></pre>
+<p><code>1</code> 表示密钥真的落地；<code>0</code> 表示没落地，之后 <code>--ref</code> 会被拒绝，错误读起来像产物损坏——这个检查就是为了尽早抓到它。重刷后 ssh 拒绝连接，是因为主机密钥重新生成，<code>StrictHostKeyChecking=accept-new</code> 不覆盖“主机不新、密钥新”，用 <code>./scripts/provision-board.sh microduck@192.168.1.42 --forget-host-key</code>。provisioning 中的 Wi-Fi 切换可能换租约，脚本会同时用蓝牙问出最终地址并采用，前提是 <code>cargo</code> 与克隆都在、<code>btd</code> 已起来（首次约在第 2 阶段几分钟后），且它报的是 Wi-Fi 地址。</p>
+<h2 id="让已有板子接受开发构建">让已有板子接受开发构建</h2>
+<p>两半都要，只做一半仍然拒绝分支构建。省事做法是带密钥重跑安装器：</p>
+<pre><code class="language-bash">sudo DUCK_TOKEN=&quot;$DUCK_TOKEN&quot; DUCK_DEV_KEY=/tmp/team.dev.pub sh /tmp/install.sh
+</code></pre>
+<p>它无论源文件名是什么都装成 <code>team.dev.pub</code>——<code>.dev.</code> 这一段才是开发密钥的分类依据，装成别的名字会被当作<strong>发布</strong>密钥。手工版：</p>
+<pre><code class="language-bash">sudo cp team.dev.pub /etc/robot/trusted_keys/team.dev.pub
+sudo sed -i &#39;s/^allow_dev_keys.*/allow_dev_keys        = true/&#39; /etc/robot/updater.toml
+sudo systemctl restart updaterd
+</code></pre>
+<p>token 要进 <code>updaterd</code> 自己的环境（shell 里 export 到不了 daemon）：写 <code>/etc/systemd/system/updaterd.service.d/token.conf</code> 里的 <code>Environment=GITHUB_TOKEN=...</code>，<code>chmod 600</code>，再 <code>daemon-reload</code> 与重启。客户机器人不该带 token——镜像里的全舰队凭据无法轮换——这也正是答案应该是公开仓库的原因。</p>
+<h2 id="无网络安装">无网络安装</h2>
+<p>板上已有发布时，走 daemon，带门禁与回滚：</p>
+<pre><code class="language-bash">sudo robotctl update apply daemon --from /media/usb/release
+</code></pre>
+<p>裸板（出厂或离线、还没有 daemon 可问）用 <code>updaterd</code>：</p>
+<pre><code class="language-bash">sudo /opt/robot/daemon/current/bin/updaterd install --from /media/usb/release
+</code></pre>
+<p>目录里要有 <code>&lt;version&gt;.manifest.json</code>、其 <code>.minisig</code>、产物及其 <code>.minisig</code>；签名、哈希、兼容性照查，<code>--from</code> 只改字节来处，不改信任什么。它一旦有发布在跑就拒绝，因为会强制关掉 <code>on_apply</code> 与健康门禁，那等于悄悄关掉自动回滚。唯一需要它的场景是板上 <code>updaterd</code> 太旧、装不上修“太旧”的那个版本：先 <code>sudo systemctl stop robotd</code>，再 <code>updaterd install --from ... --force</code>；<code>--force</code> 在 <code>robotd</code> 还应答时会被拒。更深的信任链与文件布局见 <code>deploy/README.md</code>。</p>
+</article></main></body></html>

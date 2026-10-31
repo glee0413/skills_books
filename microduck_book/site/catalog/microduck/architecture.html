@@ -1,0 +1,80 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>系统架构 · Microduck 机器人系统实战</title><link rel="stylesheet" href="../../assets/book.css"></head><body class="with-sidebar"><aside class="sidebar"><div class="brand"><a href="../../index.html">Microduck 机器人系统实战</a></div><section><h2>导读</h2><ul><li><a href="../../book/00-intro/01-what-is-microduck.html">Microduck 是什么：硬件、目标与代码地图</a></li></ul></section><section><h2>第一部分 系统架构</h2><ul><li><a href="../../book/01-architecture/01-architecture.html">七个 daemon 与一个机器人</a></li><li><a href="../../book/01-architecture/02-ipc.html">IPC 契约：JSON-RPC、意图与状态</a></li></ul></section><section><h2>第二部分 控制与感知</h2><ul><li><a href="../../book/02-control/01-robotd.html">robotd：50 Hz 控制回路</a></li><li><a href="../../book/02-control/02-control-core.html">控制核心：模型、观测、策略与安全</a></li><li><a href="../../book/02-control/03-kinematics.html">运动学、里程计与 IMU</a></li><li><a href="../../book/02-control/04-perception.html">感知与媒体：camera、ToF、检测器</a></li></ul></section><section><h2>第三部分 交互与更新</h2><ul><li><a href="../../book/03-interaction/01-input.html">手柄、BLE、duckctl 与声音</a></li><li><a href="../../book/03-interaction/02-updater.html">更新系统：签名、原子切换、健康门禁与回滚</a></li><li><a href="../../book/03-interaction/03-remote.html">远程访问：WebRTC、账号与中继</a></li></ul></section><section><h2>第四部分 开发与运维</h2><ul><li><a href="../../book/04-development/01-build-test.html">构建、测试与 CI</a></li><li><a href="../../book/04-development/02-dev-sim.html">开发板、开发推送与仿真</a></li><li><a href="../../book/04-development/03-project-history.html">设计决策与故障史</a></li></ul></section><section><h2>附录</h2><ul><li><a href="../../book/05-appendix/01-reading-map.html">代码地图与阅读路线</a></li><li><a href="../../book/05-appendix/02-glossary.html">术语表</a></li><li><a href="../../book/05-appendix/03-sources.html">来源、许可证与版本</a></li></ul></section><section><h2>microduck</h2><ul><li><a href="./readme.html">Microduck 是什么</a></li><li><a href="./contributing.html">开发与测试约定</a></li><li><a href="./docs-index.html">文档地图</a></li><li><a href="./architecture.html">系统架构</a></li><li><a href="./robotd-design.html">robotd 控制回路设计</a></li><li><a href="./updater-design.html">更新系统设计</a></li><li><a href="./policy-channel.html">策略通道</a></li><li><a href="./restart-order.html">重启顺序</a></li><li><a href="./app-path.html">手机 BLE 配置路径</a></li><li><a href="./remote-webrtc.html">远程 WebRTC</a></li><li><a href="./remote-access.html">外网访问与账号</a></li><li><a href="./boot-recovery.html">启动恢复网络</a></li><li><a href="./sim-design.html">仿真设计</a></li><li><a href="./cheatsheet.html">robotctl 速查</a></li><li><a href="./cheatsheet-dev.html">开发板速查</a></li><li><a href="./dev-push.html">开发推送</a></li><li><a href="./duckctl.html">duckctl 使用</a></li><li><a href="./install-dev.html">开发板安装</a></li><li><a href="./pair-gamepad.html">配对手柄</a></li><li><a href="./simulation.html">模拟机器人</a></li><li><a href="./telemetry.html">遥测与隐私</a></li><li><a href="./udp-pad.html">UDP 手柄</a></li><li><a href="./faq.html">常见问题</a></li><li><a href="./recurrent-policies.html">循环策略</a></li><li><a href="./policy-manifest.html">策略清单</a></li><li><a href="./roadmap.html">路线图</a></li><li><a href="./install-path-gap.html">安装路径故障</a></li><li><a href="./media-bringup.html">媒体启动</a></li><li><a href="./npu-bringup.html">NPU 启动</a></li><li><a href="./update-over-ble.html">BLE 更新</a></li><li><a href="./idle-cpu.html">空闲 CPU</a></li><li><a href="./tof-on-demand.html">按需 ToF</a></li><li><a href="./deploy.html">部署配置</a></li><li><a href="./cargo-workspace.html">Cargo workspace</a></li><li><a href="./ipc.html">IPC 契约</a></li><li><a href="./control.html">控制核心</a></li><li><a href="./robotd-control.html">robotd control.rs</a></li><li><a href="./robotd-main.html">robotd main.rs</a></li><li><a href="./kinematics.html">运动学</a></li><li><a href="./odometry.html">里程计</a></li><li><a href="./mediad.html">媒体守护进程</a></li><li><a href="./updater.html">更新引擎</a></li><li><a href="./padd.html">手柄守护进程</a></li><li><a href="./btd.html">BLE 守护进程</a></li><li><a href="./tof.html">ToF 守护进程</a></li><li><a href="./sounds.html">声音与合唱</a></li><li><a href="./duckctl-code.html">duckctl 客户端</a></li><li><a href="./xtask.html">构建工具 xtask</a></li></ul></section><p class="sidebar-footer"><a href="../index.html">知识全库</a></p></aside><main class="content"><section class="source-box">
+  <strong>来源</strong>：microduck · <code>docs/design/architecture.md</code> · daemon-dev-main · commit <code>b2b0d21</code><br>
+  <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/pollen-robotics/microduck/blob/b2b0d213a402caeac492dd662ea891faa17f67c0/docs/design/architecture.md">查看原仓库</a> · <a href="../../source-snapshots/microduck/docs/design/architecture.md">查看英文快照</a>
+</section><article class="markdown-body"><h1 id="系统架构">系统架构</h1>
+<p>整机一页：服务怎么拆、彼此怎么说话、状态放在哪、谁有安全授权。原文范围为&quot;第一个出货版本&quot;，不是会被重写的 <code>microduck_runtime</code> 原型。</p>
+<h2 id="七个守护进程与三条结构性规则">七个守护进程与三条结构性规则</h2>
+<p><strong>只有 <code>robotd</code> 碰机器人。</strong> 十五个舵机和 IMU 板共享一条串口总线，50 Hz 控制回路独占它；客户端只能发<strong>意图</strong>（&quot;这么快走&quot;&quot;看那里&quot;&quot;站起来&quot;），由 <code>robotd</code> 内的安全层决定什么可执行。</p>
+<p><code>configd</code>、<code>updaterd</code>、<code>btd</code> 对 <code>robotd</code> 没有 systemd 依赖、不带 ML 运行时、不带媒体栈，因为&quot;控制回路起不来的机器人&quot;正是需要被重新配置、更新或回滚的那台。这也是配置在 <code>configd</code> 而非 <code>robotd</code> 的理由。<code>mediad</code> 和 <code>padd</code> 允许依赖它：没有相机和手柄的机器人仍可更新。</p>
+<p><code>btd</code>、<code>padd</code>、<code>mediad</code> <strong>不拥有机器人任何东西</strong>，只是传输：BLE 子集、手柄、WebRTC 数据通道。三者可替换而不触碰行为，且每天被使用，所以应用要用的 API 不会悄悄腐坏。</p>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>拥有</th>
+<th>监听</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>robotd</code></td>
+<td>电机、感知、策略、安全、<code>robot.health</code></td>
+<td><code>/run/robotd.sock</code></td>
+</tr>
+<tr>
+<td><code>configd</code></td>
+<td>Wi-Fi、身份、配对 PIN、手柄绑定、重启</td>
+<td><code>/run/configd.sock</code></td>
+</tr>
+<tr>
+<td><code>updaterd</code></td>
+<td>发布的校验、交换、门禁、回滚</td>
+<td><code>/run/updaterd.sock</code></td>
+</tr>
+<tr>
+<td><code>btd</code></td>
+<td>无——API 子集的 BLE 传输</td>
+<td>BLE GATT</td>
+</tr>
+<tr>
+<td><code>padd</code></td>
+<td>无——手柄传输</td>
+<td><code>/run/padd/pad.sock</code></td>
+</tr>
+<tr>
+<td><code>mediad</code></td>
+<td>相机音频管线、WebRTC、远程前门</td>
+<td><code>:8080</code>、<code>:8443</code></td>
+</tr>
+<tr>
+<td><code>tofd</code></td>
+<td>头部 ToF，8×8 深度，只发布</td>
+<td><code>/run/tofd/tof.sock</code></td>
+</tr>
+</tbody></table>
+<h2 id="发布与状态">发布与状态</h2>
+<p>一次构建整体落在 <code>/opt/robot/daemon/releases/&lt;version&gt;/</code>；<code>updaterd</code> 校验签名、移动 <code>current</code>、重启单元，再问 <code>robotd</code> 健不健康，不健康就放回旧发布。崩溃循环由启动计数器兜住，见<a href="./updater-design.html">更新系统设计</a>。</p>
+<p>状态规则一句话：<strong><code>releases/&lt;ver&gt;/</code> 之外的一切在更新和回滚中都存活</strong>。OS 走 A/B 槽时 <code>/etc</code> 随镜像替换，只有 <code>/var/lib/robot</code> 存活，于是 <code>robotd.toml</code> 分两层：<code>/etc/robot/robotd.toml</code> 是镜像基底，<code>/var/lib/robot/robotd.toml</code> 只放这台机器改过的键，由 <code>robotd_params::Params::load</code> 合并。用户层坏了不拦机器人：搁置文件、按基底运行、报 <em>degraded</em> 并点名——绝不 <em>unhealthy</em>，否则每一版发布都会因为这个谁也修不了的文件被回滚。</p>
+<h2 id="控制面与数据面">控制面与数据面</h2>
+<p>控制面是命令、配置、状态、感知事件，几十字节、≤100 Hz，走 socket；数据面是约 27 MB/s 的视频，<strong>绝不跨 socket</strong>。</p>
+<p>控制面用 <strong>JSON-RPC 2.0、一行一个对象（NDJSON）</strong>，框架 <code>tokio_util::codec::LinesCodec</code>。选标准协议看中的是请求/响应关联、错误对象和<strong>通知</strong>——推送进度与事件流正好是这个形状；异步配处处超时，沉默 socket 是正常答案。</p>
+<p>真正的理由是 <strong>Unix socket 而非 localhost HTTP</strong>：文件权限（<code>0660</code> 加专用组）就是免费授权；<code>SO_PEERCRED</code> 给出调用者身份，同时用于审计和强制——socket 组决定谁能<strong>说话</strong>，<code>allow_uids</code>/<code>allow_gids</code> 决定谁能<strong>改机器人</strong>（仅变更类调用），只读调用故意不设门，好让支持人员检查一台无权修改的机器人；&quot;绑错接口&quot;这一类 bug 不再可表达，因为绑 <code>0.0.0.0</code> 会把固件更新控制暴露到网络。不用 HTTP/WS 的独立理由是协议需要服务端推送：HTTP 上要 POST 调用加 WebSocket/SSE 通知两套机制，而持久 NDJSON 上调用和通知是一套、没有握手，<strong>概念更少才是目标</strong>。</p>
+<p>数据面坚持<strong>传特征不传帧</strong>：<code>robotd</code> 不需要相机帧，需要&quot;球在 (x,y)&quot;&quot;有人&quot;这类几十字节、10–30 Hz 的派生特征。感知放在传感器旁边，<code>mediad</code> 跑推理并发布；控制回路只读本地缓存的<strong>最新</strong>快照，后写胜出，于是 <code>mediad</code> 卡住只降低感知质量，不增加电机抖动。</p>
+<h2 id="安全与授权">安全与授权</h2>
+<ul>
+<li><strong>死区/心跳</strong>：命令停止或 RTT 突增，<code>robotd</code> 自己停下。网络会分区、LLM 会卡住、笔记本会睡眠。</li>
+<li><strong>意图而非电机写入</strong>：远程只发速度、注视、&quot;坐下&quot;，跌倒检测与关节/温度限制仍由 <code>robotd</code> 权威决定。</li>
+<li><strong>显式仲裁</strong>：手柄、应用、远程、自主层要有优先级与交接，本地/物理应能抢占远程；v1 同时一个媒体会话。</li>
+</ul>
+<p>隐私单列：这是别人家里的相机和麦克风——远程会话需显式同意、串流要有可见指示，DTLS-SRTP 过 TURN 也端到端加密。</p>
+<h2 id="可观测性">可观测性</h2>
+<p>每个服务把 <code>tracing</code> 写到 stderr 再进 journald，级别由 <code>RUST_LOG</code> 控制。<strong>第一行是自己的身份</strong>，级别 <code>warn</code>，以扛过 <code>RUST_LOG=warn</code>：</p>
+<pre><code>WARN starting service=&quot;robotd&quot; build=0.2.0 (rev a1b2c3d, built 2026-07-28T13:50:00Z)
+     exe=/opt/robot/daemon/releases/0.2.0/bin/robotd pid=814
+</code></pre>
+<p><code>exe</code> 最值钱：它说明进程实际从哪个发布目录启动，是&quot;更新成功&quot;和&quot;链接动了但 systemd 还在跑旧路径&quot;的区别。每 tick 心跳在 <code>debug</code>，<code>info</code> 每五分钟一条摘要带达成 tick 率；每 tick 一行 <code>info</code> 让空闲机器人一天约 8.6 万条，会挤掉事故需要的日志。</p>
+<p><strong>运行版本与安装版本是两个问题。</strong> <code>updaterd</code> 不能中途重启自己，所以更新后几秒内运行二进制合法落后。只报一个版本号的工具在这窗口里必然错，且错得让正常机器人看起来坏了。<code>robotctl version</code> 同时报两个：<code>updaterd</code> 落后是短暂且唯一不自愈的偏斜；<code>robotd</code> 落后<strong>不该发生</strong>，它在本该重启的集合里——两种诊断不能共用一句话。<code>revision</code> 由 CI 编译进 <code>DUCK_REVISION</code>，本地诚实报告 <code>rev unknown, not a CI build</code>，绝不在运行时读 git——出厂的机器人没有仓库。</p>
+<p><code>robotctl health</code> 把硬件与软件合成一个答案：&quot;这台机器人怎么了&quot;在回答前并不分成两半，而一小时前回滚过发布的机器人和舵机没电的机器人看起来一样。它<strong>在不健康或不可达时非零退出</strong>，可给脚本当门禁；电池、温度、pin 只报告不评判。</p>
+<h2 id="远端与构建顺序">远端与构建顺序</h2>
+<p><code>mediad</code> 拥有 PeerConnection：一个 PC 不能跨进程拆（轨道与数据通道共享一条 DTLS/SCTP 关联），于是它就是<strong>远程网关</strong>。服务器端 agent 反而不该塞进 WebRTC：它要的是一两秒一帧加状态，走 rendezvous 的控制通道（HTTP/SSE 上的 JSON-RPC，无 ICE/DTLS/TURN），见<a href="./remote-webrtc.html">远程 WebRTC</a>与<a href="./remote-access.html">外网访问与账号</a>。</p>
+<p>构建顺序本身是决定：<strong>先建 <code>updaterd</code>，再用它运送此后每次迭代</strong>。这在失败还免费时前置风险，也让更新路径在出货前被练习数百次。代价：对着 <code>robotd</code> 的<strong>接口</strong>构建；早期健康探针很弱，先测机制；始终保留手工恢复（SSH/重刷），因为更新器装在被它更新的产物里。</p>
+</article></main></body></html>
