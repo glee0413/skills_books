@@ -6,16 +6,18 @@
 
 当前收录：
 
-- `gstack/`：只读来源，`https://github.com/garrytan/gstack`，固定 commit `8d9501373b55897447ae30f1d281c4dbc8a1369e`，版本 `v1.91.226.0`。
-- `mattpocock_skills/`：只读来源，`https://github.com/mattpocock/skills`，固定 commit `5beb35b040e3de97e54fa9e386d7e42d15c295c2`，`git describe` 为 `v1.3.1-47-g5beb35b`。
+- `opensrc/gstack/`：只读来源，`https://github.com/garrytan/gstack`，固定 commit `8d9501373b55897447ae30f1d281c4dbc8a1369e`，版本 `v1.91.226.0`。
+- `opensrc/mattpocock_skills/`：只读来源，`https://github.com/mattpocock/skills`，固定 commit `5beb35b040e3de97e54fa9e386d7e42d15c295c2`，`git describe` 为 `v1.3.1-47-g5beb35b`。
 - `light_skills/`：本书的全部产物，包括 Markdown 书稿、英文快照、生成的 HTML、构建脚本和来源清单。
+- `skills/`：本项目自己的可复用技能，和书稿分开。
 
-两个上游仓库是独立 git 仓库，已被 `.gitignore` 排除，不要把它们加入本仓库索引，也不要在里面提交改动。
+`opensrc/` 下的两个上游仓库是独立 git 仓库，已被 `.gitignore` 排除，不要把它们加入本仓库索引，也不要在里面提交改动。
 
 ## 先读什么
 
 - 设计文档：`docs/superpowers/specs/2026-10-29-skills-book-design.md`
-- 当前实施计划：`docs/superpowers/plans/2026-10-29-skills-book-foundation-and-pilot.md`
+- 当前实施计划：`docs/superpowers/plans/2026-10-30-skills-book-full-translation.md`
+- 试点计划：`docs/superpowers/plans/2026-10-29-skills-book-foundation-and-pilot.md`
 - 来源与版本：`light_skills/sources.json`
 - 术语统一：`light_skills/GLOSSARY.md`
 - 翻译规则：`light_skills/TRANSLATION.md`

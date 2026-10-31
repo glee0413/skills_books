@@ -447,8 +447,8 @@ export async function checkSources({ root, upstream = false, upstreamRoots = nul
   if (!upstream) return issues;
 
   const roots = upstreamRoots ?? {
-    gstack: resolve(root, "..", "gstack"),
-    mattpocock: resolve(root, "..", "mattpocock_skills"),
+    gstack: resolve(root, "..", "opensrc", "gstack"),
+    mattpocock: resolve(root, "..", "opensrc", "mattpocock_skills"),
   };
   for (const record of [...sources.skills, ...sources.documents]) {
     const path = join(roots[record.project], record.sourcePath);

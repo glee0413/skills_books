@@ -130,8 +130,7 @@ Expected: `Initialized empty Git repository in /home/agent/workspace/study/skill
 
 内容：
 ```gitignore
-/gstack/
-/mattpocock_skills/
+/opensrc/
 /light_skills/node_modules/
 .DS_Store
 ```
@@ -140,7 +139,7 @@ Expected: `Initialized empty Git repository in /home/agent/workspace/study/skill
 
 必须包含：
 - 本书的目标和产物位置。
-- `gstack/`、`mattpocock_skills/` 是只读来源，固定 commit 见 `light_skills/sources.json`。
+- `opensrc/gstack/`、`opensrc/mattpocock_skills/` 是只读来源，固定 commit 见 `light_skills/sources.json`。
 - 日常命令：`cd light_skills && npm ci && npm run check`、`npm run build`、`npm run serve`。
 - 提交规则：中文说明，工程建立后每个 commit 通过 `npm run check`，不把无关改动混在一起。
 - 译者注规则和来源快照规则。
@@ -150,11 +149,11 @@ Expected: `Initialized empty Git repository in /home/agent/workspace/study/skill
 
 Run:
 ```bash
-git check-ignore -v gstack mattpocock_skills light_skills/node_modules
+git check-ignore -v opensrc light_skills/node_modules
 git status --short
 ```
 
-Expected: 前三条都输出匹配的 `.gitignore` 规则；`git status --short` 不出现 `gstack/` 或 `mattpocock_skills/` 下的文件。
+Expected: 输出匹配的 `.gitignore` 规则；`git status --short` 不出现 `opensrc/` 下的文件。
 
 - [ ] **Step 5: 提交**
 
@@ -277,8 +276,8 @@ import { readFile } from "node:fs/promises";
 import { scanInventory } from "../lib/inventory.mjs";
 
 const roots = {
-  gstackRoot: "/home/agent/workspace/study/skills/gstack",
-  mattRoot: "/home/agent/workspace/study/skills/mattpocock_skills",
+  gstackRoot: "/home/agent/workspace/study/skills/opensrc/gstack",
+  mattRoot: "/home/agent/workspace/study/skills/opensrc/mattpocock_skills",
 };
 
 test("扫描到 101 个技能和 22 篇附属文档", async () => {
@@ -500,8 +499,8 @@ Expected: 输出 `63 38`。
 
 Run:
 ```bash
-cp ../gstack/LICENSE third-party/gstack-LICENSE
-cp ../mattpocock_skills/LICENSE third-party/mattpocock-skills-LICENSE
+cp ../opensrc/gstack/LICENSE third-party/gstack-LICENSE
+cp ../opensrc/mattpocock_skills/LICENSE third-party/mattpocock-skills-LICENSE
 ```
 
 `NOTICE.md` 写清两个项目的版权人、仓库、固定 commit、MIT 许可证、翻译和注释属于修改。

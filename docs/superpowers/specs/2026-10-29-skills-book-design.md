@@ -332,8 +332,7 @@ translatedAt: 2026-10-29
 根目录 `.gitignore`：
 
 ```gitignore
-/gstack/
-/mattpocock_skills/
+/opensrc/
 /light_skills/node_modules/
 .DS_Store
 ```
@@ -450,14 +449,14 @@ npm run serve          # 本地预览
 `npm run check:sources`：
 
 - 默认用 `sourceSha256` 对比仓库内快照，不访问网络。
-- 加 `--upstream` 时再对比同级的 `gstack/`、`mattpocock_skills/`；上游变化时报告 `needs-resync`，不自动改稿。
+- 加 `--upstream` 时再对比 `opensrc/` 下的 `gstack/`、`mattpocock_skills/`；上游变化时报告 `needs-resync`，不自动改稿。
 
 ## 11. Git 与变更记录
 
 ### 11.1 仓库
 
 - 在 `/home/agent/workspace/study/skills` 初始化独立 git 仓库，分支 `main`。
-- `gstack/` 与 `mattpocock_skills/` 保持独立仓库，不加入根仓库索引。
+- `opensrc/gstack/` 与 `opensrc/mattpocock_skills/` 保持独立仓库，不加入根仓库索引。
 - 首次提交包含重写后的根 `AGENTS.md`、设计文档、`light_skills/` 骨架、来源清单、英文快照、术语表、构建脚本和许可证。
 - 根 `AGENTS.md` 从“上游仓库维护指南”改为“Skills Book 贡献指南”：说明两个上游是只读来源、产物在 `light_skills/`、构建与提交规则、来源同步规则。上游仓库的介绍保留为“来源 checkout”一节，不再把 `light_skills/` 描述成空目录。
 

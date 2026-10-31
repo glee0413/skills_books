@@ -8,8 +8,8 @@ import { mergeTranslationState, scanInventory } from "../lib/inventory.mjs";
 
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const roots = {
-  gstackRoot: process.env.GSTACK_ROOT ?? join(repoRoot, "gstack"),
-  mattRoot: process.env.MATT_ROOT ?? join(repoRoot, "mattpocock_skills"),
+  gstackRoot: process.env.GSTACK_ROOT ?? join(repoRoot, "opensrc", "gstack"),
+  mattRoot: process.env.MATT_ROOT ?? join(repoRoot, "opensrc", "mattpocock_skills"),
 };
 const hasUpstream = existsSync(join(roots.gstackRoot, "SKILL.md")) && existsSync(join(roots.mattRoot, "skills"));
 const integration = { skip: !hasUpstream && "upstream checkouts are not present" };
