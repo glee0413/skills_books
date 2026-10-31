@@ -20,6 +20,7 @@
 - 术语统一：`light_skills/GLOSSARY.md`
 - 翻译规则：`light_skills/TRANSLATION.md`
 - 许可证与归属：`light_skills/NOTICE.md`
+- 项目技能：`skills/source-to-book/SKILL.md`（把新的开源项目或知识材料整理成书时先读它）
 
 ## 常用命令
 
