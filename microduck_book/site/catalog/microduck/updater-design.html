@@ -40,6 +40,6 @@
 <p><code>check_interval</code> 让常驻 <code>updaterd</code> 定时轮询，<code>auto_apply</code> 决定没有客户端时能装什么：<code>off</code>、<code>mandatory</code>（默认，只装被下限标记为强制的）、<code>all</code>（金丝雀）。普通发布等待，因为<strong>机器人何时重启是主人的决定</strong>。</p>
 <p>无人值守还拒绝这台机器人已回滚过的候选。没有这个 guard，坏发布就是全队陷阱：检查 → 应用 → 门禁失败 → 回滚 → 等一个间隔 → 再来，每轮重新下载、写 eMMC，没有东西收敛。guard 叫 <code>known_bad</code>，取日志里每个版本的最新结果，所以将来成功会自清；它只作用于无人值守，显式 <code>update apply</code> 仍可重试。</p>
 <p>签名只证明产物<strong>来自我们且未被修改</strong>，不证明它是<strong>当前的</strong>。<strong>降级</strong>已关闭：目标为&quot;最新&quot;时拒绝旧候选，<code>Target::Exact</code> 允许定向回退。<strong>冻结</strong>仍开放，当前只报告：<code>update.status</code> 带 <code>last_checked</code>，<code>robotctl health</code> 一周无应答就警告；签名 manifest 过期才是真防御，但要 CI 定期重签。</p>
-<h2 id="晋升与测试">晋升与测试</h2>
+<h3 id="晋升与测试">晋升与测试</h3>
 <p>发布<strong>在 CI 里签名</strong>。<code>release.yml</code> 在 <code>daemon-staging-v*</code> 上构建、打包、签名、用机器人自己的代码路径验证；<code>promote.yml</code> 把同一份字节复制到 stable 并重签 manifest，<strong>晋升从不重建</strong>。Tier 1 在 CI 无硬件跑机制：签名、哈希、兼容、降级、回滚目标、按组件的启动预算、状态保留、健康失败回滚、<code>kill -9</code>、并发单飞。Tier 1b 启动真的 <code>robotd</code> 走真的 socket，因为协议 crate 的往返测试看不见偏斜。Tier 2 是金丝雀真机。<strong>人类决定是否晋升，机器每次都一样地回退、应用、验证。</strong> 平台配置见<a href="./deploy.html">部署配置</a>。</p>
 </article></main></body></html>

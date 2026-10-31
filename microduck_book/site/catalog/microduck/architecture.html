@@ -2,7 +2,7 @@
   <strong>来源</strong>：microduck · <code>docs/design/architecture.md</code> · daemon-dev-main · commit <code>b2b0d21</code><br>
   <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/pollen-robotics/microduck/blob/b2b0d213a402caeac492dd662ea891faa17f67c0/docs/design/architecture.md">查看原仓库</a> · <a href="../../source-snapshots/microduck/docs/design/architecture.md">查看英文快照</a>
 </section><article class="markdown-body"><h1 id="系统架构">系统架构</h1>
-<p>整机一页：服务怎么拆、彼此怎么说话、状态放在哪、谁有安全授权。原文范围为&quot;第一个出货版本&quot;，不是会被重写的 <code>microduck_runtime</code> 原型。</p>
+<p>整机：服务怎么拆、彼此怎么说话、状态放在哪、谁有安全授权。原文范围为&quot;第一个出货版本&quot;，不是会被重写的 <code>microduck_runtime</code> 原型。</p>
 <h2 id="七个守护进程与三条结构性规则">七个守护进程与三条结构性规则</h2>
 <p><strong>只有 <code>robotd</code> 碰机器人。</strong> 十五个舵机和 IMU 板共享一条串口总线，50 Hz 控制回路独占它；客户端只能发<strong>意图</strong>（&quot;这么快走&quot;&quot;看那里&quot;&quot;站起来&quot;），由 <code>robotd</code> 内的安全层决定什么可执行。</p>
 <p><code>configd</code>、<code>updaterd</code>、<code>btd</code> 对 <code>robotd</code> 没有 systemd 依赖、不带 ML 运行时、不带媒体栈，因为&quot;控制回路起不来的机器人&quot;正是需要被重新配置、更新或回滚的那台。这也是配置在 <code>configd</code> 而非 <code>robotd</code> 的理由。<code>mediad</code> 和 <code>padd</code> 允许依赖它：没有相机和手柄的机器人仍可更新。</p>

@@ -36,6 +36,5 @@ capture ─ NV12 ─ capsfilter ─ tee
 <p>远程路径是<strong>到本地信令服务器的桥</strong>：relay 向外连 rendezvous，把同一协议代理到 <code>ws://127.0.0.1:8443</code>；DTLS-SRTP 让媒体即使过中继也端到端加密。<strong>本地模式从不依赖桥</strong>。但它不是纯 relay：rendezvous 用 HTTP（SSE 入、<code>POST</code> 出）承载同样的信封，peer 与 session id 逐跳不同，所以桥要重写信封、双向维护会话表——<strong>载荷不透明的翻译器</strong>。</p>
 <p>媒体质量用一个 <code>quality</code> 键命名档位（<code>1080p30</code>、<code>720p30</code>、<code>720p15</code>、<code>360p30</code>），而不是宽、高、帧率三个独立键：三者并不独立变化，一个采集路径产不出的组合就是一条起不来的管线，而它会连<strong>控制</strong>通道一起带走，因为 datachannel 与视频轨道捆绑。每一档都是 16:9。</p>
 <p><code>media.video</code> 回答画面的几何：宽、高、安装旋转，以及<strong>内参</strong> <code>fx</code>、<code>fy</code>、<code>cx</code>、<code>cy</code> 和 <code>calibrated</code>。没有它们，单目重建没有尺度、角度也是错的。四个数描述<strong>发送时</strong>的未旋转帧，所以应用 <code>rotate</code> 的消费者要交换 <code>cx</code> 与 <code>cy</code>。<code>false</code> 是模块设计值，够画一张房间；<code>true</code> 是测量值。<strong>几何未知时键是缺席的</strong>，而不是存在且错误。</p>
-<h2 id="推迟的部分">推迟的部分</h2>
 <p><code>teleop</code> 数据通道；多对端视频；每会话同意与串流指示；TURN。另外，&quot;所有上线的东西都该带发生时间&quot;仍只是愿望：媒体要用 <code>abs-capture-time</code> RTP 头扩展，控制通道要一个单调读数加启动纪元，两者必须用同一个时钟。</p>
 </article></main></body></html>

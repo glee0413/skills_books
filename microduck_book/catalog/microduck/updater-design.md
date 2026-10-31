@@ -83,6 +83,6 @@ systemd-run --on-active=5s --timer-property=AccuracySec=100ms -- systemctl resta
 
 签名只证明产物**来自我们且未被修改**，不证明它是**当前的**。**降级**已关闭：目标为"最新"时拒绝旧候选，`Target::Exact` 允许定向回退。**冻结**仍开放，当前只报告：`update.status` 带 `last_checked`，`robotctl health` 一周无应答就警告；签名 manifest 过期才是真防御，但要 CI 定期重签。
 
-## 晋升与测试
+### 晋升与测试
 
 发布**在 CI 里签名**。`release.yml` 在 `daemon-staging-v*` 上构建、打包、签名、用机器人自己的代码路径验证；`promote.yml` 把同一份字节复制到 stable 并重签 manifest，**晋升从不重建**。Tier 1 在 CI 无硬件跑机制：签名、哈希、兼容、降级、回滚目标、按组件的启动预算、状态保留、健康失败回滚、`kill -9`、并发单飞。Tier 1b 启动真的 `robotd` 走真的 socket，因为协议 crate 的往返测试看不见偏斜。Tier 2 是金丝雀真机。**人类决定是否晋升，机器每次都一样地回退、应用、验证。** 平台配置见[部署配置](./deploy.md)。
