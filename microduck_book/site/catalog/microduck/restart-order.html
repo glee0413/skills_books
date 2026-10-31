@@ -2,14 +2,72 @@
   <strong>来源</strong>：microduck · <code>docs/design/restart-order.md</code> · daemon-dev-main · commit <code>b2b0d21</code><br>
   <strong>许可证</strong>：Apache-2.0 · <a href="https://github.com/pollen-robotics/microduck/blob/b2b0d213a402caeac492dd662ea891faa17f67c0/docs/design/restart-order.md">查看原仓库</a> · <a href="../../source-snapshots/microduck/docs/design/restart-order.md">查看英文快照</a>
 </section><article class="markdown-body"><h1 id="重启顺序">重启顺序</h1>
-<p>更新不是“换完文件就结束”。<code>updaterd</code> 要决定哪些 unit 在什么时候重启、哪些必须等回复发完再重启，以及开机后如何确认它们真的从新 release 起来了。</p>
-<h2 id="更新时">更新时</h2>
-<p><code>update.apply</code> 的顺序大致是：验证、解包、移动 <code>current</code>、重启 release 带来的 units、跑 postinstall hook、自测新的 <code>updaterd</code>、健康门禁、提交。重启集合来自 release 自己的 <code>systemd/*.service</code>，不是板子上的配置。</p>
-<p><code>updaterd</code> 和 <code>btd</code> 不能在同一时刻被重启：前者正在执行更新，后者可能正在把回复送回手机。它们通过 <code>systemd-run --on-active=5s</code> 延迟重启，等 <code>update.apply</code> 的结果先写到 wire 上。这个 5 秒不是随便的等待，而是“回复已经发出”的边界。</p>
-<h2 id="开机时">开机时</h2>
-<p>每个 unit 按 systemd 依赖启动，但更新系统还要做一次对账：<code>updaterd</code> 在启动时读取 <code>current</code>、release 的 unit 列表和运行状态，确认新 release 的 daemon 确实起来了。如果没起来，boot counter 或 boot recovery net 会介入。</p>
-<h2 id="诊断版本漂移">诊断版本漂移</h2>
-<p><code>robotctl health</code> 的 unit 块会打印每个进程<strong>正在从哪个 release 运行</strong>，这是确认“延迟重启到底有没有发生”的唯一地方。一个进程还在旧目录、或者某个 unit 没重启成功，都会在这里暴露。不要只看 <code>current</code> 指向哪里。</p>
-<h2 id="设计教训">设计教训</h2>
-<p>把重启列表放在 <code>/etc/robot/updater.toml</code> 曾是 bug：<code>install.sh</code> 会保留这个文件，于是新加的 daemon 永远不会被重启。现在列表从 release 的 unit 文件推导，<code>NEVER_RESTART</code> 写在代码里，因为“哪些 daemon 是更新执行者”是结构属性，不是 operator 该配置的选项。</p>
+<p>这份文档存在，是因为&quot;哪个守护进程在什么时刻重启&quot;曾被三份文档用三种方式回答，而答案决定一次版本偏斜如何诊断。原文声明：一切从代码读出，每一步点名拥有它的函数；别处的叙述性注释若与此页冲突，注释才是 bug。</p>
+<h2 id="八个守护进程与重启集合">八个守护进程与重启集合</h2>
+<p>一个发布携带八个守护进程——<code>robotd</code>、<code>configd</code>、<code>btd</code>、<code>padd</code>、<code>netpadd</code>、<code>mediad</code>、<code>tofd</code>、<code>updaterd</code>——每个都 <code>ExecStart</code> 一个 <code>current/bin/</code> 下的路径，链接一移就全部过时。<code>robot-boot-check.service</code> 不算其中之一，更新绝不能重启它：它问的正是&quot;这次启动的发布是否起来了&quot;，中途运行等于拿回滚检查去照一群合法重启中的守护进程；它没有 <code>[Install]</code> 段，这就足以排除。</p>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>更新中</th>
+<th>回复后约 5 秒</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>六个普通守护进程</td>
+<td>是</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>updaterd</code></td>
+<td><strong>从不</strong>——它正在执行更新</td>
+<td>是</td>
+</tr>
+<tr>
+<td><code>btd</code></td>
+<td><strong>从不</strong>——它可能是更新链路</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>两半是同一决定，测试断言 <code>NEVER_RESTART</code> 与 <code>RESTART_AFTER_REPLYING</code> 是同一集合；<strong>没有东西被留到重启</strong>。</p>
+<p><strong>什么算更新启动的单元</strong>：带 <code>[Install]</code> 段的 <code>systemd/*.service</code>，判定在 <code>engine.rs::has_install_section</code>。用规则而非名单，因为 <code>hooks/postinstall</code> 与引擎曾对无 <code>[Install]</code> 的单元互相矛盾。集合是 <code>units_shipped</code>（发布自带单元并上 <code>on_apply.units</code>）减 <code>{updaterd, btd}</code>，今天为 <code>configd, mediad, netpadd, padd, robotd, tofd</code>。配置名单是<strong>追加</strong>，所以 <code>padd</code> 会被重启，尽管配置没提过它。每个单元单独 <code>systemctl restart</code>，批量命令在任一单元未知时整体失败。</p>
+<h2 id="update-apply-的步骤"><code>update apply</code> 的步骤</h2>
+<p>第 8 步之前没有任何东西碰活动路径：</p>
+<ol>
+<li>preflight：时钟、机器人已停、无活动会话。</li>
+<li>取 manifest、验签、通道/钉住/降级/兼容检查。</li>
+<li>再 preflight，查磁盘。</li>
+<li>下载到 <code>releases/.staging-&lt;ver&gt;/dl/</code>。</li>
+<li>验 sha256，再验产物签名。</li>
+<li>解压到 <code>releases/.staging-&lt;ver&gt;/root/</code>。</li>
+<li><strong><code>hooks/preinstall</code></strong>（cwd 是 staged 树）：装 ONNX Runtime、跑 <code>setup-gstreamer.sh</code>。</li>
+<li><code>rename</code> 到 <code>releases/&lt;ver&gt;/</code>。</li>
+<li>武装启动计数（<code>pending.json</code>），<strong>在交换前</strong>。</li>
+<li>交换 <code>current</code>。</li>
+<li><strong><code>hooks/postinstall</code></strong>：启动新发布的单元。</li>
+<li><code>on_apply</code>：逐个 <code>systemctl restart</code>。</li>
+<li><code>releases/&lt;ver&gt;/bin/updaterd --self-test</code>。</li>
+<li>健康门禁：每 500 ms 轮询 <code>robotd</code>，最多 30 秒。</li>
+<li>确认计数，prune。</li>
+<li>释放锁，安排延迟重启。</li>
+<li>回复。</li>
+<li>约 5 秒后：重启 <code>updaterd</code>、<code>btd</code>。</li>
+</ol>
+<p>第 11 步起任何失败都回滚：交换回去、对旧发布重跑 <code>on_apply</code>、确认计数、记日志；第 1–10 步失败时旧发布仍在跑。第 2 步也可能结束流程：manifest 指向已装版本时报 <code>already_current</code>，不下载不交换，但会把运行着别的东西的单元列进 <code>stale</code> 并安排重启——所以对最新机器人的 <code>apply</code> 惰性，对守护进程与已装发布不一致的机器人不惰性。</p>
+<p><strong>第 11 步</strong>先装 <code>sysusers.d</code> 账号（账号先于单元），再把<strong>所有</strong> <code>systemd/*.service</code> 覆盖到 <code>/etc/systemd/system/</code>，包括 <code>updaterd.service</code> 与 <code>btd.service</code>；<code>daemon-reload</code>；对带 <code>[Install]</code> 的单元 <code>enable --now</code>。<code>--now</code> 是<strong>启动</strong>，对已运行单元是空操作，所以不重启那两个；但它会启动板子从未有过的单元——这正是钩子的意义，也意味着<strong>新守护进程会启动两次</strong>：这里一次，第 12 步再一次。除单元或 sysusers 安装失败外，钩子错误只是警告；<code>btd</code> 在无线电未出现的板子上合法失败。</p>
+<p><strong>第 13 步</strong>：<code>updaterd</code> 不重启自己，所以一个起不来的替换二进制本来会在提交后的下次启动才被发现，而恢复逻辑住在失败进程内部。新 <code>updaterd --self-test</code> 加载配置、构造引擎、在触碰状态前退出，10 秒上限；失败带 stderr 并回滚。没有 <code>bin/updaterd</code> 的组件自动通过，且仅当 <code>on_apply</code> 是 restart 时运行。</p>
+<p><strong>第 16–18 步</strong>：</p>
+<pre><code>systemd-run --on-active=5s --timer-property=AccuracySec=100ms -- systemctl restart &lt;unit&gt;
+</code></pre>
+<p>必须是瞬时单元而非子进程，否则它在 <code>updaterd</code> 的 cgroup 里，重启父进程时被半途杀掉；锁必须在 spawn 前释放，因为 fork 复制所有 fd；只在 <code>Applied</code> 与带 <code>stale</code> 的 <code>already_current</code> 时欠重启，回滚不欠；所有单元都走定时器。失败只记日志：一次成功的更新不因重启没排上而报失败，代价是守护进程在旧二进制上待到下次启动。</p>
+<h2 id="其他转换">其他转换</h2>
+<p><code>select</code>、<code>rollback</code>、<code>reset-to-golden</code> 共用 <code>transition_to</code>：武装、交换、<code>on_apply</code>、门禁、失败回退；不跑钩子、不自检。<code>select</code> 与 <code>apply</code> 欠延迟重启，两个回退不欠；失败 apply 与计数回退也不欠，因为 <code>updaterd</code>/<code>btd</code> 从未被重启，仍属于被返回的发布。显式回退会把 <code>robotd</code> 等移回去却把两者留在前面，下一次 <code>updaterd</code> 启动时由双向对账自愈——<code>updaterd</code> 自己除外。跳过钩子也意味着从不删除单元文件：降级会留下指向旧发布没有的二进制，失败的重启让转换失败。</p>
+<h2 id="启动与恢复">启动与恢复</h2>
+<p>systemd 从 <code>multi-user.target</code> 启动，<code>robot-boot-check.timer</code> 一秒后检查；守护进程间无排序，除 <code>padd</code>/<code>netpadd</code> 在 <code>robotd</code> 后（建议性）与 <code>btd</code> 在 <code>dbus</code> 后。这块板 <code>hci0</code> 约 73 秒才出现，所以 <code>btd</code> 重试适配器。</p>
+<p><code>updaterd</code> 启动：以 <code>warn</code> 记身份行（含 <code>exe</code> 路径，说明实际来自哪个发布）；加载配置与钥匙；构造引擎；<code>--self-test</code> 返回；然后 <code>recover_on_start</code>，<strong>在 serve socket 前</strong>：<code>clean_staging</code>；<code>record_rescue</code> 把救援记录抄进日志、<strong>清试验</strong>、删 breadcrumb，<strong>故意在 <code>record_boot</code> 前</strong>（救援已比试验走得更远）；<code>refresh_golden_links</code>；<code>record_boot</code>；对 <code>boots &gt;= 2</code> 的试验轮询 <code>robotd</code>，只有既非 healthy 也非 degraded 才回退到 <code>previous</code>、缺失则 golden，并重跑 <code>on_apply</code>（<strong>所以计数回退会重启 <code>configd</code>、<code>padd</code>、<code>robotd</code></strong>）。之后 <code>reconcile_running_units</code>；<code>--check-only</code> 在此返回，注意它<strong>执行</strong>恢复与对账。试验只在 apply 被中断于第 9 与第 15 步之间时存在，第二次启动才回退；以上每步都预设一个能启动的 <code>updaterd</code>，否则交给<a href="./boot-recovery.html">启动恢复网络</a>。</p>
+<h2 id="对账与诊断">对账与诊断</h2>
+<p><code>systemd-run</code> 成功只说明建了定时器。每个守护进程启动时发布 <code>/run/&lt;service&gt;/identity.json</code>（含 <code>exe</code>，来自 <code>/proc/self/exe</code>，穿过 <code>current</code>），<code>RuntimeDirectory=</code> 在停止时被删除。对账比较发布值与活动发布；<code>updaterd</code> 从不在这里重启自己，停掉的单元保持停掉，没发布身份的不算 stale；比较方向无关，所以也覆盖被回滚留在 <code>current</code> 前面的发布。</p>
+<p>诊断：更新后几秒 <code>updaterd</code>/<code>btd</code> 落后是预期；其他守护进程持续不一致说明重启没生效且对账没修好；<code>updaterd</code> 持续落后用 <code>apply daemon</code> 或 <code>systemctl restart updaterd</code> 修。<code>robotctl health</code> 的 <code>units</code> 块打印每个进程来自哪个发布；手工读：</p>
+<pre><code class="language-bash">cat /run/configd/identity.json; readlink /opt/robot/daemon/current
+</code></pre>
 </article></main></body></html>

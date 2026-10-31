@@ -33,7 +33,7 @@ translatedAt: 2026-10-31
 
 `setup-board.sh` 是 OS 级 bring-up（设备树 overlay、ONNX Runtime），很少变、需要重启；`install.sh` 安装签名 release，每次更新都跑——混在一起等于每次更新都重新讨论启动配置；`migrate-network.sh` 是唯一不会长久的：原厂镜像装 netplan 与 `systemd-networkd`，而 `configd` 经 D-Bus 驱动 NetworkManager，不迁移之前 `robotctl net status` 报 `Unavailable`，蓝牙也配不了 wifi。
 
-`provision.sh` 只是编排者，持有跨重启的状态（token、dev key 路径、判断是否真重启过的 boot id）。`provision-board.sh` 补的是中间那道缝：`provision.sh` 重启后自己跑完是对的，但从外面看就是 SSH 断掉加一个何时登回去的猜测。无人值守的后半段可能坏成**循环**，所以两道保险：resume 单元在干活**之前**先禁用自己，最多一次自动尝试；`migrate-network.sh` 只在 NetworkManager 已接管 wifi 时才重跑。第一遍还装一个启动期兜底——`wlan0` 拿不到 IPv4 就恢复 netplan，糟糕的切换只花一次重启而不是一根串口线——第二遍把它退役，否则之后任何一次 wifi 慢的启动都会回退板子。
+`provision.sh` 只是编排者，持有跨重启的状态（token、dev key 路径、判断是否真重启过的 boot id）。无人值守的后半段可能坏成**循环**，所以两道保险：resume 单元在干活**之前**先禁用自己，最多一次自动尝试；`migrate-network.sh` 只在 NetworkManager 已接管 wifi 时才重跑（第一遍装的启动期兜底——`wlan0` 拿不到 IPv4 就恢复 netplan——由第二遍退役）。
 
 ## 首次安装与信任链
 
@@ -45,7 +45,7 @@ translatedAt: 2026-10-31
 
 ## 更新策略与产物落点
 
-`updaterd` 本来就是带定时器的常驻进程（`check_interval`），不必加 cron。`auto_apply`：`off` 从不、`mandatory`（**出厂默认**，只装 `min_supported` 说当前版本不可再用的）、`all` 每个可用 release；第一次检查在启动后 60 秒，之后按间隔。不要改用 cron 或 systemd timer：`robotctl update apply` 有意绕过 known-bad 守卫（运维重试可能已修好原因），定时器会继承这个绕过，于是一个坏 release 变成无尽的 apply/rollback 循环。也不需要维护窗口：preflight 在联网**之前**问 `robotd` 能否安全重启、是否有远程会话，正在走路或推流的机器人会拒绝并在下个间隔重试。
+`updaterd` 本来就是带定时器的常驻进程，不必加 cron。`auto_apply` 出厂设为 `mandatory`——只装 `min_supported` 说当前版本不可再用的；`all` 则每个可用 release 都装，启动时以 `warn` 记录。不要用 cron 或 systemd timer 驱动 `robotctl update apply`：它有意绕过 known-bad 守卫（运维重试可能已修好原因），定时器会继承这个绕过，于是一个坏 release 变成无尽的 apply/rollback 循环。也不需要维护窗口：preflight 在联网**之前**问 `robotd` 能否安全重启、是否有远程会话，正在走路或推流的机器人会拒绝并在下个间隔重试。
 
 ```text
 /etc/robot/updater.toml                 config; never touched by an update
