@@ -1,6 +1,12 @@
 {
   "title": "Skills Book",
   "subtitle": "从两个开源项目学习 agent 工作流",
+  "shelf": {
+    "category": "methods",
+    "blurb": "把 gstack 与 mattpocock 两个技能库逐篇译成中文，提炼可复用的 agent 工作流。",
+    "tags": ["Agent", "技能", "工作流"],
+    "order": 3
+  },
   "parts": [
     {
       "id": "00-intro",

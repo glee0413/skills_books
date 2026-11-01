@@ -11,6 +11,7 @@
 - `light_skills/`：Skills Book 的全部产物，包括 Markdown 书稿、英文快照、生成的 HTML、构建脚本和来源清单。
 - `cedar_book/`：Cedar 授权策略学习书，来源为 `opensrc/cedar-docs`、`opensrc/cedar`、`opensrc/cedar-examples`。
 - `microduck_book/`：Microduck 机器人系统学习书，来源为 `opensrc/microduck`。
+- `bookshelf.json` + `scripts/shelf.mjs`：书架入口，集中定义分类，把三本书挂在同一个端口下。
 - `skills/`：本项目自己的可复用技能，和书稿分开。
 
 `opensrc/` 下的上游仓库是独立 git 仓库，已被 `.gitignore` 排除，不要把它们加入本仓库索引，也不要在里面提交改动。
@@ -29,6 +30,11 @@
 ## 常用命令
 
 ```bash
+# 书架：一个端口读完所有书，首页按分类排列
+npm start              # 首页 http://127.0.0.1:4180/，每本书在 /books/<目录名>/
+npm run check          # 校验书架元数据：分类、构建产物、顺序
+npm test               # 书架脚本的单元测试
+
 cd light_skills
 npm ci
 npm run check          # 日常校验，允许尚未翻译的 todo
@@ -50,6 +56,23 @@ npm run build
 npm run check
 npm run serve -- --port 4175
 ```
+
+## 新增一本书
+
+1. 按 `skills/source-to-book/SKILL.md` 建目录、`book.json`、`sources.json`，跑 `npm run build`。
+2. 在 `book.json` 里加 `shelf`，分类必须是 `bookshelf.json` 里已有的 id：
+
+   ```json
+   "shelf": {
+     "category": "robotics",
+     "blurb": "一句话说明这本书讲什么。",
+     "tags": ["Rust", "控制"],
+     "order": 1
+   }
+   ```
+
+3. 在仓库根目录跑 `npm run check`，再 `npm start` 刷新首页即可看到新书。
+4. 需要新分类时，先在 `bookshelf.json` 里加一项，再引用它的 id。
 
 ## 写译文的规则
 

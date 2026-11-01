@@ -1,6 +1,12 @@
 {
   "title": "Cedar 授权策略实战",
   "subtitle": "从策略语言到 Rust SDK 与真实用例",
+  "shelf": {
+    "category": "security",
+    "blurb": "从策略语言、Schema、决策语义读到 Rust SDK 与真实示例，回答「这条请求为什么被允许」。",
+    "tags": ["授权", "策略", "Rust"],
+    "order": 2
+  },
   "unitsLabel": "知识条目",
   "catalogLabel": "知识全库",
   "parts": [

@@ -1,6 +1,12 @@
 {
   "title": "Microduck 机器人系统实战",
   "subtitle": "从 50 Hz 控制回路到签名更新与远程访问",
+  "shelf": {
+    "category": "robotics",
+    "blurb": "15 个舵机的 50 Hz 控制回路、感知、手柄与 BLE、签名更新与 WebRTC，按代码和设计文档并读。",
+    "tags": ["Rust", "机器人", "控制"],
+    "order": 1
+  },
   "unitsLabel": "知识条目",
   "catalogLabel": "知识全库",
   "parts": [

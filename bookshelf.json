@@ -1,0 +1,31 @@
+{
+  "title": "Skills Books",
+  "subtitle": "把开源项目读成中文书",
+  "description": "每本书固定来源 commit，带英文/代码快照和可离线阅读的 HTML。从书架上挑一本，直接读。",
+  "categories": [
+    {
+      "id": "methods",
+      "title": "方法与工作流",
+      "description": "把一套可复用的做法拆开、对照、讲清楚。",
+      "accent": "#3f5d8a"
+    },
+    {
+      "id": "robotics",
+      "title": "机器人与实时系统",
+      "description": "控制回路、感知、更新与远程访问，代码和设计文档并读。",
+      "accent": "#8a3f2d"
+    },
+    {
+      "id": "security",
+      "title": "授权与安全",
+      "description": "策略语言、SDK 与真实用例，从模型到落地。",
+      "accent": "#3f6b52"
+    }
+  ],
+  "fallbackCategory": {
+    "id": "uncategorized",
+    "title": "未分类",
+    "description": "还没有声明分类的书。在书的 book.json 里补一个 shelf.category 即可归位。",
+    "accent": "#6b6862"
+  }
+}
