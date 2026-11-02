@@ -32,7 +32,7 @@
 ```bash
 # 书架：一个端口读完所有书，首页按分类排列
 ./start.sh             # 一键启动；等价于 npm start
-npm start              # 首页 http://127.0.0.1:4180/，每本书在 /books/<目录名>/
+npm start              # 首页 4180，默认监听所有网卡，每本书在 /books/<目录名>/
 npm run check          # 校验书架元数据：分类、构建产物、顺序
 npm test               # 书架脚本的单元测试
 

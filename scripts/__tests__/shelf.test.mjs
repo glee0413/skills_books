@@ -6,6 +6,7 @@ import { join } from "node:path";
 
 import {
   discoverBooks,
+  displayUrls,
   groupBooks,
   loadShelf,
   renderShelf,
@@ -157,9 +158,22 @@ describe("renderShelf", () => {
   });
 });
 
+describe("displayUrls", () => {
+  it("puts localhost first for a wildcard bind and keeps LAN addresses out of the way", () => {
+    const urls = displayUrls("0.0.0.0", 4180);
+    assert.equal(urls[0], "http://127.0.0.1:4180/");
+    assert.ok(urls.length >= 1);
+  });
+
+  it("returns a single url for an explicit host", () => {
+    assert.deepEqual(displayUrls("127.0.0.1", 4180), ["http://127.0.0.1:4180/"]);
+    assert.deepEqual(displayUrls("192.168.1.9", 4180), ["http://192.168.1.9:4180/"]);
+  });
+});
+
 describe("startServer", () => {
   it("serves the shelf, mounts each book and refuses traversal", async () => {
-    const { url, close } = await startServer({ root, port: 0 });
+    const { url, close } = await startServer({ root, port: 0, host: "127.0.0.1" });
     try {
       const home = await fetch(url);
       assert.equal(home.status, 200);

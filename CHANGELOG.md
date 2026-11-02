@@ -5,6 +5,7 @@
 ### 新增
 
 - 一键启动脚本 `start.sh`：`./start.sh` 即启动书架，参数原样传给 `scripts/shelf.mjs`，启动前检查 Node 版本。
+- 默认监听所有网卡，启动时打印本机与局域网地址；`--host 127.0.0.1` 可退回只允许本机访问。
 - 书架入口：根目录 `npm start` 启动一个服务，首页 `/` 按分类陈列所有书，每本书挂在 `/books/<目录名>/` 下。
 - `bookshelf.json`：集中定义分类（名称、说明、顺序、配色）与未分类兜底。
 - `scripts/shelf.mjs`：发现带 `book.json` 的目录，合并 `book.json` 与 `sources.json` 的书名、章节数、条目数、完成数、来源 commit，渲染书架页；`--check` 校验分类与构建产物。

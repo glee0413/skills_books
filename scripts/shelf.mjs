@@ -6,11 +6,36 @@
 // at the repository root. Adding a book is a directory plus one field, not an edit here.
 
 import { createServer } from "node:http";
+import { networkInterfaces } from "node:os";
 import { readFile, readdir, stat } from "node:fs/promises";
 import { extname, resolve, relative, sep } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
+
+// Bind every interface by default so a board or a laptop on the same network can open
+// the shelf. Pass --host 127.0.0.1 to keep it on the machine.
+const DEFAULT_HOST = "0.0.0.0";
+const WILDCARD_HOSTS = new Set(["0.0.0.0", "::", ""]);
+
+// One address per interface, preferring 192.168.x: a machine with several NICs and
+// aliases should not print a wall of addresses nobody can pick from.
+function lanAddresses() {
+  const addresses = [];
+  for (const entries of Object.values(networkInterfaces())) {
+    const ipv4 = (entries ?? []).filter((entry) => entry.family === "IPv4" && !entry.internal && !entry.address.startsWith("169.254."));
+    const preferred = ipv4.find((entry) => entry.address.startsWith("192.168.")) ?? ipv4[0];
+    if (preferred) addresses.push(preferred.address);
+  }
+  return [...new Set(addresses)];
+}
+
+export function displayUrls(host, port) {
+  if (WILDCARD_HOSTS.has(host)) {
+    return [`http://127.0.0.1:${port}/`, ...lanAddresses().map((address) => `http://${address}:${port}/`)];
+  }
+  return [`http://${host}:${port}/`];
+}
 
 // Directories that can never be books, or are too costly to walk.
 const SKIP = new Set([
@@ -459,7 +484,7 @@ async function serveStatic(res, base, requestPath) {
   send(res, 200, body, TYPES[extname(file)] ?? "application/octet-stream");
 }
 
-export async function startServer({ root = ROOT, port = 4180, host = "127.0.0.1" } = {}) {
+export async function startServer({ root = ROOT, port = 4180, host = DEFAULT_HOST } = {}) {
   const server = createServer(async (request, response) => {
     const url = new URL(request.url, `http://${request.headers.host ?? host}`);
     const pathname = url.pathname;
@@ -508,14 +533,17 @@ export async function startServer({ root = ROOT, port = 4180, host = "127.0.0.1"
   const actualPort = typeof address === "object" && address ? address.port : port;
   return {
     server,
-    url: `http://${host}:${actualPort}/`,
+    host,
+    port: actualPort,
+    urls: displayUrls(host, actualPort),
+    url: `http://${host === "0.0.0.0" ? "127.0.0.1" : host}:${actualPort}/`,
     close: () => new Promise((done) => server.close(done)),
   };
 }
 
 function parseArgs(argv = [], env = process.env) {
   let port = env.PORT ?? "4180";
-  let host = "127.0.0.1";
+  let host = env.HOST ?? DEFAULT_HOST;
   let check = false;
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === "--check") check = true;
@@ -549,12 +577,14 @@ async function main() {
 
   for (const problem of problems) console.error(`warning: ${problem}`);
 
-  const { url } = await startServer({ root: ROOT, port, host });
-  console.log(`书架: ${url}`);
+  const { urls } = await startServer({ root: ROOT, port, host });
+  const [local, ...lan] = urls;
+  console.log(`书架: ${local}`);
+  for (const address of lan) console.log(`      局域网: ${address}`);
   for (const book of books) {
-    console.log(`  ${book.title}: ${url}books/${book.slug}/${book.built ? "" : "  (尚未构建)"}`);
+    console.log(`  ${book.title}: ${local}books/${book.slug}/${book.built ? "" : "  (尚未构建)"}`);
   }
-  console.log("按 Ctrl+C 停止。");
+  console.log(WILDCARD_HOSTS.has(host) ? "监听所有网卡；只给本机用请加 --host 127.0.0.1。按 Ctrl+C 停止。" : "按 Ctrl+C 停止。");
 }
 
 const isMain = process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href;

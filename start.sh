@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # 一键启动书架。参数原样传给 scripts/shelf.mjs：
-#   ./start.sh                     # http://127.0.0.1:4180/
+#   ./start.sh                     # 默认监听所有网卡，本机与局域网都能打开
 #   ./start.sh --port 8080         # 换端口
-#   ./start.sh --host 0.0.0.0      # 允许局域网访问
+#   ./start.sh --host 127.0.0.1     # 只允许本机访问
 #   ./start.sh --check             # 只做自检，不启动服务
 set -euo pipefail
 cd "$(dirname "$0")"
